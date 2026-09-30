@@ -12,11 +12,10 @@
 | **Free Stylized Textures** | material | [URL](https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-textures-204742) | Standard Unity Asset Store EULA | 바닥 텍스처 | 권경민 | 2026.09.29 |
 | **25+ Free Realistic Textures - Nature, City, Home, Construction & More** | material | [URL](https://assetstore.unity.com/packages/2d/textures-materials/25-free-realistic-textures-nature-city-home-construction-more-240323) | Standard Unity Asset Store EULA | 바닥 텍스처 | 권경민 | 2026.09.29 |
 | **Monster Evo Pack 37-38-39-40-41-42 and Bonus–Game Ready Creatures | PixeliusVita** | 3D Character | [URL](https://assetstore.unity.com/packages/3d/characters/creatures/monster-evo-pack-37-38-39-40-41-42-and-bonus-game-ready-creature-382230) | Standard Unity Asset Store EULA | 몬스터 | 권경민 | 2026.09.29 |
-|  | Font | URL |  | UI 폰트 |  | 2026.09.29 |
 | **My Fantasy Fortress** | 3D Environments | [URL](https://assetstore.unity.com/packages/3d/environments/fantasy/my-fantasy-fortress-402356) | Standard Unity Asset Store EULA | 맵 리소스 | 노준철 | 2026.09.29 |
 | **Medieval Stone Keep** | 3D Environments | [URL](https://assetstore.unity.com/packages/3d/environments/medieval-stone-keep-56596) | Standard Unity Asset Store EULA | 맵 리소스 | 노준철 | 2026.09.29 |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+| Free Portal Shader for Unity URP | Unity URP Shader / VFX | [URL](https://void1gaming.itch.io/free-portal-shader-for-unity-urp) | 상업적·개인적 사용 가능, 수정 및 게임 포함 가능 / 원본 에셋 재배포·판매 불가 / 출처 표기 선택 | 포털 | 노준철 | 2026.09.30 |
+| **Gold Coins** | 3D Props | [URL](https://assetstore.unity.com/packages/3d/props/gold-coins-1810#content) | Standard Unity Asset Store EULA | 코인 | 류승민 | 2026.09.30 |
 |  |  |  |  |  |  |  |
 
 ### 항목 설명
