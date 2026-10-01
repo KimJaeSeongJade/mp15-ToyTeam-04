@@ -21,19 +21,25 @@ public class Tile : MonoBehaviour
         _isTower = false;
     }
 
-    /*
-    // 타일에 타워 설치
-    public void TileInstallTower(Tower tower)
+    /// <summary> 타일 타워 건설 </summary>
+    /// <param name="tower"></param>
+    public void TileInstallTower()//(Tower tower)
     {
         _isTower = true;
-        _tower = tower;
+        //_tower = tower;
     }
 
-    // 타일에 타워 철거
+    /// <summary> 타일 타워 제거 </summary>
     public void TileRemovalTower()
     {
         _isTower = false;
-        _tower = null;
+        //_tower = null;
     }
-    */
+
+    /// <summary> 타일 상태 초기화 </summary>
+    public void ResetTile()
+    {
+        _isTower = false;
+        //_tower = null;
+    }
 }
