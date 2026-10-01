@@ -10,8 +10,8 @@ public class Map : MonoBehaviour
 
     [Header("몬스터 스폰 좌표"), SerializeField] private Transform _spawnPoint;
     public Transform SpawnPoint => _spawnPoint;
-    [Header("몬스터 도착 좌표"), SerializeField] private Transform _arrivaPoint;
-    public Transform ArrivaPoint => _arrivaPoint;
+    [Header("몬스터 도착 좌표"), SerializeField] private Transform _arrivalPoint;
+    public Transform ArrivalPoint => _arrivalPoint;
 
     /// <summary> 맵 타일 상태 초기화 </summary>
     public void ResetMap()
