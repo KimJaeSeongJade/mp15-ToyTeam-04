@@ -38,7 +38,7 @@ assignees: ''
 
 
 ## 💻 Environmental Information
-- 브랜치 : `feature-XX-기능명`
+- 브랜치 : `GitHub계정명_하고있는작업`
 - OS: Windows11 [예: Windows 11 / macOS / Ubuntu]
 - Unity 버전: 2022.3.62f3
 
