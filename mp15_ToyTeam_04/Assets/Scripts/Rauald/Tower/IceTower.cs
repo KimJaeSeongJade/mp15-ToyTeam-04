@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceTower : Tower
+public class IceTower : Tower, ITowerable
 {
     /// <summary> 타워 기본 정보 </summary>
     public IceTower()
@@ -18,5 +18,9 @@ public class IceTower : Tower
         _curLevel = _basicLevel;
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
+    }
+
+    public void TowerAtkAffect()
+    {
     }
 }

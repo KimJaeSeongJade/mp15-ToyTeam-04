@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireTower : Tower
+public class FireTower : Tower, ITowerable
 {
     /// <summary> 타워 기본 정보 </summary>
     public FireTower()
@@ -18,5 +18,9 @@ public class FireTower : Tower
         _curLevel = _basicLevel;
         _firstUpgradeCost = 500;
         _secondUpgradeCost = 1000;
+    }
+
+    public void TowerAtkAffect()
+    {
     }
 }
