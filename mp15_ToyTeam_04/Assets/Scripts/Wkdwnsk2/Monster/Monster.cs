@@ -87,7 +87,7 @@ public class Monster : MonoBehaviour
     bool IsTargetReached()
     {
         // 1. 아직 경로를 계산 중인 경우(pathPending)에는 도착한 것이 아님
-        if (agent.pathPending) return false;
+        if (agent.pathPending|| !agent.isActiveAndEnabled || !agent.isOnNavMesh) return false;
 
         // 2. 남은 거리가 에이전트의 정지 거리 + 오차 범위 이하인지 확인
         if (agent.remainingDistance <= agent.stoppingDistance + stoppingDistanceThreshold)
