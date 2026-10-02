@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 58
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &2913964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 49
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &6832285
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 14
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &33904906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 11
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &38102009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 40
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &56080711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 22
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1001 &68694075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -380,6 +386,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterNormal1
       objectReference: {fileID: 0}
+    - target: {fileID: 7935254845177333075, guid: 821f6171fdb6373499ce2c2fe1366c25, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935254845177333075, guid: 821f6171fdb6373499ce2c2fe1366c25, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935254845177333075, guid: 821f6171fdb6373499ce2c2fe1366c25, type: 3}
+      propertyPath: m_Center.y
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -399,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 5
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!1 &188481370
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 50
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &251327162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 24
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &255059695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 41
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &343728776
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 18
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &371400149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,6 +785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 33
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &371593113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 15
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &388860647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 31
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &406461634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,6 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 12
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &485588478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 3
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &523988373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,6 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 18
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1001 &540936557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -915,6 +944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 19
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &579514554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 17
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &607010993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 20
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &634256017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,6 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 13
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &636114059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,6 +1004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 8
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!4 &650662156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4952578154520767595, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
@@ -990,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 43
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &652569964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,6 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 53
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &677095561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,6 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 45
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1001 &685187432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1028,7 +1065,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3955808756769843235, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
       propertyPath: m_Name
-      value: Procedural Portal Effect
+      value: StartGate
       objectReference: {fileID: 0}
     - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1089,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 35
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &747166337 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2493732093612827776, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
@@ -1129,6 +1167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 23
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &758422013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 17
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!1 &789642609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 48
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &854394270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,6 +1275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 6
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &864502022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,6 +1290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 10
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &876831702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,6 +1305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 26
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &902641030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 28
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &962305197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,6 +1368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 56
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &962564384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,6 +1383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 47
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &996932740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 7
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &1082122352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 9
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &1128145897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,6 +1512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 52
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1158693017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,6 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 36
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &1251927068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 16
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!23 &1251927071
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1589,6 +1641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 46
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1281213455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,6 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 27
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1303700058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,6 +1671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 11
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &1306226957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 38
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1320430272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,6 +1734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 39
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1361539784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1692,6 +1749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 8
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1366328064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,6 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 32
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1379241741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,6 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 14
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1 &1491851318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6965186218825978619, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
@@ -1739,6 +1799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 25
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1001 &1513052809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1822,6 +1883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 57
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1001 &1560284522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1907,6 +1969,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8702610119146353567, guid: fa68cf597d5e65a42a6c335d4f5c4a9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1596250373}
+    - targetCorrespondingSourceObject: {fileID: 8702610119146353567, guid: fa68cf597d5e65a42a6c335d4f5c4a9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1596250375}
   m_SourcePrefab: {fileID: 100100000, guid: fa68cf597d5e65a42a6c335d4f5c4a9c, type: 3}
 --- !u!4 &1560284523 stripped
 Transform:
@@ -1927,6 +1992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 15
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!1 &1590775987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3080648151654106973, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
@@ -2236,6 +2302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 4
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1590776047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,6 +2317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 3
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1590776048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2264,6 +2332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 2
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1590776049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,6 +2347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 1
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1590776050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,6 +2362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 0
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!4 &1590776055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1576368219605885788, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
@@ -2364,6 +2435,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &1596250375
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596250367}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &1658977646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,6 +2472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 29
   _eTileType: 0
+  _tower: {fileID: 0}
 --- !u!114 &1666062301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,6 +2487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 44
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1691131167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2406,6 +2502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 42
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1705002375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2420,6 +2517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 6
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &1741919484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2434,6 +2532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 34
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1787115474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2448,6 +2547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 5
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1799905901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2462,6 +2562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 12
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1814202506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,6 +2577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 30
   _eTileType: 0
+  _tower: {fileID: 0}
 --- !u!114 &1818471495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,6 +2592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 37
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1843075069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2504,11 +2607,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 55
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!4 &1843075070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2419723355795172471, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
   m_PrefabInstance: {fileID: 5156304087016094506}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1844382275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3955808756769843235, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+  m_PrefabInstance: {fileID: 1977656268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1844382276
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844382275}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1844382277
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844382275}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &1919421045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2523,6 +2682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 4
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &1953974162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,6 +2697,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 16
   _eTileType: 2
+  _tower: {fileID: 0}
+--- !u!1001 &1977656268
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3955808756769843235, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_Name
+      value: EndGate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.881
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.702
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7250205
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6887273
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 87.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239361314865794458, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3955808756769843235, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1844382277}
+    - targetCorrespondingSourceObject: {fileID: 3955808756769843235, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1844382276}
+  m_SourcePrefab: {fileID: 100100000, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
 --- !u!1 &1979003042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,6 +2809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 10
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!23 &1979003045
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2649,6 +2874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 54
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &1995419788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2663,6 +2889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 51
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &2043948181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,6 +2904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 9
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!114 &2071424942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2691,6 +2919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 13
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &2098729610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2705,6 +2934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 21
   _eTileType: 2
+  _tower: {fileID: 0}
 --- !u!1001 &5156304087016094506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6190,6 +6420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 19
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &5156304087016094527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6204,6 +6435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 7
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &5156304087016094528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6218,6 +6450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 2
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &5156304087016094529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6232,6 +6465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 1
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!114 &5156304087016094530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6246,6 +6480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileNumber: 0
   _eTileType: 1
+  _tower: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6255,6 +6490,7 @@ SceneRoots:
   - {fileID: 5156304087016094506}
   - {fileID: 1306226958}
   - {fileID: 685187432}
+  - {fileID: 1977656268}
   - {fileID: 789642611}
   - {fileID: 540936557}
   - {fileID: 1513052809}
