@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,7 +30,11 @@ public class Monster : MonoBehaviour
     //목적지 도착
     public Transform endPoint;
     private NavMeshAgent agent;
-    public float stoppingDistanceThreshold = 0.1f; 
+    public float stoppingDistanceThreshold = 0.1f;
+
+    public Animator anim;
+    private WaitForSeconds waitTime = new WaitForSeconds(3f);
+
 
 
 
@@ -41,6 +46,8 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         _navmesh = GetComponent<NavMeshAgent>();
+        anim = this.GetComponent<Animator>();
+
     }
 
     private void OnEnable()
@@ -106,7 +113,7 @@ public class Monster : MonoBehaviour
             }
 
             else
-            {
+            {        
                 MonsterDead();
             }
         } 
@@ -130,7 +137,17 @@ public class Monster : MonoBehaviour
     {
         Debug.Log(_monsterName + " 사망");
 
+        anim.SetTrigger("Dead");
+        StartCoroutine(DeadWait());
+
+
+    }
+
+    private IEnumerator DeadWait()
+    {
+        yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
+
     }
     
     public void MonsterDelete()
