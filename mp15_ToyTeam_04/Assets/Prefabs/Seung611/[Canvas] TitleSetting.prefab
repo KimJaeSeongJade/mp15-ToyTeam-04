@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 368739438140786258}
   - component: {fileID: 8467028639511227415}
   m_Layer: 5
-  m_Name: '[Canvas] Setting'
+  m_Name: '[Canvas] TitleSetting'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
