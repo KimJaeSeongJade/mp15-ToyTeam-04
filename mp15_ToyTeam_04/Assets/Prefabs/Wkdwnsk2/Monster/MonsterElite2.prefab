@@ -74,6 +74,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5284932484575653405}
+    - targetCorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2377200850154810445}
   m_SourcePrefab: {fileID: 100100000, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
 --- !u!1 &2927374046827873816 stripped
 GameObject:
@@ -97,7 +100,8 @@ MonoBehaviour:
   _monsterHealth: 60
   _monsterSpeed: 2
   _dropGold: 5
-  testGoal: {fileID: 0}
+  endPoint: {fileID: 0}
+  stoppingDistanceThreshold: 0.1
 --- !u!195 &5284932484575653405
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -120,3 +124,24 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &2377200850154810445
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927374046827873816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1e49fdc3489cb44ba504970354547b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -94,10 +94,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterType: 2
   _monsterName: MonsterElite1
-  _monsterHealth: 10
-  _monsterSpeed: 2
+  _monsterHealth: 80
+  _monsterSpeed: 1.5
   _dropGold: 5
-  testGoal: {fileID: 0}
+  endPoint: {fileID: 0}
+  stoppingDistanceThreshold: 0.1
 --- !u!195 &3986083075601968617
 NavMeshAgent:
   m_ObjectHideFlags: 0
