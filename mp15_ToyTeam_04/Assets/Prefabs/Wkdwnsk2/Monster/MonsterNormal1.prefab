@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 2421111465444818544}
   - component: {fileID: 7160904340924744003}
   - component: {fileID: 4010785097858791125}
+  - component: {fileID: 1700428216710005104}
   m_Layer: 0
   m_Name: Monster37
   m_TagString: Untagged
@@ -631,7 +632,8 @@ MonoBehaviour:
   _monsterHealth: 30
   _monsterSpeed: 2
   _dropGold: 1
-  testGoal: {fileID: 0}
+  endPoint: {fileID: 0}
+  stoppingDistanceThreshold: 0.1
 --- !u!195 &4010785097858791125
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -654,6 +656,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &1700428216710005104
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085621741977265354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1e49fdc3489cb44ba504970354547b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3102074621811617954
 GameObject:
   m_ObjectHideFlags: 0
