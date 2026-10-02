@@ -73,9 +73,6 @@ PrefabInstance:
       addedObject: {fileID: 2999800375393804870}
     - targetCorrespondingSourceObject: {fileID: 8702610119146353567, guid: fa68cf597d5e65a42a6c335d4f5c4a9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6965302388558320004}
-    - targetCorrespondingSourceObject: {fileID: 8702610119146353567, guid: fa68cf597d5e65a42a6c335d4f5c4a9c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 9062651887592284236}
   m_SourcePrefab: {fileID: 100100000, guid: fa68cf597d5e65a42a6c335d4f5c4a9c, type: 3}
 --- !u!1 &9018495511038245867 stripped
@@ -100,19 +97,7 @@ MonoBehaviour:
   _monsterHealth: 150
   _monsterSpeed: 2
   _dropGold: 10
---- !u!114 &6965302388558320004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9018495511038245867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142425ac038fdd84584b2251e25c907a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  testGoal: {fileID: 0}
 --- !u!195 &9062651887592284236
 NavMeshAgent:
   m_ObjectHideFlags: 0

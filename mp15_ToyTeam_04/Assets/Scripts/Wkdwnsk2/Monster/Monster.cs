@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -45,11 +46,16 @@ public class Monster : MonoBehaviour
         _navmesh.speed = _monsterSpeed;
 
 
+
+        
+    }
+
+    private void Start()
+    {
         if (testGoal != null)
         {
             _navmesh.SetDestination(testGoal.position);
         }
-        
     }
 
     private void Update()

@@ -589,7 +589,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2421111465444818544}
   - component: {fileID: 7160904340924744003}
-  - component: {fileID: 4743867337376619130}
   - component: {fileID: 4010785097858791125}
   m_Layer: 0
   m_Name: Monster37
@@ -632,19 +631,7 @@ MonoBehaviour:
   _monsterHealth: 30
   _monsterSpeed: 2
   _dropGold: 1
---- !u!114 &4743867337376619130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3085621741977265354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142425ac038fdd84584b2251e25c907a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  testGoal: {fileID: 0}
 --- !u!195 &4010785097858791125
 NavMeshAgent:
   m_ObjectHideFlags: 0
