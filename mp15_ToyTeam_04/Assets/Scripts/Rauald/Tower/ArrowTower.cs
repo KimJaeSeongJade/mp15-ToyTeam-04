@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowTower : Tower
+public class ArrowTower : Tower, ITowerable
 {
     /// <summary> 타워 기본 정보 </summary>
     public ArrowTower()
@@ -18,5 +18,9 @@ public class ArrowTower : Tower
         _curLevel = _basicLevel;
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
+    }
+
+    public void TowerAtkAffect()
+    {
     }
 }

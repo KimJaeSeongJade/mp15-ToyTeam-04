@@ -7,7 +7,7 @@ public class MapManager : MonoBehaviour
 {
     [Header("전체 맵"), SerializeField] private Map[] NormalMaps;
     [Header("보스 맵"), SerializeField] private Map BossMap;
-    [HideInInspector] public Map _curMap = new();
+    [HideInInspector] public Map _curMap;
 
     /// <summary> 현재 맵 번호 </summary>
     private int _curMapNumber;
