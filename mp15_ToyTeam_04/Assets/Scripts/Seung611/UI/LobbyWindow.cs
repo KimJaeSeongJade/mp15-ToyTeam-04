@@ -7,6 +7,8 @@ public class LobbyWindow : MonoBehaviour
 {
     [SerializeField] private Image _characterProfile;
     [SerializeField] private Button _playerSkillButton;
-    // private List<Tower> _towerInventory;
+    [SerializeField] private List<Button> _towerInventory;
     public int _hasGold;
+    
+    
 }
