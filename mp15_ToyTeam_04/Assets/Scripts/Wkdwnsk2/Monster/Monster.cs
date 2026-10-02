@@ -78,28 +78,13 @@ public class Monster : MonoBehaviour
             Debug.Log(_monsterName + " 현재 체력 : " + currentHealth);
         }
         
-        if (IsTargetReached())
-        {
-            MonsterDelete();
-        }
+        
     }
     
-    bool IsTargetReached()
+    void OnTriggerEnter(Collider other)
     {
-        // 1. 아직 경로를 계산 중인 경우(pathPending)에는 도착한 것이 아님
-        if (agent.pathPending|| !agent.isActiveAndEnabled || !agent.isOnNavMesh) return false;
-
-        // 2. 남은 거리가 에이전트의 정지 거리 + 오차 범위 이하인지 확인
-        if (agent.remainingDistance <= agent.stoppingDistance + stoppingDistanceThreshold)
-        {
-            // 3. 경로가 없거나 속도가 거의 zero일 때 최종 도착으로 판정
-            if (!agent.hasPath || agent.velocity.sqrMagnitude <= 0.2f)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        MonsterDelete();
+        
     }
 
     public void TakeDamage(int damage)
@@ -150,7 +135,6 @@ public class Monster : MonoBehaviour
     
     public void MonsterDelete()
     {
-        CancelInvoke();
 
         if (_navmesh.isOnNavMesh)
         {
