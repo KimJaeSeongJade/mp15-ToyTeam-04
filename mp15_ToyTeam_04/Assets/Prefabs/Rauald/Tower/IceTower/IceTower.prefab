@@ -1,0 +1,266 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1780410842461243721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8371791955597138741}
+  - component: {fileID: 4323865002441720007}
+  m_Layer: 0
+  m_Name: IceTower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8371791955597138741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780410842461243721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7530504164605649805}
+  - {fileID: 7248759314605451404}
+  - {fileID: 4422416133723096997}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4323865002441720007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780410842461243721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a7cae1f96b58f4482b87426fed1632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _towerObj:
+  - {fileID: 7530504164605755309}
+  - {fileID: 7248759314605356204}
+  - {fileID: 4422416133722872709}
+--- !u!1001 &2683829372622328974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8371791955597138741}
+    m_Modifications:
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269227299, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_Name
+      value: IceTower_Level_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5602294575269227299, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+--- !u!4 &7530504164605649805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+  m_PrefabInstance: {fileID: 2683829372622328974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7530504164605755309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5602294575269227299, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+  m_PrefabInstance: {fileID: 2683829372622328974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7045420460922185155
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8371791955597138741}
+    m_Modifications:
+    - target: {fileID: 386914449548775791, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_Name
+      value: IceTower_Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449548775791, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+--- !u!1 &7248759314605356204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 386914449548775791, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+  m_PrefabInstance: {fileID: 7045420460922185155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7248759314605451404 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+  m_PrefabInstance: {fileID: 7045420460922185155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7521337015387474956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8371791955597138741}
+    m_Modifications:
+    - target: {fileID: 6142553789647345545, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_Name
+      value: IceTower_Level_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647345545, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+--- !u!1 &4422416133722872709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6142553789647345545, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+  m_PrefabInstance: {fileID: 7521337015387474956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4422416133723096997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+  m_PrefabInstance: {fileID: 7521337015387474956}
+  m_PrefabAsset: {fileID: 0}

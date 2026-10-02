@@ -42,9 +42,10 @@ public abstract class Tower : MonoBehaviour
         return (_installCost) * (isAbility ? 2 : 1);
     }
 
-    public void TowerInstall()
+    /// <summary> 타워 설치 </summary>
+    public void TowerBasicInstall()
     {
-        _towerObj[0].SetActive(true);
+        _towerObj[_basicLevel].SetActive(true);
     }
 
     /// <summary> 타워 철거 비용 계산 </summary>
@@ -66,6 +67,12 @@ public abstract class Tower : MonoBehaviour
         return removalCost;
     }
 
+    /// <summary> 타워 철거 </summary>
+    public void TowerRemoval()
+    {
+        _towerObj[_curLevel - 1].SetActive(false);
+    }
+
     /// <summary> 타워 강화 비용 </summary>
     /// <param name="isAbility"> 특성에 타워 강화 비용 감소를 습득 했는지 여부 </param>
     /// <returns> 계산된 강화 비용 </returns>
@@ -79,9 +86,8 @@ public abstract class Tower : MonoBehaviour
     {
         if (_curLevel == 3) return;
 
-        _towerObj[_curLevel].SetActive(false);
+        _towerObj[_curLevel - 1].SetActive(false);
         _curLevel++;
-        _towerObj[_curLevel].SetActive(true);
-
+        _towerObj[_curLevel - 1].SetActive(true);
     }
 }

@@ -27,12 +27,13 @@ public class Tile : MonoBehaviour
     {
         _isTower = true;
         _tower = tower;
-        _tower.TowerInstall();
+        _tower.TowerBasicInstall();
     }
 
     /// <summary> 타일 타워 제거 </summary>
     public void TileRemovalTower()
     {
+        _tower.TowerRemoval();
         ResetTile();
     }
 
