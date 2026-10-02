@@ -10,7 +10,7 @@ public class FireTower : Tower
         _name = "파이어 타워";
         _eTowerType = ETowerType.FireTower;
         _atk = 20;
-        _atkSpeed = 0.3f;
+        _atkSpeed = 1f;
         _detectionRange = 10f;
         _explanation = "느린 공격 속도와 강한 공격력, 넓은 공격 범위를 가진 타워.";
         _installCost = 200;

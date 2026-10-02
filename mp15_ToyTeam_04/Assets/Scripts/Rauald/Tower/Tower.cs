@@ -23,12 +23,6 @@ public abstract class Tower : MonoBehaviour
     public string Name => _name;
     /// <summary> 타워 타입 </summary>
     public ETowerType ETowerType => _eTowerType;
-    /// <summary> 타워 기본 공격력 </summary>
-    public int Atk => _atk;
-    /// <summary> 타워 기본 공격 속도 </summary>
-    public float AtkSpeed => _atkSpeed;
-    /// <summary> 타워 기본 탐색(공격) 범위 </summary>
-    public float DetectionRange => _detectionRange;
     /// <summary> 타워 정보 </summary>
     public string Explanation => _explanation;
     /// <summary> 현재 강화 단계 </summary>
@@ -71,6 +65,30 @@ public abstract class Tower : MonoBehaviour
     public void TowerRemoval()
     {
         _towerObj[_curLevel - 1].SetActive(false);
+    }
+
+    /// <summary> 타워 공격력 </summary>
+    /// <param name="isAbility"> 특성에 타워 공격 증가를 습득 했는지 여부 </param>
+    /// <returns> 계산된 타워 공격력 </returns>
+    public int TowerAtk(bool isAbility)
+    {
+        return _atk * (isAbility ? 2 : 1);
+    }
+
+    /// <summary> 타워 공격 속도 </summary>
+    /// <param name="isAbility"> 특성에 타워 공격 속도 증가를 습득 했는지 여부 </param>
+    /// <returns> 계산된 타워 공격 속도 </returns>
+    public float TowerAtkSpeed(bool isAbility)
+    {
+        return _atkSpeed * (isAbility ? 2 : 1);
+    }
+
+    /// <summary> 타워 탐색 범위 </summary>
+    /// <param name="isAbility"> 특성에 타워 탐색 범위 증가를 습득 했는지 여부 </param>
+    /// <returns> 계산된 타워 탐색 범위 </returns>
+    public float TowerDetectionRange(bool isAbility)
+    {
+        return _detectionRange * (isAbility ? 2 : 1);
     }
 
     /// <summary> 타워 강화 비용 </summary>
