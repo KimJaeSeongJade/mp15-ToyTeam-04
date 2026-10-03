@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1892119749456636536}
   - component: {fileID: 237109575044735811}
+  - component: {fileID: 7764253900995305003}
+  - component: {fileID: 5661569810648709038}
   m_Layer: 0
   m_Name: ArrowTower
   m_TagString: Untagged
@@ -51,6 +53,43 @@ MonoBehaviour:
   - {fileID: 7236838790025529408}
   - {fileID: 270295925821266316}
   - {fileID: 8888549143318526008}
+--- !u!114 &7764253900995305003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448900938472419548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3465cafdfed7f9f469d0bfea94c4c7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _col: {fileID: 5661569810648709038}
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!135 &5661569810648709038
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448900938472419548}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &1724253738486531430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,13 +102,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowTower_Level_3
       objectReference: {fileID: 0}
-    - target: {fileID: 7833941157049236830, guid: 1fdc7e6133b517641b274f1aac848c0d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7833941157049327998, guid: 1fdc7e6133b517641b274f1aac848c0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7833941157049327998, guid: 1fdc7e6133b517641b274f1aac848c0d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -89,11 +124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833941157049327998, guid: 1fdc7e6133b517641b274f1aac848c0d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7833941157049327998, guid: 1fdc7e6133b517641b274f1aac848c0d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7833941157049327998, guid: 1fdc7e6133b517641b274f1aac848c0d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -133,10 +168,6 @@ PrefabInstance:
     - target: {fileID: 3419380884433830562, guid: a166b204a0b7e43479ef73aebc94d72c, type: 3}
       propertyPath: m_Name
       value: ArrowTower_Level_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3419380884433830562, guid: a166b204a0b7e43479ef73aebc94d72c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3419380884434263682, guid: a166b204a0b7e43479ef73aebc94d72c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,13 +236,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowTower_Level_2
       objectReference: {fileID: 0}
-    - target: {fileID: 8699166899353854431, guid: 14d997595a06d8941b3d0352c56da2dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8699166899354025471, guid: 14d997595a06d8941b3d0352c56da2dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8699166899354025471, guid: 14d997595a06d8941b3d0352c56da2dd, type: 3}
       propertyPath: m_LocalPosition.y

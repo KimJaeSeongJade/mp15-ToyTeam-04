@@ -11,7 +11,7 @@ public class FireTower : Tower, ITowerable
         _eTowerType = ETowerType.FireTower;
         _atk = 20;
         _atkSpeed = 1f;
-        _detectionRange = 10f;
+        _detectionRange = 5f;
         _explanation = "느린 공격 속도와 강한 공격력, 넓은 공격 범위를 가진 타워.";
         _installCost = 200;
         _basicLevel = 1;
