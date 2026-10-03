@@ -1224,6 +1224,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047070018}
   m_CullTransparentMesh: 1
+--- !u!1 &1233122975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233122977}
+  - component: {fileID: 1233122976}
+  m_Layer: 0
+  m_Name: LobbyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1233122976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233122975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3935b3db0df034f85f6e5847c0f4db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterProfile: {fileID: 1771654794}
+  _startButton: {fileID: 1764669954}
+  _playerSkillButton: {fileID: 904477924}
+  _settingButton: {fileID: 1686224442}
+  _towerInventory:
+  - {fileID: 1765949630}
+  - {fileID: 1887273690}
+  - {fileID: 1047070020}
+  _hasGold: 100
+--- !u!4 &1233122977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233122975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1219.2642, y: 554.8808, z: 4.1244006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1383186504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,13 +1373,13 @@ RectTransform:
   m_Children:
   - {fileID: 351423147}
   - {fileID: 1771654793}
-  - {fileID: 971265392}
-  - {fileID: 1686224441}
+  - {fileID: 1764669953}
   - {fileID: 904477923}
+  - {fileID: 1686224441}
   - {fileID: 1765949629}
   - {fileID: 1887273689}
   - {fileID: 1047070019}
-  - {fileID: 1764669953}
+  - {fileID: 971265392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2680,3 +2733,4 @@ SceneRoots:
   - {fileID: 1383186508}
   - {fileID: 429352605}
   - {fileID: 1983475802}
+  - {fileID: 1233122977}
