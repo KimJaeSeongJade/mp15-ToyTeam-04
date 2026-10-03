@@ -1285,6 +1285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 823101445252181682}
+  - component: {fileID: 823101445252181683}
   m_Layer: 5
   m_Name: TowerSelectTilePopUp
   m_TagString: Untagged
@@ -1560,6 +1561,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &823101445252181683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570546527718816094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e268a83c37c5346982edf28fec2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installButton: {fileID: 4919476329790363128}
+  _uninstallButton: {fileID: 1323977475783860611}
+  _upgradeButton: {fileID: 4238593354008007280}
+  _cancelButton: {fileID: 6430908690424319355}
 --- !u!114 &847061059328590899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6248,7 +6265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5142890775121919913
 MonoBehaviour:
   m_ObjectHideFlags: 0
