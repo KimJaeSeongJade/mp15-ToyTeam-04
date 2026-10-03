@@ -21,16 +21,18 @@ public class PopUpUIManager : MonoBehaviour
     {
         PopUpManager.Instance.OnGameSettingsPopUp += OnSetting;
         PopUpManager.Instance.OnGamePlayerSkillPopUp += OnPlayerSkillPopUp;
-        PopUpManager.Instance.OnGameStageResultPopUp += OnMessagePopUp;
+        PopUpManager.Instance.OnGameMessagePopUp += OnMessagePopUp;
         PopUpManager.Instance.OnGameStageResultPopUp += OnStageResultPopUp;
+        PopUpManager.Instance.OnGameTowerSpecPopUp += OnTowerSpecPopUp;
     }
 
     private void UnbindEventButtons()
     {
         PopUpManager.Instance.OnGameSettingsPopUp -= OnSetting;
         PopUpManager.Instance.OnGamePlayerSkillPopUp -= OnPlayerSkillPopUp;
-        PopUpManager.Instance.OnGameStageResultPopUp -= OnMessagePopUp;
+        PopUpManager.Instance.OnGameMessagePopUp -= OnMessagePopUp;
         PopUpManager.Instance.OnGameStageResultPopUp -= OnStageResultPopUp;
+        PopUpManager.Instance.OnGameTowerSpecPopUp -= OnTowerSpecPopUp;
     }
     
     private void OnSetting()
@@ -51,6 +53,11 @@ public class PopUpUIManager : MonoBehaviour
     private void OnStageResultPopUp()
     {
         _stageResultPopUp.SetActive(true);
+    }
+
+    private void OnTowerSpecPopUp()
+    {
+        _towerSpecPopUp.SetActive(true);
     }
     
     
