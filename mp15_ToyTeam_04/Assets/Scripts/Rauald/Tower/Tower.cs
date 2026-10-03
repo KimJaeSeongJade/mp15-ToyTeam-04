@@ -26,7 +26,7 @@ public abstract class Tower : MonoBehaviour
     /// <summary> 타워 정보 </summary>
     public string Explanation => _explanation;
     /// <summary> 현재 강화 단계 </summary>
-    public int CurEnforce => _curLevel;
+    public int CurLevel => _curLevel;
 
     /// <summary> 타워 설치 비용 계산 </summary>
     /// <param name="isAbility"> 특성에 타워 설치 비용 감소를 습득 했는지 여부</param>
@@ -39,7 +39,7 @@ public abstract class Tower : MonoBehaviour
     /// <summary> 타워 설치 </summary>
     public void TowerBasicInstall()
     {
-        _towerObj[_basicLevel].SetActive(true);
+        _towerObj[_basicLevel - 1].SetActive(true);
     }
 
     /// <summary> 타워 철거 비용 계산 </summary>
