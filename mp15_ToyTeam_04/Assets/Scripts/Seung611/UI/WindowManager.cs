@@ -1,21 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindowManager : MonoBehaviour, IWindowable
+public class WindowManager : Singleton<WindowManager>
 {
     private TitleWindow _titleWindow;
     private LobbyWindow _lobbyWindow;
     private BattleWindow _battleWindow;
     private BattleSub _battleSub;
+    
+    public event Action OnGameLobby;
+    public event Action OnGameBattle;
 
-    public void Init()
+    private void Awake()
     {
-        
+        SetSingleton();
     }
 
-    public void ScreenRefresh()
+    public void SetLobbyWindow()
     {
-        
+        OnGameLobby?.Invoke();
+    }
+
+    public void SetBattleWindow()
+    {
+        OnGameBattle?.Invoke();
     }
 }
