@@ -3,62 +3,59 @@ using UnityEngine;
 
 public class ObjectPool<T> where T : Component, IPoolable
 {
-    private T _monsterPrefab;
+    private T _Prefab;
     private Transform _parent;
 
-    private Queue<T> _monsterQueue = new Queue<T>();
+    private Queue<T> _poolQueue = new Queue<T>();
 
-    public ObjectPool(
-        T monsterPrefab,
-        int poolSize,
-        Transform parent)
+    public ObjectPool(T Prefab, int poolSize, Transform parent)
     {
-        _monsterPrefab = monsterPrefab;
+        _Prefab = Prefab;
         _parent = parent;
 
         for (int i = 0; i < poolSize; i++)
         {
-            CreateMonster();
+            CreateObject();
         }
     }
 
-    private void CreateMonster()
+    private void CreateObject()
     {
-        T monster = Object.Instantiate(_monsterPrefab, _parent);
+        T item = Object.Instantiate(_Prefab, _parent);
 
-        monster.gameObject.SetActive(false);
-        _monsterQueue.Enqueue(monster);
+        item.gameObject.SetActive(false);
+        _poolQueue.Enqueue(item);
     }
 
-    public T GetMonster()
+    public T GetObject()
     {
-        if (_monsterQueue.Count == 0)
+        if (_poolQueue.Count == 0)
         {
-            CreateMonster();
+            CreateObject();
         }
 
-        return _monsterQueue.Dequeue();
+        return _poolQueue.Dequeue();
     }
     
-    public void ActivateMonster(T monster)
+    public void ActivateObject(T item)
     {
-        monster.gameObject.SetActive(true);
-        monster.OnSpawn();
+        item.gameObject.SetActive(true);
+        item.OnSpawn();
     }
 
-    public void ReturnMonster(T monster)
+    public void ReturnObject(T item)
     {
-        if (monster.gameObject.activeSelf == false)
+        if (item.gameObject.activeSelf == false)
         {
             return;
         }
 
         // 비활성화하기 전에 정리
-        monster.OnDespawn();
+        item.OnDespawn();
 
-        monster.gameObject.SetActive(false);
-        monster.transform.SetParent(_parent);
+        item.gameObject.SetActive(false);
+        item.transform.SetParent(_parent);
 
-        _monsterQueue.Enqueue(monster);
+        _poolQueue.Enqueue(item);
     }
 }

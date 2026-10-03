@@ -28,7 +28,7 @@ public class PoolManager : MonoBehaviour
         Quaternion spawnRotation,
         Transform endPoint)
     {
-        Monster monster = _objectPool.GetMonster();
+        Monster monster = _objectPool.GetObject();
 
         monster.SetObjectPool(this);
 
@@ -37,13 +37,13 @@ public class PoolManager : MonoBehaviour
         monster.endPoint = endPoint;
 
         // 목적지 확인
-        _objectPool.ActivateMonster(monster);
+        _objectPool.ActivateObject(monster);
         
         return monster;
     }
 
     public void ReturnMonster(Monster monster)
     {
-        _objectPool.ReturnMonster(monster);
+        _objectPool.ReturnObject(monster);
     }
 }
