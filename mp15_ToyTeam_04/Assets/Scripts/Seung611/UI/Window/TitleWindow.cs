@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class TitleWindow : MonoBehaviour
 {
-    [SerializeField] private Image _backGroundScene;
     [SerializeField] private Button _gameStartButton;
     [SerializeField] private Button _settingButton;
     // [SerializeField] private TextMeshPro _titleText;
@@ -17,16 +16,23 @@ public class TitleWindow : MonoBehaviour
 
     private void BindButtonEvents()
     {
-        _gameStartButton.onClick.AddListener(LoadLobbyScene);
+        _gameStartButton.onClick.AddListener(LobbyWindow);
+        _settingButton.onClick.AddListener(SettingPopUp);
     }
 
     private void UnbindButtonEvents()
     {
-        _gameStartButton.onClick.RemoveListener(LoadLobbyScene);
+        _gameStartButton.onClick.RemoveListener(LobbyWindow);
+        _settingButton.onClick.RemoveListener(SettingPopUp);
     }
 
-    private void LoadLobbyScene()
+    private void LobbyWindow()
     {
         SceneManager.LoadScene(1);
+    }
+
+    private void SettingPopUp()
+    {
+        PopUpManager.Instance.SettingPopUp();
     }
 }

@@ -57,4 +57,9 @@ public class StageResultPopUp : MonoBehaviour
         _getGold.text = $"Gold : " + _getGoldCount.ToString();
         _stageReward.text = $"Reward : " + _stageRewardCount.ToString();
     }
+
+    private void Esc()
+    {
+        gameObject.SetActive(false);
+    }
 }

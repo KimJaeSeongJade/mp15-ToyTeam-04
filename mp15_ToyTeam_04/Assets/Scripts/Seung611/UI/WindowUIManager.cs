@@ -30,7 +30,7 @@ public class WindowUIManager : MonoBehaviour
 
     private void OnGameBattle()
     {
-        _battle.SetActive(false);
+        _battle.SetActive(true);
     }
     
 

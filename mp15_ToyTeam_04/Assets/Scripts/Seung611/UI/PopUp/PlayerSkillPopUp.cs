@@ -10,6 +10,7 @@ public class PlayerSkillPopUp : MonoBehaviour
     [SerializeField] private Button _skill2SelectButton;
     [SerializeField] private TextMeshProUGUI _skill1Name;
     [SerializeField] private TextMeshProUGUI _skill2Name;
+    [SerializeField] private Button _escButton;
 
     private string _skill1 = "Time freeze";
     private string _skill2 = "Natural disaster";
@@ -23,6 +24,7 @@ public class PlayerSkillPopUp : MonoBehaviour
     {
         _skill1SelectButton.onClick.AddListener(Skill1Selected);
         _skill2SelectButton.onClick.AddListener(Skill2Selected);
+        _escButton.onClick.AddListener(Esc);
     }
     
     private void UnbindButtonEvents()
@@ -45,5 +47,10 @@ public class PlayerSkillPopUp : MonoBehaviour
     {
         _skill1Name.text = $"{_skill1}";
         _skill2Name.text = $"{_skill2}";
+    }
+
+    private void Esc()
+    {
+        gameObject.SetActive(false);
     }
 }

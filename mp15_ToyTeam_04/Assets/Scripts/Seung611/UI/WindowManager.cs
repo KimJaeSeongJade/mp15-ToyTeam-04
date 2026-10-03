@@ -18,12 +18,12 @@ public class WindowManager : Singleton<WindowManager>
         SetSingleton();
     }
 
-    public void SetLobbyWindow()
+    public void LobbyWindow()
     {
         OnGameLobby?.Invoke();
     }
 
-    public void SetBattleWindow()
+    public void BattleWindow()
     {
         OnGameBattle?.Invoke();
     }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class LobbyWindow : MonoBehaviour
 {
-    [SerializeField] private Image _characterProfile;
     [SerializeField] private Button _gameStartButton;
     [SerializeField] private Button _playerSkillButton;
     [SerializeField] private Button _settingButton;
@@ -32,11 +31,15 @@ public class LobbyWindow : MonoBehaviour
     private void UnbindButtonEvents()
     {
         _gameStartButton.onClick.RemoveListener(StartGame);
+        _playerSkillButton.onClick.RemoveListener(SkillPopUp);
+        _settingButton.onClick.RemoveListener(SettingPopUp);
+        _towerInventory[0].onClick.RemoveListener(TowerSpecPopUp);
     }
 
     private void StartGame()
     {
         gameObject.SetActive(false);
+        WindowManager.Instance.BattleWindow();
     }
 
     private void SkillPopUp()

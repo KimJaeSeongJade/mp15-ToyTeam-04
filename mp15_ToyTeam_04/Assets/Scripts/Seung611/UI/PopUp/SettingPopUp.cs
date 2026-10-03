@@ -11,8 +11,6 @@ public class SettingPopUp : MonoBehaviour
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _lobbyButton;
     
-    private void Start() => gameObject.SetActive(false);
-    
     private void OnEnable() => BindButtonEvents();
     
     private void OnDisable() => UnbindButtonEvents();
@@ -22,7 +20,7 @@ public class SettingPopUp : MonoBehaviour
         _sfxSoundButton.onClick.AddListener(SFXSound);
         _bgmSoundButton.onClick.AddListener(BGMSound);
         _continueButton.onClick.AddListener(Continue);
-        _lobbyButton.onClick.AddListener(LoadLobbyScene);
+        _lobbyButton.onClick.AddListener(LobbyWindow);
     }
     
     private void UnbindButtonEvents()
@@ -30,7 +28,7 @@ public class SettingPopUp : MonoBehaviour
         _sfxSoundButton.onClick.AddListener(SFXSound);
         _bgmSoundButton.onClick.AddListener(BGMSound);
         _continueButton.onClick.AddListener(Continue);
-        _lobbyButton.onClick.AddListener(LoadLobbyScene);
+        _lobbyButton.onClick.AddListener(LobbyWindow);
     }
 
     private void SFXSound()
@@ -48,8 +46,9 @@ public class SettingPopUp : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void LoadLobbyScene()
+    private void LobbyWindow()
     {
-        SceneManager.LoadScene(1);
+        // LobbyWindow 띄우기
+        WindowManager.Instance.LobbyWindow();
     }
 }

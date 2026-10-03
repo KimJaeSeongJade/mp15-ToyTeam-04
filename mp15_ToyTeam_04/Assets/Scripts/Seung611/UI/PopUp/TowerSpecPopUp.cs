@@ -14,6 +14,7 @@ public class TowerSpecPopUp : MonoBehaviour
     [SerializeField] private Button _tower2Button;
     [SerializeField] private Button _tower3Button;
     [SerializeField] private Button _selectButton;
+    [SerializeField] private Button _escButton;
     
     private bool _tower1Selected = false;
     private bool _tower2Selected = false;
@@ -28,6 +29,7 @@ public class TowerSpecPopUp : MonoBehaviour
         _tower2Button.onClick.AddListener(Tower2Selected);
         _tower3Button.onClick.AddListener(Tower3Selected);
         _selectButton.onClick.AddListener(SelectTower);
+        _escButton.onClick.AddListener(Esc);
     }
 
     private void UnbindEventButtons()
@@ -36,6 +38,7 @@ public class TowerSpecPopUp : MonoBehaviour
         _tower2Button.onClick.RemoveListener(Tower2Selected);
         _tower3Button.onClick.RemoveListener(Tower3Selected);
         _selectButton.onClick.RemoveListener(SelectTower);
+        _escButton.onClick.RemoveListener(Esc);
     }
 
     private void SelectTower()
@@ -83,4 +86,9 @@ public class TowerSpecPopUp : MonoBehaviour
             _towerDescription.text = $"IceTower Description";
         }
     }
+
+    private void Esc()
+    {
+        gameObject.SetActive(false);
+    } 
 }
