@@ -20,17 +20,25 @@ public class PopUpUIManager : MonoBehaviour
     private void BindEventButtons()
     {
         PopUpManager.Instance.OnGameSettingsPopUp += OnSetting;
+        PopUpManager.Instance.OnGamePlayerSkillPopUp += OnPlayerSkillPopUp;
     }
 
     private void UnbindEventButtons()
     {
         PopUpManager.Instance.OnGameSettingsPopUp -= OnSetting;
+        PopUpManager.Instance.OnGamePlayerSkillPopUp -= OnPlayerSkillPopUp;
     }
     
     private void OnSetting()
     {
         _setting.SetActive(true);
     }
+
+    private void OnPlayerSkillPopUp()
+    {
+        _playerSkillPopUp.SetActive(true);
+    }
+    
     
     private void Init()
     {
