@@ -27,6 +27,7 @@ public class Monster : MonoBehaviour
     public float _monsterSpeed = MONSTER_SPEED;
     public int _dropGold = DROP_GOLD;
     
+    
     //목적지 도착
     public Transform endPoint;
     private NavMeshAgent agent;
@@ -42,6 +43,11 @@ public class Monster : MonoBehaviour
     private NavMeshAgent _navmesh;
 
     private int currentHealth;
+    private bool isDead;
+
+    private bool hasUsedSurvival; // 보스 무적 스킬 썼는지
+    private bool isSurvivalActive;  // 생존 스킬 활성화 중인지
+    private bool _isBossImmune; // 보스 상태이상 면역 
 
     private void Awake()
     {
@@ -53,8 +59,9 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         currentHealth = _monsterHealth;
-
         _navmesh.speed = _monsterSpeed;
+        isDead = false;
+        isSurvivalActive = false;
 
 
 
@@ -96,6 +103,10 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead || isSurvivalActive)
+        {
+            return;
+        }
         if (monsterType == MonsterType.Elite2)
         {
             MinimumDamage();
@@ -107,9 +118,9 @@ public class Monster : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (monsterType == MonsterType.Boss1)
+            if (monsterType == MonsterType.Boss1 && !hasUsedSurvival)
             {
-                
+                StartCoroutine(BossResurrect());
             }
 
             else
@@ -117,6 +128,29 @@ public class Monster : MonoBehaviour
                 MonsterDead();
             }
         } 
+    }
+
+    private IEnumerator BossResurrect()
+    {
+        hasUsedSurvival = true;
+        isSurvivalActive = true;
+        currentHealth = 1;
+
+        Debug.Log(_monsterName + "보스 스킬 발동");
+        yield return new WaitForSeconds(5f);
+
+        currentHealth = 1 + 1;
+        isSurvivalActive = false;
+
+    }
+
+    private bool IsBossImmune()
+    {
+        if( monsterType == MonsterType.Boss2)
+        {
+            return true;
+        }
+        return false;
     }
 
 
@@ -135,6 +169,17 @@ public class Monster : MonoBehaviour
 
     private void MonsterDead()
     {
+        if (isDead)
+        {
+            return;
+        }
+        
+        _navmesh.ResetPath(); // 사망시 이동하지 않게 수정
+        _navmesh.enabled = false; // 사망시 길찾는 navmesh 기능 끄기
+        GetComponent<Collider>().enabled = false; // 사망시 다른 몬스터가 멈칫하지 않도록 콜리더 끄기
+
+
+        isDead = true;
         Debug.Log(_monsterName + " 사망");
 
         anim.SetTrigger("Dead");
