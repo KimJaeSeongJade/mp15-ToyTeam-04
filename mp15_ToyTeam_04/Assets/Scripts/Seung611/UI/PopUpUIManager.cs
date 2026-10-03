@@ -21,12 +21,14 @@ public class PopUpUIManager : MonoBehaviour
     {
         PopUpManager.Instance.OnGameSettingsPopUp += OnSetting;
         PopUpManager.Instance.OnGamePlayerSkillPopUp += OnPlayerSkillPopUp;
+        PopUpManager.Instance.OnGameStageResultPopUp += OnMessagePopUp;
     }
 
     private void UnbindEventButtons()
     {
         PopUpManager.Instance.OnGameSettingsPopUp -= OnSetting;
         PopUpManager.Instance.OnGamePlayerSkillPopUp -= OnPlayerSkillPopUp;
+        PopUpManager.Instance.OnGameStageResultPopUp -= OnMessagePopUp;
     }
     
     private void OnSetting()
@@ -37,6 +39,11 @@ public class PopUpUIManager : MonoBehaviour
     private void OnPlayerSkillPopUp()
     {
         _playerSkillPopUp.SetActive(true);
+    }
+
+    private void OnMessagePopUp()
+    {
+        _messagePopUp.SetActive(true);
     }
     
     
