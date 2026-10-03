@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable]
-public class MonsterWaveData
+[System.Serializable] public class MonsterWaveData
 {
-    public GameObject MonsterPrefab;
+    public PoolManager MonsterPool;
     public int MonstersNumber;
 }
 
@@ -39,10 +38,7 @@ public class Stage : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
-            if (_isStageRunning == false)
-            {
-                StartCoroutine(StageStart());
-            }
+            MonsterGenerate();
         }
     }
 
@@ -67,7 +63,7 @@ public class Stage : MonoBehaviour
             Debug.Log(WaveNumber + " 웨이브 몬스터 생성 완료"
             );
             
-            // 모든 몬스터가 없어질 때까지 기다림
+            // 몬스터 다 잡을때까지 대기
             yield return new WaitUntil(() => IsWaveClear());
             
             Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
@@ -85,7 +81,7 @@ public class Stage : MonoBehaviour
             }
         }
 
-        // 모든 웨이브 종료
+        // 웨이브 끝
         if (IsStageClear() == true)
         {
             StageClearReward = StageNumber * 500;
@@ -99,12 +95,67 @@ public class Stage : MonoBehaviour
 
     public void MonsterGenerate()
     {
-        if (_isStageRunning == true)
+        // 웨이브 시작했는지 확인
+        if (_isStageRunning)
         {
             return;
         }
-        StartCoroutine(SpawnWave());
+
+        if (_curMap == null ||
+            _curMap.SpawnPoint == null ||
+            _curMap.ArrivalPoint == null)
+        {
+            Debug.LogError("Map과 출발점, 도착점을 확인해주세요.");
+            return;
+        }
+
+        if (_waveData == null || _waveData.Length == 0)
+        {
+            Debug.LogError("웨이브를 설정해주세요.");
+            return;
+        }
+
+        // 시작 전에 모든 웨이브 설정 확인
+        for (int i = 0; i < _waveData.Length; i++)
+        {
+            WaveData wave = _waveData[i];
+
+            if (wave == null ||
+                wave.Monsters == null ||
+                wave.Monsters.Length == 0)
+            {
+                Debug.LogError((i + 1) + "웨이브의 몬스터 목록이 없습니다.");
+                return;
+            }
+
+            for (int j = 0; j < wave.Monsters.Length; j++)
+            {
+                MonsterWaveData monsterData = wave.Monsters[j];
+
+                if (monsterData == null ||
+                    monsterData.MonsterPool == null)
+                {
+                    Debug.LogError((i + 1) + "웨이브의 풀을 연결해주세요.");
+                    return;
+                }
+
+                if (monsterData.MonsterPool.IsReady() == false)
+                {
+                    Debug.LogError((i + 1) + "웨이브의 풀이 준비되지 않았습니다.");
+                    return;
+                }
+
+                if (monsterData.MonstersNumber <= 0)
+                {
+                    Debug.LogError("몬스터 수는 1 이상으로 설정해주세요.");
+                    return;
+                }
+            }
+        }
+
+        StartCoroutine(StageStart());
     }
+    
 
 
     private IEnumerator SpawnWave()
@@ -139,7 +190,7 @@ public class Stage : MonoBehaviour
                  j++)
             {
                 CreateMonster(
-                    monsterData.MonsterPrefab
+                    monsterData.MonsterPool
                 );
                 
                 yield return new WaitForSeconds(
@@ -150,41 +201,20 @@ public class Stage : MonoBehaviour
     }
 
 
-    private void CreateMonster(
-        GameObject monsterPrefab)
+    private void CreateMonster(PoolManager monsterPool)
     {
-        if (monsterPrefab == null)
-        { 
-            Debug.LogWarning("몬스터 프리팹이 연결되지 않았습니다.");
-            return;
-        }
-
-
-        GameObject monsterObject =
-            Instantiate(monsterPrefab, _curMap.SpawnPoint.position, _curMap.SpawnPoint.rotation);
-        Monster monster =
-            monsterObject.GetComponentInChildren<Monster>();
-
-
-        if (monster == null)
-        {
-            Debug.LogWarning(monsterPrefab.name + "에 Monster 스크립트가 없습니다.");
-            
-            Destroy(monsterObject);
-
-            return;
-        }
-
-
-        monster.endPoint =
-            _curMap.ArrivalPoint;
-
-
-        _spawnedMonsters.Add(
-            monster
+        Monster monster = monsterPool.GetMonster(
+            _curMap.SpawnPoint.position,
+            _curMap.SpawnPoint.rotation,
+            _curMap.ArrivalPoint
         );
-    }
 
+        // 같은 객체가 웨이브 도중 재사용되면 중복 등록하지 않음
+        if (_spawnedMonsters.Contains(monster) == false)
+        {
+            _spawnedMonsters.Add(monster);
+        }
+    }
 
     private bool IsWaveClear()
     {
