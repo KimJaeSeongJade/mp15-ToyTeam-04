@@ -5,7 +5,6 @@ using UnityEngine;
 public class PopUpUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _hp;
-    [SerializeField] private GameObject _battle;
     [SerializeField] private GameObject _towerSpecPopUp;
     [SerializeField] private GameObject _playerSkillPopUp;
     [SerializeField] private GameObject _stageResultPopUp;
@@ -71,7 +70,6 @@ public class PopUpUIManager : MonoBehaviour
     private void Init()
     {
         _hp.SetActive(false);
-        _battle.SetActive(false);
         _towerSpecPopUp.SetActive(false);
         _playerSkillPopUp.SetActive(false);
         _stageResultPopUp.SetActive(false);

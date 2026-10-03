@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PopUpManager : Singleton<PopUpManager>
 {
-    public event Action OnGameStart;
     public event Action OnGameSettingsPopUp;
     public event Action OnGameStageResultPopUp;
     public event Action OnGamePlayerSkillPopUp;
@@ -16,10 +15,6 @@ public class PopUpManager : Singleton<PopUpManager>
 
     private void Awake() => SetSingleton();
     
-    public void StartGame()
-    {
-        OnGameStart?.Invoke();
-    }
 
     public void SettingPopUp()
     {
@@ -36,17 +31,17 @@ public class PopUpManager : Singleton<PopUpManager>
         OnGamePlayerSkillPopUp?.Invoke();
     }
 
-    public void GameTowerSpecPopUp()
+    public void TowerSpecPopUp()
     {
         OnGameTowerSpecPopUp?.Invoke();
     }
 
-    public void GameTowerSelectTilePopUp()
+    public void TowerSelectTilePopUp()
     {
         OnGameTowerSelectTilePopup?.Invoke();
     }
 
-    public void GameMessagePopUp()
+    public void MessagePopUp()
     {
         OnGameMessagePopUp?.Invoke();
     }
