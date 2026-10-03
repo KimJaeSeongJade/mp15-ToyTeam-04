@@ -13,7 +13,7 @@ public enum MonsterType
     Boss2
 }
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IPoolable
 {
     public MonsterType monsterType;
 
@@ -30,15 +30,12 @@ public class Monster : MonoBehaviour
     
     //목적지 도착
     public Transform endPoint;
-    private NavMeshAgent agent;
     public float stoppingDistanceThreshold = 0.1f;
 
     public Animator anim;
-    private WaitForSeconds waitTime = new WaitForSeconds(3f);
-
-
-
-
+    
+    // 오브젝트 풀 추가
+    private PoolManager _objectPool;    
 
     private NavMeshAgent _navmesh;
 
@@ -52,36 +49,61 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         _navmesh = GetComponent<NavMeshAgent>();
-        anim = this.GetComponent<Animator>();
-
+        anim = GetComponentInChildren<Animator>();
     }
 
-    private void OnEnable()
+    //몬스터 스폰
+    public void OnSpawn()
     {
+        // 체력과 전투 상태 초기화
         currentHealth = _monsterHealth;
-        _navmesh.speed = _monsterSpeed;
         isDead = false;
         isSurvivalActive = false;
 
+        // 사망 애니메이션 초기화
+        anim.Rebind();
+        anim.Update(0f);
 
+        // 사망할 때 껐던 기능 복구
+        GetComponent<Collider>().enabled = true;
 
-        
+        _navmesh.enabled = true;
+        _navmesh.speed = _monsterSpeed;
+
+        if (endPoint == null)
+        {
+            Debug.LogWarning("몬스터의 목적지가 없음.");
+            return;
+        }
+
+        if (_navmesh.isOnNavMesh == false)
+        {
+            Debug.LogWarning("몬스터가 NavMesh 위에 없음.");
+            return;
+        }
+
+        _navmesh.isStopped = false;
+        _navmesh.SetDestination(endPoint.position);
     }
-
-    private void Start()
+    
+    public void OnDespawn()
     {
-        if (endPoint != null)
+        // 반납 전에 진행 중이던 작업 정리
+        StopAllCoroutines();
+
+        if (_navmesh.enabled && _navmesh.isOnNavMesh)
         {
-            _navmesh.SetDestination(endPoint.position);
+            _navmesh.ResetPath();
         }
-        
-        agent = GetComponent<NavMeshAgent>();
-        
-        if (endPoint != null)
-        {
-            agent.SetDestination(endPoint.position);
-        }
+
+        _navmesh.enabled = false;
+        GetComponent<Collider>().enabled = false;
+
+        isSurvivalActive = false;
+        endPoint = null;
     }
+
+
 
     private void Update()
     {
@@ -191,18 +213,37 @@ public class Monster : MonoBehaviour
     private IEnumerator DeadWait()
     {
         yield return new WaitForSeconds(2f);
-        gameObject.SetActive(false);
+        if (_objectPool != null)
+        {
+            _objectPool.ReturnMonster(this);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
 
     }
     
     public void MonsterDelete()
     {
-
         if (_navmesh.isOnNavMesh)
         {
             _navmesh.ResetPath();
         }
 
-        gameObject.SetActive(false);
+
+        if (_objectPool != null)
+        {
+            _objectPool.ReturnMonster(this);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    
+    public void SetObjectPool(PoolManager objectPool)
+    {
+        _objectPool = objectPool;
     }
 }

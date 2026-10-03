@@ -12,17 +12,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterElite2
       objectReference: {fileID: 0}
+    - target: {fileID: 3064182496570947963, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5333476231939318599, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5333476231939318599, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5333476231939318599, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5333476231939318599, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64,69 +68,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8634454253983429163, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634454253983429163, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634454253983429163, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3064182496570947963, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6738662750052303628}
-    - targetCorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      addedObject: {fileID: 6794666520418058591}
+    - targetCorrespondingSourceObject: {fileID: 3064182496570947963, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5284932484575653405}
+      addedObject: {fileID: 3147708987722814011}
+    - targetCorrespondingSourceObject: {fileID: 3064182496570947963, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4728824002195193281}
     - targetCorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2377200850154810445}
-    - targetCorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 278269413860291162}
   m_SourcePrefab: {fileID: 100100000, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
 --- !u!1 &2927374046827873816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8978047667078342801, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
   m_PrefabInstance: {fileID: 6068725733178814089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6738662750052303628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927374046827873816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e3cd1b5544144eb76ced5081e677a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterType: 3
-  _monsterName: MonsterElite2
-  _monsterHealth: 60
-  _monsterSpeed: 2
-  _dropGold: 5
-  endPoint: {fileID: 0}
-  stoppingDistanceThreshold: 0.1
---- !u!195 &5284932484575653405
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927374046827873816}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!95 &2377200850154810445
 Animator:
   serializedVersion: 5
@@ -148,13 +123,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &278269413860291162
+--- !u!1 &9132834231187249138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3064182496570947963, guid: 2ee6994c02e56834e9231bf1627d2b49, type: 3}
+  m_PrefabInstance: {fileID: 6068725733178814089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &6794666520418058591
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132834231187249138}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &3147708987722814011
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927374046827873816}
+  m_GameObject: {fileID: 9132834231187249138}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -167,7 +169,27 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4728824002195193281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132834231187249138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3cd1b5544144eb76ced5081e677a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterType: 3
+  _monsterName: MonsterElite2
+  _monsterHealth: 60
+  _monsterSpeed: 2
+  _dropGold: 10
+  endPoint: {fileID: 0}
+  stoppingDistanceThreshold: 0.1
+  anim: {fileID: 0}
