@@ -42,6 +42,10 @@ public class Monster : MonoBehaviour
     private NavMeshAgent _navmesh;
 
     private int currentHealth;
+    private bool isDead;
+
+    private bool hasUsedSurvival; // 보스 무적 스킬 썼는지
+    private bool isSurvivalActive;  // 생존 스킬 활성화 중인지
 
     private void Awake()
     {
@@ -53,8 +57,9 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         currentHealth = _monsterHealth;
-
         _navmesh.speed = _monsterSpeed;
+        isDead = false;
+        isSurvivalActive = false;
 
 
 
@@ -96,6 +101,10 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead)
+        {
+            return;
+        }
         if (monsterType == MonsterType.Elite2)
         {
             MinimumDamage();
@@ -107,9 +116,9 @@ public class Monster : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (monsterType == MonsterType.Boss1)
+            if (monsterType == MonsterType.Boss1 && !hasUsedSurvival)
             {
-                
+                StartCoroutine(BossResurrect());
             }
 
             else
@@ -117,6 +126,20 @@ public class Monster : MonoBehaviour
                 MonsterDead();
             }
         } 
+    }
+
+    private IEnumerator BossResurrect()
+    {
+        hasUsedSurvival = true;
+        isSurvivalActive = true;
+        currentHealth = 1;
+
+        Debug.Log(_monsterName + "보스 스킬 발동");
+        yield return new WaitForSeconds(5f);
+
+        currentHealth = 1 + 1;
+        isSurvivalActive = false;
+
     }
 
 
@@ -135,6 +158,12 @@ public class Monster : MonoBehaviour
 
     private void MonsterDead()
     {
+        if (isDead)
+        {
+            return;
+        }
+        
+        isDead = true;
         Debug.Log(_monsterName + " 사망");
 
         anim.SetTrigger("Dead");
