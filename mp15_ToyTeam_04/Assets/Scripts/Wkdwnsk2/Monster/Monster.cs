@@ -145,7 +145,7 @@ public class Monster : MonoBehaviour
 
     private IEnumerator DeadWait()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
 
     }
