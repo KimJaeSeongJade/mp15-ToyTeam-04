@@ -50,5 +50,7 @@ public class SettingPopUp : MonoBehaviour
     {
         // LobbyWindow 띄우기
         WindowManager.Instance.LobbyWindow();
+        SceneManager.LoadScene(2);
+        gameObject.SetActive(false);
     }
 }

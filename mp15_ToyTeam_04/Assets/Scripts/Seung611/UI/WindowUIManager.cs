@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WindowUIManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class WindowUIManager : MonoBehaviour
     private void OnGameLobby()
     {
         _lobby.SetActive(true);
+        _battle.SetActive(false);
     }
 
     private void OnGameBattle()
@@ -36,7 +38,10 @@ public class WindowUIManager : MonoBehaviour
 
     private void Init()
     {
-        _lobby.SetActive(true);
-        _battle.SetActive(false);
+        if (SceneManager.GetActiveScene().name == "Seung611_UI")
+        {
+            _lobby.SetActive(true);
+            _battle.SetActive(false);
+        }
     }
 }
