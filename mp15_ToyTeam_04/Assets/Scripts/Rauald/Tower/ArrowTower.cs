@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowTower : Tower, ITowerable
+public class ArrowTower : TowerState
 {
     /// <summary> 타워 기본 정보 </summary>
     public ArrowTower()
@@ -10,7 +10,8 @@ public class ArrowTower : Tower, ITowerable
         _name = "애로우 타워";
         _eTowerType = ETowerType.ArrowTower;
         _atk = 10;
-        _atkSpeed = 0.5f;
+        _upgradeAtk = 3;
+        _atkSpeed = 1f;
         _detectionRange = 3f;
         _explanation = "평범한 공격 속도와 공격력, 평범한 공격 범위를 가진 타워.";
         _installCost = 100;
@@ -18,9 +19,5 @@ public class ArrowTower : Tower, ITowerable
         _curLevel = _basicLevel;
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
-    }
-
-    public void TowerAtkAffect()
-    {
     }
 }

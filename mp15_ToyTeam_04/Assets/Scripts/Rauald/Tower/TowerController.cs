@@ -7,18 +7,18 @@ public class TowerController : MonoBehaviour
 {
     [SerializeField] private Tower _tower;
     [SerializeField] private Transform _head;
-    [SerializeField] private SphereCollider _col;
     [SerializeField] private LayerMask _targetLayerMask;
     private List<GameObject> _monsterList = new();
 
+    private float _curTime;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _muzzles;
 
     private void Awake() => CacheComponents();
 
-    private void Start()
+    private void OnEnable()
     {
-        _col.radius = _tower.TowerDetectionRange(false);
+        _curTime = 0f;
     }
 
     private void Update()
@@ -27,9 +27,12 @@ public class TowerController : MonoBehaviour
 
         LookAtTarget();
 
-        if (Input.GetKeyDown(KeyCode.A))
+        _curTime += Time.deltaTime;
+
+        if(_curTime > _tower.State.AtkSpeed)
         {
-            Instantiate(_bullet, _muzzles[_tower.CurLevel - 1].position, _muzzles[_tower.CurLevel - 1].rotation).Init(_tower.ETowerType, _monsterList[0].transform, _tower.TowerAtk(false), _monsterList[0].GetComponent<IDamageable>());
+            Instantiate(_bullet, _muzzles[_tower.State.CurLevel - 1].position, _muzzles[_tower.State.CurLevel - 1].rotation).Init(_tower.State.ETowerType, _monsterList[0].transform, _tower.TowerAtk(), _monsterList[0].GetComponent<IDamageable>());
+            _curTime = 0;
         }
     }
 
@@ -64,20 +67,8 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (_tower == null)
-        {
-            CacheComponents();
-        }
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up / 2, _tower.TowerDetectionRange(false));
-    }
-
     private void CacheComponents()
     {
         _tower = GetComponent<Tower>();
-        _tower.TowerBasicInstall();
     }
 }

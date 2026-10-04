@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8371791955597138741}
-  - component: {fileID: 4323865002441720007}
+  - component: {fileID: 2519453194482236197}
   - component: {fileID: 1656594880094298034}
   - component: {fileID: 5704095238812622498}
   m_Layer: 0
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 4422416133723096997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4323865002441720007
+--- !u!114 &2519453194482236197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780410842461243721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a7cae1f96b58f4482b87426fed1632, type: 3}
+  m_Script: {fileID: 11500000, guid: 7900ca405e1dbca45b2498ed94af8bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _towerObj:
   - {fileID: 7530504164605755309}
   - {fileID: 7248759314605356204}
   - {fileID: 4422416133722872709}
+  _col: {fileID: 5704095238812622498}
 --- !u!114 &1656594880094298034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,10 +66,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3465cafdfed7f9f469d0bfea94c4c7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _col: {fileID: 5704095238812622498}
+  _tower: {fileID: 2519453194482236197}
+  _head: {fileID: 0}
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  _bullet: {fileID: 0}
+  _muzzles:
+  - {fileID: 2433284234089814318}
+  - {fileID: 7727675993813112355}
+  - {fileID: 1572652386347892939}
 --- !u!135 &5704095238812622498
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -142,15 +149,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceTower_Level_1
       objectReference: {fileID: 0}
-    - target: {fileID: 5602294575269227299, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+--- !u!4 &2433284234089814318 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 358638179341995424, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
+  m_PrefabInstance: {fileID: 2683829372622328974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7530504164605649805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
@@ -172,10 +180,6 @@ PrefabInstance:
     - target: {fileID: 386914449548775791, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
       propertyPath: m_Name
       value: IceTower_Level_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 386914449548775791, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -232,6 +236,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
   m_PrefabInstance: {fileID: 7045420460922185155}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &7727675993813112355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 790492558383018976, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
+  m_PrefabInstance: {fileID: 7045420460922185155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7521337015387474956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,10 +252,6 @@ PrefabInstance:
     - target: {fileID: 6142553789647345545, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
       propertyPath: m_Name
       value: IceTower_Level_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6142553789647345545, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -293,6 +298,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+--- !u!4 &1572652386347892939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9057309674164260039, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
+  m_PrefabInstance: {fileID: 7521337015387474956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4422416133722872709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6142553789647345545, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
