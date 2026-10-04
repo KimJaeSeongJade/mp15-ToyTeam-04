@@ -9,18 +9,18 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private GameObject _topViewCam;
     [SerializeField] private Collider _ground;
 
-    [SerializeField] private float _panSpeed = 15f;            // 기본 이동 속도
-    [SerializeField] private float _smoothSpeed = 10f;         // 클수록 딱딱, 작을수록 부드럽게
+    [SerializeField] private float _panSpeed = 15f;     // 기본 이동 속도
+    [SerializeField] private float _smoothSpeed = 10f;  // 클수록 딱딱, 작을수록 부드럽게
 
-    [SerializeField] private float _zoomSpeed = 5f;            // 휠 한 칸에 움직이는 높이
-    [SerializeField] private float _minHeight = 15f;           // 최대 확대 (가장 낮은 높이)
-    [SerializeField] private float _maxHeight = 45f;           // 최대 축소 (가장 높은 높이)
-    [SerializeField] private bool _zoomToCursor = true;        // 마우스가 가리키는 곳으로 확대
+    [SerializeField] private float _zoomSpeed = 5f;     // 휠 한 칸에 움직이는 높이
+    [SerializeField] private float _minHeight = 15f;    // 최대 확대 (가장 낮은 높이)
+    [SerializeField] private float _maxHeight = 45f;    // 최대 축소 (가장 높은 높이)
+    [SerializeField] private bool _zoomToCursor = true; // 마우스가 가리키는 곳으로 확대
 
     private bool _isTopView;
-    private Vector3 _topViewTarget;                            // 탑뷰 카메라가 가려는 위치
+    private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
 
-    // 지금 탑뷰인지 (PlayerCharacter가 읽기만 함)
+    // 지금 탑뷰인지
     public bool IsTopView => _isTopView;
 
     private void Start()
@@ -32,12 +32,12 @@ public class PlayerCamera : MonoBehaviour
         }
 
         _topViewTarget = _topViewCam.transform.position;
-        CameraRoutine();                     // 시작은 3인칭
+        CameraRoutine();
     }
 
     private void Update()
     {
-        if (!_isTopView) return;             // 탑뷰일 때만 조작
+        if (!_isTopView) return; 
 
         TopViewMove();
         TopViewZoom();
