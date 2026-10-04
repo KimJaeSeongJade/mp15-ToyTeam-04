@@ -27,6 +27,10 @@ public class Stage : MonoBehaviour
     private Map _curMap;
     private bool _isStageRunning = false;
     
+    // 플레이어 전용 스킬 사용 여부
+    private bool _isTimeFreezeUsed;
+    private bool _isNaturalDisasterUsed;
+    
     private List<Monster> _spawnedMonsters = new List<Monster>();
     
     private void Awake()
@@ -40,11 +44,86 @@ public class Stage : MonoBehaviour
         {
             MonsterGenerate();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            TimeFreezeSkill();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            NaturalDisasterSkill();
+        }
     }
+    
+    public void TimeFreezeSkill()
+    {
+        // 이미 사용했다면 사용 불가
+        if (_isTimeFreezeUsed)
+        {
+            Debug.Log("스킬은 스테이지당 한 번만 사용할 수 있습니다.");
+            return;
+        }
+
+        for (int i = 0; i < _spawnedMonsters.Count; i++)
+        {
+            Monster monster = _spawnedMonsters[i];
+
+            if (monster == null)
+            {
+                continue;
+            }
+
+            if (monster.gameObject.activeInHierarchy == false)
+            {
+                continue;
+            }
+
+            monster.ApplyTimeFreeze(3f);
+        }
+        
+        _isTimeFreezeUsed = true;
+        Debug.Log("시간 동결 사용");
+    }
+
+    public void NaturalDisasterSkill()
+    {
+        if (_isNaturalDisasterUsed)
+        {
+            Debug.Log("스킬은 스테이지당 한 번만 사용할 수 있습니다.");
+            return;
+        }
+
+        for (int i = 0; i < _spawnedMonsters.Count; i++)
+        {
+            Monster monster = _spawnedMonsters[i];
+
+            if (monster == null)
+            {
+                continue;
+            }
+
+            if (monster.gameObject.activeInHierarchy == false)
+            {
+                continue;
+            }
+
+            monster.SkillDamage(0.2f);
+            monster.ApplyTimeFreeze(3f);
+        }
+        _isNaturalDisasterUsed = true;
+        Debug.Log("천재지변 사용");
+    }
+    
 
     private IEnumerator StageStart()
     {
         _isStageRunning = true;
+        
+        // 스테이지 시작 시 플레이어 스킬 사용 횟수 초기화
+        _isTimeFreezeUsed = false;
+        _isNaturalDisasterUsed = false;
+        
         Debug.Log(StageNumber + " 스테이지 시작");
         
         for (int i = 0; i < _waveData.Length; i++)
@@ -265,4 +344,6 @@ public class Stage : MonoBehaviour
         { return true; }
         return false;
     }
+    
+    
 }

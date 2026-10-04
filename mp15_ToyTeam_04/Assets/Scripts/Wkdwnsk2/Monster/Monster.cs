@@ -27,6 +27,10 @@ public class Monster : MonoBehaviour, IPoolable
     public float _monsterSpeed = MONSTER_SPEED;
     public int _dropGold = DROP_GOLD;
     
+    //플레이어 스킬 
+    private Coroutine _timeStopCoroutine;
+   
+    
     
     //목적지 도착
     public Transform endPoint;
@@ -59,6 +63,7 @@ public class Monster : MonoBehaviour, IPoolable
         currentHealth = _monsterHealth;
         isDead = false;
         isSurvivalActive = false;
+        _timeStopCoroutine = null;
 
         // 사망 애니메이션 초기화
         anim.Rebind();
@@ -90,6 +95,7 @@ public class Monster : MonoBehaviour, IPoolable
     {
         // 반납 전에 진행 중이던 작업 정리
         StopAllCoroutines();
+        _timeStopCoroutine = null;
 
         if (_navmesh.enabled && _navmesh.isOnNavMesh)
         {
@@ -123,13 +129,14 @@ public class Monster : MonoBehaviour, IPoolable
         
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isSkillDamage = false)
     {
         if (isDead || isSurvivalActive)
         {
             return;
         }
-        if (monsterType == MonsterType.Elite2)
+        // 엘리트2가 천재지변이 아니라면 1 데미지
+        if (monsterType == MonsterType.Elite2 && !isSkillDamage)
         {
             MinimumDamage();
             return;
@@ -246,4 +253,71 @@ public class Monster : MonoBehaviour, IPoolable
     {
         _objectPool = objectPool;
     }
+    
+    
+    //스킬 구현
+    public void ApplyTimeFreeze(float duration)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        // Boss2는 상태이상 면역
+        if (IsBossImmune())
+        {
+            return;
+        }
+
+        // 이미 동결 중이라면 기존 시간을 취소하고
+        // 새로 3초를 시작
+        if (_timeStopCoroutine != null)
+        {
+            StopCoroutine(_timeStopCoroutine);
+        }
+
+        _timeStopCoroutine = StartCoroutine(
+            TimeStopRoutine(duration)
+        );
+    }
+    
+    private IEnumerator TimeStopRoutine(float duration)
+    {
+
+        if (_navmesh.enabled &&
+            _navmesh.isOnNavMesh)
+        {
+            _navmesh.isStopped = true;
+        }
+
+        yield return new WaitForSeconds(duration);
+
+
+        if (_navmesh.enabled &&
+            _navmesh.isOnNavMesh &&
+            !isDead)
+        {
+            _navmesh.isStopped = false;
+        }
+
+        _timeStopCoroutine = null;
+    }
+    
+    public void SkillDamage(float percent)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        int damage = Mathf.CeilToInt(
+            _monsterHealth * percent
+        );
+
+        damage = Mathf.Max(damage, 1);
+        
+        TakeDamage(damage, true);
+    }
+
+
 }
