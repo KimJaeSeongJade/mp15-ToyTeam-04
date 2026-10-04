@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 3.5f;
@@ -51,7 +54,7 @@ public class PlayerCharacter : MonoBehaviour
 
             // 캐릭터 상호작용
             if (Input.GetKeyDown(KeyCode.E))
-                CharacterInteract();
+                PlayerInteract();
         }
 
         // 카메라 전환
@@ -96,7 +99,7 @@ public class PlayerCharacter : MonoBehaviour
     }
 
     // 캐릭터 상호작용
-    private void CharacterInteract()
+    private void PlayerInteract()
     {
         Debug.Log("상호작용 키 입력");
     }
