@@ -27,6 +27,16 @@ public class Stage : MonoBehaviour
     private Map _curMap;
     private bool _isStageRunning = false;
     
+    //스테이지 라이프 구현
+    [Header("스테이지 라이프")]
+    [SerializeField] private int _maxStageLife = 10;
+    [SerializeField] private int _monsterLifeDamage = 1;
+    private int _currentStageLife;
+    private bool _isStageFailed;
+    
+   
+ 
+    
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
     
@@ -51,6 +61,10 @@ public class Stage : MonoBehaviour
     {
         _isStageRunning = true;
         
+        // 스테이지 상태 초기화
+        _currentStageLife = _maxStageLife;
+        _isStageFailed = false;
+        
         
         Debug.Log(StageNumber + " 스테이지 시작");
         
@@ -67,11 +81,24 @@ public class Stage : MonoBehaviour
             yield return StartCoroutine(
                 SpawnWave()
             );
+            
+            if (_isStageFailed)
+            {
+                yield break;
+            }
+            
             Debug.Log(WaveNumber + " 웨이브 몬스터 생성 완료"
             );
             
             // 몬스터 다 잡을때까지 대기
-            yield return new WaitUntil(() => IsWaveClear());
+            yield return new WaitUntil(
+                () => IsWaveClear() || _isStageFailed
+            );
+
+            if (_isStageFailed)
+            {
+                yield break;
+            }
             
             Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
 
@@ -196,6 +223,11 @@ public class Stage : MonoBehaviour
                  j < monsterData.MonstersNumber;
                  j++)
             {
+                if (_isStageFailed)
+                {
+                    yield break;
+                }
+                
                 CreateMonster(
                     monsterData.MonsterPool
                 );
@@ -215,6 +247,7 @@ public class Stage : MonoBehaviour
             _curMap.SpawnPoint.rotation,
             _curMap.ArrivalPoint
         );
+        
 
         // 같은 객체가 웨이브 도중 재사용되면 중복 등록하지 않음
         if (_spawnedMonsters.Contains(monster) == false)
@@ -258,6 +291,59 @@ public class Stage : MonoBehaviour
 
         return false;
     }
+    
+    public void MonsterReachedGoal(Monster monster)
+    {
+        if (!_isStageRunning)
+        {
+            return;
+        }
+
+        if (_isStageFailed)
+        {
+            return;
+        }
+
+        // 현재 웨이브 몬스터 목록에서 제거
+        if (_spawnedMonsters.Remove(monster) == false)
+        {
+            return;
+        }
+
+        // 스테이지 라이프 감소
+        _currentStageLife -= _monsterLifeDamage;
+
+        // 0 아래로 내려가지 않게
+        _currentStageLife = Mathf.Max(
+            _currentStageLife,
+            0
+        );
+
+        Debug.Log(
+            "스테이지 라이프 : "
+            + _currentStageLife
+        );
+
+        // 라이프가 모두 떨어졌으면 패배
+        if (_currentStageLife <= 0)
+        {
+            StageFail();
+        }
+    }
+    
+    // 스테이지 패배
+    private void StageFail()
+    {
+        if (_isStageFailed)
+        {
+            return;
+        }
+
+        _isStageFailed = true;
+        _isStageRunning = false;
+
+        Debug.Log("스테이지 패배");
+    }
 
 
     private bool IsStageClear()
@@ -267,6 +353,11 @@ public class Stage : MonoBehaviour
     
     private bool StageClearCondition()
     {
+        if (_isStageFailed)
+        {
+            return false;
+        }
+
         if (WaveNumber == _waveData.Length
             && IsWaveClear() == true)
         { return true; }

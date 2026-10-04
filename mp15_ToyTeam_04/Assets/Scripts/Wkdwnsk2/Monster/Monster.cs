@@ -49,6 +49,7 @@ public class Monster : MonoBehaviour, IPoolable
     private bool hasUsedSurvival; // 보스 무적 스킬 썼는지
     private bool isSurvivalActive;  // 생존 스킬 활성화 중인지
     private bool _isBossImmune; // 보스 상태이상 면역 
+    
 
     private void Awake()
     {
@@ -123,11 +124,7 @@ public class Monster : MonoBehaviour, IPoolable
         
     }
     
-    void OnTriggerEnter(Collider other)
-    {
-        MonsterDelete();
-        
-    }
+
 
     public void TakeDamage(int damage, bool isSkillDamage = false)
     {
@@ -318,6 +315,7 @@ public class Monster : MonoBehaviour, IPoolable
         
         TakeDamage(damage, true);
     }
+    
 
 
 }
