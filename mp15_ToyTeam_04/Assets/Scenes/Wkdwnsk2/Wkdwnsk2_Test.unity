@@ -837,7 +837,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 459335223}
-  - component: {fileID: 459335222}
   m_Layer: 0
   m_Name: GoldObjectPool
   m_TagString: Untagged
@@ -845,23 +844,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &459335222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459335221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18daf109c18dcb24a87b7744300e5347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinPrefabs:
-  - {fileID: 6906205449151092454, guid: cb12d2d4f6c86954491aaf30bf97b062, type: 3}
-  - {fileID: 7471820293633558879, guid: fd65fe654358b934681ccaa98bd89292, type: 3}
-  - {fileID: 3588389805979358398, guid: 900c0294624c3954aa405c38f34a0641, type: 3}
-  _poolSize: 10
 --- !u!4 &459335223
 Transform:
   m_ObjectHideFlags: 0
