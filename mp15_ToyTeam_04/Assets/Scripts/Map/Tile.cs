@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -10,7 +11,8 @@ public class Tile : MonoBehaviour
     [Header("타일 속성"), SerializeField] private ETileType _eTileType;
     public ETileType ETileType => _eTileType;
 
-    [HideInInspector] public Tower _tower;
+    // [HideInInspector] 
+    public Tower _tower;
 
     // 타일에 타워 존재 여부
     private bool _isTower;
@@ -23,11 +25,16 @@ public class Tile : MonoBehaviour
 
     /// <summary> 타일 타워 건설 </summary>
     /// <param name="tower"></param>
-    public void TileInstallTower(Tower tower)
+    public void TileInstallTower(ETowerType eTowerType, TowerAbility towerAbility)
     {
         _isTower = true;
-        _tower = tower;
-        _tower.TowerBasicInstall();
+        /*
+        // 타워 생성
+        // 타워 위치
+        // 타워 초기값 주기
+        _tower.gameObject.transform.position = transform.position;
+        */
+        _tower.TowerBasicInstall(eTowerType, towerAbility);
     }
 
     /// <summary> 타일 타워 제거 </summary>

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7623433125630095549}
-  - component: {fileID: 2553101902611821934}
+  - component: {fileID: 6045400674966367572}
   - component: {fileID: 1489749304665440678}
   - component: {fileID: 5602593101248923485}
   m_Layer: 0
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 3436769395513757872}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2553101902611821934
+--- !u!114 &6045400674966367572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7491540630471153145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d8e9644d4bd4c43a88f8c92a8a14da, type: 3}
+  m_Script: {fileID: 11500000, guid: 7900ca405e1dbca45b2498ed94af8bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _towerObj:
   - {fileID: 3154857322647999650}
   - {fileID: 1952676661514622571}
   - {fileID: 2680817998864330393}
+  _col: {fileID: 5602593101248923485}
 --- !u!114 &1489749304665440678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,10 +66,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3465cafdfed7f9f469d0bfea94c4c7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _col: {fileID: 0}
+  _tower: {fileID: 6045400674966367572}
+  _head: {fileID: 0}
   _targetLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  _bullet: {fileID: -5770075195381049845, guid: f25b43fde79353944bca317ab8d7f27b, type: 3}
+  _muzzles:
+  - {fileID: 462715563530307374}
+  - {fileID: 2489397122466645716}
+  - {fileID: 8240690726779481912}
 --- !u!135 &5602593101248923485
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -102,13 +109,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireTower_Level_2
       objectReference: {fileID: 0}
-    - target: {fileID: 1286383218548459431, guid: dd2d6c9eee8878e46bc446a0c60ae1c2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1286383218548628359, guid: dd2d6c9eee8878e46bc446a0c60ae1c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1286383218548628359, guid: dd2d6c9eee8878e46bc446a0c60ae1c2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -161,6 +164,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1286383218548459431, guid: dd2d6c9eee8878e46bc446a0c60ae1c2, type: 3}
   m_PrefabInstance: {fileID: 775581943832809932}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2489397122466645716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2904670943586391832, guid: dd2d6c9eee8878e46bc446a0c60ae1c2, type: 3}
+  m_PrefabInstance: {fileID: 775581943832809932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8554574143773533787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,13 +181,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireTower_Level_3
       objectReference: {fileID: 0}
-    - target: {fileID: 6017897722388203714, guid: 268cb839da499604c9c12edcb02071ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6414859053613512427, guid: 268cb839da499604c9c12edcb02071ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6414859053613512427, guid: 268cb839da499604c9c12edcb02071ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -232,6 +236,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6414859053613512427, guid: 268cb839da499604c9c12edcb02071ad, type: 3}
   m_PrefabInstance: {fileID: 8554574143773533787}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &8240690726779481912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 354415830870985059, guid: 268cb839da499604c9c12edcb02071ad, type: 3}
+  m_PrefabInstance: {fileID: 8554574143773533787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8712170951436638803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,13 +253,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireTower_Level_1
       objectReference: {fileID: 0}
-    - target: {fileID: 5994176029770567409, guid: b9a533490274032408781ee26c156d41, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5994176029770732241, guid: b9a533490274032408781ee26c156d41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5994176029770732241, guid: b9a533490274032408781ee26c156d41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -293,6 +298,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9a533490274032408781ee26c156d41, type: 3}
+--- !u!4 &462715563530307374 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9118729351693557117, guid: b9a533490274032408781ee26c156d41, type: 3}
+  m_PrefabInstance: {fileID: 8712170951436638803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3154857322647999650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5994176029770567409, guid: b9a533490274032408781ee26c156d41, type: 3}

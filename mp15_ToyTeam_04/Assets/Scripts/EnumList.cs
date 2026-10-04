@@ -13,12 +13,12 @@ public enum ETowerType
     IceTower = 2,
 }
 
-public enum ETowerAbility
+public enum EAbilityType
 {
     None = -1,
-    AddAtk = 0,
-    AddAtkSpeed = 1,
-    AddDetectionRange = 2,
+    IncreaseAtk = 0,
+    IncreaseAtkSpeed = 1,
+    IncreaseDetectionRange = 2,
     DecreaseInstallCost = 3,
-    DecreaseUpgradeCose = 4
+    DecreaseUpgradeCost = 4
 }

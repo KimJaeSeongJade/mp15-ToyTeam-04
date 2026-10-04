@@ -19,7 +19,6 @@ public class MapManager : MonoBehaviour
         _curMap = null;
     }
 
-
     /// <summary> 배틀 맵 보여주기 </summary>
     public void ShowBattleMap()
     {

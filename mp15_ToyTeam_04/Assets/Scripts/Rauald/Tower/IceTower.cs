@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceTower : Tower, ITowerable
+public class IceTower : TowerState
 {
     /// <summary> 타워 기본 정보 </summary>
     public IceTower()
@@ -10,7 +10,8 @@ public class IceTower : Tower, ITowerable
         _name = "아이스 타워";
         _eTowerType = ETowerType.IceTower;
         _atk = 5;
-        _atkSpeed = 0.3f;
+        _upgradeAtk = 2;
+        _atkSpeed = 0.8f;
         _detectionRange = 2f;
         _explanation = "빠른 공격 속도와 약한 공격력, 준수한 공격 범위를 가진 타워.";
         _installCost = 100;
@@ -18,9 +19,5 @@ public class IceTower : Tower, ITowerable
         _curLevel = _basicLevel;
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
-    }
-
-    public void TowerAtkAffect()
-    {
     }
 }
