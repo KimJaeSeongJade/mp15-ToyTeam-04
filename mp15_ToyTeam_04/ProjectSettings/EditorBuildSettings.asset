@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Seung611/Seung611_TitleScene.unity
     guid: 4b5ac472b4db10740b259043933016ce
   - enabled: 1
-    path: Assets/Scenes/Seung611/Seung611_LobbyScene.unity
-    guid: ff2ad9507d968ae418a65a92aebdeebe
-  - enabled: 1
     path: Assets/Scenes/Seung611/Seung611_Test.unity
     guid: bb539fded138cd0429409e3ad297b997
+  - enabled: 1
+    path: Assets/Scenes/Seung611/Seung611_UI.unity
+    guid: 522da824d37c33947927056b53f7222f
   m_configObjects: {}
