@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3505599008452769274}
   m_Layer: 8
-  m_Name: CoinDrop
+  m_Name: GoldDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,9 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066d1796ac4795047ba0c01d3e6a6828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 3084387100058756814, guid: 900c0294624c3954aa405c38f34a0641, type: 3}
+  GoldPrefab: {fileID: 3084387100058756814, guid: 900c0294624c3954aa405c38f34a0641, type: 3}
   dropPoint: {fileID: 3505599008452769274}
-  coinLifetime: 2
+  GoldLifetime: 2
 --- !u!1 &5663392467326496242 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3064182496570947963, guid: b1140348f91dcee4f854e69fb0af0737, type: 3}

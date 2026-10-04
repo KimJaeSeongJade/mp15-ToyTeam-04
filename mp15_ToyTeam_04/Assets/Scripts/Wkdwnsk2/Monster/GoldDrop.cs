@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GoldDrop : MonoBehaviour
 {
     [Header("코인 프리팹")]
-    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private GameObject GoldPrefab;
 
     [Header("코인 위치")]
     [SerializeField] private Transform dropPoint;
 
     [Header("코인 지속 시간")]
-    [SerializeField, Min(0f)] private float coinLifetime = 2f;
+    [SerializeField, Min(0f)] private float GoldLifetime = 2f;
 
     private Animator animator;
     private bool hasDropped;
@@ -26,33 +27,32 @@ public class GoldDrop : MonoBehaviour
         hasDropped = false;
     }
 
-    public void DropCoin()
+    public void DropGold()
     {
-        if (!animator.GetBool("IsDead") || hasDropped)
+        if (animator == null ||
+            !animator.GetBool("IsDead") ||
+            hasDropped)
         {
             return;
         }
 
-        if (coinPrefab == null)
-        {
-            return;
-        }
-
-        hasDropped = true;
+        Gold prefab = GoldPrefab.GetComponent<Gold>();
+        
 
         Vector3 spawnPosition = dropPoint != null
             ? dropPoint.position
             : transform.position;
 
-        // 코인 생성
-        GameObject coin = Instantiate(
-            coinPrefab,
+        Gold Gold = GoldPoolManager.Instance.GetGold(
+            prefab,
             spawnPosition,
-            Quaternion.identity
+            Quaternion.identity,
+            GoldLifetime
         );
 
-        // 지속 시간 후 삭제
-        Destroy(coin, coinLifetime);
+        if (Gold != null)
+        {
+            hasDropped = true;
+        }
     }
 }
-
