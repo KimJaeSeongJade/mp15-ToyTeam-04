@@ -204,7 +204,7 @@ public class Monster : MonoBehaviour, IPoolable
         isDead = true;
         Debug.Log(_monsterName + " 사망");
 
-        anim.SetTrigger("Dead");
+        anim.SetBool("IsDead", true);
         StartCoroutine(DeadWait());
 
 

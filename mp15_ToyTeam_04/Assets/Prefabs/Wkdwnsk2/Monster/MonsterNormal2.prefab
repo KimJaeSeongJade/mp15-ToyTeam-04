@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4978900715757252406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223260357515014435}
+  m_Layer: 8
+  m_Name: GoldDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &223260357515014435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978900715757252406}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3121692069656979040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7013839898821362983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,7 +369,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5333476231939318599, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 223260357515014435}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3064182496570947963, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
       insertIndex: -1
@@ -352,7 +386,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6629656068395026288, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7686851998374848589}
+    - targetCorrespondingSourceObject: {fileID: 6629656068395026288, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8370344323098217499}
   m_SourcePrefab: {fileID: 100100000, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
+--- !u!4 &3121692069656979040 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5333476231939318599, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
+  m_PrefabInstance: {fileID: 7013839898821362983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4420123792899523159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6629656068395026288, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
@@ -379,6 +421,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8370344323098217499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420123792899523159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066d1796ac4795047ba0c01d3e6a6828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldPrefab: {fileID: 8691759458700829190, guid: cb12d2d4f6c86954491aaf30bf97b062, type: 3}
+  dropPoint: {fileID: 223260357515014435}
+  GoldLifetime: 2
 --- !u!1 &5462870217021537372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3064182496570947963, guid: 47f6a8f66346bd242a8f304feb9aa476, type: 3}
