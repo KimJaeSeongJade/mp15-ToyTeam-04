@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    [Header("카메라 범위 콜리더")] public Collider Ground;
     [Header("타워 타일")] public Tile[] TowerTile;
     [Header("몬스터 타일")] public Tile[] MonsterTile;
 

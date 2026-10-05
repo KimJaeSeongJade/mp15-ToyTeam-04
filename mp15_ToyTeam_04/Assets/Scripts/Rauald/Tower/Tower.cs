@@ -29,28 +29,10 @@ public class Tower : MonoBehaviour
     }
 
     /// <summary> 타워 설치 </summary>
-    public void TowerBasicInstall(ETowerType eTowerType, TowerAbility towerAbility)
+    public void TowerBasicInstall(TowerState state, TowerAbility towerAbility)
     {
+        _state = state;
         _dicAbility = towerAbility.DicAbility;
-
-        // 초기화
-        _state = null;
-
-        switch (eTowerType)
-        {
-            case ETowerType.ArrowTower:
-                _state = new ArrowTower();
-                break;
-            case ETowerType.FireTower:
-                _state = new FireTower();
-                break;
-            case ETowerType.IceTower:
-                _state = new IceTower();
-                break;
-            default:
-                Debug.LogError("포탑을 못받았다.");
-                break;
-        }
 
         if (_state == null) return;
 
