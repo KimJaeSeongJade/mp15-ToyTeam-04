@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-    public static SoundManager instance;
-    
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] _bgmClips;
     [SerializeField] private AudioClip[] _sfxClips;
@@ -19,24 +17,8 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        // 이 게임 오브젝트에 사운드 매니저가 없으면 파괴 X
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        // 사운드 매니저 있으면 파괴 O
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        SetSingleton();
         Init();
-    }
-
-    private void Start()
-    {
     }
 
     private void Init()
