@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,8 +13,19 @@ public class LobbyWindow : MonoBehaviour
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
-    // 스테이지에서 값 가져오기
+    [SerializeField] private TowerSpecPopUp _towerSpecPopUp;
+
+
+    private void SetData(int Value)
+    {
+        // 텍스트 설정함
+    }
+    
+    private Dictionary<Button, int> _towerButton;
+    // 스테이지에서 값 가져오기    
     public int _haveGoldCount;
+
+    public event Action<int> OnTowerButton;
     
     private void Update() => HaveGlod();
     private void OnEnable() => BindButtonEvents();
@@ -26,6 +38,8 @@ public class LobbyWindow : MonoBehaviour
         _playerSkillButton.onClick.AddListener(SkillPopUp);
         _settingButton.onClick.AddListener(SettingPopUp);
         _towerInventory[0].onClick.AddListener(TowerSpecPopUp);
+        _towerInventory[1].onClick.AddListener(TowerSpecPopUp);
+        _towerInventory[2].onClick.AddListener(TowerSpecPopUp);
     }
     
     private void UnbindButtonEvents()
@@ -34,6 +48,8 @@ public class LobbyWindow : MonoBehaviour
         _playerSkillButton.onClick.RemoveListener(SkillPopUp);
         _settingButton.onClick.RemoveListener(SettingPopUp);
         _towerInventory[0].onClick.RemoveListener(TowerSpecPopUp);
+        _towerInventory[1].onClick.RemoveListener(TowerSpecPopUp);
+        _towerInventory[2].onClick.RemoveListener(TowerSpecPopUp);
     }
 
     private void StartGame()
@@ -52,9 +68,28 @@ public class LobbyWindow : MonoBehaviour
         UIManager.Instance.PopUp.SettingPopUpOpen();
     }
 
+    /*public void TowerSpecPopUp()
+    {
+        // OnTowerButton?.Invoke();
+    }*/
+
     private void TowerSpecPopUp()
     {
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
+        if (_towerInventory[0])
+        {
+            _towerSpecPopUp.TowerSelectButton();
+            UIManager.Instance.PopUp.TowerSpecPopUpOpen();
+        }
+
+        if (_towerInventory[1])
+        {
+            
+        }
+
+        if (_towerInventory[2])
+        {
+            
+        }
     }
 
     private void HaveGlod()
