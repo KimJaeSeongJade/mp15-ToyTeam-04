@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoldPrefab: {fileID: 8691759458700829190, guid: cb12d2d4f6c86954491aaf30bf97b062, type: 3}
-  dropPoint: {fileID: 1558735734607751014}
+  dropPoint: {fileID: 0}
   GoldLifetime: 2
 --- !u!1 &4473795264688541928
 GameObject:
@@ -1277,37 +1277,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095294511255004707}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4812046156450557657
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1558735734607751014}
-  m_Layer: 8
-  m_Name: GoldDrop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1558735734607751014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4812046156450557657}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3121692069656979040}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4815237399531831586
 GameObject:
@@ -1580,7 +1549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3121692069656979040
 Transform:
   m_ObjectHideFlags: 0
@@ -1595,7 +1564,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3899201964503144685}
-  - {fileID: 1558735734607751014}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &6212401554655116456
@@ -1656,6 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EmonsterType: 0
+  _goldDrop: {fileID: 7935776148052064379}
   _monsterName: MonsterNormal2
   _monsterHealth: 30
   _monsterSpeed: 2

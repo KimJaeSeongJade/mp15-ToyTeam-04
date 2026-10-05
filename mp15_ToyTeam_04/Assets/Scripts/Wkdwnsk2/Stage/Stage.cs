@@ -343,14 +343,15 @@ public class Stage : MonoBehaviour
         _isStageRunning = false;
 
         Debug.Log("스테이지 패배");
-        // 스테이지 패배 시 UI 추가 필요
-        
-        
     }
 
 
-    
     private bool IsStageClear()
+    {
+        return StageClearCondition();
+    }
+    
+    private bool StageClearCondition()
     {
         if (_isStageFailed)
         {

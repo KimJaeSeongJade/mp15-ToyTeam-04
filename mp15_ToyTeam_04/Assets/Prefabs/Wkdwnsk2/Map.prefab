@@ -19090,7 +19090,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5681234931404901258}
   - component: {fileID: 3082634735154067770}
-  - component: {fileID: 2379456789283112921}
   m_Layer: 7
   m_Name: Map
   m_TagString: Untagged
@@ -19219,42 +19218,6 @@ MonoBehaviour:
   - {fileID: 4716598156597392666}
   _spawnPoint: {fileID: 2419723355795172471}
   _arrivalPoint: {fileID: 1576368219605885788}
---- !u!114 &2379456789283112921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965186218825978619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a48b5a7c490404fab16430dc175564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StageNumber: 1
-  WaveNumber: 1
-  MonstersNumber: 2
-  StageClearReward: 0
-  _waveData:
-  - Monsters:
-    - MonsterPool: {fileID: 0}
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterPool: {fileID: 0}
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterPool: {fileID: 0}
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterPool: {fileID: 0}
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterPool: {fileID: 0}
-      MonstersNumber: 1
-  _spawnInterval: 0.2
-  _waveInterval: 3
-  _maxStageLife: 10
-  _monsterLifeDamage: 1
 --- !u!1 &6971106971471924180
 GameObject:
   m_ObjectHideFlags: 0

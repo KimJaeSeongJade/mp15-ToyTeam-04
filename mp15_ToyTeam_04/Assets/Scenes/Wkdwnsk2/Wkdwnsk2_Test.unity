@@ -395,7 +395,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3082634735154067770, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
   m_PrefabInstance: {fileID: 5156304087016094506}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1690361034}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 151bb307d23df7646a260cdfb5c1eafa, type: 3}
@@ -642,17 +642,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
---- !u!114 &734594481 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2379456789283112921, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
-  m_PrefabInstance: {fileID: 5156304087016094506}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a48b5a7c490404fab16430dc175564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &789642609
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +821,42 @@ Transform:
   - {fileID: 2066733544}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1690361034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6965186218825978619, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
+  m_PrefabInstance: {fileID: 5156304087016094506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1690361036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690361034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a48b5a7c490404fab16430dc175564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StageNumber: 1
+  WaveNumber: 1
+  MonstersNumber: 1
+  StageClearReward: 10
+  _waveData:
+  - Monsters:
+    - MonsterPool: {fileID: 2095350996}
+      MonstersNumber: 20
+  - Monsters:
+    - MonsterPool: {fileID: 2095350996}
+      MonstersNumber: 20
+    - MonsterPool: {fileID: 35801723}
+      MonstersNumber: 20
+    - MonsterPool: {fileID: 2014069362}
+      MonstersNumber: 20
+  _spawnInterval: 0
+  _waveInterval: 3
+  _maxStageLife: 10
+  _monsterLifeDamage: 1
 --- !u!1 &1844382275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3955808756769843235, guid: 0af7958a0cdae2043b88741c48ab1657, type: 3}
@@ -902,7 +927,7 @@ MonoBehaviour:
   _monsterLayer:
     serializedVersion: 2
     m_Bits: 256
-  _stage: {fileID: 734594481}
+  _stage: {fileID: 1690361036}
 --- !u!1001 &1977656268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,7 +1303,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6965186218825978619, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1690361036}
   m_SourcePrefab: {fileID: 100100000, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
