@@ -21,10 +21,12 @@ public class WindowManager : Singleton<WindowManager>
     public void LobbyWindow()
     {
         OnGameLobby?.Invoke();
+        SoundManager.Instance.PlayBgm(EBgm.LOBBY);
     }
 
     public void BattleWindow()
     {
         OnGameBattle?.Invoke();
+        SoundManager.Instance.PlayBgm(EBgm.GAME);
     }
 }
