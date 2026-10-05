@@ -25,7 +25,7 @@ public class Tile : MonoBehaviour
 
     /// <summary> 타일 타워 건설 </summary>
     /// <param name="tower"></param>
-    public void TileInstallTower(ETowerType eTowerType, TowerAbility towerAbility)
+    public void TileInstallTower(TowerState state, TowerAbility towerAbility)
     {
         _isTower = true;
         /*
@@ -34,7 +34,7 @@ public class Tile : MonoBehaviour
         // 타워 초기값 주기
         _tower.gameObject.transform.position = transform.position;
         */
-        _tower.TowerBasicInstall(eTowerType, towerAbility);
+        _tower.TowerBasicInstall(state, towerAbility);
     }
 
     /// <summary> 타일 타워 제거 </summary>

@@ -19,5 +19,7 @@ public class IceTower : TowerState
         _curLevel = _basicLevel;
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
+
+        _affect = new BulletAffect(EBulletAffectType.DecreaseSpeed, true, 20, 1);
     }
 }
