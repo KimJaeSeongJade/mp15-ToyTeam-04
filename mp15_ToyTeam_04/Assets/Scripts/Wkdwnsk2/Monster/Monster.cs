@@ -17,6 +17,8 @@ public enum EMonsterType
 public class Monster : MonoBehaviour, IPoolable, IDamageable
 {
     public EMonsterType EmonsterType;
+    [SerializeField] private GoldDrop _goldDrop;
+
 
     private const string MONSTER_NAME = "일반 몬스터";
     private const int MONSTER_HEALTH = 10;
@@ -292,8 +294,8 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         _timeStopCoroutine = null;
     }
     
-    // 전체 공격 수정
-    public void SkillDamage(float percent)
+    // 전체 공격 수정 필요
+    public void SkillDamage(int percent)
     {
         if (isDead)
         {
@@ -308,4 +310,59 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         
         TakeDamage(false, damage);
     }
+
+    // 몬스터 생성
+    public static Monster GetMonster(
+        ObjectPool<Monster> pool,
+        PoolManager poolManager,
+        Vector3 spawnPosition,
+        Quaternion spawnRotation,
+        Transform endPoint)
+    {
+        Monster monster = pool.GetObject();
+
+        monster.SetObjectPool(poolManager);
+
+        GoldDrop goldDrop =
+            monster.GetComponentInChildren<GoldDrop>(true);
+
+        if (goldDrop != null)
+        {
+            goldDrop.SetPoolManager(poolManager);
+        }
+
+        monster.transform.SetPositionAndRotation(
+            spawnPosition,
+            spawnRotation
+        );
+
+        monster.endPoint = endPoint;
+
+        // 몬스터 활성화
+        pool.ActivateObject(monster);
+
+        return monster;
+    }
+
+    public static Gold GetGold(
+        ObjectPool<Gold> pool,
+        Vector3 spawnPosition,
+        Quaternion spawnRotation,
+        float lifetime)
+    {
+        Gold gold = pool.GetObject();
+
+        gold.SetObjectPool(pool, lifetime);
+
+        gold.transform.SetPositionAndRotation(
+            spawnPosition,
+            spawnRotation
+        );
+
+        // 골드활성화
+        pool.ActivateObject(gold);
+
+        return gold;
+    }
+
 }
