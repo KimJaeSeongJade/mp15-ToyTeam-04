@@ -29,32 +29,15 @@ public class PoolManager : MonoBehaviour
         Quaternion spawnRotation,
         Transform endPoint)
     {
-        Monster monster = _objectPool.GetObject();
-
-        monster.SetObjectPool(this);
-
-        GoldDrop goldDrop =
-            monster.GetComponentInChildren<GoldDrop>(true);
-
-        if (goldDrop != null)
-        {
-            goldDrop.SetPoolManager(this);
-        }
-
-        monster.transform.SetPositionAndRotation(
+        return Monster.GetMonster(
+            _objectPool,
+            this,
             spawnPosition,
-            spawnRotation
+            spawnRotation,
+            endPoint
         );
-
-        monster.endPoint = endPoint;
-
-        // 목적지 확인
-        _objectPool.ActivateObject(monster);
-
-        return monster;
     }
     
-
     public void ReturnMonster(Monster monster)
     {
         _objectPool.ReturnObject(monster);
@@ -66,32 +49,19 @@ public class PoolManager : MonoBehaviour
         Quaternion spawnRotation,
         float lifetime)
     {
-
-
+        // 프리팹별 풀 생성과 보관은 PoolManager가 담당
         if (!_goldPools.TryGetValue(prefab, out ObjectPool<Gold> pool))
         {
-            pool = new ObjectPool<Gold>(
-                prefab,
-                0,
-                transform
-            );
-
+            pool = new ObjectPool<Gold>(prefab, 0, transform);
             _goldPools.Add(prefab, pool);
         }
 
-        Gold gold = pool.GetObject();
-
-        gold.SetObjectPool(pool, lifetime);
-
-        gold.transform.SetPositionAndRotation(
+        return Monster.GetGold(
+            pool,
             spawnPosition,
-            spawnRotation
+            spawnRotation,
+            lifetime
         );
-
-        pool.ActivateObject(gold);
-
-        return gold;
     }
-    
     
 }
