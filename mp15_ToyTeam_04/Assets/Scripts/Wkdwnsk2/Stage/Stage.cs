@@ -17,8 +17,8 @@ public class WaveData
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField] private int StageNumber = 1;
-    [SerializeField] private int WaveNumber = 1;
+    [SerializeField] public int StageNumber = 1;
+    [SerializeField] public int WaveNumber = 1;
     [SerializeField] private int MonstersNumber;
     [SerializeField] private int StageClearReward;
     [SerializeField] private WaveData[] _waveData;
@@ -343,15 +343,14 @@ public class Stage : MonoBehaviour
         _isStageRunning = false;
 
         Debug.Log("스테이지 패배");
+        // 스테이지 패배 시 UI 추가 필요
+        
+        
     }
 
 
-    private bool IsStageClear()
-    {
-        return StageClearCondition();
-    }
     
-    private bool StageClearCondition()
+    private bool IsStageClear()
     {
         if (_isStageFailed)
         {
