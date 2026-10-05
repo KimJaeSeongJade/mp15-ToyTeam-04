@@ -19,7 +19,5 @@ public class ArrowTower : TowerState
         _curLevel = _basicLevel;
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
-
-        _affect = new BulletAffect(EBulletAffectType.None, false, 0, 0);
     }
 }

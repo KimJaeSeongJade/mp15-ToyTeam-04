@@ -5,32 +5,6 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    private static MapManager _instance;
-    public static MapManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<MapManager>();
-            }
-            return _instance;
-        }
-    }
-
-    /// <summary> 싱글톤 설정 함수. Awake에서 호출. </summary>
-    private void SetSingleton()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
-
     [Header("전체 맵"), SerializeField] private Map[] NormalMaps;
     [Header("보스 맵"), SerializeField] private Map BossMap;
     [HideInInspector] public Map _curMap;
@@ -40,7 +14,6 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        SetSingleton();
         // 시작 시 맵 정보X
         _curMapNumber = -1;
         _curMap = null;

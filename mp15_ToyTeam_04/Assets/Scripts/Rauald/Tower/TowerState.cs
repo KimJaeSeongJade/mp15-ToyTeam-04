@@ -16,10 +16,6 @@ public abstract class TowerState
     protected int _curLevel;
     protected int _firstUpgradeCost;
     protected int _secondUpgradeCost;
-    protected BulletAffect _affect;
-
-
-
 
     public string Name => _name;
     public ETowerType ETowerType => _eTowerType;
@@ -32,7 +28,6 @@ public abstract class TowerState
     public int CurLevel => _curLevel;
     public int FirstUpgradeCost => _firstUpgradeCost;
     public int SecondUpgradeCost => _secondUpgradeCost;
-    public BulletAffect Affect => _affect;
 
     public void TowerUpgrade()
     {

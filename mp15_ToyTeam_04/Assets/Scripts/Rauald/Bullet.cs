@@ -8,14 +8,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _duration = 0.5f;
     [SerializeField] private float _maxHeight = 0.5f;
 
-    private BulletAffect _bulletAffect;
+    private ETowerType _eTowerType;
     private Transform _target;
     private int _atk;
     private IDamageable _iDamage;
 
-    public void Init(BulletAffect bulletAffect, Transform target, int atk, IDamageable iDamage)
+    public void Init(ETowerType eTowerType, Transform target, int atk, IDamageable iDamage)
     {
-        _bulletAffect = bulletAffect;
+        _eTowerType = eTowerType;
         _target = target;
         _atk = atk;
         _iDamage = iDamage;
@@ -72,6 +72,6 @@ public class Bullet : MonoBehaviour
     private void Hit()
     {
         _iDamage.TakeDamage(false, _atk);
-        //_iDamage.Affect(_bulletAffect);
+        // 데미지 주고 오브젝트 풀에 다시 넣기.
     }
 }

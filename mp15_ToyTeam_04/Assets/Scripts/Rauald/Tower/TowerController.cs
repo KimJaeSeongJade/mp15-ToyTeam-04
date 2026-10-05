@@ -27,13 +27,11 @@ public class TowerController : MonoBehaviour
 
         LookAtTarget();
 
-        if (_tower.State == null) return;
-
         _curTime += Time.deltaTime;
 
         if(_curTime > _tower.State.AtkSpeed)
         {
-            Instantiate(_bullet, _muzzles[_tower.State.CurLevel - 1].position, _muzzles[_tower.State.CurLevel - 1].rotation).Init(_tower.State.Affect, _monsterList[0].transform, _tower.TowerAtk(), _monsterList[0].GetComponent<IDamageable>());
+            Instantiate(_bullet, _muzzles[_tower.State.CurLevel - 1].position, _muzzles[_tower.State.CurLevel - 1].rotation).Init(_tower.State.ETowerType, _monsterList[0].transform, _tower.TowerAtk(), _monsterList[0].GetComponent<IDamageable>());
             _curTime = 0;
         }
     }
