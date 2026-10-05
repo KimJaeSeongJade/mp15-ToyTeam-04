@@ -1815,7 +1815,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &8279272416115439782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1828,7 +1828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115e3cd1b5544144eb76ced5081e677a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 0
+  EmonsterType: 0
+  _goldDrop: {fileID: 0}
   _monsterName: MonsterNormal1
   _monsterHealth: 30
   _monsterSpeed: 2

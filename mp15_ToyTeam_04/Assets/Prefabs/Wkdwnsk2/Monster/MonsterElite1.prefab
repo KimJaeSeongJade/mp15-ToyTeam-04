@@ -717,7 +717,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &3007960037136539600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EmonsterType: 0
+  _goldDrop: {fileID: 0}
   _monsterName: "\uC77C\uBC18 \uBAAC\uC2A4\uD130"
   _monsterHealth: 80
   _monsterSpeed: 1.5
