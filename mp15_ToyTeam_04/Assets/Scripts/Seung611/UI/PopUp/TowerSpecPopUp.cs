@@ -10,9 +10,7 @@ public class TowerSpecPopUp : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _towerName;
     [SerializeField] private TextMeshProUGUI _towerDescription;
-    [SerializeField] private Button _tower1Button;
-    [SerializeField] private Button _tower2Button;
-    [SerializeField] private Button _tower3Button;
+    [SerializeField] private List<Button> _towerButton;
     [SerializeField] private Button _selectButton;
     [SerializeField] private Button _escButton;
     
@@ -25,18 +23,18 @@ public class TowerSpecPopUp : MonoBehaviour
 
     private void BindEventButtons()
     {
-        _tower1Button.onClick.AddListener(Tower1Selected);
-        _tower2Button.onClick.AddListener(Tower2Selected);
-        _tower3Button.onClick.AddListener(Tower3Selected);
+        _towerButton[0].onClick.AddListener(Tower1Selected);
+        _towerButton[1].onClick.AddListener(Tower2Selected);
+        _towerButton[2].onClick.AddListener(Tower3Selected);
         _selectButton.onClick.AddListener(SelectTower);
         _escButton.onClick.AddListener(Esc);
     }
 
     private void UnbindEventButtons()
     {
-        _tower1Button.onClick.RemoveListener(Tower1Selected);
-        _tower2Button.onClick.RemoveListener(Tower2Selected);
-        _tower3Button.onClick.RemoveListener(Tower3Selected);
+        _towerButton[0].onClick.RemoveListener(Tower1Selected);
+        _towerButton[1].onClick.RemoveListener(Tower2Selected);
+        _towerButton[2].onClick.RemoveListener(Tower3Selected);
         _selectButton.onClick.RemoveListener(SelectTower);
         _escButton.onClick.RemoveListener(Esc);
     }
@@ -68,7 +66,7 @@ public class TowerSpecPopUp : MonoBehaviour
         _tower3Selected = false;
     }
 
-    private void TowerSelectButton()
+    public void TowerSelectButton()
     {
         if (_tower1Selected)
         {

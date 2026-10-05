@@ -51,6 +51,6 @@ public class BattleWindow : MonoBehaviour
 
     private void HaveGlod()
     {
-        _haveGlod.text = "Glod: " + _haveGoldCount.ToString();
+        _haveGlod.text = "Gold: " + _haveGoldCount.ToString();
     }
 }
