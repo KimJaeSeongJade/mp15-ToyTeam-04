@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum MonsterType
+public enum EMonsterType
 {
     Normal1,
     Normal2,
@@ -13,9 +14,9 @@ public enum MonsterType
     Boss2
 }
 
-public class Monster : MonoBehaviour, IPoolable
+public class Monster : MonoBehaviour, IPoolable, IDamageable
 {
-    public MonsterType monsterType;
+    public EMonsterType EmonsterType;
 
     private const string MONSTER_NAME = "일반 몬스터";
     private const int MONSTER_HEALTH = 10;
@@ -116,7 +117,7 @@ public class Monster : MonoBehaviour, IPoolable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(3);
+            TakeDamage(false,3);
 
             Debug.Log(_monsterName + " 현재 체력 : " + currentHealth);
         }
@@ -126,14 +127,14 @@ public class Monster : MonoBehaviour, IPoolable
     
 
 
-    public void TakeDamage(int damage, bool isSkillDamage = false)
+    public void TakeDamage(bool per, int damage)
     {
         if (isDead || isSurvivalActive)
         {
             return;
         }
         // 엘리트2가 천재지변이 아니라면 1 데미지
-        if (monsterType == MonsterType.Elite2 && !isSkillDamage)
+        if (EmonsterType == EMonsterType.Elite2)
         {
             MinimumDamage();
             return;
@@ -144,7 +145,9 @@ public class Monster : MonoBehaviour, IPoolable
 
         if (currentHealth <= 0)
         {
-            if (monsterType == MonsterType.Boss1 && !hasUsedSurvival)
+            currentHealth = 0;
+            
+            if (EmonsterType == EMonsterType.Boss1 && !hasUsedSurvival)
             {
                 StartCoroutine(BossResurrect());
             }
@@ -165,14 +168,14 @@ public class Monster : MonoBehaviour, IPoolable
         Debug.Log(_monsterName + "보스 스킬 발동");
         yield return new WaitForSeconds(5f);
 
-        currentHealth = 1 + 1;
+        currentHealth += 1;
         isSurvivalActive = false;
 
     }
 
     private bool IsBossImmune()
     {
-        if( monsterType == MonsterType.Boss2)
+        if( EmonsterType == EMonsterType.Boss2)
         {
             return true;
         }
@@ -187,6 +190,7 @@ public class Monster : MonoBehaviour, IPoolable
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             MonsterDead();
         }
     }
@@ -217,17 +221,11 @@ public class Monster : MonoBehaviour, IPoolable
     private IEnumerator DeadWait()
     {
         yield return new WaitForSeconds(2f);
-        if (_objectPool != null)
-        {
-            _objectPool.ReturnMonster(this);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
-
+        _objectPool.ReturnMonster(this);
+        
     }
     
+    // 포탈에 닿았을 때 삭제처리 (애니메이션 안나옴)
     public void MonsterDelete()
     {
         if (_navmesh.isOnNavMesh)
@@ -235,15 +233,9 @@ public class Monster : MonoBehaviour, IPoolable
             _navmesh.ResetPath();
         }
 
-
-        if (_objectPool != null)
-        {
-            _objectPool.ReturnMonster(this);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        
+        _objectPool.ReturnMonster(this);
+        
     }
     
     public void SetObjectPool(PoolManager objectPool)
@@ -300,6 +292,7 @@ public class Monster : MonoBehaviour, IPoolable
         _timeStopCoroutine = null;
     }
     
+    // 전체 공격 수정
     public void SkillDamage(float percent)
     {
         if (isDead)
@@ -313,7 +306,7 @@ public class Monster : MonoBehaviour, IPoolable
 
         damage = Mathf.Max(damage, 1);
         
-        TakeDamage(damage, true);
+        TakeDamage(false, damage);
     }
     
 
