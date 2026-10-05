@@ -308,7 +308,9 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         
         TakeDamage(false, damage);
     }
-    
 
-
+    public void Affect(EBulletAffectType eBulletAffectType, bool per, int value, float duration)
+    {
+        throw new NotImplementedException();
+    }
 }

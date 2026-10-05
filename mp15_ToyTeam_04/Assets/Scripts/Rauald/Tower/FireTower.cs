@@ -19,5 +19,7 @@ public class FireTower : TowerState
         _curLevel = _basicLevel;
         _firstUpgradeCost = 500;
         _secondUpgradeCost = 1000;
+
+        _affect = new BulletAffect(EBulletAffectType.Burn, true, 1, 2);
     }
 }
