@@ -310,8 +310,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         
         TakeDamage(false, damage);
     }
-    
-    
+
     // 몬스터 생성
     public static Monster GetMonster(
         ObjectPool<Monster> pool,
@@ -365,6 +364,5 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         return gold;
     }
-
 
 }
