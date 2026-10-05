@@ -36,17 +36,17 @@ public class BattleWindow : MonoBehaviour
 
     private void SkillPopUp()
     {
-        PopUpManager.Instance.PLayerSkillPopUp();
+        UIManager.Instance.PopUp.PLayerSkillPopUpOpen();
     }
 
     private void SettingPopUp()
     {
-        PopUpManager.Instance.SettingPopUp();
+        UIManager.Instance.PopUp.SettingPopUpOpen();
     }
 
     private void TowerSpecPopUp()
     {
-        PopUpManager.Instance.TowerSpecPopUp();
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void HaveGlod()

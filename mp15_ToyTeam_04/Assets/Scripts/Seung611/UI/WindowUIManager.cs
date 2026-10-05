@@ -5,43 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class WindowUIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _lobby;
-    [SerializeField] private GameObject _battle;
-    
     private void Awake() => Init();
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
     
     private void BindEventButtons()
     {
-        WindowManager.Instance.OnGameLobby += OnGameLobby;
-        WindowManager.Instance.OnGameBattle += OnGameBattle;
+        UIManager.Instance.Window.OnGameTitle += OnGameTitle;
+        UIManager.Instance.Window.OnGameLobby += OnGameLobby;
+        UIManager.Instance.Window.OnGameBattle += OnGameBattle;
     }
     
     private void UnbindEventButtons()
     {
-        WindowManager.Instance.OnGameLobby -= OnGameLobby;
-        WindowManager.Instance.OnGameBattle -= OnGameBattle;
+        UIManager.Instance.Window.OnGameTitle -= OnGameTitle;
+        UIManager.Instance.Window.OnGameLobby -= OnGameLobby;
+        UIManager.Instance.Window.OnGameBattle -= OnGameBattle;
+    }
+
+    private void OnGameTitle()
+    {
+        UIManager.Instance.Window.TitleWindow.gameObject.SetActive(true);
+        UIManager.Instance.Window.LobbyWindow.gameObject.SetActive(false);
+        UIManager.Instance.Window.BattleWindow.gameObject.SetActive(false);
     }
 
     private void OnGameLobby()
     {
-        _lobby.SetActive(true);
-        _battle.SetActive(false);
+        UIManager.Instance.Window.TitleWindow.gameObject.SetActive(false);
+        UIManager.Instance.Window.LobbyWindow.gameObject.SetActive(true);
+        UIManager.Instance.Window.BattleWindow.gameObject.SetActive(false);
     }
 
     private void OnGameBattle()
     {
-        _battle.SetActive(true);
+        UIManager.Instance.Window.TitleWindow.gameObject.SetActive(false);
+        UIManager.Instance.Window.LobbyWindow.gameObject.SetActive(false);
+        UIManager.Instance.Window.BattleWindow.gameObject.SetActive(true);
     }
     
 
     private void Init()
     {
-        if (SceneManager.GetActiveScene().name == "Seung611_UI")
-        {
-            _lobby.SetActive(true);
-            _battle.SetActive(false);
-        }
+        OnGameTitle();
     }
 }

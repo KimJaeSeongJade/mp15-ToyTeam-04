@@ -14,6 +14,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindObjectOfType<T>();
+                DontDestroyOnLoad(_instance.gameObject);
             }
             return _instance;
         }
@@ -29,7 +30,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         else
         {
             _instance = this as T;
-            DestroyOnLoad();
+            DontDestroyOnLoad(_instance.gameObject);
         }
     }
 

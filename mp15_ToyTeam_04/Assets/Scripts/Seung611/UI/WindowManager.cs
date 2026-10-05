@@ -3,28 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindowManager : Singleton<WindowManager>
+public class WindowManager : MonoBehaviour
 {
-    private TitleWindow _titleWindow;
-    private LobbyWindow _lobbyWindow;
-    private BattleWindow _battleWindow;
-    private BattleSub _battleSub;
-    
+    public TitleWindow TitleWindow;
+    public LobbyWindow LobbyWindow;
+    public BattleWindow BattleWindow;
+    // public BattleSub _battleSub;
+
+    public event Action OnGameTitle;
     public event Action OnGameLobby;
     public event Action OnGameBattle;
 
-    private void Awake()
+    public void TitleWindowOpen()
     {
-        SetSingleton();
+        OnGameTitle?.Invoke();
+        SoundManager.Instance.PlayBgm(EBgm.TITLE);
     }
-
-    public void LobbyWindow()
+    
+    public void LobbyWindowOpen()
     {
         OnGameLobby?.Invoke();
         SoundManager.Instance.PlayBgm(EBgm.LOBBY);
     }
 
-    public void BattleWindow()
+    public void BattleWindowOpen()
     {
         OnGameBattle?.Invoke();
         SoundManager.Instance.PlayBgm(EBgm.GAME);

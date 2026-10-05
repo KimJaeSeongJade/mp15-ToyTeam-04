@@ -43,14 +43,15 @@ public class SettingPopUp : MonoBehaviour
 
     private void Continue()
     {
-        gameObject.SetActive(false);
+        UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
     }
 
     private void LobbyWindow()
     {
         // LobbyWindow 띄우기
-        WindowManager.Instance.LobbyWindow();
+        // WindowManager.Instance.LobbyWindow();
         SceneManager.LoadScene(2);
-        gameObject.SetActive(false);
+        UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
+        UIManager.Instance.Window.LobbyWindowOpen();
     }
 }
