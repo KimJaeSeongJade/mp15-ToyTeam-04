@@ -905,6 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EmonsterType: 0
+  _goldDrop: {fileID: 0}
   _monsterName: BossMonster1
   _monsterHealth: 150
   _monsterSpeed: 2
@@ -956,7 +957,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &3506166331044098173
 GameObject:
   m_ObjectHideFlags: 0
