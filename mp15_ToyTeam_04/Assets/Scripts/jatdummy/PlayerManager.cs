@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     private PlayerCharacter _character;
+    private Transform _selectedTile;   // 팝업 대상 타일
 
     private const float SKILL_COOL_TIME = 60f; // 일단 60초로 다 맞춰둠.
     private float _skillCoolTimer; // 남은 시간
@@ -41,9 +42,12 @@ public class PlayerManager : MonoBehaviour
         _skillCoolTimer = SKILL_COOL_TIME;
     }
 
+
+
     private void Interact()
     {
-        // 이거 두개는
+
+
     }
 
     private void TopViewInteract()
