@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class GoldManager : MonoBehaviour
 {
-    // °ÔÀÓ ½ÃÀÛ ½Ã Áö±Þ °ñµå (Å¸¿ö Áþ°í °­È­±îÁö ÇØº¼·Á±¸)
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½)
     private const int START_GOLD = 1500;  
     public static GoldManager Instance { get; private set; }
 
     private int _gold;
 
-    public int Gold => _gold;       // ÇöÀç ¼ÒÁö °ñµå(ÀÐ¾î¿À±â)
-    public event Action<int> OnGoldChanged;      // °ñµå º¯°æ ½Ã UI °»½Å¿ë
+    public int Gold => _gold;       // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½)
+    public event Action<int> OnGoldChanged;      // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UI ï¿½ï¿½ï¿½Å¿ï¿½
 
     private void Awake()
     {
@@ -23,12 +23,12 @@ public class GoldManager : MonoBehaviour
         }
         Instance = this;
 
-        // ½ÃÀÛ °ñµå ¼Ò¸Å³Ö±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ò¸Å³Ö±ï¿½
         _gold = START_GOLD;
     }
 
-    // °ñµå¸¦ ¾òÀ»½Ã¿¡
-    // GoldManager.Instance.AddGold() ·Î °ª ³ÖÀ¸½Ã¸é µË´Ï´Ù.
+    // ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½
+    // GoldManager.Instance.AddGold() ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½Ë´Ï´ï¿½.
     public void AddGold(int amount)
     {
         _gold += amount;
@@ -37,30 +37,32 @@ public class GoldManager : MonoBehaviour
         {
             OnGoldChanged(_gold);
         }
-        // Å×½ºÆ® ·Î±×
-        Debug.Log($"°ñµå {amount} Ãß°¡  ÇöÀç {_gold}");
+        // ï¿½×½ï¿½Æ® ï¿½Î±ï¿½
+        Debug.Log($"ï¿½ï¿½ï¿½ {amount} ï¿½ß°ï¿½  ï¿½ï¿½ï¿½ï¿½ {_gold}");
+        UIManager.Instance.Window.LobbyWindow.HaveGlod(_gold);
+        UIManager.Instance.Window.BattleWindow.HaveGlod(_gold);
     }
 
-    // °ñµå »ç¿ë (°ñµå ÃæºÐÇÒ¶§¸¸)
-    // GoldManager.Instance.UseGold() ·Î °ª ³ÖÀ¸½Ã¸é µË´Ï´Ù.
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½)
+    // GoldManager.Instance.UseGold() ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½Ë´Ï´ï¿½.
     public bool UseGold(int amount)
     {
         if (_gold < amount)
         {
-            // Å×½ºÆ® ·Î±×
-            Debug.Log($" ÇÊ¿äÇÑ °ñµå {amount}, º¸À¯ °ñµå {_gold}, ºÎÁ· °ñµå{amount - _gold} ");
+            // ï¿½×½ï¿½Æ® ï¿½Î±ï¿½
+            Debug.Log($" ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ {amount}, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ {_gold}, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½{amount - _gold} ");
             return false;
         }
 
         _gold -= amount;
 
-        // °ñµå º¯°æ ½Ã UI °»½ÅºÎºÐ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ UI ï¿½ï¿½ï¿½ÅºÎºï¿½
         if (OnGoldChanged != null)
         {
             OnGoldChanged(_gold);
         }
-        // Å×½ºÆ® ·Î±×
-        Debug.Log($"°ñµå¾´°Å {amount} ¾²°í ³²Àº °ñµå {_gold}");
+        // ï¿½×½ï¿½Æ® ï¿½Î±ï¿½
+        Debug.Log($"ï¿½ï¿½å¾´ï¿½ï¿½ {amount} ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ {_gold}");
         return true;
     }
 }
