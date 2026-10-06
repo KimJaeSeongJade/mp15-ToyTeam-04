@@ -412,8 +412,42 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 553596605200087282, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1007402414395274587, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1829451404}
   m_SourcePrefab: {fileID: 100100000, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+--- !u!1 &1829451401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1007402414395274587, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+  m_PrefabInstance: {fileID: 1289781382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1829451404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829451401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 120
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
