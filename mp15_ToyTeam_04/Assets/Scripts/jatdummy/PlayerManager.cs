@@ -134,26 +134,23 @@ public class PlayerManager : MonoBehaviour
         return state;
     }
 
-    // 어빌리티 가져다가
+    // 타워 능력 가져다가
     public TowerAbility GetTowerAbility(ETowerType type)
     {
         _towerAbilities.TryGetValue(type, out TowerAbility ability);
         return ability;
     }
 
-    // 설치할 타워 종류 선택 (UI 타워 선택 버튼에서 호출)
+    // 설치할 타워 종류 선택
     public void SelectTowerType(ETowerType type)
     {
-
         _selectedTowerType = type;
     }
 
-    // 설치 전 비용 (설치 비용 감소 특성 반영)
+    // 이 타워 얼만데?
     public int GetInstallCost(ETowerType type)
     {
-        Ability discount = _towerAbilities[type].DicAbility[EAbilityType.DecreaseInstallCost];
-        float percent = discount.IsLearn ? discount.Value : 0f;
-        return (int)(_towerStates[type].InstallCost * (100 - percent) / 100);
+        return _towerStates[type].InstallCost;
     }
 
     // 설치할 때마다 새로 생성
@@ -162,13 +159,16 @@ public class PlayerManager : MonoBehaviour
         switch (type)
         {
             case ETowerType.ArrowTower: return new ArrowTower();
+           
             case ETowerType.FireTower: return new FireTower();
+            
             case ETowerType.IceTower: return new IceTower();
+            
             default: return null;
         }
     }
 
-    // 타워 설치 (UI 설치 버튼)
+    // 타워 설치 돈내고 설치 돈 돈돈
     public void InstallTower()
     {
         if (_selectedTile.IsTower) return;
@@ -187,10 +187,11 @@ public class PlayerManager : MonoBehaviour
         PoolManager.Instance._towerPool.ActivateObject(tower);
     }
 
-    // 타워 강화 (UI 강화 버튼)
+    // 타워 강화
     public void UpgradeTower()
     {
         if (!_selectedTile.IsTower) return;
+        
         Tower tower = _selectedTile._tower;
         if (tower.State.CurLevel >= MAX_TOWER_LEVEL) return;
         if (!GoldManager.Instance.UseGold(tower.TowerUpgradeCost())) return;
@@ -198,10 +199,11 @@ public class PlayerManager : MonoBehaviour
         tower.TowerUpgrade();
     }
 
-    // 타워 철거 (UI 철거 버튼)
+    // 타워 철거
     public void DemolishTower()
     {
         if (!_selectedTile.IsTower) return;
+        
         // 타일 비우기 전에 잡아두기
         Tower tower = _selectedTile._tower;
 
