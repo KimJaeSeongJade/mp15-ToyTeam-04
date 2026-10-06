@@ -42,9 +42,9 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (_bgmDict.TryGetValue(ebgmType, out var clip))
         {
-            _bgmSource.clip = clip;
+            /*_bgmSource.clip = clip;
             _bgmSource.loop = true;
-            _bgmSource.Play();
+            _bgmSource.Play();*/
         }
         else
         {

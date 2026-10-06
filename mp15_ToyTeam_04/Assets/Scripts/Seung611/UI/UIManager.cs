@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    private WindowManager _windowManager;
-    private PopUpManager _popUpManager;
-    
-    private void Awake() => CacheComponents();
+    public WindowManager Window;
+    public PopUpManager PopUp;
+
+    private void Awake()
+    {
+        SetSingleton();
+        CacheComponents();
+    }
 
     private void CacheComponents()
     {
-        _windowManager = GetComponent<WindowManager>();
-        _popUpManager = GetComponent<PopUpManager>();
+        Window = GetComponentInChildren<WindowManager>();
+        PopUp = GetComponentInChildren<PopUpManager>();
     }
 }

@@ -3,8 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopUpManager : Singleton<PopUpManager>
+public class PopUpManager : MonoBehaviour
 {
+    public GameObject Hp;
+    public TowerSpecPopUp TowerSpecPopUp;
+    public PlayerSkillPopUp PlayerSkillPopUp;
+    public StageResultPopUp StageResultPopUp;
+    public MessagePopUp MessagePopUp;
+    public SettingPopUp SettingPopUp;
+    public TowerSelectTilePopUp TowerSelectTilePopUp;
+    
     public event Action OnGameSettingsPopUp;
     public event Action OnGameStageResultPopUp;
     public event Action OnGamePlayerSkillPopUp;
@@ -12,36 +20,32 @@ public class PopUpManager : Singleton<PopUpManager>
     public event Action OnGameTowerSelectTilePopup;
     public event Action OnGameMessagePopUp;
 
-
-    private void Awake() => SetSingleton();
-    
-
-    public void SettingPopUp()
+    public void SettingPopUpOpen()
     {
         OnGameSettingsPopUp?.Invoke();
     }
 
-    public void StageResultPopUp()
+    public void StageResultPopUpOpen()
     {
         OnGameStageResultPopUp?.Invoke();
     }
     
-    public void PLayerSkillPopUp()
+    public void PLayerSkillPopUpOpen()
     {
         OnGamePlayerSkillPopUp?.Invoke();
     }
 
-    public void TowerSpecPopUp()
+    public void TowerSpecPopUpOpen(int index)
     {
         OnGameTowerSpecPopUp?.Invoke();
     }
 
-    public void TowerSelectTilePopUp()
+    public void TowerSelectTilePopUpOpen()
     {
         OnGameTowerSelectTilePopup?.Invoke();
     }
 
-    public void MessagePopUp()
+    public void MessagePopUpOpen()
     {
         OnGameMessagePopUp?.Invoke();
     }

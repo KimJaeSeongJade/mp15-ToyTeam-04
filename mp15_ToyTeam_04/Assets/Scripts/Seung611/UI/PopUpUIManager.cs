@@ -4,77 +4,69 @@ using UnityEngine;
 
 public class PopUpUIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _hp;
-    [SerializeField] private GameObject _towerSpecPopUp;
-    [SerializeField] private GameObject _playerSkillPopUp;
-    [SerializeField] private GameObject _stageResultPopUp;
-    [SerializeField] private GameObject _messagePopUp;
-    [SerializeField] private GameObject _setting;
-    [SerializeField] private GameObject _towerSelectTilePopUp;
-
     private void Awake() => Init();
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
     
     private void BindEventButtons()
     {
-        PopUpManager.Instance.OnGameSettingsPopUp += OnSetting;
-        PopUpManager.Instance.OnGamePlayerSkillPopUp += OnPlayerSkillPopUp;
-        PopUpManager.Instance.OnGameMessagePopUp += OnMessagePopUp;
-        PopUpManager.Instance.OnGameStageResultPopUp += OnStageResultPopUp;
-        PopUpManager.Instance.OnGameTowerSpecPopUp += OnTowerSpecPopUp;
-        PopUpManager.Instance.OnGameTowerSelectTilePopup += OnTowerSelectTilePopUp;
+        UIManager.Instance.PopUp.OnGameSettingsPopUp += OnSetting;
+        UIManager.Instance.PopUp.OnGamePlayerSkillPopUp += OnPlayerSkillPopUp;
+        UIManager.Instance.PopUp.OnGameMessagePopUp += OnMessagePopUp;
+        UIManager.Instance.PopUp.OnGameStageResultPopUp += OnStageResultPopUp;
+        UIManager.Instance.PopUp.OnGameTowerSpecPopUp += OnTowerSpecPopUp;
+        UIManager.Instance.PopUp.OnGameTowerSelectTilePopup += OnTowerSelectTilePopUp;
     }
 
     private void UnbindEventButtons()
     {
-        PopUpManager.Instance.OnGameSettingsPopUp -= OnSetting;
-        PopUpManager.Instance.OnGamePlayerSkillPopUp -= OnPlayerSkillPopUp;
-        PopUpManager.Instance.OnGameMessagePopUp -= OnMessagePopUp;
-        PopUpManager.Instance.OnGameStageResultPopUp -= OnStageResultPopUp;
-        PopUpManager.Instance.OnGameTowerSpecPopUp -= OnTowerSpecPopUp;
-        PopUpManager.Instance.OnGameTowerSelectTilePopup -= OnTowerSelectTilePopUp;
+        UIManager.Instance.PopUp.OnGameSettingsPopUp -= OnSetting;
+        UIManager.Instance.PopUp.OnGamePlayerSkillPopUp -= OnPlayerSkillPopUp;
+        UIManager.Instance.PopUp.OnGameMessagePopUp -= OnMessagePopUp;
+        UIManager.Instance.PopUp.OnGameStageResultPopUp -= OnStageResultPopUp;
+        UIManager.Instance.PopUp.OnGameTowerSpecPopUp -= OnTowerSpecPopUp;
+        UIManager.Instance.PopUp.OnGameTowerSelectTilePopup -= OnTowerSelectTilePopUp;
     }
     
     private void OnSetting()
     {
-        _setting.SetActive(true);
+        UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(true);
     }
 
     private void OnPlayerSkillPopUp()
     {
-        _playerSkillPopUp.SetActive(true);
+        UIManager.Instance.PopUp.PlayerSkillPopUp.gameObject.SetActive(true);
     }
 
     private void OnMessagePopUp()
     {
-        _messagePopUp.SetActive(true);
+        UIManager.Instance.PopUp.MessagePopUp.gameObject.SetActive(true);
     }
 
     private void OnStageResultPopUp()
     {
-        _stageResultPopUp.SetActive(true);
+        UIManager.Instance.PopUp.StageResultPopUp.gameObject.SetActive(true);
     }
 
     private void OnTowerSpecPopUp()
     {
-        _towerSpecPopUp.SetActive(true);
+        UIManager.Instance.PopUp.TowerSpecPopUp.gameObject.SetActive(true);
     }
 
     private void OnTowerSelectTilePopUp()
     {
-        _towerSelectTilePopUp.SetActive(true);
+        UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(true);
     }
     
     
     private void Init()
     {
-        _hp.SetActive(false);
-        _towerSpecPopUp.SetActive(false);
-        _playerSkillPopUp.SetActive(false);
-        _stageResultPopUp.SetActive(false);
-        _messagePopUp.SetActive(false);
-        _setting.SetActive(false);
-        _towerSelectTilePopUp.SetActive(false);
+        UIManager.Instance.PopUp.Hp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.PlayerSkillPopUp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.MessagePopUp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.StageResultPopUp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.TowerSpecPopUp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(false);
     }
 }

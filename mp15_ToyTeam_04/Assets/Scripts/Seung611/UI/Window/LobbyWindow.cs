@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,10 +13,12 @@ public class LobbyWindow : MonoBehaviour
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
-    // 스테이지에서 값 가져오기
+    [SerializeField] private TowerSpecPopUp _towerSpecPopUp;
+    TowerState[] _towerState = new TowerState[3];
+    // 스테이지에서 값 가져오기    
     public int _haveGoldCount;
     
-    private void Update() => HaveGlod();
+    private void Update() => HaveGold();
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
     
@@ -25,7 +28,9 @@ public class LobbyWindow : MonoBehaviour
         _gameStartButton.onClick.AddListener(StartGame);
         _playerSkillButton.onClick.AddListener(SkillPopUp);
         _settingButton.onClick.AddListener(SettingPopUp);
-        _towerInventory[0].onClick.AddListener(TowerSpecPopUp);
+        _towerInventory[0].onClick.AddListener(Tower0SpecPopUp);
+        _towerInventory[1].onClick.AddListener(Tower1SpecPopUp);
+        _towerInventory[2].onClick.AddListener(Tower2SpecPopUp);
     }
     
     private void UnbindButtonEvents()
@@ -33,32 +38,50 @@ public class LobbyWindow : MonoBehaviour
         _gameStartButton.onClick.RemoveListener(StartGame);
         _playerSkillButton.onClick.RemoveListener(SkillPopUp);
         _settingButton.onClick.RemoveListener(SettingPopUp);
-        _towerInventory[0].onClick.RemoveListener(TowerSpecPopUp);
+        _towerInventory[0].onClick.RemoveListener(Tower0SpecPopUp);
+        _towerInventory[1].onClick.RemoveListener(Tower1SpecPopUp);
+        _towerInventory[2].onClick.RemoveListener(Tower2SpecPopUp);
     }
 
     private void StartGame()
     {
-        gameObject.SetActive(false);
-        WindowManager.Instance.BattleWindow();
+        UIManager.Instance.Window.BattleWindowOpen();
     }
 
     private void SkillPopUp()
     {
-        PopUpManager.Instance.PLayerSkillPopUp();
+        UIManager.Instance.PopUp.PLayerSkillPopUpOpen();
+        
     }
 
     private void SettingPopUp()
     {
-        PopUpManager.Instance.SettingPopUp();
+        UIManager.Instance.PopUp.SettingPopUpOpen();
     }
 
-    private void TowerSpecPopUp()
+    private void Tower0SpecPopUp()
     {
-        PopUpManager.Instance.TowerSpecPopUp();
+        _towerState[0] = new ArrowTower();
+        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 0);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(0); // 팝업 오픈 용도
     }
 
-    private void HaveGlod()
+    private void Tower1SpecPopUp()
     {
-        _haveGlod.text = "Glod: " + _haveGoldCount.ToString();
+        _towerState[1] = new FireTower();
+        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 1);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(1);
+    }
+
+    private void Tower2SpecPopUp()
+    {
+        _towerState[2] = new IceTower();
+        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 2);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
+    }
+
+    private void HaveGold()
+    {
+        _haveGlod.text = "Gold: " + _haveGoldCount.ToString();
     }
 }
