@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerCharacter _character;
     private Tile _selectedTile;   // 팝업 대상 타일
-    public Tile SelectedTile => _selectedTile;   // 팝업 버튼(설치·강화·철거)이 읽음
+    public Tile SelectedTile => _selectedTile; 
 
     // 일단 60초로 고정.
     private const float SKILL_COOL_TIME = 60f; 
