@@ -2266,7 +2266,7 @@ MonoBehaviour:
   _monsterName: MonsterElite2
   _monsterHealth: 60
   _monsterSpeed: 2
-  _dropGold: 10
+  _dropGold: 20
   endPoint: {fileID: 0}
   stoppingDistanceThreshold: 0.1
   anim: {fileID: 0}

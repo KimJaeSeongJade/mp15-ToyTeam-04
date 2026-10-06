@@ -215,8 +215,12 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         anim.SetBool("IsDead", true);
         StartCoroutine(DeadWait());
-
-
+        
+        // 플레이어 골드 증가
+        if (GoldManager.Instance != null)
+        {
+            GoldManager.Instance.AddGold(_dropGold);
+        }
     }
 
     private IEnumerator DeadWait()

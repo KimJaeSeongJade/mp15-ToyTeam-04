@@ -909,7 +909,7 @@ MonoBehaviour:
   _monsterName: BossMonster1
   _monsterHealth: 150
   _monsterSpeed: 2
-  _dropGold: 10
+  _dropGold: 50
   endPoint: {fileID: 0}
   stoppingDistanceThreshold: 0.1
   anim: {fileID: 0}

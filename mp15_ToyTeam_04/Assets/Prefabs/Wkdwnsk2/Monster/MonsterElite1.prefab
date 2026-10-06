@@ -735,7 +735,7 @@ MonoBehaviour:
   _monsterName: "\uC77C\uBC18 \uBAAC\uC2A4\uD130"
   _monsterHealth: 80
   _monsterSpeed: 1.5
-  _dropGold: 10
+  _dropGold: 20
   endPoint: {fileID: 0}
   stoppingDistanceThreshold: 0.1
   anim: {fileID: 0}

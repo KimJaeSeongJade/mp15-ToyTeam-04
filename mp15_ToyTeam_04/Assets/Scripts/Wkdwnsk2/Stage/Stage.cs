@@ -49,6 +49,7 @@ public class Stage : MonoBehaviour
             NextWave();
         }
         
+        
     }
     
  
@@ -99,8 +100,7 @@ public class Stage : MonoBehaviour
             
             Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
 
-            // 마지막 웨이브가 아니면 대기
-            if (wave < WAVE_COUNT)
+    
             {
                 // NextWave()가 호출될 때까지 대기 (여기서 팝업 띄우기)
                 _waitNextWave = true;
