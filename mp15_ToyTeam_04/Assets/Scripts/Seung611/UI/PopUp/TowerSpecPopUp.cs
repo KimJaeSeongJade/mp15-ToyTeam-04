@@ -74,10 +74,10 @@ public class TowerSpecPopUp : MonoBehaviour
         UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
     }
 
-    private void TowerSelectButton(TowerState _state)
+    private void TowerSelectButton(TowerState state)
     {
-        _towerName.text = _state.Name;
-        _towerDescription.text = _state.Explanation;
+        _towerName.text = state.Name;
+        _towerDescription.text = state.Explanation;
     }
 
     private void Esc()
