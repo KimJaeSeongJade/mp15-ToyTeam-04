@@ -8,9 +8,9 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 
 {
-    [SerializeField] public int StageNumber = 1;
-    [SerializeField] public int WaveNumber = 1;
-    [SerializeField] private int MonstersNumber;
+    [HideInInspector] public int StageNumber;
+    [HideInInspector] public int WaveNumber;
+    [HideInInspector] public  int MonstersNumber;
     [SerializeField] private int StageClearReward;
     [SerializeField] private float _spawnInterval = 1.0f;
     [SerializeField] private float _waveInterval = 3.0f;
