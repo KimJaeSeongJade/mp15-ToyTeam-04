@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     public Transform endPoint;
     public float stoppingDistanceThreshold = 0.1f;
 
-    public Animator anim;
+    private Animator anim;
     
     // 오브젝트 풀 추가
     private ObjectPool<Monster> _objectPool;

@@ -11,7 +11,7 @@ public class Stage : MonoBehaviour
     [HideInInspector] public int StageNumber;
     [HideInInspector] public int WaveNumber;
     [HideInInspector] public  int MonstersNumber;
-    [SerializeField] private int StageClearReward;
+    [HideInInspector] public int StageClearReward;
     [SerializeField] private float _spawnInterval = 1.0f;
     [SerializeField] private float _waveInterval = 3.0f;
     private Map _curMap;
@@ -28,6 +28,8 @@ public class Stage : MonoBehaviour
     private int TotalMonsterNumber;
     //팝업 누르면 웨이브 시작
     private bool _waitNextWave = false;
+    [SerializeField] private int _stageClearGold =500;
+
  
     
     
@@ -99,6 +101,11 @@ public class Stage : MonoBehaviour
             }
             
             Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
+            
+            if (wave == WAVE_COUNT)
+            {
+                StageClear();
+            }
 
     
             {
@@ -162,6 +169,8 @@ public class Stage : MonoBehaviour
             {
                 break;
             }
+            
+ 
 
             // 다음 스테이지로
             StageNumber = StageNumber + 1;
@@ -382,6 +391,24 @@ public class Stage : MonoBehaviour
         // 스테이지 패배 시 UI 추가 필요
         
     }
+    
+    
+    // 스테이지 클리어 보상 : 500 x 스테이지 번호
+    private void StageClear()
+    {
+        StageClearReward = (_stageClearGold * StageNumber);
+            
+        Debug.Log(StageNumber + " 스테이지 클리어");
+        Debug.Log("클리어 보상 : " + StageClearReward);
+
+        // 플레이어 골드 증가
+        if (GoldManager.Instance != null)
+        {
+            GoldManager.Instance.AddGold(StageClearReward);
+        }
+    }
+
+
 
     
 
