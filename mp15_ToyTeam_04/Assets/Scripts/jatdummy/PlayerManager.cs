@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerCharacter _character;
     
     private Tile _selectedTile;   // 팝업 대상 타일
-    public Tile SelectedTile => _selectedTile; 
+    public Tile SelectedTile => _selectedTile;
+    
+    // 타일 선택됐을 때 알림 
+    public event Action<Tile> OnTileSelected;
+
 
     // 일단 60초로 고정.
     private const float SKILL_COOL_TIME = 60f; 
@@ -64,22 +69,27 @@ public class PlayerManager : MonoBehaviour
             _skillCoolTimer -= Time.deltaTime;
         }
 
-        /* 로비 전환 케어 테스트용
+         
+        // 로비 전환 케어 테스트용
         if (Input.GetKeyDown(KeyCode.U))
         {
             if (MapManager.Instance != null)
                 MapManager.Instance.ShowBattleMap();
             else
-                Debug.Log("경계가 없는데?");
+                Debug.Log("맵 경계가 없는데? ground 확인좀..");
 
             OnPlayer();
         }
         if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
-        */
+        // UIMode 테스트 (나중에 삭제)
+        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // 팝업 열림 흉내
+        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // 팝업 닫힘 흉내
+
+
 
     }
 
-    [SerializeField]private PlayerCamera _playerCamera;
+    [SerializeField] private PlayerCamera _playerCamera;
 
     // 맵 켜질 때 끄고 위치 옮기고 다시 켜기
     public void OnPlayer( )
@@ -209,6 +219,19 @@ public class PlayerManager : MonoBehaviour
     public void SelectTile(Tile tile)
     {
         _selectedTile = tile;
+
+        // 신호 갔으면
+        if (OnTileSelected != null)
+        {
+            // 선택된 타일 줄게ㅋ
+            OnTileSelected(tile);
+        }
+    }
+    // UI 팝업 열고 닫을 때 이거 쓰심 됩니다.
+    // true : 커서보임 카메라 회전 x  , false : 다시 캐릭터 시점
+    public void SetUIMode(bool isOpen)
+    {
+        _playerCamera.SetUIMode(isOpen);
     }
 
 }

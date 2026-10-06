@@ -18,8 +18,13 @@ public class PlayerCamera : MonoBehaviour
 
     // 현재 맵 바닥 
     private Collider _ground;
+    // 탑뷰일시
     private bool _isTopView;
+    // 로비일시
     private bool _isPlaying;
+    // Ui 팝업 일시
+    private bool _isUIMode;
+    
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
     private Vector3 _topViewStartPosition; // 탑뷰 카메라 위치 기억
 
@@ -64,6 +69,7 @@ public class PlayerCamera : MonoBehaviour
     public void LobbyStartCamera()
     {
         _isPlaying = true;
+        _isUIMode = false;
         _isTopView = false;
         _topViewTarget = _topViewStartPosition;
         _topViewCam.transform.position = _topViewStartPosition;
@@ -72,16 +78,23 @@ public class PlayerCamera : MonoBehaviour
     public void LobbyStopCamera()
     {
         _isPlaying = false;
+        _isUIMode = false;
         _isTopView = true;
         CameraRoutine();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    // 카메라 전환 (tap 입력하면 변경.)
+    // 카메라 전환 tap 입력하면 변경
     public void SwitchCamera()
     {
         _isTopView = !_isTopView;
+        CameraRoutine();
+    }
+    // 팝업시 3인칭에서 커서도 풀고 카메라 회전도 멈추고 하..
+    public void SetUIMode(bool isUIMode)
+    {
+        _isUIMode = isUIMode;
         CameraRoutine();
     }
 
@@ -90,17 +103,24 @@ public class PlayerCamera : MonoBehaviour
     {
         _topViewCam.SetActive(_isTopView);
 
+        // 탑뷰 or ui모드시 커서 자유롭게 하려면~
+        bool isCursorFree = _isTopView || _isUIMode;
+
         // 탑뷰일시 3인칭 카메라 마우스 커서 케어
-        _playerCam.m_XAxis.m_InputAxisName = _isTopView ? "" : "Mouse X";
-        _playerCam.m_YAxis.m_InputAxisName = _isTopView ? "" : "Mouse Y";
+        // _playerCam.m_XAxis.m_InputAxisName = _isTopView ? "" : "Mouse X";
+        // _playerCam.m_YAxis.m_InputAxisName = _isTopView ? "" : "Mouse Y";
+        _playerCam.m_XAxis.m_InputAxisName = isCursorFree ? "" : "Mouse X";
+        _playerCam.m_YAxis.m_InputAxisName = isCursorFree ? "" : "Mouse Y";
         _playerCam.m_XAxis.m_InputAxisValue = 0f;
         _playerCam.m_YAxis.m_InputAxisValue = 0f;
 
         // 시점별 커서 잠그고 보이기
-        Cursor.lockState = _isTopView ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = _isTopView;
-    }
+        //Cursor.lockState = _isTopView ? CursorLockMode.None : CursorLockMode.Locked;
+        //Cursor.visible = _isTopView;
+        Cursor.lockState = isCursorFree ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isCursorFree;
 
+    }
 
     // 탑뷰 이동 wasd로
     private void TopViewMove()
