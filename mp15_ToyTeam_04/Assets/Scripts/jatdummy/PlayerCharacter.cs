@@ -56,12 +56,12 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
             _playerCamera.SwitchCamera();
 
-        // 플레이서 스킬 사용.
+        // 플레이서 스킬 사용. 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("스킬 사용");
+            PlayerManager.Instance.UseSkill();
         }
-        // PlayerManager.Instance.UseSkill();
+       
 
     }
     // 캐릭터 이동

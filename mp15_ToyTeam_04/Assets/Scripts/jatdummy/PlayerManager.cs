@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour
             _skillCoolTimer -= Time.deltaTime;
         }
 
-         
+        /* 
         // 로비 전환 케어 테스트용
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -82,9 +82,9 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
         // UIMode 테스트 (나중에 삭제)
-        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // 팝업 열림 흉내
-        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // 팝업 닫힘 흉내
-
+        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // 팝업 열림
+        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // 팝업 닫힘
+        */
 
 
     }
@@ -213,7 +213,13 @@ public class PlayerManager : MonoBehaviour
 
     public void UseSkill()
     {
+        // 쿨타임 중이면 안돼
+        if (_skillCoolTimer > 0f) return;
+        
+        Debug.Log("UseSkill 받아와 스킬 사용 확인와료");
 
+        // 사용 후 쿨타임 시작하기
+        _skillCoolTimer = SKILL_COOL_TIME;
     }
 
     public void SelectTile(Tile tile)
