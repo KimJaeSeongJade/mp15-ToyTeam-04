@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, IPoolable
 {
     [SerializeField] private GameObject[] _towerObj;
     private Dictionary<EAbilityType, Ability> _dicAbility;
@@ -34,10 +34,6 @@ public class Tower : MonoBehaviour
         _state = state;
         _dicAbility = towerAbility.DicAbility;
 
-        if (_state == null) return;
-
-        _towerObj[_state.BasicLevel - 1].SetActive(true);
-        _col.radius = TowerDetectionRange();
     }
 
     /// <summary> 타워 철거 비용 계산 </summary>
@@ -106,5 +102,17 @@ public class Tower : MonoBehaviour
         _towerObj[_state.CurLevel - 1].SetActive(false);
         _state.TowerUpgrade();
         _towerObj[_state.CurLevel - 1].SetActive(true);
+    }
+
+    public void OnSpawn()
+    {
+        _towerObj[_state.BasicLevel - 1].SetActive(true);
+        _col.radius = TowerDetectionRange();
+    }
+
+    public void OnDespawn()
+    {
+        GoldManager.Instance.AddGold(TowerRemovalCost());
+        TowerRemoval();
     }
 }

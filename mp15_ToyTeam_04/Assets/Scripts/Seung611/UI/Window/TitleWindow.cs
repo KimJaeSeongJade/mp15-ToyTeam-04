@@ -29,7 +29,7 @@ public class TitleWindow : MonoBehaviour
     private void LobbyWindow()
     {
         UIManager.Instance.Window.LobbyWindowOpen();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     private void SettingPopUp()

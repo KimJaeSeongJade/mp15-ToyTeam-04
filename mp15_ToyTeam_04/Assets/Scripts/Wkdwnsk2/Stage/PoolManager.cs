@@ -5,6 +5,8 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
 
+    [SerializeField] private Tower _towerPrefab;
+
     [SerializeField] private Monster _normalmonsterPrefab1;
     [SerializeField] private Monster _normalmonsterPrefab2;
     [SerializeField] private Monster _elitemonsterPrefab1;
