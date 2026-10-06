@@ -7,7 +7,6 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] private CinemachineFreeLook _playerCam;
     [SerializeField] private GameObject _topViewCam;
-    [SerializeField] private Collider _ground;
 
     [SerializeField] private float _panSpeed = 15f;     // 기본 이동 속도
     [SerializeField] private float _smoothSpeed = 10f;  // 클수록 딱딱, 작을수록 부드럽게
@@ -17,7 +16,8 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float _maxHeight = 45f;    // 최대 축소 (가장 높은 높이)
     [SerializeField] private bool _zoomToCursor = true; // 마우스가 가리키는 곳으로 확대
 
-
+    // 현재 맵 바닥 
+    private Collider _ground;
     private bool _isTopView;
     private bool _isPlaying;
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
@@ -27,13 +27,8 @@ public class PlayerCamera : MonoBehaviour
     // public bool CameraCursor =>
     public bool IsTopView => _isTopView;
 
-    private void Start()
+    public void Start()
     {
-        if (_ground == null)
-        {
-            GameObject groundObject = GameObject.Find("Ground");
-            if (groundObject != null) _ground = groundObject.GetComponent<Collider>();
-        }
 
         _topViewTarget = _topViewCam.transform.position;
         _topViewStartPosition = _topViewCam.transform.position;
@@ -51,7 +46,7 @@ public class PlayerCamera : MonoBehaviour
 
     }
 
-    private void Update()
+    public void Update()
     {
 
         if (!_isPlaying) return;
@@ -65,10 +60,7 @@ public class PlayerCamera : MonoBehaviour
         Transform cam = _topViewCam.transform;
         cam.position = Vector3.Lerp(cam.position, _topViewTarget, _smoothSpeed * Time.deltaTime);
 
-
-        //
     }
-
     public void LobbyStartCamera()
     {
         _isPlaying = true;
@@ -158,7 +150,10 @@ public class PlayerCamera : MonoBehaviour
         point = ray.GetPoint(distance);
         return true;
     }
-
+    public void SetGround(Collider ground)
+    {
+        _ground = ground;
+    }
     // 탑뷰 카메라가 맵(Ground) 밖으로 못 나가게
     private void ClampToGround()
     {

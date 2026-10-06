@@ -1,24 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-/*
-public enum EPlayerSkill
-{
-    None = -1,
-    TimeFreeze = 0,       
-    Disaster=1
-}
-
-*/
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
     // 시작위치
-    private static readonly Vector3 START_POSITION = new Vector3(0f, 1f, 0f);
+    private static readonly Vector3 START_POSITION = new Vector3(0f, 1.5f, 0f);
     [SerializeField] private PlayerCharacter _character;
     
     private Tile _selectedTile;   // 팝업 대상 타일
@@ -31,14 +21,6 @@ public class PlayerManager : MonoBehaviour
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // Ui 표시해야지.
     
-    // [SerializeField] private EPlayerSkill _equipSkill = EPlayerSkill.TimeFreeze;
-    // 시간 동결 지속 시간 (초)
-    // public float FreezeDuration = 3f; 
-    // 20 으로 보내기
-    // public float DisasterPer = 20f; 
-    
-
-
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
         { ETowerType.ArrowTower, new ArrowTower() },
@@ -66,27 +48,44 @@ public class PlayerManager : MonoBehaviour
         //_character = GetComponentInChildren<PlayerCharacter>();
     }
 
-    public void Update()
+    private void Update()
     {
         if (_skillCoolTimer > 0f) 
         {
             _skillCoolTimer -= Time.deltaTime;
         }
 
+        /* 로비 전환 케어 테스트용
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (MapManager.Instance != null)
+                MapManager.Instance.ShowBattleMap();
+            else
+                Debug.Log("경계가 없는데?");
+
+            OnPlayer();
+        }
+        if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
+        */
     }
 
 
-
-
     [SerializeField]private PlayerCamera _playerCamera;
-    
+
     // 맵 켜질 때 - 끄고 위치 옮기고 다시 켜기
     public void OnPlayer( )
     {
+        // 이걸로 부르니까 맵 바닥을 인식을 못하던데... 그래서 추가
+        Collider ground = CurrentGround();
+        _character.SetGround(ground);
+        _playerCamera.SetGround(ground);
+
         _character.gameObject.SetActive(false);
         _character.transform.position = START_POSITION;
         _character.gameObject.SetActive(true);
         _playerCamera.LobbyStartCamera();
+
+        // Debug.Log($"바닥: {(ground != null ? ground.name : "없음")}");   // 확인용
     }
 
     // 로비 갈 때 - 캐릭터 끄기
@@ -94,6 +93,18 @@ public class PlayerManager : MonoBehaviour
     {
         _playerCamera.LobbyStopCamera();
         _character.gameObject.SetActive(false);
+    }
+
+    private Collider CurrentGround()
+    {
+        // MapManager가 켠 맵 확인
+        if (MapManager.Instance != null && MapManager.Instance._curMap != null)
+        {
+            return MapManager.Instance._curMap.Ground;
+        }
+        // 맵 정보 없으면 바닥 없음 ㅋㅋ
+        return null;
+
     }
 
     // 카메라 커서 끄기
@@ -115,38 +126,11 @@ public class PlayerManager : MonoBehaviour
         return ability;
     }
 
-    /* 스킬 연결 나중에 확인
-    
-    public void EquipSkill(EPlayerSkill skill)
-    {
-        _equipSkill = skill;
-    }
 
     public void UseSkill()
     {
-        if (_skillCoolTimer > 0f) return; // 쿨타임 일시 x
-        if (_equipSkill == EPlayerSkill.None) return;   // 장착 스킬 없음
 
-        // 사용 스킬효과. 코드
-        ApplySkillEffect();
-
-        // 사용후 쿨타임 초기화
-        _skillCoolTimer = SKILL_COOL_TIME;
     }
-
-    private void ApplySkillEffect()
-    {
-        foreach (Monster monster in FindObjectsOfType<Monster>())   // 활성화된 몬스터만 (풀에 들어간 몬스터는 제외)
-        {
-            if (_equipSkill == EPlayerSkill.TimeFreeze)
-                monster.ApplyTimeFreeze(FreezeDuration);
-            else if (_equipSkill == EPlayerSkill.Disaster)
-                monster.SkillDamage((int)DisasterPer); // 이거 int로만 들어가는데 맞나요?
-        }
-    }
-    // freezeDuration, DisasterPer  Monster 코드에서 확인하기.
-    
-     */
 
     public void SelectTile(Tile tile)
     {
