@@ -56,9 +56,11 @@ public class PlayerCharacter : MonoBehaviour
             _playerCamera.SwitchCamera();
 
         // 플레이서 스킬 사용.
-        if (Input.GetKeyDown(KeyCode.Q));
-            
-            // PlayerManager.Instance.UseSkill();
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("스킬 사용");
+        }
+        // PlayerManager.Instance.UseSkill();
 
     }
     // 캐릭터 이동
@@ -119,9 +121,10 @@ public class PlayerCharacter : MonoBehaviour
     // 탑뷰  마우스 상호작용
     public void TopViewInteract()
     {
+
         // 마우스로 클릭한 설치 타일 (6번 레이어만)
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 80f, _towerTileLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, 75f, _towerTileLayer))
         {
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)

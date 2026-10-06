@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
         { ETowerType.FireTower,  new FireTower()  },
         { ETowerType.IceTower,   new IceTower()   }
     };
-
+     
     // 타워 능력
     private Dictionary<ETowerType, TowerAbility> _towerAbilities = new Dictionary<ETowerType, TowerAbility>
     {
@@ -35,6 +35,15 @@ public class PlayerManager : MonoBehaviour
         { ETowerType.FireTower,  new TowerAbility(ETowerType.FireTower)  },
         { ETowerType.IceTower,   new TowerAbility(ETowerType.IceTower)   }
     };
+
+    // 타워 최고 레벨 
+    private const int MAX_TOWER_LEVEL = 3;
+
+    // 설치할 타워 종류
+    private ETowerType _selectedTowerType = ETowerType.ArrowTower;
+    
+    // ui에서 - - -- - - -- - - 
+    public ETowerType SelectedTowerType => _selectedTowerType;
 
     private void Awake()
     {
@@ -67,12 +76,12 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
         */
-    }
 
+    }
 
     [SerializeField]private PlayerCamera _playerCamera;
 
-    // 맵 켜질 때 - 끄고 위치 옮기고 다시 켜기
+    // 맵 켜질 때 끄고 위치 옮기고 다시 켜기
     public void OnPlayer( )
     {
         // 이걸로 부르니까 맵 바닥을 인식을 못하던데... 그래서 추가
@@ -85,14 +94,15 @@ public class PlayerManager : MonoBehaviour
         _character.gameObject.SetActive(true);
         _playerCamera.LobbyStartCamera();
 
-        // Debug.Log($"바닥: {(ground != null ? ground.name : "없음")}");   // 확인용
     }
 
-    // 로비 갈 때 - 캐릭터 끄기
+    // 로비 갈 때 캐릭터 끄기
     public void OffPlayer()
     {
         _playerCamera.LobbyStopCamera();
         _character.gameObject.SetActive(false);
+        
+        // 이 때(플레이어 끌 때) 맵에서 처리할거 있으면 추가하겠습니다.
     }
 
     private Collider CurrentGround()
@@ -107,11 +117,6 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    // 카메라 커서 끄기
-    // 키면 0 1.5 0 
-    // 끄면 위치 초기화
-    // 로비 에서 막고 다시 전투화면 켜고.
-
     // 타워 스텟 가져다가
     public TowerState GetTowerState(ETowerType type)
     {
@@ -124,6 +129,75 @@ public class PlayerManager : MonoBehaviour
     {
         _towerAbilities.TryGetValue(type, out TowerAbility ability);
         return ability;
+    }
+
+    // 설치할 타워 종류 선택 (UI 타워 선택 버튼에서 호출)
+    public void SelectTowerType(ETowerType type)
+    {
+
+        _selectedTowerType = type;
+    }
+
+    // 설치 전 비용 (설치 비용 감소 특성 반영)
+    public int GetInstallCost(ETowerType type)
+    {
+        Ability discount = _towerAbilities[type].DicAbility[EAbilityType.DecreaseInstallCost];
+        float percent = discount.IsLearn ? discount.Value : 0f;
+        return (int)(_towerStates[type].InstallCost * (100 - percent) / 100);
+    }
+
+    // 설치할 때마다 새로 생성
+    private TowerState CreateTowerState(ETowerType type)
+    {
+        switch (type)
+        {
+            case ETowerType.ArrowTower: return new ArrowTower();
+            case ETowerType.FireTower: return new FireTower();
+            case ETowerType.IceTower: return new IceTower();
+            default: return null;
+        }
+    }
+
+    // 타워 설치 (UI 설치 버튼)
+    public void InstallTower()
+    {
+        if (_selectedTile.IsTower) return;
+        if (!GoldManager.Instance.UseGold(GetInstallCost(_selectedTowerType))) return;
+
+        Tower tower = PoolManager.Instance._towerPool.GetObject();
+
+        // 타일 윗면에 배치
+        Vector3 pos = _selectedTile.transform.position;
+        pos.y = _selectedTile.GetComponent<Collider>().bounds.max.y;
+        tower.transform.position = pos;
+
+        // 타워 켜기 
+        _selectedTile._tower = tower;
+        _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
+        PoolManager.Instance._towerPool.ActivateObject(tower);
+    }
+
+    // 타워 강화 (UI 강화 버튼)
+    public void UpgradeTower()
+    {
+        if (!_selectedTile.IsTower) return;
+        Tower tower = _selectedTile._tower;
+        if (tower.State.CurLevel >= MAX_TOWER_LEVEL) return;
+        if (!GoldManager.Instance.UseGold(tower.TowerUpgradeCost())) return;
+
+        tower.TowerUpgrade();
+    }
+
+    // 타워 철거 (UI 철거 버튼)
+    public void DemolishTower()
+    {
+        if (!_selectedTile.IsTower) return;
+        // 타일 비우기 전에 잡아두기
+        Tower tower = _selectedTile._tower;
+
+        _selectedTile.TileRemovalTower();
+        
+        PoolManager.Instance._towerPool.ReturnObject(tower);
     }
 
 
