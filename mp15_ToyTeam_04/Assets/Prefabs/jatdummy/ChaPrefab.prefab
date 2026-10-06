@@ -623,14 +623,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCam: {fileID: 8227925785160945429}
   _topViewCam: {fileID: 217763003118757986}
-  _ground: {fileID: 0}
   _panSpeed: 25
   _smoothSpeed: 10
   _zoomSpeed: 5
   _minHeight: 15
   _maxHeight: 65
   _zoomToCursor: 1
-  _isTopView: 0
 --- !u!1 &6440266114787780588
 GameObject:
   m_ObjectHideFlags: 0

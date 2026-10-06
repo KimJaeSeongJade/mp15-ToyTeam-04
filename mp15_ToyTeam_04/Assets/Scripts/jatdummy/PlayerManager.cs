@@ -1,28 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-/*
-public enum EPlayerSkill
-{
-    None = -1,
-    TimeFreeze = 0,       
-    Disaster=1
-}
-
-*/
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
     // 시작위치
-    private static readonly Vector3 START_POSITION = new Vector3(0f, 1f, 0f);
+    private static readonly Vector3 START_POSITION = new Vector3(0f, 1.5f, 0f);
     [SerializeField] private PlayerCharacter _character;
     
     private Tile _selectedTile;   // 팝업 대상 타일
-    public Tile SelectedTile => _selectedTile; 
+    public Tile SelectedTile => _selectedTile;
+    
+    // 타일 선택됐을 때 알림 
+    public event Action<Tile> OnTileSelected;
+
 
     // 일단 60초로 고정.
     private const float SKILL_COOL_TIME = 60f; 
@@ -31,21 +26,13 @@ public class PlayerManager : MonoBehaviour
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // Ui 표시해야지.
     
-    // [SerializeField] private EPlayerSkill _equipSkill = EPlayerSkill.TimeFreeze;
-    // 시간 동결 지속 시간 (초)
-    // public float FreezeDuration = 3f; 
-    // 20 으로 보내기
-    // public float DisasterPer = 20f; 
-    
-
-
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
         { ETowerType.ArrowTower, new ArrowTower() },
         { ETowerType.FireTower,  new FireTower()  },
         { ETowerType.IceTower,   new IceTower()   }
     };
-
+     
     // 타워 능력
     private Dictionary<ETowerType, TowerAbility> _towerAbilities = new Dictionary<ETowerType, TowerAbility>
     {
@@ -53,6 +40,15 @@ public class PlayerManager : MonoBehaviour
         { ETowerType.FireTower,  new TowerAbility(ETowerType.FireTower)  },
         { ETowerType.IceTower,   new TowerAbility(ETowerType.IceTower)   }
     };
+
+    // 타워 최고 레벨 
+    private const int MAX_TOWER_LEVEL = 3;
+
+    // 설치할 타워 종류
+    private ETowerType _selectedTowerType = ETowerType.ArrowTower;
+    
+    // ui에서 - - -- - - -- - - 
+    public ETowerType SelectedTowerType => _selectedTowerType;
 
     private void Awake()
     {
@@ -66,40 +62,70 @@ public class PlayerManager : MonoBehaviour
         //_character = GetComponentInChildren<PlayerCharacter>();
     }
 
-    public void Update()
+    private void Update()
     {
         if (_skillCoolTimer > 0f) 
         {
             _skillCoolTimer -= Time.deltaTime;
         }
 
+        /* 
+        // 로비 전환 케어 테스트용
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (MapManager.Instance != null)
+                MapManager.Instance.ShowBattleMap();
+            else
+                Debug.Log("맵 경계가 없는데? ground 확인좀..");
+
+            OnPlayer();
+        }
+        if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
+        // UIMode 테스트 (나중에 삭제)
+        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // 팝업 열림
+        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // 팝업 닫힘
+        */
+
+
     }
 
+    [SerializeField] private PlayerCamera _playerCamera;
 
-
-
-    [SerializeField]private PlayerCamera _playerCamera;
-    
-    // 맵 켜질 때 - 끄고 위치 옮기고 다시 켜기
+    // 맵 켜질 때 끄고 위치 옮기고 다시 켜기
     public void OnPlayer( )
     {
+        // 이걸로 부르니까 맵 바닥을 인식을 못하던데... 그래서 추가
+        Collider ground = CurrentGround();
+        _character.SetGround(ground);
+        _playerCamera.SetGround(ground);
+
         _character.gameObject.SetActive(false);
         _character.transform.position = START_POSITION;
         _character.gameObject.SetActive(true);
         _playerCamera.LobbyStartCamera();
+
     }
 
-    // 로비 갈 때 - 캐릭터 끄기
+    // 로비 갈 때 캐릭터 끄기
     public void OffPlayer()
     {
         _playerCamera.LobbyStopCamera();
         _character.gameObject.SetActive(false);
+        
+        // 이 때(플레이어 끌 때) 맵에서 처리할거 있으면 추가하겠습니다.
     }
 
-    // 카메라 커서 끄기
-    // 키면 0 1.5 0 
-    // 끄면 위치 초기화
-    // 로비 에서 막고 다시 전투화면 켜고.
+    private Collider CurrentGround()
+    {
+        // MapManager가 켠 맵 확인
+        if (MapManager.Instance != null && MapManager.Instance._curMap != null)
+        {
+            return MapManager.Instance._curMap.Ground;
+        }
+        // 맵 정보 없으면 바닥 없음 ㅋㅋ
+        return null;
+
+    }
 
     // 타워 스텟 가져다가
     public TowerState GetTowerState(ETowerType type)
@@ -108,49 +134,112 @@ public class PlayerManager : MonoBehaviour
         return state;
     }
 
-    // 어빌리티 가져다가
+    // 타워 능력 가져다가
     public TowerAbility GetTowerAbility(ETowerType type)
     {
         _towerAbilities.TryGetValue(type, out TowerAbility ability);
         return ability;
     }
 
-    /* 스킬 연결 나중에 확인
-    
-    public void EquipSkill(EPlayerSkill skill)
+    // 설치할 타워 종류 선택
+    public void SelectTowerType(ETowerType type)
     {
-        _equipSkill = skill;
+        _selectedTowerType = type;
     }
+
+    // 이 타워 얼만데?
+    public int GetInstallCost(ETowerType type)
+    {
+        return _towerStates[type].InstallCost;
+    }
+
+    // 설치할 때마다 새로 생성
+    private TowerState CreateTowerState(ETowerType type)
+    {
+        switch (type)
+        {
+            case ETowerType.ArrowTower: return new ArrowTower();
+           
+            case ETowerType.FireTower: return new FireTower();
+            
+            case ETowerType.IceTower: return new IceTower();
+            
+            default: return null;
+        }
+    }
+
+    // 타워 설치 돈내고 설치 돈 돈돈
+    public void InstallTower()
+    {
+        if (_selectedTile.IsTower) return;
+        if (!GoldManager.Instance.UseGold(GetInstallCost(_selectedTowerType))) return;
+
+        Tower tower = PoolManager.Instance._towerPool.GetObject();
+
+        // 타일 윗면에 배치
+        Vector3 pos = _selectedTile.transform.position;
+        pos.y = _selectedTile.GetComponent<Collider>().bounds.max.y;
+        tower.transform.position = pos;
+
+        // 타워 켜기 
+        _selectedTile._tower = tower;
+        _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
+        PoolManager.Instance._towerPool.ActivateObject(tower);
+    }
+
+    // 타워 강화
+    public void UpgradeTower()
+    {
+        if (!_selectedTile.IsTower) return;
+        
+        Tower tower = _selectedTile._tower;
+        if (tower.State.CurLevel >= MAX_TOWER_LEVEL) return;
+        if (!GoldManager.Instance.UseGold(tower.TowerUpgradeCost())) return;
+
+        tower.TowerUpgrade();
+    }
+
+    // 타워 철거
+    public void DemolishTower()
+    {
+        if (!_selectedTile.IsTower) return;
+        
+        // 타일 비우기 전에 잡아두기
+        Tower tower = _selectedTile._tower;
+
+        _selectedTile.TileRemovalTower();
+        
+        PoolManager.Instance._towerPool.ReturnObject(tower);
+    }
+
 
     public void UseSkill()
     {
-        if (_skillCoolTimer > 0f) return; // 쿨타임 일시 x
-        if (_equipSkill == EPlayerSkill.None) return;   // 장착 스킬 없음
+        // 쿨타임 중이면 안돼
+        if (_skillCoolTimer > 0f) return;
+        
+        Debug.Log("UseSkill 받아와 스킬 사용 확인와료");
 
-        // 사용 스킬효과. 코드
-        ApplySkillEffect();
-
-        // 사용후 쿨타임 초기화
+        // 사용 후 쿨타임 시작하기
         _skillCoolTimer = SKILL_COOL_TIME;
     }
-
-    private void ApplySkillEffect()
-    {
-        foreach (Monster monster in FindObjectsOfType<Monster>())   // 활성화된 몬스터만 (풀에 들어간 몬스터는 제외)
-        {
-            if (_equipSkill == EPlayerSkill.TimeFreeze)
-                monster.ApplyTimeFreeze(FreezeDuration);
-            else if (_equipSkill == EPlayerSkill.Disaster)
-                monster.SkillDamage((int)DisasterPer); // 이거 int로만 들어가는데 맞나요?
-        }
-    }
-    // freezeDuration, DisasterPer  Monster 코드에서 확인하기.
-    
-     */
 
     public void SelectTile(Tile tile)
     {
         _selectedTile = tile;
+
+        // 신호 갔으면
+        if (OnTileSelected != null)
+        {
+            // 선택된 타일 줄게ㅋ
+            OnTileSelected(tile);
+        }
+    }
+    // UI 팝업 열고 닫을 때 이거 쓰심 됩니다.
+    // true : 커서보임 카메라 회전 x  , false : 다시 캐릭터 시점
+    public void SetUIMode(bool isOpen)
+    {
+        _playerCamera.SetUIMode(isOpen);
     }
 
 }

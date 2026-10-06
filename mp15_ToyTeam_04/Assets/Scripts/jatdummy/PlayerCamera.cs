@@ -7,7 +7,6 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] private CinemachineFreeLook _playerCam;
     [SerializeField] private GameObject _topViewCam;
-    [SerializeField] private Collider _ground;
 
     [SerializeField] private float _panSpeed = 15f;     // 기본 이동 속도
     [SerializeField] private float _smoothSpeed = 10f;  // 클수록 딱딱, 작을수록 부드럽게
@@ -17,24 +16,27 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float _maxHeight = 45f;    // 최대 축소 (가장 높은 높이)
     [SerializeField] private bool _zoomToCursor = true; // 마우스가 가리키는 곳으로 확대
 
-
-    public bool _isTopView;
+    // 현재 맵 바닥 
+    private Collider _ground;
+    // 탑뷰일시
+    private bool _isTopView;
+    // 로비일시
     private bool _isPlaying;
+    // Ui 팝업 일시
+    private bool _isUIMode;
+    
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
+    private Vector3 _topViewStartPosition; // 탑뷰 카메라 위치 기억
 
     // 지금 탑뷰인지
     // public bool CameraCursor =>
     public bool IsTopView => _isTopView;
 
-    private void Start()
+    public void Start()
     {
-        if (_ground == null)
-        {
-            GameObject groundObject = GameObject.Find("Ground");
-            if (groundObject != null) _ground = groundObject.GetComponent<Collider>();
-        }
 
         _topViewTarget = _topViewCam.transform.position;
+        _topViewStartPosition = _topViewCam.transform.position;
         //CameraRoutine();
 
         // 로비 일 때. 아닐 때 카메라.
@@ -46,10 +48,12 @@ public class PlayerCamera : MonoBehaviour
         }
 
         else LobbyStopCamera();
+
     }
 
-    private void Update()
+    public void Update()
     {
+
         if (!_isPlaying) return;
         
         if (!_isTopView) return; 
@@ -60,25 +64,37 @@ public class PlayerCamera : MonoBehaviour
         // 목표 위치로 부드럽게 이동
         Transform cam = _topViewCam.transform;
         cam.position = Vector3.Lerp(cam.position, _topViewTarget, _smoothSpeed * Time.deltaTime);
-    }
 
+    }
     public void LobbyStartCamera()
     {
         _isPlaying = true;
+        _isUIMode = false;
         _isTopView = false;
+        _topViewTarget = _topViewStartPosition;
+        _topViewCam.transform.position = _topViewStartPosition;
         CameraRoutine();
     }
     public void LobbyStopCamera()
     {
         _isPlaying = false;
+        _isUIMode = false;
+        _isTopView = true;
+        CameraRoutine();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    // 카메라 전환 (tap 입력하면 변경.)
+    // 카메라 전환 tap 입력하면 변경
     public void SwitchCamera()
     {
         _isTopView = !_isTopView;
+        CameraRoutine();
+    }
+    // 팝업시 3인칭에서 커서도 풀고 카메라 회전도 멈추고 하..
+    public void SetUIMode(bool isUIMode)
+    {
+        _isUIMode = isUIMode;
         CameraRoutine();
     }
 
@@ -87,17 +103,26 @@ public class PlayerCamera : MonoBehaviour
     {
         _topViewCam.SetActive(_isTopView);
 
+        // 탑뷰 or ui모드시 커서 자유롭게 하려면~
+        bool isCursorFree = _isTopView || _isUIMode;
+
         // 탑뷰일시 3인칭 카메라 마우스 커서 케어
-        _playerCam.m_XAxis.m_InputAxisName = _isTopView ? "" : "Mouse X";
-        _playerCam.m_YAxis.m_InputAxisName = _isTopView ? "" : "Mouse Y";
+        // 몇번 바꾸는지 모르겠네..
+        // _playerCam.m_XAxis.m_InputAxisName = _isTopView ? "" : "Mouse X";
+        // _playerCam.m_YAxis.m_InputAxisName = _isTopView ? "" : "Mouse Y";
+
+        _playerCam.m_XAxis.m_InputAxisName = isCursorFree ? "" : "Mouse X";
+        _playerCam.m_YAxis.m_InputAxisName = isCursorFree ? "" : "Mouse Y";
         _playerCam.m_XAxis.m_InputAxisValue = 0f;
         _playerCam.m_YAxis.m_InputAxisValue = 0f;
 
         // 시점별 커서 잠그고 보이기
-        Cursor.lockState = _isTopView ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = _isTopView;
-    }
+        //Cursor.lockState = _isTopView ? CursorLockMode.None : CursorLockMode.Locked;
+        //Cursor.visible = _isTopView;
+        Cursor.lockState = isCursorFree ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isCursorFree;
 
+    }
 
     // 탑뷰 이동 wasd로
     private void TopViewMove()
@@ -134,7 +159,7 @@ public class PlayerCamera : MonoBehaviour
         ClampToGround();
     }
 
-    // 마우스가 가리키는 바닥 위치 구하기 (나중에 타워 타일 스크립트 보고 변경.)
+    // 마우스가 가리키는 바닥 위치 구하기 (나중에 타워 타일 스크립트 보고 변경 예정의 예정)
     private bool TryGetMouseGroundPoint(float groundY, out Vector3 point)
     {
         point = Vector3.zero;
@@ -147,7 +172,10 @@ public class PlayerCamera : MonoBehaviour
         point = ray.GetPoint(distance);
         return true;
     }
-
+    public void SetGround(Collider ground)
+    {
+        _ground = ground;
+    }
     // 탑뷰 카메라가 맵(Ground) 밖으로 못 나가게
     private void ClampToGround()
     {

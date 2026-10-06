@@ -2,29 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 3.5f;
     [SerializeField] private float _rotationSpeed = 10f;
-
-    [SerializeField] private Collider _ground;
     [SerializeField] private float _edgePadding = 0.3f;
-
     [SerializeField] private PlayerCamera _playerCamera;  // 카메라 전환
 
-    
+    private Collider _ground;
     private Animator _anim;
     private CharacterController _controller;
     private Transform _cam;
     private int _towerTileLayer;
 
-    public TowerAbility ArrowTower = new TowerAbility(ETowerType.ArrowTower);
-    public TowerAbility FireTower = new TowerAbility(ETowerType.FireTower);
-    public TowerAbility IceTower = new TowerAbility(ETowerType.IceTower);
-
-    private void Start()
+    public void Start()
     {
         _anim = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
@@ -33,20 +27,11 @@ public class PlayerCharacter : MonoBehaviour
         if (Camera.main != null)
             _cam = Camera.main.transform;
 
-        // 바닥 찾기
-        if (_ground == null)
-        {
-            GameObject groundObject = GameObject.Find("Ground"); // 직접 인스펙터에 넣어주거나
-            if (groundObject != null) _ground = groundObject.GetComponent<Collider>(); // 이름을 Ground로 바꾸시면 됩니다.
-
-        }
-
-        // _towerTilelayer = LayerMask.NameToLayer("TowerTile"); 정신차려!!
         _towerTileLayer = LayerMask.GetMask("TowerTile");
 
     }
 
-    private void Update()
+    public void Update()
     {
         bool isTopView = _playerCamera != null && _playerCamera.IsTopView;
 
@@ -62,7 +47,6 @@ public class PlayerCharacter : MonoBehaviour
         else
         {
             Move();
-
             // 캐릭터 상호작용
             if (Input.GetKeyDown(KeyCode.E))
                 PlayerInteract();
@@ -72,10 +56,12 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
             _playerCamera.SwitchCamera();
 
-        // 플레이서 스킬 사용.
-        if (Input.GetKeyDown(KeyCode.Q)) Debug.Log("hihii");
-            
-            // PlayerManager.Instance.UseSkill();
+        // 플레이서 스킬 사용. 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerManager.Instance.UseSkill();
+        }
+       
 
     }
     // 캐릭터 이동
@@ -133,13 +119,18 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
-
-    // 탑뷰 마우스 상호작용
+    // 탑뷰  마우스 상호작용
     public void TopViewInteract()
     {
+        // UI 버튼 위에 무시.
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         // 마우스로 클릭한 설치 타일 (6번 레이어만)
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 80f, _towerTileLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, 75f, _towerTileLayer))
         {
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)
@@ -166,6 +157,12 @@ public class PlayerCharacter : MonoBehaviour
     private void UpdateAnimation(bool isMoving)
     {
         _anim.SetBool("isRunning", isMoving);
+    }
+
+    // 맵 경계 MapManager 에서 가져옴.
+    public void SetGround(Collider ground)
+    {
+        _ground = ground;
     }
 
     // 맵 경계 바운더리
