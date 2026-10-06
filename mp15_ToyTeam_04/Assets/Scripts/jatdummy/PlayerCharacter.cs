@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class PlayerCharacter : MonoBehaviour
@@ -121,6 +122,11 @@ public class PlayerCharacter : MonoBehaviour
     // 탑뷰  마우스 상호작용
     public void TopViewInteract()
     {
+        // UI 버튼 위에 무시.
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
 
         // 마우스로 클릭한 설치 타일 (6번 레이어만)
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
