@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour
             if (_equipSkill == EPlayerSkill.TimeFreeze)
                 monster.ApplyTimeFreeze(FreezeDuration);
             else if (_equipSkill == EPlayerSkill.Disaster)
-                monster.SkillDamage(DisasterPer);
+                monster.SkillDamage((int)DisasterPer);
         }
     }
     public void SelectTile(Tile tile)
