@@ -5,6 +5,8 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
 
+    [SerializeField] private Tower _towerPrefab;
+
     [SerializeField] private Monster _normalmonsterPrefab1;
     [SerializeField] private Monster _normalmonsterPrefab2;
     [SerializeField] private Monster _elitemonsterPrefab1;
@@ -12,6 +14,8 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Monster _bossmonsterPrefab1;
     [SerializeField] private Monster _bossmonsterPrefab2;
     [SerializeField] private Map _curMap;
+
+    public ObjectPool<Tower> _towerPool;
 
     public ObjectPool<Monster> _monsterPool;
     public ObjectPool<Monster> _monsterPool2;
@@ -43,6 +47,9 @@ public class PoolManager : MonoBehaviour
 
     private void Start()
     {
+        _towerPool = new ObjectPool<Tower>(
+            _towerPrefab, 26, transform);
+
         // 기존 오브젝트 풀 생성
         _monsterPool = new ObjectPool<Monster>(
             _normalmonsterPrefab1,

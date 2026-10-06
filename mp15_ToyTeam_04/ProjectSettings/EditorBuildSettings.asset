@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Seung611/Seung611_TitleScene.unity
-    guid: 4b5ac472b4db10740b259043933016ce
+    path: Assets/Scenes/Title_Scene.unity
+    guid: 58337fae8ee66a64281ec07fa9ef7bc7
   - enabled: 1
-    path: Assets/Scenes/Seung611/Seung611_Test.unity
-    guid: bb539fded138cd0429409e3ad297b997
-  - enabled: 1
-    path: Assets/Scenes/Seung611/Seung611_UI.unity
-    guid: 522da824d37c33947927056b53f7222f
+    path: Assets/Scenes/Game_Scene.unity
+    guid: 1275f22ca1d8a364b9c64bf4d185ca4b
   m_configObjects: {}
