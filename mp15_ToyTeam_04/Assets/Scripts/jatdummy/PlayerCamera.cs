@@ -18,9 +18,10 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private bool _zoomToCursor = true; // 마우스가 가리키는 곳으로 확대
 
 
-    public bool _isTopView;
+    private bool _isTopView;
     private bool _isPlaying;
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
+    private Vector3 _topViewStartPosition; // 탑뷰 카메라 위치 기억
 
     // 지금 탑뷰인지
     // public bool CameraCursor =>
@@ -35,6 +36,7 @@ public class PlayerCamera : MonoBehaviour
         }
 
         _topViewTarget = _topViewCam.transform.position;
+        _topViewStartPosition = _topViewCam.transform.position;
         //CameraRoutine();
 
         // 로비 일 때. 아닐 때 카메라.
@@ -46,10 +48,12 @@ public class PlayerCamera : MonoBehaviour
         }
 
         else LobbyStopCamera();
+
     }
 
     private void Update()
     {
+
         if (!_isPlaying) return;
         
         if (!_isTopView) return; 
@@ -60,17 +64,24 @@ public class PlayerCamera : MonoBehaviour
         // 목표 위치로 부드럽게 이동
         Transform cam = _topViewCam.transform;
         cam.position = Vector3.Lerp(cam.position, _topViewTarget, _smoothSpeed * Time.deltaTime);
+
+
+        //
     }
 
     public void LobbyStartCamera()
     {
         _isPlaying = true;
         _isTopView = false;
+        _topViewTarget = _topViewStartPosition;
+        _topViewCam.transform.position = _topViewStartPosition;
         CameraRoutine();
     }
     public void LobbyStopCamera()
     {
         _isPlaying = false;
+        _isTopView = true;
+        CameraRoutine();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
