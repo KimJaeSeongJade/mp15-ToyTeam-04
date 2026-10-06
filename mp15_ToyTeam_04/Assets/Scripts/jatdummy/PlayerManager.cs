@@ -73,10 +73,6 @@ public class PlayerManager : MonoBehaviour
             _skillCoolTimer -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.O)) OffPlayer();
-        
-        if (Input.GetKeyDown(KeyCode.I)) OnPlayer();
-
     }
 
 
