@@ -11,7 +11,7 @@ public class TowerSpecPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _towerName;
     [SerializeField] private TextMeshProUGUI _towerDescription;
     [SerializeField] private List<Button> _towerButton;
-    [SerializeField] private Button _selectButton;
+    [SerializeField] private List<Image> _towerImage;
     [SerializeField] private Button _escButton;
     
     private TowerState[] _towerStates;
@@ -26,7 +26,6 @@ public class TowerSpecPopUp : MonoBehaviour
         _towerButton[0].onClick.AddListener(Tower0Select);
         _towerButton[1].onClick.AddListener(Tower1Select);
         _towerButton[2].onClick.AddListener(Tower2Select);
-        _selectButton.onClick.AddListener(SelectTower);
         _escButton.onClick.AddListener(Esc);
     }
 
@@ -35,7 +34,6 @@ public class TowerSpecPopUp : MonoBehaviour
         _towerButton[0].onClick.RemoveListener(Tower0Select);
         _towerButton[1].onClick.RemoveListener(Tower1Select);
         _towerButton[2].onClick.RemoveListener(Tower2Select);
-        _selectButton.onClick.RemoveListener(SelectTower);
         _escButton.onClick.RemoveListener(Esc);
     }
 
