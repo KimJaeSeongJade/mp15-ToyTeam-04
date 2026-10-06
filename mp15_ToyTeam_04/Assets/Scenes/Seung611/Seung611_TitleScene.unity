@@ -764,6 +764,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2564496765575915303, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
+    - target: {fileID: 2564496765575915303, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
+    - target: {fileID: 2564496765575915303, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2959923020511004112, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: m_text
       value: "\uC2DC\uC791"
@@ -811,6 +823,14 @@ PrefabInstance:
     - target: {fileID: 4326805447104504385, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370328609002858284, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_Name
+      value: '[Button] FireTower'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901293509060094898, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_Name
+      value: '[Button] ArrowTower'
       objectReference: {fileID: 0}
     - target: {fileID: 5855978387728307232, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: _towerButton.Array.size
@@ -887,6 +907,10 @@ PrefabInstance:
     - target: {fileID: 6344937599181906981, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992284266521088420, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_Transition
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7353096365758356912, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: m_Pivot.x
@@ -989,8 +1013,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
     - target: {fileID: 7929821247840616191, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
+    - target: {fileID: 7929821247840616191, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190584721775297845, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
+      propertyPath: m_Name
+      value: '[Button] IceTower'
       objectReference: {fileID: 0}
     - target: {fileID: 8775454823288183844, guid: c5917e18f4997cd4ca1aad17b5c9c97c, type: 3}
       propertyPath: m_IsActive
