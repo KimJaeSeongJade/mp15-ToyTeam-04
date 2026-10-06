@@ -3,25 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable] public class MonsterWaveData
-{
-    public EMonsterType MonsterType;
-    public int MonstersNumber;
-}
 
-[System.Serializable]
-public class WaveData
-{
-    public MonsterWaveData[] Monsters;
-}
 
 public class Stage : MonoBehaviour
+
 {
     [SerializeField] public int StageNumber = 1;
     [SerializeField] public int WaveNumber = 1;
     [SerializeField] private int MonstersNumber;
     [SerializeField] private int StageClearReward;
-    [SerializeField] private WaveData[] _waveData;
     [SerializeField] private float _spawnInterval = 1.0f;
     [SerializeField] private float _waveInterval = 3.0f;
     private Map _curMap;
@@ -34,7 +24,10 @@ public class Stage : MonoBehaviour
     private int _currentStageLife;
     private bool _isStageFailed;
     
-   
+    private const int WAVE_COUNT = 5;
+    private int TotalMonsterNumber;
+    //팝업 누르면 웨이브 시작
+    private bool _waitNextWave = false;
  
     
     
@@ -50,6 +43,10 @@ public class Stage : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
             MonsterGenerate();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            NextWave();
         }
         
     }
@@ -68,9 +65,9 @@ public class Stage : MonoBehaviour
         
         Debug.Log(StageNumber + " 스테이지 시작");
         
-        for (int i = 0; i < _waveData.Length; i++)
+        for (int wave = 1; wave <= WAVE_COUNT; wave++)
         {
-            WaveNumber = i + 1;
+            WaveNumber = wave;
             Debug.Log(
                 "===== "
                 + WaveNumber
@@ -102,29 +99,32 @@ public class Stage : MonoBehaviour
             
             Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
 
-
             // 마지막 웨이브가 아니면 대기
-            if (i < _waveData.Length - 1)
+            if (wave < WAVE_COUNT)
             {
-                Debug.Log("다음 웨이브까지 " + _waveInterval + "초"
-                );
-                
-                yield return new WaitForSeconds(
-                    _waveInterval
-                );
+                // NextWave()가 호출될 때까지 대기 (여기서 팝업 띄우기)
+                _waitNextWave = true;
+
+                while (_waitNextWave)
+                {
+                    yield return null;
+                }
+
+                Debug.Log("다음 웨이브까지 " + _waveInterval + "초");
+
+                yield return new WaitForSeconds(_waveInterval);
             }
         }
 
-        // 웨이브 끝
-        if (IsStageClear() == true)
-        {
-            StageClearReward = StageNumber * 500;
-            
-            Debug.Log(StageNumber + " 스테이지 클리어");
-            Debug.Log("클리어 보상 : " + StageClearReward);
-        }
-        _isStageRunning = false;
+
     }
+    
+    // 팝업 일때는 어떻게 연동 할지
+    public void NextWave()
+    {
+        _waitNextWave = false;
+    }
+    
 
 
     public void MonsterGenerate()
@@ -142,41 +142,38 @@ public class Stage : MonoBehaviour
             Debug.LogError("Map과 출발점, 도착점을 확인해주세요.");
             return;
         }
-
-        if (_waveData == null || _waveData.Length == 0)
-        {
-            Debug.LogError("웨이브를 설정해주세요.");
-            return;
-        }
-
-        // 시작 전에 모든 웨이브 설정 확인
-        for (int i = 0; i < _waveData.Length; i++)
-        {
-            WaveData wave = _waveData[i];
-
-            if (wave == null ||
-                wave.Monsters == null ||
-                wave.Monsters.Length == 0)
-            {
-                Debug.LogError((i + 1) + "웨이브의 몬스터 목록이 없습니다.");
-                return;
-            }
-
-            for (int j = 0; j < wave.Monsters.Length; j++)
-            {
-                MonsterWaveData monsterData = wave.Monsters[j];
-
-                if (PoolManager.Instance == null)
-                {
-                    Debug.LogError("PoolManager가 없습니다.");
-                    return;
-                }
- 
-            }
-        }
-
-        StartCoroutine(StageStart());
+        
+        StartCoroutine(StageLoop());
+        
     }
+    
+    private IEnumerator StageLoop()
+    {
+        _isStageRunning = true;
+        _isStageFailed = false;
+        StageNumber = 1;
+
+        while (_isStageFailed == false)
+        {
+            // 스테이지 하나(5웨이브) 진행
+            yield return StartCoroutine(StageStart());
+
+            if (_isStageFailed)
+            {
+                break;
+            }
+
+            // 다음 스테이지로
+            StageNumber = StageNumber + 1;
+
+            Debug.Log("다음 스테이지까지 " + _waveInterval + "초");
+
+            yield return new WaitForSeconds(_waveInterval);
+        }
+
+        _isStageRunning = false;
+    }
+    
     
 
 
@@ -184,47 +181,95 @@ public class Stage : MonoBehaviour
     {
         // 이전 웨이브 몬스터 목록 초기화
         _spawnedMonsters.Clear();
+        TotalMonsterNumber = 0;
         MonstersNumber = 0;
+
+        int normalCount = GetNormalCount();
+        int eliteCount = GetEliteCount();
+        int bossCount = GetBossCount();
         
-        WaveData currentWave = _waveData[WaveNumber - 1];
+        TotalMonsterNumber = normalCount + eliteCount + bossCount;
         
-        // 이번 웨이브 전체 몬스터 수 계산
-        for (int i = 0; i < currentWave.Monsters.Length; i++)
+        EMonsterType normalType;
+        EMonsterType eliteType;
+        EMonsterType bossType;
+
+        if (StageNumber % 2 == 1)
         {
-            MonstersNumber += currentWave.Monsters[i].MonstersNumber;
+            normalType = EMonsterType.Normal1;
+            eliteType = EMonsterType.Elite1;
+            bossType = EMonsterType.Boss1;
+        }
+        
+        else 
+        {
+            normalType = EMonsterType.Normal2;
+            eliteType = EMonsterType.Elite2;
+            bossType = EMonsterType.Boss2;
         }
 
-
-        Debug.Log(WaveNumber + " 웨이브 몬스터 수 : " + MonstersNumber);
-
-
-        // 설정된 순서대로 생성
-        for (int i = 0;
-             i < currentWave.Monsters.Length;
-             i++)
+        // 노말 몬스터 생성
+        for (int i = 0; i < normalCount; i++)
         {
-            MonsterWaveData monsterData =
-                currentWave.Monsters[i];
-
-
-            for (int j = 0;
-                 j < monsterData.MonstersNumber;
-                 j++)
+            if (_isStageFailed)
             {
-                if (_isStageFailed)
-                {
-                    yield break;
-                }
-                
-                CreateMonster(
-                    monsterData.MonsterType
-                );
-                
-                yield return new WaitForSeconds(
-                    _spawnInterval
-                );
+                yield break;
             }
+            
+            CreateMonster(normalType);
+            yield return new WaitForSeconds(_spawnInterval);
         }
+        
+        // 엘몬 생성
+        for (int i = 0; i < eliteCount; i++)
+        {
+            if (_isStageFailed)
+            {
+                yield break;
+            }
+            
+            CreateMonster(eliteType);
+            yield return new WaitForSeconds(_spawnInterval);
+
+        }
+        
+        // 보스몬스터 생성
+        for (int i = 0; i < bossCount; i++)
+        {
+            if (_isStageFailed)
+            {
+                yield break;
+            }
+            
+            CreateMonster(bossType);
+            yield return new WaitForSeconds(_spawnInterval);
+
+        }
+       
+    }
+
+    private int GetNormalCount()
+    {
+        return (StageNumber * 3) + (WaveNumber / 3) + (WaveNumber);
+    }
+
+    private int GetEliteCount()
+    {
+        if (WaveNumber < 3)
+        {
+            return 0;
+        }
+        return (WaveNumber / 2);
+    }
+
+    private int GetBossCount()
+    {
+        if (WaveNumber < 5)
+        {
+            return 0;
+        }
+
+        return (StageNumber / 10) + (WaveNumber / 5);
     }
 
 
@@ -328,27 +373,18 @@ public class Stage : MonoBehaviour
 
         _isStageFailed = true;
         _isStageRunning = false;
+        
+        // 진행 중이던 스테이지/웨이브 코루틴 모두 정지
+        StopAllCoroutines();
+        
 
         Debug.Log("스테이지 패배");
         // 스테이지 패배 시 UI 추가 필요
         
-        
     }
-
 
     
-    private bool IsStageClear()
-    {
-        if (_isStageFailed)
-        {
-            return false;
-        }
 
-        if (WaveNumber == _waveData.Length
-            && IsWaveClear() == true)
-        { return true; }
-        return false;
-    }
     
     
 }

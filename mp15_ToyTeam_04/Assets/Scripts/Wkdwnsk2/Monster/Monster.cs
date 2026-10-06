@@ -118,7 +118,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(false,3);
+            TakeDamage(false,100);
 
             Debug.Log(_monsterName + " 현재 체력 : " + currentHealth);
         }
