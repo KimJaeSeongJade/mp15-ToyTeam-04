@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 public enum EPlayerSkill
 {
-    None,
+    None = -1,
     TimeFreeze = 0,       
     Disaster=1
 }
+*/
 
 public class PlayerManager : MonoBehaviour
 {
@@ -20,15 +22,29 @@ public class PlayerManager : MonoBehaviour
     // 일단 60초로 고정.
     private const float SKILL_COOL_TIME = 60f; 
     // 남은 시간
+    
     private float _skillCoolTimer;
-    [SerializeField] private EPlayerSkill _equipSkill = EPlayerSkill.TimeFreeze;
-    // 시간 동결 지속 시간 (초)
-    public float FreezeDuration = 3f;     // 시간 동결 지속 시간 (초)
-    // 20 으로 보내기
-    public float DisasterPer = 20f;   // 20 으로 보내기
-
     public float SkillCoolTimer => _skillCoolTimer; // Ui 표시해야지.
+    // [SerializeField] private EPlayerSkill _equipSkill = EPlayerSkill.TimeFreeze;
+    // 시간 동결 지속 시간 (초)
+    // public float FreezeDuration = 3f;     // 시간 동결 지속 시간 (초)
+    // 20 으로 보내기
+    // public float DisasterPer = 20f;   // 20 으로 보내기
+    
+    private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
+    {
+        { ETowerType.ArrowTower, new ArrowTower() },
+        { ETowerType.FireTower,  new FireTower()  },
+        { ETowerType.IceTower,   new IceTower()   }
+    };
 
+    // 타워 능력
+    private Dictionary<ETowerType, TowerAbility> _towerAbilities = new Dictionary<ETowerType, TowerAbility>
+    {
+        { ETowerType.ArrowTower, new TowerAbility(ETowerType.ArrowTower) },
+        { ETowerType.FireTower,  new TowerAbility(ETowerType.FireTower)  },
+        { ETowerType.IceTower,   new TowerAbility(ETowerType.IceTower)   }
+    };
 
     private void Awake()
     {
@@ -50,6 +66,21 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    // 타워 스텟 가져다가
+    public TowerState GetTowerState(ETowerType type)
+    {
+        _towerStates.TryGetValue(type, out TowerState state);
+        return state;
+    }
+
+    // 어빌리티 가져다가
+    public TowerAbility GetTowerAbility(ETowerType type)
+    {
+        _towerAbilities.TryGetValue(type, out TowerAbility ability);
+        return ability;
+    }
+
+    /* 나중에 확인
     public void EquipSkill(EPlayerSkill skill)
     {
         _equipSkill = skill;
@@ -74,28 +105,15 @@ public class PlayerManager : MonoBehaviour
             if (_equipSkill == EPlayerSkill.TimeFreeze)
                 monster.ApplyTimeFreeze(FreezeDuration);
             else if (_equipSkill == EPlayerSkill.Disaster)
-                monster.SkillDamage((int)DisasterPer);
+                monster.SkillDamage((int)DisasterPer); // 이거 int로만 들어가는데 맞나요?
         }
     }
+    // freezeDuration, DisasterPer  Monster 코드에서 확인하기.
+    */
+
     public void SelectTile(Tile tile)
     {
         _selectedTile = tile;
-
-        // 테스트 로그
-        Debug.Log($"타일 선택: {tile.name} (타워 있음: {tile.IsTower})");
     }
-
-
-    private void Interact()
-    {
-
-
-    }
-
-    private void TopViewInteract()
-    {
-        // 진짜 어케해야하지..
-    }
-
 
 }
