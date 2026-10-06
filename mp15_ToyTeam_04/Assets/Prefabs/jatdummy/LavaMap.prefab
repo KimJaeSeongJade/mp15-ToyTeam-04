@@ -1912,6 +1912,7 @@ GameObject:
   - component: {fileID: 606907326292633201}
   - component: {fileID: 3561002719576580849}
   - component: {fileID: 2980542710803188281}
+  - component: {fileID: 4123525099872647395}
   m_Layer: 6
   m_Name: TowerTile19
   m_TagString: Untagged
@@ -1999,6 +2000,27 @@ MonoBehaviour:
   _tileNumber: 19
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &4123525099872647395
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490567429023617872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &497492600297404696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,6 +4086,7 @@ GameObject:
   - component: {fileID: 2957438888961865087}
   - component: {fileID: 5855439228219000315}
   - component: {fileID: 2300517150744858151}
+  - component: {fileID: 4263576870861249991}
   m_Layer: 6
   m_Name: TowerTile1
   m_TagString: Untagged
@@ -4151,6 +4174,27 @@ MonoBehaviour:
   _tileNumber: 1
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &4263576870861249991
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914604347067569800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &943275054229526113
 GameObject:
   m_ObjectHideFlags: 0
@@ -4903,6 +4947,7 @@ GameObject:
   - component: {fileID: 6245144289721423541}
   - component: {fileID: 5724214507659732097}
   - component: {fileID: 3799683857204791882}
+  - component: {fileID: 2899239587568277820}
   m_Layer: 6
   m_Name: TowerTile14
   m_TagString: Untagged
@@ -4990,6 +5035,27 @@ MonoBehaviour:
   _tileNumber: 14
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &2899239587568277820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075682594216463432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1094258381117036222
 GameObject:
   m_ObjectHideFlags: 0
@@ -8887,6 +8953,7 @@ GameObject:
   - component: {fileID: 8990715859935097623}
   - component: {fileID: 9029206552652626450}
   - component: {fileID: 102604628292973356}
+  - component: {fileID: 4521488847077684684}
   m_Layer: 6
   m_Name: TowerTile6
   m_TagString: Untagged
@@ -8974,6 +9041,27 @@ MonoBehaviour:
   _tileNumber: 6
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &4521488847077684684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963695364398233791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2063469032871832262
 GameObject:
   m_ObjectHideFlags: 0
@@ -9505,6 +9593,7 @@ GameObject:
   - component: {fileID: 904505680151186653}
   - component: {fileID: 5122167334696257999}
   - component: {fileID: 1683388924335273372}
+  - component: {fileID: 1635209721813982661}
   m_Layer: 6
   m_Name: TowerTile13
   m_TagString: Untagged
@@ -9592,6 +9681,27 @@ MonoBehaviour:
   _tileNumber: 13
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &1635209721813982661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235258644952707378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2252407063167241576
 GameObject:
   m_ObjectHideFlags: 0
@@ -9604,6 +9714,7 @@ GameObject:
   - component: {fileID: 4146017933796120140}
   - component: {fileID: 942650067771711157}
   - component: {fileID: 8075481969805916968}
+  - component: {fileID: 8806324739886685124}
   m_Layer: 6
   m_Name: TowerTile20
   m_TagString: Untagged
@@ -9691,6 +9802,27 @@ MonoBehaviour:
   _tileNumber: 20
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &8806324739886685124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252407063167241576}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2276947572009970049
 GameObject:
   m_ObjectHideFlags: 0
@@ -10383,6 +10515,7 @@ GameObject:
   - component: {fileID: 8000236288647787866}
   - component: {fileID: 4579437806609368520}
   - component: {fileID: 5641824367630407016}
+  - component: {fileID: 51604578144821035}
   m_Layer: 6
   m_Name: TowerTile9
   m_TagString: Untagged
@@ -10470,6 +10603,27 @@ MonoBehaviour:
   _tileNumber: 9
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &51604578144821035
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2559893600156612417}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2571835080268736060
 GameObject:
   m_ObjectHideFlags: 0
@@ -11847,6 +12001,7 @@ GameObject:
   - component: {fileID: 5718438086162081652}
   - component: {fileID: 7157849259923783075}
   - component: {fileID: 5552654593763363325}
+  - component: {fileID: 840521400835572146}
   m_Layer: 6
   m_Name: TowerTile8
   m_TagString: Untagged
@@ -11934,6 +12089,27 @@ MonoBehaviour:
   _tileNumber: 8
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &840521400835572146
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2900816063645583650}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2910933009148959886
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,6 +12751,7 @@ GameObject:
   - component: {fileID: 1038931574906126743}
   - component: {fileID: 3637642250809479039}
   - component: {fileID: 8500782669581505757}
+  - component: {fileID: 1166044536409714421}
   m_Layer: 6
   m_Name: TowerTile7
   m_TagString: Untagged
@@ -12662,6 +12839,27 @@ MonoBehaviour:
   _tileNumber: 7
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &1166044536409714421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2992802584543789201}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3018350452161423042
 GameObject:
   m_ObjectHideFlags: 0
@@ -13337,6 +13535,7 @@ GameObject:
   - component: {fileID: 2513438834424302731}
   - component: {fileID: 2770970141095392388}
   - component: {fileID: 5855048676769377655}
+  - component: {fileID: 3075426808425012675}
   m_Layer: 6
   m_Name: TowerTile0
   m_TagString: Untagged
@@ -13424,6 +13623,27 @@ MonoBehaviour:
   _tileNumber: 0
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3075426808425012675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195311508470967828}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3226980327226850373
 GameObject:
   m_ObjectHideFlags: 0
@@ -13820,6 +14040,7 @@ GameObject:
   - component: {fileID: 5161472205144494223}
   - component: {fileID: 2256102138675083554}
   - component: {fileID: 6235660747381166815}
+  - component: {fileID: 2130625101255948013}
   m_Layer: 6
   m_Name: TowerTile4
   m_TagString: Untagged
@@ -13907,6 +14128,27 @@ MonoBehaviour:
   _tileNumber: 4
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &2130625101255948013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344636150383512744}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3355197476949269976
 GameObject:
   m_ObjectHideFlags: 0
@@ -14737,6 +14979,7 @@ GameObject:
   - component: {fileID: 109975226435469145}
   - component: {fileID: 96475618639311209}
   - component: {fileID: 6225928936696672579}
+  - component: {fileID: 3802639907222573410}
   m_Layer: 6
   m_Name: TowerTile15
   m_TagString: Untagged
@@ -14824,6 +15067,27 @@ MonoBehaviour:
   _tileNumber: 15
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3802639907222573410
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511064185542757312}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3524447013538307366
 GameObject:
   m_ObjectHideFlags: 0
@@ -17126,6 +17390,7 @@ GameObject:
   - component: {fileID: 7335235750256552571}
   - component: {fileID: 5387646482028229669}
   - component: {fileID: 769376300777322231}
+  - component: {fileID: 5068474997452576484}
   m_Layer: 6
   m_Name: TowerTile2
   m_TagString: Untagged
@@ -17213,6 +17478,27 @@ MonoBehaviour:
   _tileNumber: 2
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &5068474997452576484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874951635174490853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3927087477161886898
 GameObject:
   m_ObjectHideFlags: 0
@@ -18488,6 +18774,7 @@ GameObject:
   - component: {fileID: 4386856413811469656}
   - component: {fileID: 8030547995352499307}
   - component: {fileID: 1411714079909699582}
+  - component: {fileID: 95337978416146586}
   m_Layer: 6
   m_Name: TowerTile3
   m_TagString: Untagged
@@ -18575,6 +18862,27 @@ MonoBehaviour:
   _tileNumber: 3
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &95337978416146586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375031186625374326}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4391518698546067439
 GameObject:
   m_ObjectHideFlags: 0
@@ -19233,6 +19541,7 @@ GameObject:
   - component: {fileID: 6792158679525207538}
   - component: {fileID: 4378846696092162159}
   - component: {fileID: 8952591752689585292}
+  - component: {fileID: 7057920895436575732}
   m_Layer: 6
   m_Name: TowerTile10
   m_TagString: Untagged
@@ -19320,6 +19629,27 @@ MonoBehaviour:
   _tileNumber: 10
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &7057920895436575732
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492574720813830869}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4506176353336943151
 GameObject:
   m_ObjectHideFlags: 0
@@ -20067,6 +20397,7 @@ GameObject:
   - component: {fileID: 3985991723686723605}
   - component: {fileID: 6246492896612523902}
   - component: {fileID: 957908484045597476}
+  - component: {fileID: 1562947942426028285}
   m_Layer: 6
   m_Name: TowerTile16
   m_TagString: Untagged
@@ -20154,6 +20485,27 @@ MonoBehaviour:
   _tileNumber: 16
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &1562947942426028285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4639775967701243810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4659259483449019134
 GameObject:
   m_ObjectHideFlags: 0
@@ -27476,6 +27828,7 @@ GameObject:
   - component: {fileID: 3945441393730057806}
   - component: {fileID: 5050627005744336453}
   - component: {fileID: 2642894298491466753}
+  - component: {fileID: 3094083338829744647}
   m_Layer: 6
   m_Name: TowerTile11
   m_TagString: Untagged
@@ -27563,6 +27916,27 @@ MonoBehaviour:
   _tileNumber: 11
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3094083338829744647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608775747891109065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6668268520039339151
 GameObject:
   m_ObjectHideFlags: 0
@@ -28012,6 +28386,7 @@ GameObject:
   - component: {fileID: 1428537030241221745}
   - component: {fileID: 6473602826364383653}
   - component: {fileID: 6360913336073853175}
+  - component: {fileID: 138866106735825714}
   m_Layer: 6
   m_Name: TowerTile12
   m_TagString: Untagged
@@ -28099,6 +28474,27 @@ MonoBehaviour:
   _tileNumber: 12
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &138866106735825714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765301508851355903}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6787867684567765224
 GameObject:
   m_ObjectHideFlags: 0
@@ -32695,6 +33091,7 @@ GameObject:
   - component: {fileID: 3957471830654896017}
   - component: {fileID: 9149226760392660659}
   - component: {fileID: 7398774579405588812}
+  - component: {fileID: 6215013191781920490}
   m_Layer: 6
   m_Name: TowerTile5
   m_TagString: Untagged
@@ -32782,6 +33179,27 @@ MonoBehaviour:
   _tileNumber: 5
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &6215013191781920490
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723838559367246324}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7723972235511646337
 GameObject:
   m_ObjectHideFlags: 0
@@ -32960,6 +33378,7 @@ GameObject:
   - component: {fileID: 3464133907865180567}
   - component: {fileID: 8009190284514040002}
   - component: {fileID: 4492614517340545892}
+  - component: {fileID: 3670434186445359413}
   m_Layer: 6
   m_Name: TowerTile17
   m_TagString: Untagged
@@ -33047,6 +33466,27 @@ MonoBehaviour:
   _tileNumber: 17
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3670434186445359413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756585529244884749}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7774320947184845711
 GameObject:
   m_ObjectHideFlags: 0
@@ -34580,6 +35020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151bb307d23df7646a260cdfb5c1eafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ground: {fileID: 0}
   TowerTile:
   - {fileID: 5855048676769377655}
   - {fileID: 2300517150744858151}
@@ -35389,6 +35830,7 @@ GameObject:
   - component: {fileID: 2441820377968067148}
   - component: {fileID: 3297566656035323557}
   - component: {fileID: 4415689363564855634}
+  - component: {fileID: 6624642305394114682}
   m_Layer: 6
   m_Name: TowerTile18
   m_TagString: Untagged
@@ -35476,6 +35918,27 @@ MonoBehaviour:
   _tileNumber: 18
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &6624642305394114682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276993906568351874}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8284743355813884318
 GameObject:
   m_ObjectHideFlags: 0

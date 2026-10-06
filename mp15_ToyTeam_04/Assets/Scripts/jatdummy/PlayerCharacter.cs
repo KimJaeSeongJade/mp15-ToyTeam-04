@@ -19,7 +19,6 @@ public class PlayerCharacter : MonoBehaviour
     private CharacterController _controller;
     private Transform _cam;
     private int _towerTileLayer;
-    private float _interactDistance = 1f;
 
     public TowerAbility ArrowTower = new TowerAbility(ETowerType.ArrowTower);
     public TowerAbility FireTower = new TowerAbility(ETowerType.FireTower);
@@ -74,7 +73,8 @@ public class PlayerCharacter : MonoBehaviour
             _playerCamera.SwitchCamera();
 
         // 플레이서 스킬 사용.
-        if (Input.GetKeyDown(KeyCode.Q)) ;
+        if (Input.GetKeyDown(KeyCode.Q)) Debug.Log("hihii");
+            
             // PlayerManager.Instance.UseSkill();
 
     }
@@ -121,11 +121,11 @@ public class PlayerCharacter : MonoBehaviour
         Vector3 rayStart = frontPoint;
         RaycastHit  hit;
 
-        Debug.DrawRay(rayStart, (transform.forward + Vector3.down).normalized * 3f, Color.red, 10f);
+        
+        // Debug.DrawRay(rayStart, (transform.forward + Vector3.down).normalized * 3f, Color.red, 10f); 레이 확인용.
 
         if (Physics.Raycast(rayStart, (transform.forward + Vector3.down).normalized, out hit, 3f, _towerTileLayer)) 
         {
-
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)
                 PlayerManager.Instance.SelectTile(tile);

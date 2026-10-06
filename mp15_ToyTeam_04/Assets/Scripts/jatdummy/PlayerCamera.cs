@@ -17,10 +17,13 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float _maxHeight = 45f;    // 최대 축소 (가장 높은 높이)
     [SerializeField] private bool _zoomToCursor = true; // 마우스가 가리키는 곳으로 확대
 
-    private bool _isTopView;
+
+    public bool _isTopView;
+    private bool _isPlaying;
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
 
     // 지금 탑뷰인지
+    // public bool CameraCursor =>
     public bool IsTopView => _isTopView;
 
     private void Start()
@@ -32,11 +35,23 @@ public class PlayerCamera : MonoBehaviour
         }
 
         _topViewTarget = _topViewCam.transform.position;
-        CameraRoutine();
+        //CameraRoutine();
+
+        // 로비 일 때. 아닐 때 카메라.
+        if (_isPlaying)
+        {
+            // _topViewTarget = _topViewCam.transform.position;
+
+            CameraRoutine();
+        }
+
+        else LobbyStopCamera();
     }
 
     private void Update()
     {
+        if (!_isPlaying) return;
+        
         if (!_isTopView) return; 
 
         TopViewMove();
@@ -45,6 +60,19 @@ public class PlayerCamera : MonoBehaviour
         // 목표 위치로 부드럽게 이동
         Transform cam = _topViewCam.transform;
         cam.position = Vector3.Lerp(cam.position, _topViewTarget, _smoothSpeed * Time.deltaTime);
+    }
+
+    public void LobbyStartCamera()
+    {
+        _isPlaying = true;
+        _isTopView = false;
+        CameraRoutine();
+    }
+    public void LobbyStopCamera()
+    {
+        _isPlaying = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // 카메라 전환 (tap 입력하면 변경.)
@@ -69,6 +97,7 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = _isTopView ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = _isTopView;
     }
+
 
     // 탑뷰 이동 wasd로
     private void TopViewMove()
