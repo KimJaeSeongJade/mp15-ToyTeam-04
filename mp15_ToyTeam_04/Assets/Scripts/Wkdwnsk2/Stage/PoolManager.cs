@@ -3,65 +3,113 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    [SerializeField] private Monster _monsterPrefab;
-    [SerializeField] private int _poolSize = 1;
+    public static PoolManager Instance;
+
+    [SerializeField] private Monster _normalmonsterPrefab1;
+    [SerializeField] private Monster _normalmonsterPrefab2;
+    [SerializeField] private Monster _elitemonsterPrefab1;
+    [SerializeField] private Monster _elitemonsterPrefab2;
+    [SerializeField] private Monster _bossmonsterPrefab1;
+    [SerializeField] private Monster _bossmonsterPrefab2;
     [SerializeField] private Map _curMap;
 
-    private ObjectPool<Monster> _objectPool;
-    private Dictionary<Gold, ObjectPool<Gold>> _goldPools  = new Dictionary<Gold, ObjectPool<Gold>>();
+    public ObjectPool<Monster> _monsterPool;
+    public ObjectPool<Monster> _monsterPool2;
+    public ObjectPool<Monster> _monsterPool3;
+    public ObjectPool<Monster> _monsterPool4;
+    public ObjectPool<Monster> _monsterPool5;
+    public ObjectPool<Monster> _monsterPool6;
+
+ 
+
+    private Dictionary<Gold, ObjectPool<Gold>> _goldPools
+        = new Dictionary<Gold, ObjectPool<Gold>>();
+
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-        _objectPool = new ObjectPool<Monster>(
-            _monsterPrefab,
-            _poolSize,
+        
+    }
+
+    private void Start()
+    {
+        // 기존 오브젝트 풀 생성
+        _monsterPool = new ObjectPool<Monster>(
+            _normalmonsterPrefab1,
+             20,
+            transform
+        );
+        
+        _monsterPool2 = new ObjectPool<Monster>(
+            _normalmonsterPrefab2,
+            20,
+            transform
+        );
+        _monsterPool3 = new ObjectPool<Monster>(
+            _elitemonsterPrefab1,
+            20,
+            transform
+        );
+        _monsterPool4 = new ObjectPool<Monster>(
+            _elitemonsterPrefab2,
+            20,
+            transform
+        );
+        _monsterPool5 = new ObjectPool<Monster>(
+            _bossmonsterPrefab1,
+            20,
+            transform
+        );
+        _monsterPool6 = new ObjectPool<Monster>(
+            _bossmonsterPrefab2,
+            20,
             transform
         );
     }
-    public bool IsReady()
-    {
-        return isActiveAndEnabled && _objectPool != null;
-    }
+    
 
-    public Monster GetMonster(
-        Vector3 spawnPosition,
-        Quaternion spawnRotation,
-        Transform endPoint)
-    {
-        return Monster.GetMonster(
-            _objectPool,
-            this,
-            spawnPosition,
-            spawnRotation,
-            endPoint
-        );
-    }
-    
-    public void ReturnMonster(Monster monster)
-    {
-        _objectPool.ReturnObject(monster);
-    }
-    
     public Gold GetGold(
         Gold prefab,
         Vector3 spawnPosition,
         Quaternion spawnRotation,
         float lifetime)
     {
-        // 프리팹별 풀 생성과 보관은 PoolManager가 담당
         if (!_goldPools.TryGetValue(prefab, out ObjectPool<Gold> pool))
         {
-            pool = new ObjectPool<Gold>(prefab, 0, transform);
+            pool = new ObjectPool<Gold>(
+                prefab,
+                0,
+                transform
+            );
+
             _goldPools.Add(prefab, pool);
         }
 
-        return Monster.GetGold(
+
+        Gold gold = pool.GetObject();
+
+        gold.SetObjectPool(
             pool,
-            spawnPosition,
-            spawnRotation,
             lifetime
         );
+
+        gold.transform.SetPositionAndRotation(
+            spawnPosition,
+            spawnRotation
+        );
+
+        pool.ActivateObject(gold);
+
+        return gold;
     }
-    
 }
