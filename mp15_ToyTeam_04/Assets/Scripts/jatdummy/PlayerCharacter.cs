@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 
 public class PlayerCharacter : MonoBehaviour
@@ -142,7 +141,6 @@ public class PlayerCharacter : MonoBehaviour
     public void TopViewInteract()
     {
         if (PlayerManager.Instance == null || Camera.main == null) return;
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;   // UI 위 클릭 무시
 
         // 마우스로 클릭한 설치 타일 (6번 레이어만)
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -156,7 +154,7 @@ public class PlayerCharacter : MonoBehaviour
     // 레이에 맞은 콜라이더에서 설치 타일 꺼내기 (Tile이 없거나 설치 타일이 아니면 null)
     private Tile GetTowerTile(Collider hitCollider)
     {
-        Tile tile = hitCollider.GetComponentInParent<Tile>();
+        Tile tile = hitCollider.GetComponent<Tile>();
         if (tile == null) return null;
 
         if (tile.ETileType != ETileType.Tower)
