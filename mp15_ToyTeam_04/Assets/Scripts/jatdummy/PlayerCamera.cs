@@ -107,8 +107,10 @@ public class PlayerCamera : MonoBehaviour
         bool isCursorFree = _isTopView || _isUIMode;
 
         // 탑뷰일시 3인칭 카메라 마우스 커서 케어
+        // 몇번 바꾸는지 모르겠네..
         // _playerCam.m_XAxis.m_InputAxisName = _isTopView ? "" : "Mouse X";
         // _playerCam.m_YAxis.m_InputAxisName = _isTopView ? "" : "Mouse Y";
+
         _playerCam.m_XAxis.m_InputAxisName = isCursorFree ? "" : "Mouse X";
         _playerCam.m_YAxis.m_InputAxisName = isCursorFree ? "" : "Mouse Y";
         _playerCam.m_XAxis.m_InputAxisValue = 0f;
@@ -157,7 +159,7 @@ public class PlayerCamera : MonoBehaviour
         ClampToGround();
     }
 
-    // 마우스가 가리키는 바닥 위치 구하기 (나중에 타워 타일 스크립트 보고 변경.)
+    // 마우스가 가리키는 바닥 위치 구하기 (나중에 타워 타일 스크립트 보고 변경 예정의 예정)
     private bool TryGetMouseGroundPoint(float groundY, out Vector3 point)
     {
         point = Vector3.zero;
