@@ -18,20 +18,12 @@ public class PlayerCharacter : MonoBehaviour
     private Animator _anim;
     private CharacterController _controller;
     private Transform _cam;
-    private LayerMask _towerTileLayer;
+    private int _towerTileLayer;
     private float _interactDistance = 1f;
 
     public TowerAbility ArrowTower = new TowerAbility(ETowerType.ArrowTower);
     public TowerAbility FireTower = new TowerAbility(ETowerType.FireTower);
     public TowerAbility IceTower = new TowerAbility(ETowerType.IceTower);
-
-    // public TowerState ArrowTower = new ArrowTower();
-    // public TowerState FireTower = new FireTower();
-    // public TowerState IceTower = new IceTower();
-
-
-
-
 
     private void Start()
     {
@@ -78,16 +70,14 @@ public class PlayerCharacter : MonoBehaviour
         }
 
         // 카메라 전환
-        if (Input.GetKeyDown(KeyCode.Tab) && _playerCamera != null)
+        if (Input.GetKeyDown(KeyCode.Tab))
             _playerCamera.SwitchCamera();
 
         // 플레이서 스킬 사용.
-        if (Input.GetKeyDown(KeyCode.Q) && PlayerManager.Instance != null)
-            PlayerManager.Instance.UseSkill();
+        if (Input.GetKeyDown(KeyCode.Q)) ;
+            // PlayerManager.Instance.UseSkill();
 
     }
-
-
     // 캐릭터 이동
     private void Move()
     {
@@ -127,28 +117,34 @@ public class PlayerCharacter : MonoBehaviour
     // 캐릭터 상호작용
     public void PlayerInteract()
     {
-        Vector3 frontPoint = transform.position + transform.forward * _interactDistance;
-        Vector3 rayStart = frontPoint + Vector3.up * 3f;
-        
-        if (!Physics.Raycast(rayStart, Vector3.down, out RaycastHit hit, 6f, _towerTileLayer, QueryTriggerInteraction.Ignore)) return;
+        Vector3 frontPoint = transform.position + Vector3.up;
+        Vector3 rayStart = frontPoint;
+        RaycastHit  hit;
 
-        Tile tile = GetTowerTile(hit.collider);
-        if (tile != null)
-            PlayerManager.Instance.SelectTile(tile);
+        Debug.DrawRay(rayStart, (transform.forward + Vector3.down).normalized * 3f, Color.red, 10f);
+
+        if (Physics.Raycast(rayStart, (transform.forward + Vector3.down).normalized, out hit, 3f, _towerTileLayer)) 
+        {
+
+            Tile tile = GetTowerTile(hit.collider);
+            if (tile != null)
+                PlayerManager.Instance.SelectTile(tile);
+        }
+
     }
+
 
     // 탑뷰 마우스 상호작용
     public void TopViewInteract()
     {
-        if (PlayerManager.Instance == null || Camera.main == null) return;
-
         // 마우스로 클릭한 설치 타일 (6번 레이어만)
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!Physics.Raycast(ray, out RaycastHit hit, 200f, _towerTileLayer, QueryTriggerInteraction.Ignore)) return;
-
-        Tile tile = GetTowerTile(hit.collider);
-        if (tile != null)
-            PlayerManager.Instance.SelectTile(tile);
+        if (Physics.Raycast(ray, out RaycastHit hit, 80f, _towerTileLayer))
+        {
+            Tile tile = GetTowerTile(hit.collider);
+            if (tile != null)
+                PlayerManager.Instance.SelectTile(tile);
+        } 
     }
 
     // 레이에 맞은 콜라이더에서 설치 타일 꺼내기 (Tile이 없거나 설치 타일이 아니면 null)
