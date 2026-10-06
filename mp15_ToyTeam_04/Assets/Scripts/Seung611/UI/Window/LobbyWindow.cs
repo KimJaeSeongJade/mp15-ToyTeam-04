@@ -17,10 +17,7 @@ public class LobbyWindow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _haveGlod;
     [SerializeField] private TowerSpecPopUp _towerSpecPopUp;
     TowerState[] _towerState = new TowerState[3];
-    // 스테이지에서 값 가져오기    
-    public int _haveGoldCount;
-    
-    private void Update() => HaveGold();
+
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
     
@@ -82,8 +79,8 @@ public class LobbyWindow : MonoBehaviour
         UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
     }
 
-    private void HaveGold()
+    public void HaveGlod(int gold)
     {
-        _haveGlod.text = "Gold: " + _haveGoldCount.ToString();
+        _haveGlod.text = "Gold: " + gold.ToString();
     }
 }

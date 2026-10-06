@@ -11,11 +11,8 @@ public class BattleWindow : MonoBehaviour
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
-    // 스테이지에서 값 가져오기
-    public int _haveGoldCount;
 
     private void Start() => gameObject.SetActive(true);
-    private void Update() => HaveGlod();
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
     
@@ -49,8 +46,8 @@ public class BattleWindow : MonoBehaviour
         // UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
-    private void HaveGlod()
+    public void HaveGlod(int gold)
     {
-        _haveGlod.text = "Gold: " + _haveGoldCount.ToString();
+        _haveGlod.text = "Gold: " + gold.ToString();
     }
 }
