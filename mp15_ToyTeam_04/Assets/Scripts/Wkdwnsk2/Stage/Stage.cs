@@ -5,7 +5,7 @@ using UnityEngine;
 
 [System.Serializable] public class MonsterWaveData
 {
-    public PoolManager MonsterPool;
+    public EMonsterType MonsterType;
     public int MonstersNumber;
 }
 
@@ -166,24 +166,12 @@ public class Stage : MonoBehaviour
             {
                 MonsterWaveData monsterData = wave.Monsters[j];
 
-                if (monsterData == null ||
-                    monsterData.MonsterPool == null)
+                if (PoolManager.Instance == null)
                 {
-                    Debug.LogError((i + 1) + "웨이브의 풀을 연결해주세요.");
+                    Debug.LogError("PoolManager가 없습니다.");
                     return;
                 }
-
-                if (monsterData.MonsterPool.IsReady() == false)
-                {
-                    Debug.LogError((i + 1) + "웨이브의 풀이 준비되지 않았습니다.");
-                    return;
-                }
-
-                if (monsterData.MonstersNumber <= 0)
-                {
-                    Debug.LogError("몬스터 수는 1 이상으로 설정해주세요.");
-                    return;
-                }
+ 
             }
         }
 
@@ -229,7 +217,7 @@ public class Stage : MonoBehaviour
                 }
                 
                 CreateMonster(
-                    monsterData.MonsterPool
+                    monsterData.MonsterType
                 );
                 
                 yield return new WaitForSeconds(
@@ -240,16 +228,15 @@ public class Stage : MonoBehaviour
     }
 
 
-    private void CreateMonster(PoolManager monsterPool)
+    private void CreateMonster(EMonsterType monsterType)
     {
-        Monster monster = monsterPool.GetMonster(
+        Monster monster = Monster.GetMonster(
+            monsterType,
             _curMap.SpawnPoint.position,
             _curMap.SpawnPoint.rotation,
             _curMap.ArrivalPoint
         );
-        
 
-        // 같은 객체가 웨이브 도중 재사용되면 중복 등록하지 않음
         if (_spawnedMonsters.Contains(monster) == false)
         {
             _spawnedMonsters.Add(monster);

@@ -42,8 +42,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     public Animator anim;
     
     // 오브젝트 풀 추가
-    private PoolManager _objectPool;    
-
+    private ObjectPool<Monster> _objectPool;
     private NavMeshAgent _navmesh;
 
     private int currentHealth;
@@ -223,7 +222,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     private IEnumerator DeadWait()
     {
         yield return new WaitForSeconds(2f);
-        _objectPool.ReturnMonster(this);
+        _objectPool.ReturnObject(this);
         
     }
     
@@ -236,11 +235,11 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         }
 
         
-        _objectPool.ReturnMonster(this);
+        _objectPool.ReturnObject(this);
         
     }
     
-    public void SetObjectPool(PoolManager objectPool)
+    public void SetObjectPool(ObjectPool<Monster> objectPool)
     {
         _objectPool = objectPool;
     }
@@ -313,35 +312,79 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
     // 몬스터 생성
     public static Monster GetMonster(
-        ObjectPool<Monster> pool,
-        PoolManager poolManager,
+        EMonsterType monsterType,
         Vector3 spawnPosition,
         Quaternion spawnRotation,
         Transform endPoint)
     {
+        ObjectPool<Monster> pool = null;
+
+
+        // 몬스터 종류에 맞는 풀 선택
+        if (monsterType == EMonsterType.Normal1)
+        { 
+            pool = PoolManager.Instance._monsterPool;
+        }
+        else if (monsterType == EMonsterType.Normal2)
+        {
+            pool = PoolManager.Instance._monsterPool2;
+        }
+        else if (monsterType == EMonsterType.Elite1)
+        {
+            pool = PoolManager.Instance._monsterPool3;
+        }
+        else if (monsterType == EMonsterType.Elite2)
+        {
+            pool = PoolManager.Instance._monsterPool4;
+        }
+        else if (monsterType == EMonsterType.Boss1)
+        {
+            pool = PoolManager.Instance._monsterPool5;
+        }
+        else if (monsterType == EMonsterType.Boss2)
+        {
+            pool = PoolManager.Instance._monsterPool6;
+        }
+
+
+        // 풀에서 몬스터 가져오기
         Monster monster = pool.GetObject();
 
-        monster.SetObjectPool(poolManager);
 
-        GoldDrop goldDrop =
-            monster.GetComponentInChildren<GoldDrop>(true);
+        // 자신이 어느 풀에서 나왔는지 저장
+        monster.SetObjectPool(pool);
+
+
+        GoldDrop goldDrop = monster.GetComponentInChildren<GoldDrop>(true);
 
         if (goldDrop != null)
         {
-            goldDrop.SetPoolManager(poolManager);
+            goldDrop.SetPoolManager(
+                PoolManager.Instance
+            );
         }
 
+
+        // 위치 설정
         monster.transform.SetPositionAndRotation(
             spawnPosition,
             spawnRotation
         );
 
-        monster.endPoint = endPoint;
 
+        // 목적지 설정
+        monster.endPoint = endPoint;
+        
         // 몬스터 활성화
         pool.ActivateObject(monster);
-
+        
         return monster;
+    }
+
+
+    public void ReturnMonster(Monster monster)
+    {
+        _objectPool.ReturnObject(monster);
     }
 
     public static Gold GetGold(
