@@ -61,10 +61,10 @@ public class PopUpUIManager : MonoBehaviour
     
     private void Init()
     {
-        UIManager.Instance.PopUp.Hp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.Hp.gameObject.SetActive(true);
         UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
         UIManager.Instance.PopUp.PlayerSkillPopUp.gameObject.SetActive(false);
-        UIManager.Instance.PopUp.MessagePopUp.gameObject.SetActive(false);
+        UIManager.Instance.PopUp.MessagePopUp.gameObject.SetActive(true);
         UIManager.Instance.PopUp.StageResultPopUp.gameObject.SetActive(false);
         UIManager.Instance.PopUp.TowerSpecPopUp.gameObject.SetActive(false);
         UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(false);

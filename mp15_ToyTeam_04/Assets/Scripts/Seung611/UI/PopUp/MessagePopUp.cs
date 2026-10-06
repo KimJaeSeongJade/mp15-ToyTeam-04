@@ -3,26 +3,41 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MessagePopUp : MonoBehaviour
+public class MessagePopUp : MonoBehaviour   
 {
-    [SerializeField] private TextMeshProUGUI _messageText;
+    private ObjectPool<Message> _messagePool;
+    public Message _message;
+    private void Start()
+    {
+        _messagePool = new ObjectPool<Message>(_message, 5, this.transform);
+    }
     
-    private void Update() => Message();
-
-    // private bool _notPayTower; 구매하고 싶은 타워가 가지고 있는 골드보다 더 클 때
-    // private bool // 
+    private KeyCode _messageKey = KeyCode.Space;
+    private bool _messagePopup => Input.GetKeyDown(_messageKey);
+    
     private string _notEnoughGold = "You don't have enough gold to buy the tower.";
 
-    private void Message()
+    private void Update()
     {
-        _messageText.text = _notEnoughGold;
-        /*if () bool 값 넣기
+        WarningMessage();
+    }
+
+    private void WarningMessage()
+    {
+        if (_messagePopup)
         {
-            _messageText.text = _notEnoughGold;
+            UIManager.Instance.PopUp.MessagePopUp.Message(_notEnoughGold);
         }
-        else if ()
+    }
+
+    public void Message(string text)
+    {
+        Message message = _messagePool.GetObject();
+        if (message == null)
         {
-            
-        }*/
+            return;
+        }
+        message.SetData(text, _messagePool);
+        _messagePool.ActivateObject(message);
     }
 }
