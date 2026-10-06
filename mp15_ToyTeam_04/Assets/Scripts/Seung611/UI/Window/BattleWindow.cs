@@ -46,7 +46,7 @@ public class BattleWindow : MonoBehaviour
 
     private void TowerSpecPopUp()
     {
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
+        // UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void HaveGlod()

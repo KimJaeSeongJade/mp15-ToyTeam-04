@@ -14,27 +14,27 @@ public class TowerSpecPopUp : MonoBehaviour
     [SerializeField] private Button _selectButton;
     [SerializeField] private Button _escButton;
     
-    private bool _tower1Selected = false;
-    private bool _tower2Selected = false;
-    private bool _tower3Selected = false;
+    private TowerState[] _towerStates;
+    private TowerState _tower;
+    private int _index;
     
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
-
+    
     private void BindEventButtons()
     {
-        _towerButton[0].onClick.AddListener(Tower1Selected);
-        _towerButton[1].onClick.AddListener(Tower2Selected);
-        _towerButton[2].onClick.AddListener(Tower3Selected);
+        _towerButton[0].onClick.AddListener(Tower0Select);
+        _towerButton[1].onClick.AddListener(Tower1Select);
+        _towerButton[2].onClick.AddListener(Tower2Select);
         _selectButton.onClick.AddListener(SelectTower);
         _escButton.onClick.AddListener(Esc);
     }
 
     private void UnbindEventButtons()
     {
-        _towerButton[0].onClick.RemoveListener(Tower1Selected);
-        _towerButton[1].onClick.RemoveListener(Tower2Selected);
-        _towerButton[2].onClick.RemoveListener(Tower3Selected);
+        _towerButton[0].onClick.RemoveListener(Tower0Select);
+        _towerButton[1].onClick.RemoveListener(Tower1Select);
+        _towerButton[2].onClick.RemoveListener(Tower2Select);
         _selectButton.onClick.RemoveListener(SelectTower);
         _escButton.onClick.RemoveListener(Esc);
     }
@@ -45,44 +45,38 @@ public class TowerSpecPopUp : MonoBehaviour
         // 선택된 타워 설지하는 것과 연동
     }
     
-    private void Tower1Selected()
+    public void SetData(TowerState[] stat, int index)
     {
-        _tower1Selected = true;
-        TowerSelectButton();
-        _tower1Selected = false;
+        _towerStates = stat;
+        _index = index;
+        TowerSelectButton(_towerStates[index]);
     }
 
-    private void Tower2Selected()
+    private void Tower0Select()
     {
-        _tower2Selected = true;
-        TowerSelectButton();
-        _tower2Selected = false;
+        _towerStates[0] = new ArrowTower();
+        TowerSelectButton(_towerStates[0]);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(0);
+    }
+    
+    private void Tower1Select()
+    {
+        _towerStates[1] = new FireTower();
+        TowerSelectButton(_towerStates[1]);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(1);
+    }
+    
+    private void Tower2Select()
+    {
+        _towerStates[2] = new IceTower();
+        TowerSelectButton(_towerStates[2]);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
     }
 
-    private void Tower3Selected()
+    private void TowerSelectButton(TowerState _state)
     {
-        _tower3Selected = true;
-        TowerSelectButton();
-        _tower3Selected = false;
-    }
-
-    public void TowerSelectButton()
-    {
-        if (_tower1Selected)
-        {
-            _towerName.text = $"ArrowTower";
-            _towerDescription.text = $"ArrowTower Description";
-        }
-        else if (_tower2Selected)
-        {
-            _towerName.text = $"FireTower";
-            _towerDescription.text = $"FireTower Description";
-        }
-        else if (_tower3Selected)
-        {
-            _towerName.text = $"IceTower";
-            _towerDescription.text = $"IceTower Description";
-        }
+        _towerName.text = _state.Name;
+        _towerDescription.text = _state.Explanation;
     }
 
     private void Esc()
