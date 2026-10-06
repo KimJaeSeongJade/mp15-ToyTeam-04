@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115e3cd1b5544144eb76ced5081e677a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmonsterType: 0
+  EmonsterType: 1
   _goldDrop: {fileID: 0}
   _monsterName: MonsterNormal2
   _monsterHealth: 30

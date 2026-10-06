@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     public Transform endPoint;
     public float stoppingDistanceThreshold = 0.1f;
 
-    public Animator anim;
+    private Animator anim;
     
     // 오브젝트 풀 추가
     private ObjectPool<Monster> _objectPool;
@@ -118,7 +118,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(false,3);
+            TakeDamage(false,100);
 
             Debug.Log(_monsterName + " 현재 체력 : " + currentHealth);
         }
@@ -215,8 +215,12 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         anim.SetBool("IsDead", true);
         StartCoroutine(DeadWait());
-
-
+        
+        // 플레이어 골드 증가
+        if (GoldManager.Instance != null)
+        {
+            GoldManager.Instance.AddGold(_dropGold);
+        }
     }
 
     private IEnumerator DeadWait()
