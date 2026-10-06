@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /*
@@ -9,13 +10,17 @@ public enum EPlayerSkill
     TimeFreeze = 0,       
     Disaster=1
 }
+
 */
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    private PlayerCharacter _character;
+    // 시작위치
+    private static readonly Vector3 START_POSITION = new Vector3(0f, 1f, 0f);
+    [SerializeField] private PlayerCharacter _character;
+    
     private Tile _selectedTile;   // 팝업 대상 타일
     public Tile SelectedTile => _selectedTile; 
 
@@ -25,12 +30,15 @@ public class PlayerManager : MonoBehaviour
     
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // Ui 표시해야지.
+    
     // [SerializeField] private EPlayerSkill _equipSkill = EPlayerSkill.TimeFreeze;
     // 시간 동결 지속 시간 (초)
-    // public float FreezeDuration = 3f;     // 시간 동결 지속 시간 (초)
+    // public float FreezeDuration = 3f; 
     // 20 으로 보내기
-    // public float DisasterPer = 20f;   // 20 으로 보내기
+    // public float DisasterPer = 20f; 
     
+
+
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
         { ETowerType.ArrowTower, new ArrowTower() },
@@ -55,7 +63,7 @@ public class PlayerManager : MonoBehaviour
         }
         Instance = this;
 
-        _character = GetComponent<PlayerCharacter>();
+        //_character = GetComponentInChildren<PlayerCharacter>();
     }
 
     public void Update()
@@ -64,7 +72,38 @@ public class PlayerManager : MonoBehaviour
         {
             _skillCoolTimer -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.O)) OffPlayer();
+        
+        if (Input.GetKeyDown(KeyCode.I)) OnPlayer();
+
     }
+
+
+
+
+    [SerializeField]private PlayerCamera _playerCamera;
+    
+    // 맵 켜질 때 - 끄고 위치 옮기고 다시 켜기
+    public void OnPlayer( )
+    {
+        _character.gameObject.SetActive(false);
+        _character.transform.position = START_POSITION;
+        _character.gameObject.SetActive(true);
+        _playerCamera.LobbyStartCamera();
+    }
+
+    // 로비 갈 때 - 캐릭터 끄기
+    public void OffPlayer()
+    {
+        _playerCamera.LobbyStopCamera();
+        _character.gameObject.SetActive(false);
+    }
+
+    // 카메라 커서 끄기
+    // 키면 0 1.5 0 
+    // 끄면 위치 초기화
+    // 로비 에서 막고 다시 전투화면 켜고.
 
     // 타워 스텟 가져다가
     public TowerState GetTowerState(ETowerType type)
@@ -80,7 +119,8 @@ public class PlayerManager : MonoBehaviour
         return ability;
     }
 
-    /* 나중에 확인
+    /* 스킬 연결 나중에 확인
+    
     public void EquipSkill(EPlayerSkill skill)
     {
         _equipSkill = skill;
@@ -109,7 +149,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
     // freezeDuration, DisasterPer  Monster 코드에서 확인하기.
-    */
+    
+     */
 
     public void SelectTile(Tile tile)
     {
