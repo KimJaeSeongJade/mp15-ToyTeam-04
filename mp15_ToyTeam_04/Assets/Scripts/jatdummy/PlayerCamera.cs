@@ -27,9 +27,8 @@ public class PlayerCamera : MonoBehaviour
     
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
     private Vector3 _topViewStartPosition; // 탑뷰 카메라 위치 기억
-
+    
     // 지금 탑뷰인지
-    // public bool CameraCursor =>
     public bool IsTopView => _isTopView;
 
     public void Start()
@@ -91,6 +90,7 @@ public class PlayerCamera : MonoBehaviour
         _isTopView = !_isTopView;
         CameraRoutine();
     }
+
     // 팝업시 3인칭에서 커서도 풀고 카메라 회전도 멈추고 하..
     public void SetUIMode(bool isUIMode)
     {

@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     // 시작위치
     private static readonly Vector3 START_POSITION = new Vector3(0f, 1.5f, 0f);
     [SerializeField] private PlayerCharacter _character;
-    
+        
     private Tile _selectedTile;   // 팝업 대상 타일
     public Tile SelectedTile => _selectedTile;
     
@@ -94,6 +94,9 @@ public class PlayerManager : MonoBehaviour
     // 맵 켜질 때 끄고 위치 옮기고 다시 켜기
     public void OnPlayer( )
     {
+        // UI 전투 화면 부루기
+        UIManager.Instance.Window.BattleWindowOpen();
+
         // 이걸로 부르니까 맵 바닥을 인식을 못하던데... 그래서 추가
         Collider ground = CurrentGround();
         _character.SetGround(ground);
@@ -103,15 +106,20 @@ public class PlayerManager : MonoBehaviour
         _character.transform.position = START_POSITION;
         _character.gameObject.SetActive(true);
         _playerCamera.LobbyStartCamera();
-
     }
 
     // 로비 갈 때 캐릭터 끄기
     public void OffPlayer()
     {
+        // UI 로비 화면 부르기
+
         _playerCamera.LobbyStopCamera();
-        _character.gameObject.SetActive(false);
         
+        // 로비 화면 열기
+        UIManager.Instance.Window.LobbyWindowOpen();
+        
+        _character.gameObject.SetActive(false);
+
         // 이 때(플레이어 끌 때) 맵에서 처리할거 있으면 추가하겠습니다.
     }
 
@@ -185,6 +193,7 @@ public class PlayerManager : MonoBehaviour
         _selectedTile._tower = tower;
         _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
         PoolManager.Instance._towerPool.ActivateObject(tower);
+
     }
 
     // 타워 강화
