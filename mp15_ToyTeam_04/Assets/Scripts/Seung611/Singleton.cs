@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private bool _destroyOnLoad;
-    
     private static T _instance;
     public static T Instance
     {
@@ -32,11 +30,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             _instance = this as T;
             DontDestroyOnLoad(_instance.gameObject);
         }
-    }
-
-    private void DestroyOnLoad()
-    {
-        if (_destroyOnLoad) return;
-        DontDestroyOnLoad(gameObject);
     }
 }
