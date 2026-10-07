@@ -45,7 +45,9 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     private NavMeshAgent _navmesh;
 
     private int currentHealth;
-    private bool isDead;
+    public bool IsDead => _isDead;
+    private bool _isDead;
+
 
     private bool hasUsedSurvival; // 보스 무적 스킬 썼는지
     private bool isSurvivalActive;  // 생존 스킬 활성화 중인지
@@ -91,7 +93,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         _currentRange = _bossRange;
         _currentDropGold = _dropGold;
         currentHealth = _monsterHealth;
-        isDead = false;
+        _isDead = false;
         isSurvivalActive = false;
         _timeStopCoroutine = null;
 
@@ -190,7 +192,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
     public void TakeDamage(bool per, int damage)
     {
-        if (isDead || isSurvivalActive)
+        if (_isDead || isSurvivalActive)
         {
             return;
         }
@@ -267,7 +269,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
     private void MonsterDead()
     {
-        if (isDead)
+        if (_isDead)
         {
             return;
         }
@@ -278,7 +280,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         GetComponent<Collider>().enabled = false; // 사망시 다른 몬스터가 멈칫하지 않도록 콜리더 끄기
 
 
-        isDead = true;
+        _isDead = true;
         Debug.Log(_monsterName + " 사망");
 
         anim.SetBool("IsDead", true);
@@ -320,7 +322,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     //스킬 구현
     public void ApplyTimeFreeze(float duration)
     {
-        if (isDead)
+        if (_isDead)
         {
             return;
         }
@@ -357,7 +359,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         if (_navmesh.enabled &&
             _navmesh.isOnNavMesh &&
-            !isDead)
+            !_isDead)
         {
             _navmesh.isStopped = false;
         }
@@ -368,7 +370,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     // 전체 공격 수정 필요
     public void SkillDamage(int percent)
     {
-        if (isDead)
+        if (_isDead)
         {
             return;
         }
@@ -497,7 +499,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
        // 타워 공격 효과 적용 (IDamageable)
     public void BulletAffect(BulletAffect affect)
     {
-        if (affect == null || isDead)
+        if (affect == null || _isDead)
         {
             return;
         }
@@ -554,7 +556,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
             yield return new WaitForSeconds(1f);
             time = time + 1f;
 
-            if (isDead)
+            if (_isDead)
             {
                 break;
             }
@@ -584,7 +586,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         yield return new WaitForSeconds(affect.Duration);
 
         // 원래 속도로 복구
-        if (isDead == false)
+        if (_isDead == false)
         {
             _navmesh.speed = _currentSpeed;
         }
