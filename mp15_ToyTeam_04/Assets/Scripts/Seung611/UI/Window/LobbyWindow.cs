@@ -79,7 +79,7 @@ public class LobbyWindow : MonoBehaviour
         UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
     }
 
-    public void HaveGlod(int gold)
+    public void HaveGold(int gold)
     {
         _haveGlod.text = "Gold: " + gold.ToString();
     }
