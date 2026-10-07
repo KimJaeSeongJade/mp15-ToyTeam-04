@@ -106,7 +106,6 @@ public class PlayerCharacter : MonoBehaviour
         Vector3 frontPoint = transform.position + Vector3.up;
         Vector3 rayStart = frontPoint;
         RaycastHit  hit;
-
         
         // Debug.DrawRay(rayStart, (transform.forward + Vector3.down).normalized * 3f, Color.red, 10f); 레이 확인용.
 
@@ -114,9 +113,12 @@ public class PlayerCharacter : MonoBehaviour
         {
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)
-                PlayerManager.Instance.SelectTile(tile);
-        }
+            PlayerManager.Instance.SelectTile(tile);
 
+
+            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen();
+            PlayerManager.Instance.SetUIMode(true);
+        }
     }
 
     // 탑뷰  마우스 상호작용
@@ -135,7 +137,11 @@ public class PlayerCharacter : MonoBehaviour
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)
                 PlayerManager.Instance.SelectTile(tile);
-        } 
+            
+            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen();
+        }
+
+
     }
 
     // 레이에 맞은 콜라이더에서 설치 타일 꺼내기 (Tile이 없거나 설치 타일이 아니면 null)
@@ -176,4 +182,8 @@ public class PlayerCharacter : MonoBehaviour
 
         return dir;
     }
+    
+    
+
+
 }

@@ -8,23 +8,23 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    // ½ÃÀÛÀ§Ä¡
+    // ì‹œì‘ìœ„ì¹˜
     private static readonly Vector3 START_POSITION = new Vector3(0f, 1.5f, 0f);
     [SerializeField] private PlayerCharacter _character;
-    
-    private Tile _selectedTile;   // ÆË¾÷ ´ë»ó Å¸ÀÏ
+        
+    private Tile _selectedTile;   // íŒì—… ëŒ€ìƒ íƒ€ì¼
     public Tile SelectedTile => _selectedTile;
     
-    // Å¸ÀÏ ¼±ÅÃµÆÀ» ¶§ ¾Ë¸² 
+    // íƒ€ì¼ ì„ íƒëì„ ë•Œ ì•Œë¦¼ 
     public event Action<Tile> OnTileSelected;
 
 
-    // ÀÏ´Ü 60ÃÊ·Î °íÁ¤.
+    // ì¼ë‹¨ 60ì´ˆë¡œ ê³ ì •.
     private const float SKILL_COOL_TIME = 60f; 
-    // ³²Àº ½Ã°£
+    // ë‚¨ì€ ì‹œê°„
     
     private float _skillCoolTimer;
-    public float SkillCoolTimer => _skillCoolTimer; // Ui Ç¥½ÃÇØ¾ßÁö.
+    public float SkillCoolTimer => _skillCoolTimer; // Ui í‘œì‹œí•´ì•¼ì§€.
     
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
         { ETowerType.IceTower,   new IceTower()   }
     };
      
-    // Å¸¿ö ´É·Â
+    // íƒ€ì›Œ ëŠ¥ë ¥
     private Dictionary<ETowerType, TowerAbility> _towerAbilities = new Dictionary<ETowerType, TowerAbility>
     {
         { ETowerType.ArrowTower, new TowerAbility(ETowerType.ArrowTower) },
@@ -41,13 +41,13 @@ public class PlayerManager : MonoBehaviour
         { ETowerType.IceTower,   new TowerAbility(ETowerType.IceTower)   }
     };
 
-    // Å¸¿ö ÃÖ°í ·¹º§ 
+    // íƒ€ì›Œ ìµœê³  ë ˆë²¨ 
     private const int MAX_TOWER_LEVEL = 3;
 
-    // ¼³Ä¡ÇÒ Å¸¿ö Á¾·ù
+    // ì„¤ì¹˜í•  íƒ€ì›Œ ì¢…ë¥˜
     private ETowerType _selectedTowerType = ETowerType.ArrowTower;
     
-    // ui¿¡¼­ - - -- - - -- - - 
+    // uiì—ì„œ - - -- - - -- - - 
     public ETowerType SelectedTowerType => _selectedTowerType;
 
     private void Awake()
@@ -70,20 +70,20 @@ public class PlayerManager : MonoBehaviour
         }
 
         /* 
-        // ·Îºñ ÀüÈ¯ ÄÉ¾î Å×½ºÆ®¿ë
+        // ë¡œë¹„ ì „í™˜ ì¼€ì–´ í…ŒìŠ¤íŠ¸ìš©
         if (Input.GetKeyDown(KeyCode.U))
         {
             if (MapManager.Instance != null)
                 MapManager.Instance.ShowBattleMap();
             else
-                Debug.Log("¸Ê °æ°è°¡ ¾ø´Âµ¥? ground È®ÀÎÁ»..");
+                Debug.Log("ë§µ ê²½ê³„ê°€ ì—†ëŠ”ë°? ground í™•ì¸ì¢€..");
 
             OnPlayer();
         }
         if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
-        // UIMode Å×½ºÆ® (³ªÁß¿¡ »èÁ¦)
-        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // ÆË¾÷ ¿­¸²
-        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // ÆË¾÷ ´İÈû
+        // UIMode í…ŒìŠ¤íŠ¸ (ë‚˜ì¤‘ì— ì‚­ì œ)
+        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // íŒì—… ì—´ë¦¼
+        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // íŒì—… ë‹«í˜
         */
 
 
@@ -91,10 +91,13 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private PlayerCamera _playerCamera;
 
-    // ¸Ê ÄÑÁú ¶§ ²ô°í À§Ä¡ ¿Å±â°í ´Ù½Ã ÄÑ±â
+    // ë§µ ì¼œì§ˆ ë•Œ ë„ê³  ìœ„ì¹˜ ì˜®ê¸°ê³  ë‹¤ì‹œ ì¼œê¸°
     public void OnPlayer( )
     {
-        // ÀÌ°É·Î ºÎ¸£´Ï±î ¸Ê ¹Ù´ÚÀ» ÀÎ½ÄÀ» ¸øÇÏ´øµ¥... ±×·¡¼­ Ãß°¡
+        // UI ì „íˆ¬ í™”ë©´ ë¶€ë£¨ê¸°
+        UIManager.Instance.Window.BattleWindowOpen();
+
+        // ì´ê±¸ë¡œ ë¶€ë¥´ë‹ˆê¹Œ ë§µ ë°”ë‹¥ì„ ì¸ì‹ì„ ëª»í•˜ë˜ë°... ê·¸ë˜ì„œ ì¶”ê°€
         Collider ground = CurrentGround();
         _character.SetGround(ground);
         _playerCamera.SetGround(ground);
@@ -103,57 +106,62 @@ public class PlayerManager : MonoBehaviour
         _character.transform.position = START_POSITION;
         _character.gameObject.SetActive(true);
         _playerCamera.LobbyStartCamera();
-
     }
 
-    // ·Îºñ °¥ ¶§ Ä³¸¯ÅÍ ²ô±â
+    // ë¡œë¹„ ê°ˆ ë•Œ ìºë¦­í„° ë„ê¸°
     public void OffPlayer()
     {
+        // UI ë¡œë¹„ í™”ë©´ ë¶€ë¥´ê¸°
+
         _playerCamera.LobbyStopCamera();
-        _character.gameObject.SetActive(false);
         
-        // ÀÌ ¶§(ÇÃ·¹ÀÌ¾î ²ø ¶§) ¸Ê¿¡¼­ Ã³¸®ÇÒ°Å ÀÖÀ¸¸é Ãß°¡ÇÏ°Ú½À´Ï´Ù.
+        // ë¡œë¹„ í™”ë©´ ì—´ê¸°
+        UIManager.Instance.Window.LobbyWindowOpen();
+        
+        _character.gameObject.SetActive(false);
+
+        // ì´ ë•Œ(í”Œë ˆì´ì–´ ëŒ ë•Œ) ë§µì—ì„œ ì²˜ë¦¬í• ê±° ìˆìœ¼ë©´ ì¶”ê°€í•˜ê² ìŠµë‹ˆë‹¤.
     }
 
     private Collider CurrentGround()
     {
-        // MapManager°¡ ÄÒ ¸Ê È®ÀÎ
+        // MapManagerê°€ ì¼  ë§µ í™•ì¸
         if (MapManager.Instance != null && MapManager.Instance._curMap != null)
         {
             return MapManager.Instance._curMap.Ground;
         }
-        // ¸Ê Á¤º¸ ¾øÀ¸¸é ¹Ù´Ú ¾øÀ½ ¤»¤»
+        // ë§µ ì •ë³´ ì—†ìœ¼ë©´ ë°”ë‹¥ ì—†ìŒ ã…‹ã…‹
         return null;
 
     }
 
-    // Å¸¿ö ½ºÅİ °¡Á®´Ù°¡
+    // íƒ€ì›Œ ìŠ¤í…Ÿ ê°€ì ¸ë‹¤ê°€
     public TowerState GetTowerState(ETowerType type)
     {
         _towerStates.TryGetValue(type, out TowerState state);
         return state;
     }
 
-    // Å¸¿ö ´É·Â °¡Á®´Ù°¡
+    // íƒ€ì›Œ ëŠ¥ë ¥ ê°€ì ¸ë‹¤ê°€
     public TowerAbility GetTowerAbility(ETowerType type)
     {
         _towerAbilities.TryGetValue(type, out TowerAbility ability);
         return ability;
     }
 
-    // ¼³Ä¡ÇÒ Å¸¿ö Á¾·ù ¼±ÅÃ
+    // ì„¤ì¹˜í•  íƒ€ì›Œ ì¢…ë¥˜ ì„ íƒ
     public void SelectTowerType(ETowerType type)
     {
         _selectedTowerType = type;
     }
 
-    // ÀÌ Å¸¿ö ¾ó¸¸µ¥?
+    // ì´ íƒ€ì›Œ ì–¼ë§Œë°?
     public int GetInstallCost(ETowerType type)
     {
         return _towerStates[type].InstallCost;
     }
 
-    // ¼³Ä¡ÇÒ ¶§¸¶´Ù »õ·Î »ı¼º
+    // ì„¤ì¹˜í•  ë•Œë§ˆë‹¤ ìƒˆë¡œ ìƒì„±
     private TowerState CreateTowerState(ETowerType type)
     {
         switch (type)
@@ -168,7 +176,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // Å¸¿ö ¼³Ä¡ µ·³»°í ¼³Ä¡ µ· µ·µ·
+    // íƒ€ì›Œ ì„¤ì¹˜ ëˆë‚´ê³  ì„¤ì¹˜ ëˆ ëˆëˆ
     public void InstallTower()
     {
         if (_selectedTile.IsTower) return;
@@ -177,18 +185,18 @@ public class PlayerManager : MonoBehaviour
         Tower tower = PoolManager.Instance._arrowTowerPool.GetObject();
         
 
-        // Å¸ÀÏ À­¸é¿¡ ¹èÄ¡
+        // íƒ€ì¼ ìœ—ë©´ì— ë°°ì¹˜
         Vector3 pos = _selectedTile.transform.position;
         pos.y = _selectedTile.GetComponent<Collider>().bounds.max.y;
         tower.transform.position = pos;
 
-        // Å¸¿ö ÄÑ±â 
+        // íƒ€ì›Œ ì¼œê¸° 
         _selectedTile._tower = tower;
         _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
         PoolManager.Instance._arrowTowerPool.ActivateObject(tower);
     }
 
-    // Å¸¿ö °­È­
+    // íƒ€ì›Œ ê°•í™”
     public void UpgradeTower()
     {
         if (!_selectedTile.IsTower) return;
@@ -200,12 +208,12 @@ public class PlayerManager : MonoBehaviour
         tower.TowerUpgrade();
     }
 
-    // Å¸¿ö Ã¶°Å
+    // íƒ€ì›Œ ì² ê±°
     public void DemolishTower()
     {
         if (!_selectedTile.IsTower) return;
         
-        // Å¸ÀÏ ºñ¿ì±â Àü¿¡ Àâ¾ÆµÎ±â
+        // íƒ€ì¼ ë¹„ìš°ê¸° ì „ì— ì¡ì•„ë‘ê¸°
         Tower tower = _selectedTile._tower;
 
         _selectedTile.TileRemovalTower();
@@ -216,12 +224,12 @@ public class PlayerManager : MonoBehaviour
 
     public void UseSkill()
     {
-        // ÄğÅ¸ÀÓ ÁßÀÌ¸é ¾ÈµÅ
+        // ì¿¨íƒ€ì„ ì¤‘ì´ë©´ ì•ˆë¼
         if (_skillCoolTimer > 0f) return;
         
-        Debug.Log("UseSkill ¹Ş¾Æ¿Í ½ºÅ³ »ç¿ë È®ÀÎ¿Í·á");
+        Debug.Log("UseSkill ë°›ì•„ì™€ ìŠ¤í‚¬ ì‚¬ìš© í™•ì¸ì™€ë£Œ");
 
-        // »ç¿ë ÈÄ ÄğÅ¸ÀÓ ½ÃÀÛÇÏ±â
+        // ì‚¬ìš© í›„ ì¿¨íƒ€ì„ ì‹œì‘í•˜ê¸°
         _skillCoolTimer = SKILL_COOL_TIME;
     }
 
@@ -229,15 +237,15 @@ public class PlayerManager : MonoBehaviour
     {
         _selectedTile = tile;
 
-        // ½ÅÈ£ °¬À¸¸é
+        // ì‹ í˜¸ ê°”ìœ¼ë©´
         if (OnTileSelected != null)
         {
-            // ¼±ÅÃµÈ Å¸ÀÏ ÁÙ°Ô¤»
+            // ì„ íƒëœ íƒ€ì¼ ì¤„ê²Œã…‹
             OnTileSelected(tile);
         }
     }
-    // UI ÆË¾÷ ¿­°í ´İÀ» ¶§ ÀÌ°Å ¾²½É µË´Ï´Ù.
-    // true : Ä¿¼­º¸ÀÓ Ä«¸Ş¶ó È¸Àü x  , false : ´Ù½Ã Ä³¸¯ÅÍ ½ÃÁ¡
+    // UI íŒì—… ì—´ê³  ë‹«ì„ ë•Œ ì´ê±° ì“°ì‹¬ ë©ë‹ˆë‹¤.
+    // true : ì»¤ì„œë³´ì„ ì¹´ë©”ë¼ íšŒì „ x  , false : ë‹¤ì‹œ ìºë¦­í„° ì‹œì 
     public void SetUIMode(bool isOpen)
     {
         _playerCamera.SetUIMode(isOpen);
