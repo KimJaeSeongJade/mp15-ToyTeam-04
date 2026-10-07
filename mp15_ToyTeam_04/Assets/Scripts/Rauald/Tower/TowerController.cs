@@ -72,6 +72,16 @@ public class TowerController : MonoBehaviour
     {
         if (_head == null) return;
 
+        if (_monsterList[0].IsDead)
+        {
+            _monsterList.RemoveAt(0);
+        }
+
+        if (_monsterList.Count == 0)
+        {
+            return;
+        }
+        
         Vector3 target = _monsterList[0].transform.position - _head.position;
         float angle = -Mathf.Atan2(target.z, target.x);
         _head.rotation = Quaternion.Euler(0f, 90f + angle * Mathf.Rad2Deg, 0f);
