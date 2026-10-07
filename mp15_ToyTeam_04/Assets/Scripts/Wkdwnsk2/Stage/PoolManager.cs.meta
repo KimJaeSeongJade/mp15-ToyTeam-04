@@ -3,7 +3,17 @@ guid: be76110f08ac71b41b9d1b8b9528314c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _arrowTowerPrefab: {instanceID: 0}
+  - _fireTowerPrefab: {instanceID: 0}
+  - _iceTowerPrefab: {instanceID: 0}
+  - _normalmonsterPrefab1: {instanceID: 0}
+  - _normalmonsterPrefab2: {instanceID: 0}
+  - _elitemonsterPrefab1: {instanceID: 0}
+  - _elitemonsterPrefab2: {instanceID: 0}
+  - _bossmonsterPrefab1: {instanceID: 0}
+  - _bossmonsterPrefab2: {instanceID: 0}
+  - _curMap: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

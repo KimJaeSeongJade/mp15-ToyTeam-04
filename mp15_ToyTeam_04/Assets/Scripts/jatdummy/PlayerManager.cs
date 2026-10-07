@@ -174,7 +174,8 @@ public class PlayerManager : MonoBehaviour
         if (_selectedTile.IsTower) return;
         if (!GoldManager.Instance.UseGold(GetInstallCost(_selectedTowerType))) return;
 
-        Tower tower = PoolManager.Instance._towerPool.GetObject();
+        Tower tower = PoolManager.Instance._arrowTowerPool.GetObject();
+        
 
         // 타일 윗면에 배치
         Vector3 pos = _selectedTile.transform.position;
@@ -184,7 +185,7 @@ public class PlayerManager : MonoBehaviour
         // 타워 켜기 
         _selectedTile._tower = tower;
         _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
-        PoolManager.Instance._towerPool.ActivateObject(tower);
+        PoolManager.Instance._arrowTowerPool.ActivateObject(tower);
     }
 
     // 타워 강화
@@ -209,7 +210,7 @@ public class PlayerManager : MonoBehaviour
 
         _selectedTile.TileRemovalTower();
         
-        PoolManager.Instance._towerPool.ReturnObject(tower);
+        PoolManager.Instance._arrowTowerPool.ReturnObject(tower);
     }
 
 

@@ -1,11 +1,18 @@
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
 
-    [SerializeField] private Tower _towerPrefab;
+    [SerializeField] private Tower _arrowTowerPrefab;
+    [SerializeField] private Tower _fireTowerPrefab;
+    [SerializeField] private Tower _iceTowerPrefab;
+
+    [SerializeField] private Bullet _arrowBulletPrefab;
+    [SerializeField] private Bullet _fireBulletPrefab;
+    [SerializeField] private Bullet _iceBulletPrefab;
 
     [SerializeField] private Monster _normalmonsterPrefab1;
     [SerializeField] private Monster _normalmonsterPrefab2;
@@ -13,9 +20,14 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Monster _elitemonsterPrefab2;
     [SerializeField] private Monster _bossmonsterPrefab1;
     [SerializeField] private Monster _bossmonsterPrefab2;
-    [SerializeField] private Map _curMap;
 
-    public ObjectPool<Tower> _towerPool;
+    public ObjectPool<Tower> _arrowTowerPool;
+    public ObjectPool<Tower> _fireTowerPool;
+    public ObjectPool<Tower> _iceTowerPool;
+
+    public ObjectPool<Bullet> _arrowBulletPool;
+    public ObjectPool<Bullet> _fireBulletPool;
+    public ObjectPool<Bullet> _iceBulletPool;
 
     public ObjectPool<Monster> _monsterPool;
     public ObjectPool<Monster> _monsterPool2;
@@ -23,7 +35,6 @@ public class PoolManager : MonoBehaviour
     public ObjectPool<Monster> _monsterPool4;
     public ObjectPool<Monster> _monsterPool5;
     public ObjectPool<Monster> _monsterPool6;
-
  
 
     private Dictionary<Gold, ObjectPool<Gold>> _goldPools
@@ -47,8 +58,23 @@ public class PoolManager : MonoBehaviour
 
     private void Start()
     {
-        _towerPool = new ObjectPool<Tower>(
-            _towerPrefab, 26, transform);
+        _arrowTowerPool = new ObjectPool<Tower>(
+            _arrowTowerPrefab, 26, transform);
+
+        _fireTowerPool = new ObjectPool<Tower>(
+            _fireTowerPrefab, 26, transform);
+
+        _iceTowerPool = new ObjectPool<Tower>(
+            _iceTowerPrefab, 26, transform);
+
+        _arrowBulletPool = new ObjectPool<Bullet>(
+            _arrowBulletPrefab, 58, transform);
+
+        _fireBulletPool = new ObjectPool<Bullet>(
+            _arrowBulletPrefab, 58, transform);
+
+        _iceBulletPool = new ObjectPool<Bullet>(
+            _arrowBulletPrefab, 58, transform);
 
         // 기존 오브젝트 풀 생성
         _monsterPool = new ObjectPool<Monster>(
