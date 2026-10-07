@@ -45,6 +45,7 @@ public class LobbyWindow : MonoBehaviour
     private void StartGame()
     {
         UIManager.Instance.Window.BattleWindowOpen();
+        MapManager.Instance.ShowBattleMap();
     }
 
     private void SkillPopUp()

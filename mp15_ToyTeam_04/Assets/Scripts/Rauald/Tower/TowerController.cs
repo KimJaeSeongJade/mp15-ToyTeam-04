@@ -23,6 +23,8 @@ public class TowerController : MonoBehaviour
     {
         _curTime = 0f;
 
+        if (_tower.state == null) return;
+
         switch (_tower.State.ETowerType)
         {
             case ETowerType.None:
@@ -57,7 +59,10 @@ public class TowerController : MonoBehaviour
                 return;
             }
 
-            _bulletPool.GetObject().Init(_tower, _monsterList[0]);
+            _bullet = _bulletPool.GetObject();
+            _bullet.Init(_tower, _monsterList[0]);
+            _bullet.gameObject.transform.SetPositionAndRotation(_muzzles[_tower.State.CurLevel - 1].position, _muzzles[_tower.State.CurLevel - 1].rotation);
+            _bulletPool.ActivateObject(_bullet);
 
             _curTime = 0;
         }

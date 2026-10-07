@@ -107,7 +107,7 @@ public class PlayerCharacter : MonoBehaviour
         Vector3 rayStart = frontPoint;
         RaycastHit  hit;
         
-        // Debug.DrawRay(rayStart, (transform.forward + Vector3.down).normalized * 3f, Color.red, 10f); 레이 확인용.
+        Debug.DrawRay(rayStart, (transform.forward + Vector3.down).normalized * 3f, Color.red, 10f); // 레이 확인용.
 
         if (Physics.Raycast(rayStart, (transform.forward + Vector3.down).normalized, out hit, 3f, _towerTileLayer)) 
         {
@@ -116,7 +116,7 @@ public class PlayerCharacter : MonoBehaviour
             PlayerManager.Instance.SelectTile(tile);
 
 
-            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen();
+            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
             PlayerManager.Instance.SetUIMode(true);
         }
     }
@@ -138,7 +138,7 @@ public class PlayerCharacter : MonoBehaviour
             if (tile != null)
                 PlayerManager.Instance.SelectTile(tile);
             
-            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen();
+            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
         }
 
 

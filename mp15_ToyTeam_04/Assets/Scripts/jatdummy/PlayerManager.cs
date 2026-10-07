@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     private const int MAX_TOWER_LEVEL = 3;
 
     // 설치할 타워 종류
-    private ETowerType _selectedTowerType = ETowerType.ArrowTower;
+    private ETowerType _selectedTowerType;
     
     // ui에서 - - -- - - -- - - 
     public ETowerType SelectedTowerType => _selectedTowerType;
@@ -150,11 +150,12 @@ public class PlayerManager : MonoBehaviour
     }
 
     // 설치할 타워 종류 선택
+    /*
     public void SelectTowerType(ETowerType type)
     {
         _selectedTowerType = type;
     }
-
+    */
     // 이 타워 얼만데?
     public int GetInstallCost(ETowerType type)
     {
@@ -177,12 +178,35 @@ public class PlayerManager : MonoBehaviour
     }
 
     // 타워 설치 돈내고 설치 돈 돈돈
-    public void InstallTower()
+    public void InstallTower(ETowerType eTowerType)
     {
+        _selectedTowerType = eTowerType;
+
         if (_selectedTile.IsTower) return;
         if (!GoldManager.Instance.UseGold(GetInstallCost(_selectedTowerType))) return;
 
-        Tower tower = PoolManager.Instance._arrowTowerPool.GetObject();
+        Tower tower = null;
+
+        switch (eTowerType)
+        {
+            case ETowerType.None:
+                break;
+            case ETowerType.ArrowTower:
+                tower = PoolManager.Instance._arrowTowerPool.GetObject();
+                break;
+            case ETowerType.FireTower:
+                tower = PoolManager.Instance._fireTowerPool.GetObject();
+                break;
+            case ETowerType.IceTower:
+                tower = PoolManager.Instance._iceTowerPool.GetObject();
+                break;
+        }
+
+        if(tower == null)
+        {
+            Debug.LogError("타워 못찾음");
+            return;
+        }
         
 
         // 타일 윗면에 배치
@@ -194,6 +218,7 @@ public class PlayerManager : MonoBehaviour
         _selectedTile._tower = tower;
         _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
         PoolManager.Instance._arrowTowerPool.ActivateObject(tower);
+        SetUIMode(false);
     }
 
     // 타워 강화

@@ -55,24 +55,42 @@ public class BattleWindow : MonoBehaviour
     private void Tower0Select()
     {
         // ArrowTower 설치
+        PlayerManager.Instance.InstallTower(ETowerType.ArrowTower);
+        InstallComplete();
     }
+
 
     private void Tower1Select()
     {
         // FireTower 설치
+        PlayerManager.Instance.InstallTower(ETowerType.FireTower);
+        InstallComplete();
     }
 
     private void Tower2Select()
     {
         // IceTower 설치
+        PlayerManager.Instance.InstallTower(ETowerType.IceTower);
+        InstallComplete();
+    }
+    private void InstallComplete()
+    {
+        UIManager.Instance.PopUp.TowerSelectTilePopUp.CancelButton();
+        UIManager.Instance.Window.BattleWindow.HideInstallButton();
     }
 
     private void Init()
+    {
+        HideInstallButton();
+    }
+
+    public void HideInstallButton()
     {
         _towerInventory[0].gameObject.SetActive(false);
         _towerInventory[1].gameObject.SetActive(false);
         _towerInventory[2].gameObject.SetActive(false);
     }
+
 
     public void HaveGold(int gold)
     {

@@ -33,10 +33,6 @@ public class Stage : MonoBehaviour
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
     
-    private void Awake()
-    {
-        _curMap = GetComponent<Map>();
-    }
     
     private void Update()
     {
@@ -140,9 +136,9 @@ public class Stage : MonoBehaviour
             return;
         }
 
-        if (_curMap == null ||
-            _curMap.SpawnPoint == null ||
-            _curMap.ArrivalPoint == null)
+        if (MapManager.Instance._curMap == null ||
+            MapManager.Instance._curMap.SpawnPoint == null ||
+            MapManager.Instance._curMap.ArrivalPoint == null)
         {
             Debug.LogError("Map과 출발점, 도착점을 확인해주세요.");
             return;
@@ -284,9 +280,9 @@ public class Stage : MonoBehaviour
     {
         Monster monster = Monster.GetMonster(
             monsterType,
-            _curMap.SpawnPoint.position,
-            _curMap.SpawnPoint.rotation,
-            _curMap.ArrivalPoint
+            MapManager.Instance._curMap.SpawnPoint.position,
+            MapManager.Instance._curMap.SpawnPoint.rotation,
+            MapManager.Instance._curMap.ArrivalPoint
         );
 
         // 체력 : 보스는 PlusBossHealth, 나머지는 PlusStageHealth

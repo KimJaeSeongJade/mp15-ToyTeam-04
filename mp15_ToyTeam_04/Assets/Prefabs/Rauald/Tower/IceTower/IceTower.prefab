@@ -70,8 +70,8 @@ MonoBehaviour:
   _head: {fileID: 0}
   _targetLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  _bullet: {fileID: 0}
+    m_Bits: 256
+  _bullet: {fileID: 8541218462679412007, guid: 4f9439262a0962347b8f2b9618bac2ac, type: 3}
   _muzzles:
   - {fileID: 2433284234089814318}
   - {fileID: 7727675993813112355}
@@ -91,7 +91,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5602294575269066499, guid: 5c683083fcaba59409caf28551b0e7b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -187,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 386914449549004111, guid: fbbdda01b649da6459502f7ce7cac6a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6142553789647768489, guid: 20f8446391c7dc044bc74feda8a5ba67, type: 3}
       propertyPath: m_LocalPosition.z

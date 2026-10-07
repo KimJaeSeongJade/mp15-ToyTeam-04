@@ -17,7 +17,7 @@ public class PopUpManager : MonoBehaviour
     public event Action OnGameStageResultPopUp;
     public event Action OnGamePlayerSkillPopUp;
     public event Action OnGameTowerSpecPopUp;
-    public event Action OnGameTowerSelectTilePopup;
+    public event Action<bool> OnGameTowerSelectTilePopup;
     public event Action OnGameMessagePopUp;
 
     public void SettingPopUpOpen()
@@ -40,9 +40,9 @@ public class PopUpManager : MonoBehaviour
         OnGameTowerSpecPopUp?.Invoke();
     }
 
-    public void TowerSelectTilePopUpOpen()
+    public void TowerSelectTilePopUpOpen(bool isTower)
     {
-        OnGameTowerSelectTilePopup?.Invoke();
+        OnGameTowerSelectTilePopup?.Invoke(isTower);
     }
 
     public void MessagePopUpOpen()

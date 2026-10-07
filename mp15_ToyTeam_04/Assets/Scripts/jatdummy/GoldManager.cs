@@ -23,8 +23,19 @@ public class GoldManager : MonoBehaviour
         }
         Instance = this;
 
+    }
+
+    private void Start()
+    {
         // ���� ��� �Ҹųֱ�
         _gold = START_GOLD;
+        GoldView();
+    }
+
+    private void GoldView()
+    {
+        UIManager.Instance.Window.LobbyWindow.HaveGold(_gold);
+        UIManager.Instance.Window.BattleWindow.HaveGold(_gold);
     }
 
     // ��带 �����ÿ�
@@ -39,8 +50,7 @@ public class GoldManager : MonoBehaviour
         }
         // �׽�Ʈ �α�
         Debug.Log($"��� {amount} �߰�  ���� {_gold}");
-        UIManager.Instance.Window.LobbyWindow.HaveGold(_gold);
-        UIManager.Instance.Window.BattleWindow.HaveGold(_gold);
+        GoldView();
     }
 
     // ��� ��� (��� ����Ҷ���)
@@ -63,6 +73,7 @@ public class GoldManager : MonoBehaviour
         }
         // �׽�Ʈ �α�
         Debug.Log($"��徴�� {amount} ���� ���� ��� {_gold}");
+        GoldView();
         return true;
     }
 }

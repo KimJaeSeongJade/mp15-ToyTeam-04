@@ -9,7 +9,6 @@ public class TowerSelectTilePopUp : MonoBehaviour
     [SerializeField] private Button _uninstallButton;
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Button _cancelButton;
-    
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
 
@@ -42,29 +41,27 @@ public class TowerSelectTilePopUp : MonoBehaviour
 
     public void InstallButton()
     {
-        Debug.Log("타워 설치");
         // 설치 버튼을 눌렀을 때 오른쪽 타워 버튼을 누르면 버튼에 맞는 타워가 설치 됨
         UIManager.Instance.Window.BattleWindow.PushInstallButton();
-        PlayerManager.Instance.InstallTower();
     }
 
     public void UninstallButton()
     {
-        Debug.Log("타워 파괴");
         // 타워 파괴 되면서 돈이 들어옴
         PlayerManager.Instance.DemolishTower();
     }
 
     public void UpgradeButton()
     {
-        Debug.Log("타워 강화");
         // 타워 이미지 바뀌고 능력도 바뀜
         PlayerManager.Instance.UpgradeTower();
     }
 
     public void CancelButton()
     {
-        Debug.Log("취소");
         // 타워 설치 취소 인게임 화면으로 다시 돌아감
+        gameObject.SetActive(false);
+        UIManager.Instance.Window.BattleWindow.HideInstallButton();
+        PlayerManager.Instance.SetUIMode(false);
     }
 }

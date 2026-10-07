@@ -71,5 +71,7 @@ public class MapManager : MonoBehaviour
         NormalMaps[_curMapNumber].gameObject.SetActive(true);
         // 현재 맵 정보
         _curMap = NormalMaps[_curMapNumber];
+
+        PlayerManager.Instance.OnPlayer();
     }
 }

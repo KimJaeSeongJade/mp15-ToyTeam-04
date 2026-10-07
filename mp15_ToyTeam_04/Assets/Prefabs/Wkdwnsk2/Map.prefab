@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 4784990212062268154}
   - component: {fileID: 5073712503670864959}
   - component: {fileID: 7030239532047474023}
+  - component: {fileID: 2177469039986648134}
   m_Layer: 6
   m_Name: TowerTile18
   m_TagString: Untagged
@@ -606,6 +607,27 @@ MonoBehaviour:
   _tileNumber: 17
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &2177469039986648134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220852110501570078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &238687180846299336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,38 +1119,6 @@ MonoBehaviour:
   _tileNumber: 28
   _eTileType: 2
   _tower: {fileID: 0}
---- !u!1 &334114180241672580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6255502966706644259}
-  m_Layer: 7
-  m_Name: TowerMap
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6255502966706644259
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334114180241672580}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8611597846444455882}
-  m_Father: {fileID: 5681234931404901258}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340442710892910384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,7 +1555,7 @@ Transform:
   m_GameObject: {fileID: 523460318240601736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.24, y: 0, z: 7.55}
+  m_LocalPosition: {x: 7.24, y: 0.5, z: 7.55}
   m_LocalScale: {x: 1.641693, y: 1.641693, z: 1.641693}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2153,6 +2143,7 @@ GameObject:
   - component: {fileID: 9056225707526252156}
   - component: {fileID: 7738195685095447681}
   - component: {fileID: 5886437859343991086}
+  - component: {fileID: 7572751092375993062}
   m_Layer: 6
   m_Name: TowerTile19
   m_TagString: Untagged
@@ -2240,6 +2231,27 @@ MonoBehaviour:
   _tileNumber: 18
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &7572751092375993062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654878276093691328}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &661460299097126545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,6 +3585,7 @@ GameObject:
   - component: {fileID: 4697249058854162453}
   - component: {fileID: 7357657679169518614}
   - component: {fileID: 747169834758647048}
+  - component: {fileID: 8573815691115112444}
   m_Layer: 6
   m_Name: TowerTile9
   m_TagString: Untagged
@@ -3660,6 +3673,27 @@ MonoBehaviour:
   _tileNumber: 8
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &8573815691115112444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249442142903472384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1284508149701922142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3669,6 +3703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102325827952423027}
+  - component: {fileID: 6465772391800026628}
   m_Layer: 7
   m_Name: TowerTile
   m_TagString: Untagged
@@ -3693,6 +3728,27 @@ Transform:
   - {fileID: 4823129267862101141}
   m_Father: {fileID: 5681234931404901258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6465772391800026628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284508149701922142}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1371675417519468946
 GameObject:
   m_ObjectHideFlags: 0
@@ -4528,6 +4584,7 @@ GameObject:
   - component: {fileID: 3756450434652003978}
   - component: {fileID: 2248487121723134710}
   - component: {fileID: 2813641619779324626}
+  - component: {fileID: 1981534429052172601}
   m_Layer: 6
   m_Name: TowerTile16
   m_TagString: Untagged
@@ -4615,6 +4672,27 @@ MonoBehaviour:
   _tileNumber: 15
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &1981534429052172601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812027534551886934}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1884624264139134917
 GameObject:
   m_ObjectHideFlags: 0
@@ -5899,6 +5977,7 @@ GameObject:
   - component: {fileID: 6195106119760775497}
   - component: {fileID: 4379152195547930946}
   - component: {fileID: 7289430127808538324}
+  - component: {fileID: 4295629042623404690}
   m_Layer: 6
   m_Name: TowerTile13
   m_TagString: Untagged
@@ -5986,6 +6065,27 @@ MonoBehaviour:
   _tileNumber: 12
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &4295629042623404690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360463974074253814}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2439803719724889301
 GameObject:
   m_ObjectHideFlags: 0
@@ -10013,6 +10113,7 @@ GameObject:
   - component: {fileID: 4637417044466914518}
   - component: {fileID: 3866088880596191310}
   - component: {fileID: 4821722621226946136}
+  - component: {fileID: 6165835787904968926}
   m_Layer: 6
   m_Name: TowerTile14
   m_TagString: Untagged
@@ -10100,6 +10201,27 @@ MonoBehaviour:
   _tileNumber: 13
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &6165835787904968926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938297726598509899}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3953679387608086869
 GameObject:
   m_ObjectHideFlags: 0
@@ -11184,6 +11306,7 @@ GameObject:
   - component: {fileID: 1098100409558462567}
   - component: {fileID: 5397169016134840612}
   - component: {fileID: 705307568495880809}
+  - component: {fileID: 1048866986166446987}
   m_Layer: 6
   m_Name: TowerTile10
   m_TagString: Untagged
@@ -11271,6 +11394,27 @@ MonoBehaviour:
   _tileNumber: 9
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &1048866986166446987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4289743150700394936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4324233321342592232
 GameObject:
   m_ObjectHideFlags: 0
@@ -11653,6 +11797,7 @@ GameObject:
   - component: {fileID: 7889540339003382006}
   - component: {fileID: 9216321124551734963}
   - component: {fileID: 799033057208302377}
+  - component: {fileID: 4818839567806872175}
   m_Layer: 6
   m_Name: TowerTile17
   m_TagString: Untagged
@@ -11740,6 +11885,27 @@ MonoBehaviour:
   _tileNumber: 16
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &4818839567806872175
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483187833614940242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4503123568324336782
 GameObject:
   m_ObjectHideFlags: 0
@@ -15737,6 +15903,7 @@ GameObject:
   - component: {fileID: 6840176840409195774}
   - component: {fileID: 6454515936874633487}
   - component: {fileID: 3615471450728596245}
+  - component: {fileID: 7874191891432381691}
   m_Layer: 6
   m_Name: TowerTile8
   m_TagString: Untagged
@@ -15824,6 +15991,27 @@ MonoBehaviour:
   _tileNumber: 7
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &7874191891432381691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726707404842180611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5756427769361905147
 GameObject:
   m_ObjectHideFlags: 0
@@ -17641,6 +17829,7 @@ GameObject:
   - component: {fileID: 6781824191070982793}
   - component: {fileID: 3940529405277544873}
   - component: {fileID: 8442301699118463772}
+  - component: {fileID: 9143084615060172365}
   m_Layer: 6
   m_Name: TowerTile11
   m_TagString: Untagged
@@ -17728,6 +17917,27 @@ MonoBehaviour:
   _tileNumber: 10
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &9143084615060172365
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578400216081947000}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6578791597210821016
 GameObject:
   m_ObjectHideFlags: 0
@@ -18359,6 +18569,7 @@ GameObject:
   - component: {fileID: 4716587520189114640}
   - component: {fileID: 5669645600867991057}
   - component: {fileID: 4844088644110408965}
+  - component: {fileID: 6791752927791912264}
   m_Layer: 6
   m_Name: TowerTile2
   m_TagString: Untagged
@@ -18446,6 +18657,27 @@ MonoBehaviour:
   _tileNumber: 1
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &6791752927791912264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725576639532502540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6739210391291977631
 GameObject:
   m_ObjectHideFlags: 0
@@ -18994,6 +19226,7 @@ GameObject:
   - component: {fileID: 4591169318228515387}
   - component: {fileID: 6909865657891602752}
   - component: {fileID: 6697971125421056333}
+  - component: {fileID: 5051900958340766199}
   m_Layer: 6
   m_Name: TowerTile1
   m_TagString: Untagged
@@ -19081,6 +19314,27 @@ MonoBehaviour:
   _tileNumber: 0
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &5051900958340766199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957884867992449917}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6965186218825978619
 GameObject:
   m_ObjectHideFlags: 0
@@ -19098,7 +19352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5681234931404901258
 Transform:
   m_ObjectHideFlags: 0
@@ -19108,7 +19362,7 @@ Transform:
   m_GameObject: {fileID: 6965186218825978619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.124685, y: 0.010496557, z: 5.7191715}
+  m_LocalPosition: {x: 10.124685, y: 0.5, z: 5.7191715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19116,7 +19370,6 @@ Transform:
   - {fileID: 7678740900697222303}
   - {fileID: 5176527188652118507}
   - {fileID: 6586917776135891593}
-  - {fileID: 6255502966706644259}
   - {fileID: 3917267508269602700}
   - {fileID: 8272169304210032891}
   - {fileID: 3724615911693675392}
@@ -19220,8 +19473,8 @@ MonoBehaviour:
   - {fileID: 5891290183094253274}
   - {fileID: 7235442204112477083}
   - {fileID: 4716598156597392666}
-  _spawnPoint: {fileID: 2419723355795172471}
-  _arrivalPoint: {fileID: 1576368219605885788}
+  _spawnPoint: {fileID: 8376350742978628324}
+  _arrivalPoint: {fileID: 7322964768385888121}
 --- !u!114 &2379456789283112921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19236,28 +19489,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageNumber: 1
   WaveNumber: 1
-  MonstersNumber: 2
+  totalMonsterNumber: 0
+  monsterNumber: 0
   StageClearReward: 0
-  _waveData:
-  - Monsters:
-    - MonsterType: 0
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterType: 0
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterType: 0
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterType: 0
-      MonstersNumber: 20
-  - Monsters:
-    - MonsterType: 0
-      MonstersNumber: 1
   _spawnInterval: 0.2
   _waveInterval: 3
   _maxStageLife: 10
   _monsterLifeDamage: 1
+  _stageClearGold: 500
+  _normalStatUp:
+    PlusWaveHealth: 0
+    PlusStageHealth: 0
+    PlusWaveSpeed: 0
+    PlusStageSpeed: 0
+    PlusWaveRange: 0
+    PlusStageRange: 0
+    PlusWaveGold: 0
+    PlusStageGold: 0
+  _eliteStatUp:
+    PlusWaveHealth: 0
+    PlusStageHealth: 0
+    PlusWaveSpeed: 0
+    PlusStageSpeed: 0
+    PlusWaveRange: 0
+    PlusStageRange: 0
+    PlusWaveGold: 0
+    PlusStageGold: 0
+  _bossStatUp:
+    PlusWaveHealth: 0
+    PlusStageHealth: 0
+    PlusWaveSpeed: 0
+    PlusStageSpeed: 0
+    PlusWaveRange: 0
+    PlusStageRange: 0
+    PlusWaveGold: 0
+    PlusStageGold: 0
 --- !u!1 &6971106971471924180
 GameObject:
   m_ObjectHideFlags: 0
@@ -19723,6 +19989,7 @@ GameObject:
   - component: {fileID: 2928241047874132998}
   - component: {fileID: 3404175113633919770}
   - component: {fileID: 2822212601311024319}
+  - component: {fileID: 3451924311341219254}
   m_Layer: 6
   m_Name: TowerTile20
   m_TagString: Untagged
@@ -19810,6 +20077,27 @@ MonoBehaviour:
   _tileNumber: 19
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3451924311341219254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172224436251583478}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7177861741993788674
 GameObject:
   m_ObjectHideFlags: 0
@@ -19988,6 +20276,7 @@ GameObject:
   - component: {fileID: 8230994481973948300}
   - component: {fileID: 8799938754074766129}
   - component: {fileID: 4946175978522816222}
+  - component: {fileID: 8909841733960296437}
   m_Layer: 6
   m_Name: TowerTile15
   m_TagString: Untagged
@@ -20075,6 +20364,27 @@ MonoBehaviour:
   _tileNumber: 14
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &8909841733960296437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284500960850197271}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7291774056718802976
 GameObject:
   m_ObjectHideFlags: 0
@@ -21771,6 +22081,7 @@ GameObject:
   - component: {fileID: 212591814056082435}
   - component: {fileID: 4147725540707261849}
   - component: {fileID: 3444831686022192471}
+  - component: {fileID: 3344763069022243985}
   m_Layer: 6
   m_Name: TowerTile3
   m_TagString: Untagged
@@ -21858,6 +22169,27 @@ MonoBehaviour:
   _tileNumber: 2
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3344763069022243985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961781677317782454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8027880495963565317
 GameObject:
   m_ObjectHideFlags: 0
@@ -21953,6 +22285,7 @@ GameObject:
   - component: {fileID: 3878292612458088927}
   - component: {fileID: 6325809469060794265}
   - component: {fileID: 6151750604735239427}
+  - component: {fileID: 3626859756005472049}
   m_Layer: 6
   m_Name: TowerTile5
   m_TagString: Untagged
@@ -22040,6 +22373,27 @@ MonoBehaviour:
   _tileNumber: 4
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &3626859756005472049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038880376513041604}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8040840566783474603
 GameObject:
   m_ObjectHideFlags: 0
@@ -22052,6 +22406,7 @@ GameObject:
   - component: {fileID: 3287155390767142098}
   - component: {fileID: 3780968451498520014}
   - component: {fileID: 3088390292411396862}
+  - component: {fileID: 1830504991928148996}
   m_Layer: 6
   m_Name: TowerTile4
   m_TagString: Untagged
@@ -22139,6 +22494,27 @@ MonoBehaviour:
   _tileNumber: 3
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &1830504991928148996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040840566783474603}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8061519638600131584
 GameObject:
   m_ObjectHideFlags: 0
@@ -22483,6 +22859,7 @@ GameObject:
   - component: {fileID: 3186945326527119592}
   - component: {fileID: 2064213191163769931}
   - component: {fileID: 774211682707717943}
+  - component: {fileID: 8372972546690026002}
   m_Layer: 6
   m_Name: TowerTile7
   m_TagString: Untagged
@@ -22570,6 +22947,27 @@ MonoBehaviour:
   _tileNumber: 6
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &8372972546690026002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221783021981753797}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8299809123812595283
 GameObject:
   m_ObjectHideFlags: 0
@@ -22582,6 +22980,7 @@ GameObject:
   - component: {fileID: 2176200279107465412}
   - component: {fileID: 7446955095492721875}
   - component: {fileID: 8432432835299026156}
+  - component: {fileID: 898370935643071005}
   m_Layer: 6
   m_Name: TowerTile12
   m_TagString: Untagged
@@ -22669,6 +23068,27 @@ MonoBehaviour:
   _tileNumber: 11
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &898370935643071005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299809123812595283}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8415201820249589447
 GameObject:
   m_ObjectHideFlags: 0
@@ -23421,6 +23841,7 @@ GameObject:
   - component: {fileID: 4633955890941254171}
   - component: {fileID: 6318641927618685452}
   - component: {fileID: 3552870914366744371}
+  - component: {fileID: 4150632469839007074}
   m_Layer: 6
   m_Name: TowerTile6
   m_TagString: Untagged
@@ -23508,6 +23929,27 @@ MonoBehaviour:
   _tileNumber: 5
   _eTileType: 1
   _tower: {fileID: 0}
+--- !u!65 &4150632469839007074
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569072284340273700}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8588309547763987752
 GameObject:
   m_ObjectHideFlags: 0
@@ -37223,92 +37665,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
   m_PrefabInstance: {fileID: 8745052624734144650}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8794372207176831378
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6255502966706644259}
-    m_Modifications:
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628818340466, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628818340472, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_Name
-      value: 3xBallistaTowerlvl01
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628818340472, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 975425628818340474, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
---- !u!4 &8611597846444455882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 975425628817909336, guid: e7eec4a4cf8054942b616fc4780edc55, type: 3}
-  m_PrefabInstance: {fileID: 8794372207176831378}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8824134434322356734
 PrefabInstance:

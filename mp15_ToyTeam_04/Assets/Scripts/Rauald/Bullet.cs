@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour, IPoolable
 
     public void Init(Tower tower, Monster monster)
     {
+        _tower = tower;
         _bulletAffect = _tower.State.Affect;
         _monster = monster;
         _atk = _tower.TowerAtk();
@@ -89,7 +90,6 @@ public class Bullet : MonoBehaviour, IPoolable
                 PoolManager.Instance._iceBulletPool.ReturnObject(this);
                 break;
         }
-
     }
 
     public void OnSpawn()

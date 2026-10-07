@@ -71,10 +71,10 @@ public class PoolManager : MonoBehaviour
             _arrowBulletPrefab, 58, transform);
 
         _fireBulletPool = new ObjectPool<Bullet>(
-            _arrowBulletPrefab, 58, transform);
+            _fireBulletPrefab, 58, transform);
 
         _iceBulletPool = new ObjectPool<Bullet>(
-            _arrowBulletPrefab, 58, transform);
+            _iceBulletPrefab, 58, transform);
 
         // 기존 오브젝트 풀 생성
         _monsterPool = new ObjectPool<Monster>(

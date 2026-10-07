@@ -7,6 +7,8 @@ public class PopUpUIManager : MonoBehaviour
     private void Awake() => Init();
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
+
+    private bool _isTower;
     
     private void BindEventButtons()
     {
@@ -53,8 +55,13 @@ public class PopUpUIManager : MonoBehaviour
         UIManager.Instance.PopUp.TowerSpecPopUp.gameObject.SetActive(true);
     }
 
-    private void OnTowerSelectTilePopUp()
+    private void OnTowerSelectTilePopUp(bool isTower)
     {
+        if (isTower)
+            UIManager.Instance.PopUp.TowerSelectTilePopUp.YesTower();
+        else if (!isTower)
+            UIManager.Instance.PopUp.TowerSelectTilePopUp.NoTower();
+
         UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(true);
     }
     
