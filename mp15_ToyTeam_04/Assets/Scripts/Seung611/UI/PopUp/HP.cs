@@ -24,6 +24,8 @@ public class HP : MonoBehaviour
         _hpbarImage.fillAmount = Mathf.Clamp01((float)hp/maxHealth);
         _hpText.text = hp + " / " + maxHealth;
     }
+    
+    
 
     private void MonsterDamage(int damage)
     {

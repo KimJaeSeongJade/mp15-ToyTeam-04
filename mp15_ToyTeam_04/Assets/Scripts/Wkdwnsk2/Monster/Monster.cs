@@ -37,7 +37,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     
     //목적지 도착
     public Transform endPoint;
-    public float stoppingDistanceThreshold = 0.1f;
 
     private Animator anim;
     
@@ -64,6 +63,11 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     private Coroutine _burnCoroutine;
     private Coroutine _slowCoroutine;
     
+    // 몬스터 UI 체력 위치 전달용
+    [SerializeField] private HP _hpPrefab;      // HP UI 프리팹
+    [SerializeField] private float _hpHeight = 2f;  // HP바 위치
+    private HP _hp;                             // 몬스터 HP UI                             
+    
 
     private void Awake()
     {
@@ -82,6 +86,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         _burnCoroutine = null;
         _slowCoroutine = null;
         
+        
         // 체력과 전투 상태 초기화
         _currentRange = _bossRange;
         _currentDropGold = _dropGold;
@@ -99,6 +104,14 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         _navmesh.enabled = true;
         _navmesh.speed = _monsterSpeed;
+        
+        // HP UI 만들고 켜기
+        CreateHpUI();
+
+        if (_hp != null)
+        {
+            _hp.gameObject.SetActive(true);
+        }
 
         if (endPoint == null)
         {
@@ -123,7 +136,13 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         _timeStopCoroutine = null;
         _burnCoroutine = null;
         _slowCoroutine = null;
-
+        
+        // HP UI 끄기
+        if (_hp != null)
+        {
+            _hp.gameObject.SetActive(false);
+        }
+        
         if (_navmesh.enabled && _navmesh.isOnNavMesh)
         {
             _navmesh.ResetPath();
@@ -183,12 +202,17 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         }
 
         currentHealth -= damage;
-
-
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            
+        }
+        
+
+        // HP UI 갱신
+        UpdateHpUI(damage);
+
+        if (currentHealth <= 0)
+        {
             if (EmonsterType == EMonsterType.Boss1 && !hasUsedSurvival)
             {
                 StartCoroutine(BossResurrect());
@@ -229,6 +253,8 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     private void MinimumDamage()
     {
         currentHealth -= 1;
+        // HP UI 갱신
+        UpdateHpUI(1);
 
         if (currentHealth <= 0)
         {
@@ -463,6 +489,9 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         _navmesh.speed = _currentSpeed;
         _currentRange = _bossRange + plusRange;
         _currentDropGold = _dropGold + plusGold;
+        
+        // 시작 체력 표시
+        UpdateHpUI(currentHealth);
     }
     
        // 타워 공격 효과 적용 (IDamageable)
@@ -562,6 +591,34 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         _slowCoroutine = null;
     }
+    
+    // HP UI 만들기 (몬스터마다 처음 한 번만)
+    private void CreateHpUI()
+    {
+        // 이미 만들었으면 다시 안 만듦
+        if (_hp != null)
+        {
+            return;
+        }
+
+        if (_hpPrefab == null)
+        {
+            return;
+        }
+
+    }
+
+    // HP UI에 체력과 데미지 보내기
+    private void UpdateHpUI(int damage)
+    {
+        if (_hp == null)
+        {
+            return;
+        }
+
+        _hp.MonsterStateUpdate(currentHealth, _maxHealth, damage);
+    }
+
     
     
     
