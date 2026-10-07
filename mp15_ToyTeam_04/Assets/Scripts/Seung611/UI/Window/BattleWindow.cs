@@ -12,7 +12,7 @@ public class BattleWindow : MonoBehaviour
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
 
-    private void Start() => gameObject.SetActive(true);
+    private void Awake() => Init();
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
     
@@ -21,19 +21,23 @@ public class BattleWindow : MonoBehaviour
     {
         _playerSkillButton.onClick.AddListener(SkillPopUp);
         _settingButton.onClick.AddListener(SettingPopUp);
-        _towerInventory[0].onClick.AddListener(TowerSpecPopUp);
+        _towerInventory[0].onClick.AddListener(Tower0Select);
+        _towerInventory[1].onClick.AddListener(Tower1Select);
+        _towerInventory[2].onClick.AddListener(Tower2Select);
     }
     
     private void UnbindButtonEvents()
     {
         _playerSkillButton.onClick.RemoveListener(SkillPopUp);
         _settingButton.onClick.RemoveListener(SettingPopUp);
-        _towerInventory[0].onClick.RemoveListener(TowerSpecPopUp);
+        _towerInventory[0].onClick.RemoveListener(Tower0Select);
+        _towerInventory[1].onClick.RemoveListener(Tower1Select);
+        _towerInventory[2].onClick.RemoveListener(Tower2Select);
     }
 
     private void SkillPopUp()
     {
-        UIManager.Instance.PopUp.PLayerSkillPopUpOpen();
+        // 스킬을 사용 쿨타임 돌기
     }
 
     private void SettingPopUp()
@@ -41,12 +45,36 @@ public class BattleWindow : MonoBehaviour
         UIManager.Instance.PopUp.SettingPopUpOpen();
     }
 
-    private void TowerSpecPopUp()
+    public void PushInstallButton()
     {
-        // UIManager.Instance.PopUp.TowerSpecPopUpOpen();
+        _towerInventory[0].gameObject.SetActive(true);
+        _towerInventory[1].gameObject.SetActive(true);
+        _towerInventory[2].gameObject.SetActive(true);
     }
 
-    public void HaveGlod(int gold)
+    private void Tower0Select()
+    {
+        // ArrowTower 설치
+    }
+
+    private void Tower1Select()
+    {
+        // FireTower 설치
+    }
+
+    private void Tower2Select()
+    {
+        // IceTower 설치
+    }
+
+    private void Init()
+    {
+        _towerInventory[0].gameObject.SetActive(false);
+        _towerInventory[1].gameObject.SetActive(false);
+        _towerInventory[2].gameObject.SetActive(false);
+    }
+
+    public void HaveGold(int gold)
     {
         _haveGlod.text = "Gold: " + gold.ToString();
     }

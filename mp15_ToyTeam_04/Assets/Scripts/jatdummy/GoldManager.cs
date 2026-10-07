@@ -39,8 +39,8 @@ public class GoldManager : MonoBehaviour
         }
         // �׽�Ʈ �α�
         Debug.Log($"��� {amount} �߰�  ���� {_gold}");
-        UIManager.Instance.Window.LobbyWindow.HaveGlod(_gold);
-        UIManager.Instance.Window.BattleWindow.HaveGlod(_gold);
+        UIManager.Instance.Window.LobbyWindow.HaveGold(_gold);
+        UIManager.Instance.Window.BattleWindow.HaveGold(_gold);
     }
 
     // ��� ��� (��� ����Ҷ���)
