@@ -29,23 +29,42 @@ public class TowerSelectTilePopUp : MonoBehaviour
         _cancelButton.onClick.RemoveListener(CancelButton);
     }
 
-    private void InstallButton()
+    public void NoTower()
+    {
+        _uninstallButton.gameObject.SetActive(false);
+        _upgradeButton.gameObject.SetActive(false);
+    }
+
+    public void YesTower()
+    {
+        _installButton.gameObject.SetActive(false);
+    }
+
+    public void InstallButton()
     {
         Debug.Log("타워 설치");
+        // 설치 버튼을 눌렀을 때 오른쪽 타워 버튼을 누르면 버튼에 맞는 타워가 설치 됨
+        UIManager.Instance.Window.BattleWindow.PushInstallButton();
+        PlayerManager.Instance.InstallTower();
     }
 
-    private void UninstallButton()
+    public void UninstallButton()
     {
         Debug.Log("타워 파괴");
+        // 타워 파괴 되면서 돈이 들어옴
+        PlayerManager.Instance.DemolishTower();
     }
 
-    private void UpgradeButton()
+    public void UpgradeButton()
     {
         Debug.Log("타워 강화");
+        // 타워 이미지 바뀌고 능력도 바뀜
+        PlayerManager.Instance.UpgradeTower();
     }
 
-    private void CancelButton()
+    public void CancelButton()
     {
         Debug.Log("취소");
+        // 타워 설치 취소 인게임 화면으로 다시 돌아감
     }
 }
