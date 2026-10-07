@@ -10,7 +10,8 @@ public class Stage : MonoBehaviour
 {
     [HideInInspector] public int StageNumber;
     [HideInInspector] public int WaveNumber;
-    [HideInInspector] public  int MonstersNumber;
+    [HideInInspector] public int totalMonsterNumber;
+    [HideInInspector] public int monsterNumber;
     [HideInInspector] public int StageClearReward;
     [SerializeField] private float _spawnInterval = 1.0f;
     [SerializeField] private float _waveInterval = 3.0f;
@@ -25,7 +26,6 @@ public class Stage : MonoBehaviour
     private bool _isStageFailed;
     
     private const int WAVE_COUNT = 5;
-    private int _totalMonsterNumber;
     //팝업 누르면 웨이브 시작
     private bool _waitNextWave = false;
     [SerializeField] private int _stageClearGold =500;
@@ -188,14 +188,14 @@ public class Stage : MonoBehaviour
     {
         // 이전 웨이브 몬스터 목록 초기화
         _spawnedMonsters.Clear();
-        _totalMonsterNumber = 0;
-        MonstersNumber = 0;
+        totalMonsterNumber = 0;
+        monsterNumber = 0;
 
         int normalCount = GetNormalCount();
         int eliteCount = GetEliteCount();
         int bossCount = GetBossCount();
         
-        _totalMonsterNumber = normalCount + eliteCount + bossCount;
+        totalMonsterNumber = normalCount + eliteCount + bossCount;
         
         EMonsterType normalType;
         EMonsterType eliteType;
