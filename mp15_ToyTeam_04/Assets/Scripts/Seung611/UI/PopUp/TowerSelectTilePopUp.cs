@@ -63,5 +63,13 @@ public class TowerSelectTilePopUp : MonoBehaviour
         gameObject.SetActive(false);
         UIManager.Instance.Window.BattleWindow.HideInstallButton();
         PlayerManager.Instance.SetUIMode(false);
+        Init();
+    }
+
+    public void Init()
+    {
+        _uninstallButton.gameObject.SetActive(true);
+        _upgradeButton.gameObject.SetActive(true);
+        _installButton.gameObject.SetActive(true);
     }
 }
