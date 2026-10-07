@@ -25,12 +25,10 @@ public class Stage : MonoBehaviour
     private bool _isStageFailed;
     
     private const int WAVE_COUNT = 5;
-    private int TotalMonsterNumber;
+    private int _totalMonsterNumber;
     //팝업 누르면 웨이브 시작
     private bool _waitNextWave = false;
     [SerializeField] private int _stageClearGold =500;
-
- 
     
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
@@ -190,14 +188,14 @@ public class Stage : MonoBehaviour
     {
         // 이전 웨이브 몬스터 목록 초기화
         _spawnedMonsters.Clear();
-        TotalMonsterNumber = 0;
+        _totalMonsterNumber = 0;
         MonstersNumber = 0;
 
         int normalCount = GetNormalCount();
         int eliteCount = GetEliteCount();
         int bossCount = GetBossCount();
         
-        TotalMonsterNumber = normalCount + eliteCount + bossCount;
+        _totalMonsterNumber = normalCount + eliteCount + bossCount;
         
         EMonsterType normalType;
         EMonsterType eliteType;
@@ -289,6 +287,27 @@ public class Stage : MonoBehaviour
             _curMap.SpawnPoint.position,
             _curMap.SpawnPoint.rotation,
             _curMap.ArrivalPoint
+        );
+
+        // 체력 : 보스는 PlusBossHealth, 나머지는 PlusStageHealth
+        int plusHealth;
+
+        if (monsterType == EMonsterType.Boss1 || monsterType == EMonsterType.Boss2)
+        {
+            plusHealth = PlusBossHealth();
+        }
+        else
+        {
+            plusHealth = PlusStageHealth(monsterType);
+        }
+
+        // 스테이지/웨이브에 맞게 능력치 적용
+        monster.SetStageStat(
+            plusHealth,
+            PlusStageSpeed(monsterType),
+            PlusStageRange(monsterType),
+            PlusStageGold(monsterType)
+            
         );
 
         if (_spawnedMonsters.Contains(monster) == false)
@@ -407,7 +426,100 @@ public class Stage : MonoBehaviour
             GoldManager.Instance.AddGold(StageClearReward);
         }
     }
+    
+    //웨이브 당 능력치 증가 함수
+    [System.Serializable]
+    public class MonsterStatUp
+    {
+        public int PlusWaveHealth;
+        public int PlusStageHealth;
+        public float PlusWaveSpeed;
+        public float PlusStageSpeed;
+        public float PlusWaveRange;
+        public float PlusStageRange;
+        public int PlusWaveGold;
+        public int PlusStageGold;
+    }
+    
+    [SerializeField] private MonsterStatUp _normalStatUp;
+    [SerializeField] private MonsterStatUp _eliteStatUp;
+    [SerializeField] private MonsterStatUp _bossStatUp;
 
+
+
+    
+    // 지금까지 클리어한 웨이브 수 (0부터 시작, 1-2면 1, 2-1이면 5)
+    private int GetClearedWaveCount()
+    { 
+        return (StageNumber - 1) * WAVE_COUNT + (WaveNumber - 1);
+    }
+
+    // 지금까지 클리어한 스테이지 수
+    private int GetClearedStageCount()
+    {
+        return StageNumber - 1;
+    }
+
+    // 몬스터 종류에 따른 스탯
+    private MonsterStatUp GetStatUp(EMonsterType type)
+    {
+        if (type == EMonsterType.Normal1 || type == EMonsterType.Normal2)
+        {
+            return _normalStatUp;
+        }
+
+        if (type == EMonsterType.Elite1 || type == EMonsterType.Elite2)
+        {
+            return _eliteStatUp;
+        }
+
+        return _bossStatUp;
+    }
+
+    // 체력 계산 (일반 + 엘리트)
+    public int PlusStageHealth(EMonsterType type)
+    {
+        MonsterStatUp statUp = GetStatUp(type);
+
+        return (statUp.PlusWaveHealth * GetClearedWaveCount())
+               + (statUp.PlusStageHealth * GetClearedStageCount());
+    }
+
+    // 보스 체력 계산
+    public int PlusBossHealth()
+    {
+        return (_bossStatUp.PlusWaveHealth * GetClearedWaveCount())
+               + (_bossStatUp.PlusStageHealth * GetClearedStageCount());
+    }
+
+    // 이동 속도 계산
+    public float PlusStageSpeed(EMonsterType type)
+    {
+        MonsterStatUp statUp = GetStatUp(type);
+
+        return (statUp.PlusWaveSpeed * GetClearedWaveCount())
+               + (statUp.PlusStageSpeed * GetClearedStageCount());
+    }
+
+    // 공격 범위 계산
+    public float PlusStageRange(EMonsterType type)
+    {
+        MonsterStatUp statUp = GetStatUp(type);
+
+        return (statUp.PlusWaveRange * GetClearedWaveCount())
+               + (statUp.PlusStageRange * GetClearedStageCount());
+    }
+
+    // 획득 골드 계산
+    public int PlusStageGold(EMonsterType type)
+    {
+        MonsterStatUp statUp = GetStatUp(type);
+
+        return (statUp.PlusWaveGold * GetClearedWaveCount())
+               + (statUp.PlusStageGold * GetClearedStageCount());
+
+    }
+    
 
 
     

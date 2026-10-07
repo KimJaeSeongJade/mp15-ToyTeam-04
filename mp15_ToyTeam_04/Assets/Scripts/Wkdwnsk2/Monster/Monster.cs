@@ -53,16 +53,26 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     private bool _isBossImmune; // 보스 상태이상 면역 
     
 
+    // 스테이지 증가량이 더해진 현재 값
+    public float _bossRange = 1f;   // 기본 공격 범위
+    private float _currentRange;
+    private int _currentDropGold;
+    
+
     private void Awake()
     {
         _navmesh = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
     }
+    
+    
 
     //몬스터 스폰
     public void OnSpawn()
     {
         // 체력과 전투 상태 초기화
+        _currentRange = _bossRange;
+        _currentDropGold = _dropGold;
         currentHealth = _monsterHealth;
         isDead = false;
         isSurvivalActive = false;
@@ -219,8 +229,8 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         // 플레이어 골드 증가
         if (GoldManager.Instance != null)
         {
-            GoldManager.Instance.AddGold(_dropGold);
-        }
+            GoldManager.Instance.AddGold(_currentDropGold);}
+        
     }
 
     private IEnumerator DeadWait()
@@ -411,5 +421,16 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         return gold;
     }
+    
+    // Stage에서 스폰 직후 호출 : 기본 능력치 + 스테이지 증가량
+    public void SetStageStat(int plusHealth, float plusSpeed, float plusRange, int plusGold)
+    {
+        currentHealth = _monsterHealth + plusHealth;
+        _navmesh.speed = _monsterSpeed + plusSpeed;
+        _currentRange = _bossRange + plusRange;
+        _currentDropGold = _dropGold + plusGold;
+    }
+    
+    
 
 }
