@@ -193,11 +193,11 @@ MonoBehaviour:
   WaveNumber: 1
   MonstersNumber: 0
   StageClearReward: 0
-  _waveData: []
   _spawnInterval: 1
   _waveInterval: 3
   _maxStageLife: 10
   _monsterLifeDamage: 1
+  _stageClearGold: 500
 --- !u!1001 &483368705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +291,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151bb307d23df7646a260cdfb5c1eafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &561784482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561784483}
+  - component: {fileID: 561784484}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561784483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561784482}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1990757, y: 1.4881326, z: -0.9994394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &561784484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561784482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be76110f08ac71b41b9d1b8b9528314c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arrowTowerPrefab: {fileID: 118992358243612542, guid: 0d6982e33330ea148a0db705b2d433a4, type: 3}
+  _fireTowerPrefab: {fileID: 6045400674966367572, guid: f19b52c31d5607647b97ac20a4b94bbc, type: 3}
+  _iceTowerPrefab: {fileID: 2519453194482236197, guid: 96c4374973d713d4aa7c60ffe2697aa1, type: 3}
+  _arrowBulletPrefab: {fileID: -5770075195381049845, guid: f25b43fde79353944bca317ab8d7f27b, type: 3}
+  _fireBulletPrefab: {fileID: 1422167710637521688, guid: 1fdb122227d6b944abc421342016ee34, type: 3}
+  _iceBulletPrefab: {fileID: 8541218462679412007, guid: 4f9439262a0962347b8f2b9618bac2ac, type: 3}
+  _normalmonsterPrefab1: {fileID: 0}
+  _normalmonsterPrefab2: {fileID: 0}
+  _elitemonsterPrefab1: {fileID: 0}
+  _elitemonsterPrefab2: {fileID: 0}
+  _bossmonsterPrefab1: {fileID: 0}
+  _bossmonsterPrefab2: {fileID: 0}
 --- !u!1001 &742799136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -840,3 +896,4 @@ SceneRoots:
   - {fileID: 1669287607}
   - {fileID: 473221455}
   - {fileID: 758552792}
+  - {fileID: 561784483}
