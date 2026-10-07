@@ -23,7 +23,7 @@ public class TowerController : MonoBehaviour
     {
         _curTime = 0f;
 
-        if (_tower.state == null) return;
+        if (_tower.State == null) return;
 
         switch (_tower.State.ETowerType)
         {
