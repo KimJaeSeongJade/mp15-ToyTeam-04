@@ -12,6 +12,8 @@ public class HP : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _damageText;
 
     private void Awake() => _damageText.gameObject.SetActive(false);
+
+    private void Update() => LookAtCamera();
     public void MonsterStateUpdate(int hp, int maxHealth, int damage)
     {
         MonsterHealthBar(hp, maxHealth);
@@ -51,5 +53,11 @@ public class HP : MonoBehaviour
     private void DamageDisable()
     {
         _damageText.gameObject.SetActive(false);
+    }
+
+    private void LookAtCamera()
+    {
+        // Hp바가 카메라를 쳐다보게 함
+        // transform.LookAt(Camera.main);
     }
 }
