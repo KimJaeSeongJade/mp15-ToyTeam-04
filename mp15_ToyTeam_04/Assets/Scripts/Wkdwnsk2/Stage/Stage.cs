@@ -34,12 +34,13 @@ public class Stage : MonoBehaviour
     private List<Monster> _spawnedMonsters = new List<Monster>();
     
     
-    private void Start()
+    //         StartCoroutine(AutoStart()); 이거 복붙하면 됨
+    /*private void Start()
     {
         StartCoroutine(AutoStart());
-    }
+    }*/
 
-    // 맵이 나오면 _waveInterval초 기다렸다가 자동으로 시작
+    // 맵이 나오면 n초 기다렸다가 자동으로 시작
     private IEnumerator AutoStart()
     {
         // 로비에서 게임 시작을 눌러 맵이 나올 때까지 대기
