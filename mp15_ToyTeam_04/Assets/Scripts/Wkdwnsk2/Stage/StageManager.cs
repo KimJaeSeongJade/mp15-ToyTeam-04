@@ -53,6 +53,10 @@ public class StageManager : MonoBehaviour
     //팝업 누르면 웨이브 시작
     private bool _waitNextWave = false;
     [SerializeField] private int _stageClearGold =500;
+
+    private int _stageStartGold; //스테이지 시작 골드
+    private int _stageEndGold; // 스테이지 끝 골드 
+    public int _stageEarnedGold; // 스테이지 얻은 골드 
     
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
@@ -90,6 +94,7 @@ public class StageManager : MonoBehaviour
         
         
         Debug.Log(StageNumber + " 스테이지 시작");
+        _stageStartGold = GoldManager.Instance.Gold;
         
         for (int wave = 1; wave <= WAVE_COUNT; wave++)
         {
@@ -456,6 +461,10 @@ public class StageManager : MonoBehaviour
         }
 
         RemoveAllTowers();
+        _stageEndGold = GoldManager.Instance.Gold;
+        _stageEarnedGold = _stageEndGold -= _stageStartGold;
+
+
     }
     
     // 현재 맵 타워 전부 철거
