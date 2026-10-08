@@ -57,57 +57,57 @@ public class PoolManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    {/*
         _arrowTowerPool = new ObjectPool<Tower>(
-            _arrowTowerPrefab, 26, transform);
+            _arrowTowerPrefab, 5, transform);
 
         _fireTowerPool = new ObjectPool<Tower>(
-            _fireTowerPrefab, 26, transform);
+            _fireTowerPrefab, 5, transform);
 
         _iceTowerPool = new ObjectPool<Tower>(
-            _iceTowerPrefab, 26, transform);
+            _iceTowerPrefab, 5, transform);
 
         _arrowBulletPool = new ObjectPool<Bullet>(
-            _arrowBulletPrefab, 58, transform);
+            _arrowBulletPrefab, 10, transform);
 
         _fireBulletPool = new ObjectPool<Bullet>(
-            _fireBulletPrefab, 58, transform);
+            _fireBulletPrefab, 10, transform);
 
         _iceBulletPool = new ObjectPool<Bullet>(
-            _iceBulletPrefab, 58, transform);
+            _iceBulletPrefab, 10, transform);
 
         // 기존 오브젝트 풀 생성
         _monsterPool = new ObjectPool<Monster>(
             _normalmonsterPrefab1,
-             20,
+             5,
             transform
         );
         
         _monsterPool2 = new ObjectPool<Monster>(
             _normalmonsterPrefab2,
-            20,
+            5,
             transform
         );
         _monsterPool3 = new ObjectPool<Monster>(
             _elitemonsterPrefab1,
-            20,
+            5,
             transform
         );
         _monsterPool4 = new ObjectPool<Monster>(
             _elitemonsterPrefab2,
-            20,
+            5,
             transform
         );
         _monsterPool5 = new ObjectPool<Monster>(
             _bossmonsterPrefab1,
-            20,
+            5,
             transform
         );
         _monsterPool6 = new ObjectPool<Monster>(
             _bossmonsterPrefab2,
-            20,
+            5,
             transform
-        );
+        );*/
     }
     
 
