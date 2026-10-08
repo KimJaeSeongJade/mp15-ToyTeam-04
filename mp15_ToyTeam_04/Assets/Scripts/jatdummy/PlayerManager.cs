@@ -242,8 +242,20 @@ public class PlayerManager : MonoBehaviour
         Tower tower = _selectedTile._tower;
 
         _selectedTile.TileRemovalTower();
-        
-        PoolManager.Instance._arrowTowerPool.ReturnObject(tower);
+
+        // 꺼낸 타워 종류의 풀로 반납.
+        switch (tower.State.ETowerType)
+        {
+            case ETowerType.ArrowTower:
+                PoolManager.Instance._arrowTowerPool.ReturnObject(tower);
+                break;
+            case ETowerType.FireTower:
+                PoolManager.Instance._fireTowerPool.ReturnObject(tower);
+                break;
+            case ETowerType.IceTower:
+                PoolManager.Instance._iceTowerPool.ReturnObject(tower);
+                break;
+        }
     }
 
 

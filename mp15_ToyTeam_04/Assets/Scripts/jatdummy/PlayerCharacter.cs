@@ -33,6 +33,13 @@ public class PlayerCharacter : MonoBehaviour
 
     public void Update()
     {
+        // setUI(팝업시) 캐릭터 정지.
+        if (_playerCamera != null && _playerCamera.IsUIMode)
+        {
+            UpdateAnimation(false);
+            return;
+        }
+
         bool isTopView = _playerCamera != null && _playerCamera.IsTopView;
 
         if (isTopView)
@@ -113,11 +120,11 @@ public class PlayerCharacter : MonoBehaviour
         {
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)
-            PlayerManager.Instance.SelectTile(tile);
-
-
-            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
-            PlayerManager.Instance.SetUIMode(true);
+            {
+                PlayerManager.Instance.SelectTile(tile);
+                UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
+                PlayerManager.Instance.SetUIMode(true);
+            }
         }
     }
 
@@ -136,9 +143,11 @@ public class PlayerCharacter : MonoBehaviour
         {
             Tile tile = GetTowerTile(hit.collider);
             if (tile != null)
+            {
                 PlayerManager.Instance.SelectTile(tile);
-            
-            UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
+                UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
+                PlayerManager.Instance.SetUIMode(true);
+            }
         }
 
 
