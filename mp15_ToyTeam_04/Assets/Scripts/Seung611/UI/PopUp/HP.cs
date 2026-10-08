@@ -11,6 +11,7 @@ public class HP : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _hpText;
     [SerializeField] private TextMeshProUGUI _damageText;
 
+    private void Awake() => _damageText.gameObject.SetActive(false);
     public void MonsterStateUpdate(int hp, int maxHealth, int damage)
     {
         MonsterHealthBar(hp, maxHealth);
