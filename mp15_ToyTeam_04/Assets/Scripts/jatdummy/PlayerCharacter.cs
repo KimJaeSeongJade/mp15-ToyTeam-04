@@ -66,7 +66,8 @@ public class PlayerCharacter : MonoBehaviour
         // 플레이서 스킬 사용. 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayerManager.Instance.UseSkill();
+            PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
+            Debug.Log("유중혁이 스킬을 사용합니다.");
         }
        
 
@@ -107,6 +108,8 @@ public class PlayerCharacter : MonoBehaviour
         return Quaternion.Euler(0f, _cam.eulerAngles.y, 0f) * input;
     }
 
+    
+
     // 캐릭터 상호작용
     public void PlayerInteract()
     {
@@ -124,6 +127,7 @@ public class PlayerCharacter : MonoBehaviour
                 PlayerManager.Instance.SelectTile(tile);
                 UIManager.Instance.PopUp.TowerSelectTilePopUpOpen(tile.IsTower);
                 PlayerManager.Instance.SetUIMode(true);
+
             }
         }
     }

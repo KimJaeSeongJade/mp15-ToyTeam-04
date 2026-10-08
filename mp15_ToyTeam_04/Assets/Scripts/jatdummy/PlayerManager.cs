@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 
@@ -13,19 +14,26 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerCharacter _character;
         
     private Tile _selectedTile;   // 팝업 대상 타일
-    public Tile SelectedTile => _selectedTile;
+    public Tile SelectedTile => _selectedTile; // 타일 UI
     
     // 타일 선택됐을 때 알림 
     public event Action<Tile> OnTileSelected;
-
 
     // 일단 60초로 고정.
     private const float SKILL_COOL_TIME = 60f; 
     // 남은 시간
     
     private float _skillCoolTimer;
-    public float SkillCoolTimer => _skillCoolTimer; // Ui 표시해야지.
-    
+    public float SkillCoolTimer => _skillCoolTimer; // 쿨타임 UI
+
+    // 스킬 알림.
+    public event Action<EPlayerSkillType, float> OnSkillUsed;
+    private Monster _monster;
+
+    private float TimeFreezeDuration = 3f;
+    private float NaturalDisasterDamagePer = 20f;
+
+
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
         { ETowerType.ArrowTower, new ArrowTower() },
@@ -41,13 +49,17 @@ public class PlayerManager : MonoBehaviour
         { ETowerType.IceTower,   new TowerAbility(ETowerType.IceTower)   }
     };
 
+    private Dictionary<EPlayerSkillType, PlayerSkill> _SkillAblity = new Dictionary<EPlayerSkillType, PlayerSkill>
+    {
+        {EPlayerSkillType.TimeFreeze, new PlayerSkill(EPlayerSkillType.TimeFreeze) },
+        {EPlayerSkillType.NaturalDisaster, new PlayerSkill(EPlayerSkillType.NaturalDisaster) }
+    };
+
     // 타워 최고 레벨 
     private const int MAX_TOWER_LEVEL = 3;
 
     // 설치할 타워 종류
     private ETowerType _selectedTowerType;
-    
-    // ui에서 - - -- - - -- - - 
     public ETowerType SelectedTowerType => _selectedTowerType;
 
     private void Awake()
@@ -58,8 +70,6 @@ public class PlayerManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        //_character = GetComponentInChildren<PlayerCharacter>();
     }
 
     private void Update()
@@ -68,27 +78,7 @@ public class PlayerManager : MonoBehaviour
         {
             _skillCoolTimer -= Time.deltaTime;
         }
-
-        /* 
-        // 로비 전환 케어 테스트용
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            if (MapManager.Instance != null)
-                MapManager.Instance.ShowBattleMap();
-            else
-                Debug.Log("맵 경계가 없는데? ground 확인좀..");
-
-            OnPlayer();
-        }
-        if (Input.GetKeyDown(KeyCode.I)) OffPlayer();
-        // UIMode 테스트 (나중에 삭제)
-        if (Input.GetKeyDown(KeyCode.O)) SetUIMode(true);    // 팝업 열림
-        if (Input.GetKeyDown(KeyCode.P)) SetUIMode(false);   // 팝업 닫힘
-        */
-
-
     }
-
     [SerializeField] private PlayerCamera _playerCamera;
 
     // 맵 켜질 때 끄고 위치 옮기고 다시 켜기
@@ -149,13 +139,6 @@ public class PlayerManager : MonoBehaviour
         return ability;
     }
 
-    // 설치할 타워 종류 선택
-    /*
-    public void SelectTowerType(ETowerType type)
-    {
-        _selectedTowerType = type;
-    }
-    */
     // 이 타워 얼만데?
     public int GetInstallCost(ETowerType type)
     {
@@ -175,6 +158,35 @@ public class PlayerManager : MonoBehaviour
             
             default: return null;
         }
+    }
+    public void EquipSkill(EPlayerSkillType skill)
+    {
+        _equippedSkillType = skill;
+    }
+
+    private EPlayerSkillType _equippedSkillType;
+    public EPlayerSkillType EquiipedSkillType => _equippedSkillType;
+    
+    public void UseSkill(EPlayerSkillType ePlayerSkill)
+    {
+        _equippedSkillType = ePlayerSkill;
+        if (_equippedSkillType == EPlayerSkillType.None) return;
+        if (_skillCoolTimer > 0f) return;
+
+        float value = 0f;
+
+        switch (_equippedSkillType)
+        {
+            case EPlayerSkillType.TimeFreeze:
+                value = TimeFreezeDuration;
+                break;
+            case EPlayerSkillType.NaturalDisaster:
+                value = NaturalDisasterDamagePer;
+                break;
+
+        }
+        
+        _skillCoolTimer = SKILL_COOL_TIME;
     }
 
     // 타워 설치 돈내고 설치 돈 돈돈
@@ -207,7 +219,7 @@ public class PlayerManager : MonoBehaviour
             Debug.LogError("타워 못찾음");
             return;
         }
-        
+
 
         // 타일 윗면에 배치
         Vector3 pos = _selectedTile.transform.position;
@@ -258,18 +270,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
-    public void UseSkill()
-    {
-        // 쿨타임 중이면 안돼
-        if (_skillCoolTimer > 0f) return;
-        
-        Debug.Log("UseSkill 받아와 스킬 사용 확인와료");
-
-        // 사용 후 쿨타임 시작하기
-        _skillCoolTimer = SKILL_COOL_TIME;
-    }
-
     public void SelectTile(Tile tile)
     {
         _selectedTile = tile;
@@ -281,8 +281,9 @@ public class PlayerManager : MonoBehaviour
             OnTileSelected(tile);
         }
     }
-    // UI 팝업 열고 닫을 때 이거 쓰심 됩니다.
+    // UI 팝업 열고 닫을 때
     // true : 커서보임 카메라 회전 x  , false : 다시 캐릭터 시점
+
     public void SetUIMode(bool isOpen)
     {
         _playerCamera.SetUIMode(isOpen);
