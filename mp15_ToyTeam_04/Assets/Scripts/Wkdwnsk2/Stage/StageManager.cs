@@ -3,12 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
-public class Stage : MonoBehaviour
-
+public class StageManager : MonoBehaviour
 {
+    private static MapManager _instance;
+    public static MapManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<MapManager>();
+            }
+            return _instance;
+        }
+    }
+
+    /// <summary> 싱글톤 설정 함수. Start에서 호출. </summary>
+    private void SetSingleton()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
+
     [HideInInspector] public int StageNumber;
     [HideInInspector] public int WaveNumber;
     [HideInInspector] public int totalMonsterNumber;
@@ -37,10 +60,9 @@ public class Stage : MonoBehaviour
 
     public void Start()
     {
+        SetSingleton();
         StartCoroutine(AutoStart());
     }
-
-  
     
     // 맵이 나오면 n초 기다렸다가 자동으로 시작
     private IEnumerator AutoStart()
@@ -58,9 +80,6 @@ public class Stage : MonoBehaviour
         MonsterGenerate();
     }
     
- 
-
-
     private IEnumerator StageStart()
     {
         _isStageRunning = true;
@@ -522,11 +541,4 @@ public class Stage : MonoBehaviour
                + (statUp.PlusStageGold * GetClearedStageCount());
 
     }
-    
-
-
-    
-
-    
-    
 }

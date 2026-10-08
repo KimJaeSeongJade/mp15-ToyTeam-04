@@ -15,8 +15,8 @@ public class StageResultPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _getGold;
     [SerializeField] private TextMeshProUGUI _stageReward;
 
-    private Stage _stage = new Stage();
-    private Stage.MonsterStatUp _monsterStat;
+    private StageManager _stage;
+    private StageManager.MonsterStatUp _monsterStat;
     
     // 스테이지에서 값 받아오기 (추후에 값 수정)
     private int _stageCount => _stage.StageNumber; 

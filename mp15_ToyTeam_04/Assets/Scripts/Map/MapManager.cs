@@ -18,7 +18,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    /// <summary> 싱글톤 설정 함수. Awake에서 호출. </summary>
+    /// <summary> 싱글톤 설정 함수. Start에서 호출. </summary>
     private void SetSingleton()
     {
         if (_instance != null && _instance != this)
