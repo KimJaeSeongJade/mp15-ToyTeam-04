@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PopUpManager : MonoBehaviour
 {
-    public HP Hp;
     public TowerSpecPopUp TowerSpecPopUp;
     public PlayerSkillPopUp PlayerSkillPopUp;
     public StageResultPopUp StageResultPopUp;
@@ -35,7 +34,7 @@ public class PopUpManager : MonoBehaviour
         OnGamePlayerSkillPopUp?.Invoke();
     }
 
-    public void TowerSpecPopUpOpen(int index)
+    public void TowerSpecPopUpOpen()
     {
         OnGameTowerSpecPopUp?.Invoke();
     }
@@ -49,6 +48,4 @@ public class PopUpManager : MonoBehaviour
     {
         OnGameMessagePopUp?.Invoke();
     }
-    
-
 }

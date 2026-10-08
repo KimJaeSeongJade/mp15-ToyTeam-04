@@ -25,7 +25,6 @@ public class HP : MonoBehaviour
         _hpText.text = hp + " / " + maxHealth;
     }
     
-    
 
     private void MonsterDamage(int damage)
     {
