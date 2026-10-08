@@ -15,7 +15,10 @@ public class HP : MonoBehaviour
     public void MonsterStateUpdate(int hp, int maxHealth, int damage)
     {
         MonsterHealthBar(hp, maxHealth);
-        MonsterDamage(damage);
+        if (damage > 0)
+        {
+            MonsterDamage(damage);
+        }
     }
     
     private void MonsterHealthBar(int hp, int maxHealth)
