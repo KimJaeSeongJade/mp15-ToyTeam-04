@@ -108,10 +108,9 @@ public class Stage : MonoBehaviour
             
             if (wave == WAVE_COUNT)
             {
-                UIManager.Instance.PopUp.StageResultPopUpOpen();
-                StageClear();
+                StageClear();                                    // 보상 먼저
+                UIManager.Instance.PopUp.StageResultPopUpOpen(); // 그다음 팝업
             }
-
 
             {
                 // 마지막 웨이브가 아니면 _waveInterval초 후 다음 웨이브 자동 시작
@@ -170,8 +169,14 @@ public class Stage : MonoBehaviour
             {
                 break;
             }
-            
- 
+
+            // 클리어 팝업이 꺼질 때까지 대기 (Next를 누르면 팝업이 꺼짐)
+            GameObject resultPopUp = UIManager.Instance.PopUp.StageResultPopUp.gameObject;
+
+            while (resultPopUp.activeSelf)
+            {
+                yield return null;
+            }
 
             // 다음 스테이지로
             StageNumber = StageNumber + 1;
