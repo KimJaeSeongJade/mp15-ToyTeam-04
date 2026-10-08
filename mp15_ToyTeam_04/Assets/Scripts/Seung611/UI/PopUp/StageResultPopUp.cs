@@ -15,7 +15,7 @@ public class StageResultPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _getGold;
     [SerializeField] private TextMeshProUGUI _stageReward;
 
-    private Stage _stage = new Stage();
+    private Stage _stage;
     private Stage.MonsterStatUp _monsterStat;
     
     // 스테이지에서 값 받아오기 (추후에 값 수정)
@@ -45,11 +45,12 @@ public class StageResultPopUp : MonoBehaviour
     private void NextStage()
     {
         gameObject.SetActive(false);
+        MapManager.Instance.ShowBattleMap();
     }
 
     private void Lobby()
     {
-        SceneManager.LoadScene(1);
+        UIManager.Instance.Window.LobbyWindowOpen();
     }
 
     private void Result()
