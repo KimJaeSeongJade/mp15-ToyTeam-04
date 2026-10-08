@@ -82,6 +82,6 @@ public class LobbyWindow : MonoBehaviour
 
     public void HaveGold(int gold)
     {
-        _haveGlod.text = "Gold: " + gold.ToString();
+        _haveGlod.text = "Gold : " + gold.ToString();
     }
 }
