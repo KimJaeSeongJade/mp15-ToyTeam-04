@@ -269,7 +269,6 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }
-
     public void SelectTile(Tile tile)
     {
         _selectedTile = tile;

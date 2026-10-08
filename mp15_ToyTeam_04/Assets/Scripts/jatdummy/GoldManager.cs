@@ -49,7 +49,7 @@ public class GoldManager : MonoBehaviour
             OnGoldChanged(_gold);
         }
         // 테스트 로그
-        Debug.Log($"��� {amount} �߰�  ���� {_gold}");
+        Debug.Log($"골드 {amount} 추가  현재 {_gold}");
         GoldView();
     }
 
@@ -59,8 +59,8 @@ public class GoldManager : MonoBehaviour
     {
         if (_gold < amount)
         {
-            // �׽�Ʈ �α�
-            Debug.Log($" �ʿ��� ��� {amount}, ���� ��� {_gold}, ���� ���{amount - _gold} ");
+            // 테스트 로그
+            Debug.Log($" 필요한 골드 {amount}, 보유 골드{_gold}, 부족 골드{amount - _gold} 입니다 ");
             return false;
         }
 
@@ -72,7 +72,7 @@ public class GoldManager : MonoBehaviour
             OnGoldChanged(_gold);
         }
         // 테스트 로그
-        Debug.Log($"��徴�� {amount} ���� ���� ��� {_gold}");
+        Debug.Log($"{amount}골드 사용  남은 골드 {_gold} 입니다");
         GoldView();
         return true;
     }
