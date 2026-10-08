@@ -52,7 +52,10 @@ public enum EAbilityType
 
 public enum EPlayerSkillType
 {
+    /// <summary> 없음 </summary>
     None = -1,
+    /// <summary> 시간 정지 </summary>
     TimeFreeze = 0,
+    /// <summary> 자연 재해 </summary>
     NaturalDisaster = 1
 }
