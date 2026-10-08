@@ -11,6 +11,7 @@ public class BattleWindow : MonoBehaviour
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
+    [SerializeField] private TextMeshProUGUI _monsterCount;
 
     private void Awake() => Init();
     private void OnEnable() => BindButtonEvents();
@@ -91,6 +92,10 @@ public class BattleWindow : MonoBehaviour
         _towerInventory[2].gameObject.SetActive(false);
     }
 
+    public void CurrnetMonster()
+    {
+        _monsterCount.text = _monsterCount.ToString() + " / " + _monsterCount.ToString();
+    }
 
     public void HaveGold(int gold)
     {
