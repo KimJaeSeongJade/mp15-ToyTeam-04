@@ -30,8 +30,8 @@ public class MapManager : MonoBehaviour
             _instance = this;
         }
     }
-    [Header("전체 맵"), SerializeField] private Map[] NormalMaps;
-    [Header("보스 맵"), SerializeField] private Map BossMap;
+    [Header("전체 맵"), SerializeField] private Map[] _maps;
+    [Header("맵에 따른 배경"), SerializeField] private Material[] _materials;
     [HideInInspector] public Map _curMap;
 
     /// <summary> 현재 맵 번호 </summary>
@@ -53,7 +53,7 @@ public class MapManager : MonoBehaviour
         _curMap?.ResetMap();
 
         // 맵은 랜덤으로 하기 때문에 랜덤 숫자
-        int rand = Random.Range(0, NormalMaps.Length);
+        int rand = Random.Range(0, _maps.Length);
 
         // 같은 값이면 비활성 안하기 위해 나가기
         if (rand == _curMapNumber) return;
@@ -62,15 +62,16 @@ public class MapManager : MonoBehaviour
         if (_curMapNumber != -1)
         {
             // 전 맵 비활성화
-            NormalMaps[_curMapNumber].gameObject.SetActive(false);
+            _maps[_curMapNumber].gameObject.SetActive(false);
         }
 
         // 현재 맵 번호 갱신
         _curMapNumber = rand;
         // 맵 활성화
-        NormalMaps[_curMapNumber].gameObject.SetActive(true);
+        _maps[_curMapNumber].gameObject.SetActive(true);
+        RenderSettings.skybox = _materials[_curMapNumber];
         // 현재 맵 정보
-        _curMap = NormalMaps[_curMapNumber];
+        _curMap = _maps[_curMapNumber];
 
         PlayerManager.Instance.OnPlayer();
     }

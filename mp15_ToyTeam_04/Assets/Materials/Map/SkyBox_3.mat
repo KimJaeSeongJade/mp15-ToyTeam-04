@@ -7,17 +7,16 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ice
-  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: SkyBox_3
+  m_Shader: {fileID: 108, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _EMISSION
-  - _METALLICGLOSSMAP
+  - _MAPPING_LATITUDE_LONGITUDE_LAYOUT
   - _NORMALMAP
-  - _SPECGLOSSMAP
-  m_LightmapFlags: 2
+  - _PARALLAXMAP
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -28,7 +27,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: bfe6411280007f74a9d5e08c657bf195, type: 3}
+        m_Texture: {fileID: 2800000, guid: fcb92452db7aa724981d24fa5e742641, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,27 +43,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 26f556776965f654ca2d68e75cb0aa48, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0.5, y: 0.5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f8a00d07c7d48b740b094e24f534a7a8, type: 3}
-        m_Scale: {x: 3, y: 5}
+        m_Texture: {fileID: 2800000, guid: 7b707a07df668c04e9dc0d5ad4820c8e, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: cdb2d48f0c957a44a968e7f2eadaeaea, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 202ac2dd208966344ab44e077904aecd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 8ddf821729d3ed14f9f61fbc14a5f118, type: 3}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: d5f95c07fd02c3d4cb9e876ba8b90f9a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: e5e5b89b7d4dcad4391faf12388feb90, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -73,14 +68,19 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Exposure: 1
+    - _GlossMapScale: 0.2
+    - _Glossiness: 0.2
     - _GlossyReflections: 1
-    - _InvFade: 0.88
+    - _ImageType: 0
+    - _Layout: 0
+    - _Mapping: 1
     - _Metallic: 0
+    - _MirrorOnBack: 0
     - _Mode: 0
-    - _OcclusionStrength: 0.025
+    - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Rotation: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -88,6 +88,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1.0592737, g: 1.0592737, b: 1.0592737, a: 1}
-    - _TintColor: {r: 0.8117647, g: 0.9098039, b: 0.9019608, a: 0.5}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
