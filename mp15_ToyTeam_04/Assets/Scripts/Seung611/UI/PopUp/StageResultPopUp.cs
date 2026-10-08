@@ -15,13 +15,16 @@ public class StageResultPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _getGold;
     [SerializeField] private TextMeshProUGUI _stageReward;
 
+    private Stage _stage = new Stage();
+    private Stage.MonsterStatUp _monsterStat;
+    
     // 스테이지에서 값 받아오기 (추후에 값 수정)
-    private int _stageCount = 0; 
-    private int _waveCount = 0; 
-    private int _currentMonsterCount = 0;
-    private int _maxMonsterCount = 0;
-    private int _getGoldCount = 0;
-    private int _stageRewardCount = 0;
+    private int _stageCount => _stage.StageNumber; 
+    private int _waveCount => _stage.WaveNumber; 
+    private int _currentMonsterCount => _stage.monsterNumber;
+    private int _maxMonsterCount => _stage.totalMonsterNumber;
+    private int _getGoldCount => _monsterStat.PlusWaveGold;
+    private int _stageRewardCount => _monsterStat.PlusStageGold;
     
     private void Start() => Result();
     private void OnEnable() => BindButtonEvents();
@@ -41,7 +44,7 @@ public class StageResultPopUp : MonoBehaviour
 
     private void NextStage()
     {
-        // SceneManager.LoadScene(); // 내 다음씬 불러오기 (랜덤으로)
+        gameObject.SetActive(false);
     }
 
     private void Lobby()
@@ -56,10 +59,5 @@ public class StageResultPopUp : MonoBehaviour
         _monsterCount.text = _currentMonsterCount.ToString() + " / " + _maxMonsterCount.ToString();
         _getGold.text = $"Gold : " + _getGoldCount.ToString();
         _stageReward.text = $"Reward : " + _stageRewardCount.ToString();
-    }
-
-    private void Esc()
-    {
-        gameObject.SetActive(false);
     }
 }

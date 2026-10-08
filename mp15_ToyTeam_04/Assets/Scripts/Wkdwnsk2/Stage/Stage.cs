@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,12 +35,12 @@ public class Stage : MonoBehaviour
     private List<Monster> _spawnedMonsters = new List<Monster>();
 
 
-
-
-    public void MapStageStart()
+    public void Start()
     {
         StartCoroutine(AutoStart());
     }
+
+  
     
     // 맵이 나오면 n초 기다렸다가 자동으로 시작
     private IEnumerator AutoStart()
@@ -107,6 +108,7 @@ public class Stage : MonoBehaviour
             
             if (wave == WAVE_COUNT)
             {
+                UIManager.Instance.PopUp.StageResultPopUpOpen();
                 StageClear();
             }
 
