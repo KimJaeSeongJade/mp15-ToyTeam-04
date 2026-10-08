@@ -35,7 +35,7 @@ public class PopUpManager : MonoBehaviour
         OnGamePlayerSkillPopUp?.Invoke();
     }
 
-    public void TowerSpecPopUpOpen(int index)
+    public void TowerSpecPopUpOpen()
     {
         OnGameTowerSpecPopUp?.Invoke();
     }

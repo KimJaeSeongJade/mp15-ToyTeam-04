@@ -63,21 +63,21 @@ public class LobbyWindow : MonoBehaviour
     {
         _towerState[0] = new ArrowTower();
         UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 0);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(0); // 팝업 오픈 용도
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen(); // 팝업 오픈 용도
     }
 
     private void Tower1SpecPopUp()
     {
         _towerState[1] = new FireTower();
         UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 1);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(1);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void Tower2SpecPopUp()
     {
         _towerState[2] = new IceTower();
         UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 2);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     public void HaveGold(int gold)

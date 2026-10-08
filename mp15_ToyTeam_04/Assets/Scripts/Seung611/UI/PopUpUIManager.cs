@@ -8,7 +8,7 @@ public class PopUpUIManager : MonoBehaviour
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
 
-    private bool _isTower;
+    // private bool _isTower;
     
     private void BindEventButtons()
     {

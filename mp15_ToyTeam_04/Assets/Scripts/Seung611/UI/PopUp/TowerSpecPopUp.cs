@@ -57,21 +57,21 @@ public class TowerSpecPopUp : MonoBehaviour
     {
         _towerStates[0] = new ArrowTower();
         TowerSelectButton(_towerStates[0]);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(0);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
     
     private void Tower1Select()
     {
         _towerStates[1] = new FireTower();
         TowerSelectButton(_towerStates[1]);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(1);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
     
     private void Tower2Select()
     {
         _towerStates[2] = new IceTower();
         TowerSelectButton(_towerStates[2]);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(2);
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void TowerSelectButton(TowerState state)
