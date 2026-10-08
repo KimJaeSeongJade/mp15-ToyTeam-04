@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    private static MapManager _instance;
-    public static MapManager Instance
+    private static StageManager _instance;
+    public static StageManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<MapManager>();
+                _instance = FindObjectOfType<StageManager>();
             }
             return _instance;
         }
