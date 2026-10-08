@@ -53,6 +53,10 @@ public class StageManager : MonoBehaviour
     //팝업 누르면 웨이브 시작
     private bool _waitNextWave = false;
     [SerializeField] private int _stageClearGold =500;
+
+    private int _stageStartGold; //스테이지 시작 골드
+    private int _stageEndGold; // 스테이지 끝 골드 
+    public int _stageEarnedGold; // 스테이지 얻은 골드 
     
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
@@ -90,6 +94,7 @@ public class StageManager : MonoBehaviour
         
         
         Debug.Log(StageNumber + " 스테이지 시작");
+        _stageStartGold = GoldManager.Instance.Gold;
         
         for (int wave = 1; wave <= WAVE_COUNT; wave++)
         {
@@ -453,6 +458,49 @@ public class StageManager : MonoBehaviour
         if (GoldManager.Instance != null)
         {
             GoldManager.Instance.AddGold(StageClearReward);
+        }
+
+        RemoveAllTowers();
+        _stageEndGold = GoldManager.Instance.Gold;
+        _stageEarnedGold = _stageEndGold -= _stageStartGold;
+
+
+    }
+    
+    // 현재 맵 타워 전부 철거
+    private void RemoveAllTowers()
+    {
+        Map map = MapManager.Instance._curMap;
+
+        if (map == null)
+        {
+            return;
+        }
+
+        foreach (Tile tile in map.TowerTile)
+        {
+            if (tile.IsTower == false)
+            {
+                continue;
+            }
+
+            // 타일 비우기 전에 잡아두기
+            Tower tower = tile._tower;
+            tile.TileRemovalTower();
+
+            // 종류에 맞는 풀로 반납 → Tower.OnDespawn()에서 철거 비용 지급
+            switch (tower.State.ETowerType)
+            {
+                case ETowerType.ArrowTower:
+                    PoolManager.Instance._arrowTowerPool.ReturnObject(tower);
+                    break;
+                case ETowerType.FireTower:
+                    PoolManager.Instance._fireTowerPool.ReturnObject(tower);
+                    break;
+                case ETowerType.IceTower:
+                    PoolManager.Instance._iceTowerPool.ReturnObject(tower);
+                    break;
+            }
         }
     }
     

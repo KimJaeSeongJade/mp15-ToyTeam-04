@@ -493,7 +493,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         _currentDropGold = _dropGold + plusGold;
         
         // 시작 체력 표시
-        UpdateHpUI(currentHealth);
+        UpdateHpUI(0);
     }
     
        // 타워 공격 효과 적용 (IDamageable)
