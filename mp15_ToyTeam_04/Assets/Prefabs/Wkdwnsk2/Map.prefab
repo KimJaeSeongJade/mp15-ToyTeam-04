@@ -1539,6 +1539,7 @@ GameObject:
   - component: {fileID: 8803016139501321074}
   - component: {fileID: 3276587466425657698}
   - component: {fileID: 7317309542956577706}
+  - component: {fileID: 9133934879855263707}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -1633,6 +1634,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &9133934879855263707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523460318240601736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.083333336
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: d3491b53243e4954aa7b4a53435f78f6, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &538251701563625802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2609,7 +2641,7 @@ Transform:
   m_GameObject: {fileID: 819111131900162537}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.124685, y: 1, z: -5.2191715}
+  m_LocalPosition: {x: -0.355, y: 1, z: 0.961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4954,7 +4986,7 @@ Transform:
   m_GameObject: {fileID: 1984144686045824757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8753147, y: 1, z: -20.219172}
+  m_LocalPosition: {x: -0.382, y: 1, z: 8.961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19409,7 +19441,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5681234931404901258}
   - component: {fileID: 3082634735154067770}
-  - component: {fileID: 2379456789283112921}
   m_Layer: 7
   m_Name: Map
   m_TagString: Untagged
@@ -19539,55 +19570,6 @@ MonoBehaviour:
   - {fileID: 4716598156597392666}
   _spawnPoint: {fileID: 8891662400561161181}
   _arrivalPoint: {fileID: 986826300700432618}
---- !u!114 &2379456789283112921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965186218825978619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a48b5a7c490404fab16430dc175564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StageNumber: 1
-  WaveNumber: 1
-  totalMonsterNumber: 0
-  monsterNumber: 0
-  StageClearReward: 0
-  _spawnInterval: 0.2
-  _waveInterval: 3
-  _maxStageLife: 10
-  _monsterLifeDamage: 1
-  _stageClearGold: 500
-  _normalStatUp:
-    PlusWaveHealth: 0
-    PlusStageHealth: 0
-    PlusWaveSpeed: 0
-    PlusStageSpeed: 0
-    PlusWaveRange: 0
-    PlusStageRange: 0
-    PlusWaveGold: 0
-    PlusStageGold: 0
-  _eliteStatUp:
-    PlusWaveHealth: 0
-    PlusStageHealth: 0
-    PlusWaveSpeed: 0
-    PlusStageSpeed: 0
-    PlusWaveRange: 0
-    PlusStageRange: 0
-    PlusWaveGold: 0
-    PlusStageGold: 0
-  _bossStatUp:
-    PlusWaveHealth: 0
-    PlusStageHealth: 0
-    PlusWaveSpeed: 0
-    PlusStageSpeed: 0
-    PlusWaveRange: 0
-    PlusStageRange: 0
-    PlusWaveGold: 0
-    PlusStageGold: 0
 --- !u!1 &6971106971471924180
 GameObject:
   m_ObjectHideFlags: 0
@@ -32576,15 +32558,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1789082129186466822, guid: 20e0e2e1c612d8e4397ac37b8dc482f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1789082129186466822, guid: 20e0e2e1c612d8e4397ac37b8dc482f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1789082129186466822, guid: 20e0e2e1c612d8e4397ac37b8dc482f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1789082129186466822, guid: 20e0e2e1c612d8e4397ac37b8dc482f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37682,7 +37664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550371441218846220, guid: 48ae14265427132489bfe99f3fe47c2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.257
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550371441218846220, guid: 48ae14265427132489bfe99f3fe47c2b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37690,7 +37672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550371441218846220, guid: 48ae14265427132489bfe99f3fe47c2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550371441218846220, guid: 48ae14265427132489bfe99f3fe47c2b, type: 3}
       propertyPath: m_LocalRotation.w

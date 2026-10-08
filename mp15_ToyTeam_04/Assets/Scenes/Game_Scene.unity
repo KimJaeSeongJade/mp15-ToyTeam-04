@@ -544,6 +544,10 @@ PrefabInstance:
       propertyPath: _stage
       value: 
       objectReference: {fileID: 473221457}
+    - target: {fileID: 5152799250280823126, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
+      propertyPath: _stage
+      value: 
+      objectReference: {fileID: 473221457}
     - target: {fileID: 5681234931404901258, guid: 0a41ed69f4778b549977e65514613fdb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.84
