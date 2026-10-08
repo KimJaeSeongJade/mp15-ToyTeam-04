@@ -13733,7 +13733,7 @@ MonoBehaviour:
   - {fileID: 6640357169646717991}
   - {fileID: 3065408061628563070}
   - {fileID: 5875243687006193073}
-  _haveGlod: {fileID: 0}
+  _haveGlod: {fileID: 19331485726054737}
   _towerSpecPopUp: {fileID: 0}
 --- !u!1 &8959140535825003843
 GameObject:
