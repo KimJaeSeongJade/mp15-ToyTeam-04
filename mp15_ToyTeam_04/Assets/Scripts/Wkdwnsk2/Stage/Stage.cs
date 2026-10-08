@@ -32,20 +32,29 @@ public class Stage : MonoBehaviour
     
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
-    
-    
-    private void Update()
+
+
+
+
+    public void MapStageStart()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        StartCoroutine(AutoStart());
+    }
+    
+    // 맵이 나오면 n초 기다렸다가 자동으로 시작
+    private IEnumerator AutoStart()
+    {
+        // 로비에서 게임 시작을 눌러 맵이 나올 때까지 대기
+        while (MapManager.Instance._curMap == null)
         {
-            MonsterGenerate();
+            yield return null;
         }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            NextWave();
-        }
-        
-        
+
+        Debug.Log(_waveInterval + "초 후 몬스터 소환 시작");
+
+        yield return new WaitForSeconds(_waveInterval);
+
+        MonsterGenerate();
     }
     
  
@@ -101,19 +110,15 @@ public class Stage : MonoBehaviour
                 StageClear();
             }
 
-    
+
             {
-                // NextWave()가 호출될 때까지 대기 (여기서 팝업 띄우기)
-                _waitNextWave = true;
-
-                while (_waitNextWave)
+                // 마지막 웨이브가 아니면 _waveInterval초 후 다음 웨이브 자동 시작
+                if (wave < WAVE_COUNT)
                 {
-                    yield return null;
+                    Debug.Log("다음 웨이브까지 " + _waveInterval + "초");
+
+                    yield return new WaitForSeconds(_waveInterval);
                 }
-
-                Debug.Log("다음 웨이브까지 " + _waveInterval + "초");
-
-                yield return new WaitForSeconds(_waveInterval);
             }
         }
 
