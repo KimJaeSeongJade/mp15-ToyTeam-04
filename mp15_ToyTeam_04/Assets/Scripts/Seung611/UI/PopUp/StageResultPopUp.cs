@@ -14,17 +14,14 @@ public class StageResultPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _monsterCount;
     [SerializeField] private TextMeshProUGUI _getGold;
     [SerializeField] private TextMeshProUGUI _stageReward;
-
-    private StageManager _stage;
-    private StageManager.MonsterStatUp _monsterStat;
     
     // 스테이지에서 값 받아오기 (추후에 값 수정)
-    private int _stageCount => _stage.StageNumber; 
-    private int _waveCount => _stage.WaveNumber; 
-    private int _currentMonsterCount => _stage.monsterNumber;
-    private int _maxMonsterCount => _stage.totalMonsterNumber;
-    private int _getGoldCount => _monsterStat.PlusWaveGold;
-    private int _stageRewardCount => _monsterStat.PlusStageGold;
+    private int _stageCount => StageManager.Instance.StageNumber; 
+    private int _waveCount => StageManager.Instance.WaveNumber; 
+    private int _currentMonsterCount => StageManager.Instance.monsterNumber; // 클리어한 몬스터 수 받기
+    private int _maxMonsterCount => StageManager.Instance.totalMonsterNumber;
+    // private int _getGoldCount => StageManager.Instance.PlusWaveGold;
+    // private int _stageRewardCount => StageManager.Instance.PlusStageGold;
     
     private void Start() => Result();
     private void OnEnable() => BindButtonEvents();
@@ -58,7 +55,7 @@ public class StageResultPopUp : MonoBehaviour
         _stageNumber.text = $"Stage # " + _stageCount.ToString();
         _waveNumber.text = $"Wave # " + _waveCount.ToString();
         _monsterCount.text = _currentMonsterCount.ToString() + " / " + _maxMonsterCount.ToString();
-        _getGold.text = $"Gold : " + _getGoldCount.ToString();
-        _stageReward.text = $"Reward : " + _stageRewardCount.ToString();
+        // _getGold.text = $"Gold : " + _getGoldCount.ToString();
+        // _stageReward.text = $"Reward : " + _stageRewardCount.ToString();
     }
 }
