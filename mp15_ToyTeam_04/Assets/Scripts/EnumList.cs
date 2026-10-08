@@ -49,3 +49,10 @@ public enum EAbilityType
     /// <summary> 업그레이드 비용 감소 </summary>
     DecreaseUpgradeCost = 4
 }
+
+public enum EPlayerSkillType
+{
+    None = -1,
+    TimeFreeze = 0,
+    NaturalDisaster = 1
+}
