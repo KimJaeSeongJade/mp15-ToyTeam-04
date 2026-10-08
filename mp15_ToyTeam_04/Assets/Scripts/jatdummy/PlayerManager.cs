@@ -95,7 +95,7 @@ public class PlayerManager : MonoBehaviour
     public void OnPlayer( )
     {
         // UI 전투 화면 부루기
-        UIManager.Instance.Window.BattleWindowOpen();
+        // UIManager.Instance.Window.BattleWindowOpen();
 
         // 이걸로 부르니까 맵 바닥을 인식을 못하던데... 그래서 추가
         Collider ground = CurrentGround();
@@ -116,7 +116,7 @@ public class PlayerManager : MonoBehaviour
         _playerCamera.LobbyStopCamera();
         
         // 로비 화면 열기
-        UIManager.Instance.Window.LobbyWindowOpen();
+        // UIManager.Instance.Window.LobbyWindowOpen();
         
         _character.gameObject.SetActive(false);
 
