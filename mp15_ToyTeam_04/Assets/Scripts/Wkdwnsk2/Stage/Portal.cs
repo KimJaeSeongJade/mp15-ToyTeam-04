@@ -5,7 +5,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [SerializeField] private LayerMask _monsterLayer;
-    [SerializeField] private Stage _stage;
+    [SerializeField] private StageManager _stage;
 
     private void OnTriggerEnter(Collider other)
     {
