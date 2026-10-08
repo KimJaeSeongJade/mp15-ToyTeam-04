@@ -45,11 +45,12 @@ public class StageResultPopUp : MonoBehaviour
     private void NextStage()
     {
         gameObject.SetActive(false);
+        MapManager.Instance.ShowBattleMap();
     }
 
     private void Lobby()
     {
-        SceneManager.LoadScene(1);
+        UIManager.Instance.Window.LobbyWindowOpen();
     }
 
     private void Result()
