@@ -57,7 +57,7 @@ public class PoolManager : MonoBehaviour
     }
 
     private void Start()
-    {/*
+    {
         _arrowTowerPool = new ObjectPool<Tower>(
             _arrowTowerPrefab, 5, transform);
 
@@ -107,7 +107,7 @@ public class PoolManager : MonoBehaviour
             _bossmonsterPrefab2,
             5,
             transform
-        );*/
+        );
     }
     
 

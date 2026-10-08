@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPoolable
@@ -37,7 +38,8 @@ public class Bullet : MonoBehaviour, IPoolable
             if (_monster == null)
             {
                 // 오브젝트 풀에 다시 넣기.
-                yield return null;
+                ReturnBullet();
+                yield break;
             }
 
             // 계산
@@ -74,8 +76,12 @@ public class Bullet : MonoBehaviour, IPoolable
     private void Hit()
     {
         _monster.TakeDamage(false, _atk);
-        //_iDamage.Affect(_bulletAffect);
+        _monster.BulletAffect(_bulletAffect);
+        ReturnBullet();
+    }
 
+    private void ReturnBullet()
+    {
         switch (_tower.State.ETowerType)
         {
             case ETowerType.None:

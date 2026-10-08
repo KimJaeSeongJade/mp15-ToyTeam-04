@@ -11,6 +11,7 @@ public class TowerController : MonoBehaviour
     [SerializeField] private Transform _head;
     [SerializeField] private LayerMask _targetLayerMask;
     private List<Monster> _monsterList = new();
+    private Monster _targetMonster;
 
     private float _curTime;
     private ObjectPool<Bullet> _bulletPool;
@@ -51,7 +52,7 @@ public class TowerController : MonoBehaviour
 
         _curTime += Time.deltaTime;
 
-        if(_curTime > _tower.State.AtkSpeed)
+        if(_curTime > _tower.TowerAtkSpeed())
         {
             if(_bulletPool == null)
             {
@@ -104,7 +105,8 @@ public class TowerController : MonoBehaviour
         {
             if (other.TryGetComponent<Monster>(out Monster monster))
             {
-                _monsterList.RemoveAt(0);
+                if(_monsterList.Contains(monster))
+                    _monsterList.Remove(monster);
             }
         }
     }
