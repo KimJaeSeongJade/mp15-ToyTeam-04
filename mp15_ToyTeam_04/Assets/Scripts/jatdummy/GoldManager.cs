@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class GoldManager : MonoBehaviour
 {
-    // ���� ���� �� ���� ��� (Ÿ�� ���� ��ȭ���� �غ�����)
+    // 게임 시작 시 지급 골드 (타워 짓고 강화까지 해볼려구)
     private const int START_GOLD = 1500;  
     public static GoldManager Instance { get; private set; }
 
     private int _gold;
 
-    public int Gold => _gold;       // ���� ���� ���(�о����)
-    public event Action<int> OnGoldChanged;      // ��� ���� �� UI ���ſ�
+    public int Gold => _gold;       // 현재 소지 골드(읽어오기)
+    public event Action<int> OnGoldChanged;      // 골드 변경 시 UI 갱신용
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class GoldManager : MonoBehaviour
 
     private void Start()
     {
-        // ���� ��� �Ҹųֱ�
+        // 시작 골드 소매넣기
         _gold = START_GOLD;
         GoldView();
     }
@@ -38,8 +38,8 @@ public class GoldManager : MonoBehaviour
         UIManager.Instance.Window.BattleWindow.HaveGold(_gold);
     }
 
-    // ��带 �����ÿ�
-    // GoldManager.Instance.AddGold() �� �� �����ø� �˴ϴ�.
+    // 골드를 얻을시에
+    // GoldManager.Instance.AddGold() 로 값 넣으시면 됩니다.
     public void AddGold(int amount)
     {
         _gold += amount;
@@ -48,13 +48,13 @@ public class GoldManager : MonoBehaviour
         {
             OnGoldChanged(_gold);
         }
-        // �׽�Ʈ �α�
+        // 테스트 로그
         Debug.Log($"��� {amount} �߰�  ���� {_gold}");
         GoldView();
     }
 
-    // ��� ��� (��� ����Ҷ���)
-    // GoldManager.Instance.UseGold() �� �� �����ø� �˴ϴ�.
+    // 골드 사용 (골드 충분할때만)
+    // GoldManager.Instance.UseGold() 로 값 넣으시면 됩니다.
     public bool UseGold(int amount)
     {
         if (_gold < amount)
@@ -66,12 +66,12 @@ public class GoldManager : MonoBehaviour
 
         _gold -= amount;
 
-        // ��� ���� �� UI ���źκ�
+        // 골드 변경 시 UI 갱신부분
         if (OnGoldChanged != null)
         {
             OnGoldChanged(_gold);
         }
-        // �׽�Ʈ �α�
+        // 테스트 로그
         Debug.Log($"��徴�� {amount} ���� ���� ��� {_gold}");
         GoldView();
         return true;
