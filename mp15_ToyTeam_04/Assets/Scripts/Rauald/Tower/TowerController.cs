@@ -46,7 +46,9 @@ public class TowerController : MonoBehaviour
     {
         if (_monsterList.Count == 0) return;
 
-        LookAtTarget();
+        if(!LookAtTarget()) return;
+
+        if (_targetMonster == null) return;
 
         if (_tower.State == null) return;
 
@@ -69,23 +71,25 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    private void LookAtTarget()
+    private bool LookAtTarget()
     {
-        if (_head == null) return;
-
-        if (_monsterList[0].IsDead)
+        if(!_targetMonster.gameObject.activeSelf || _targetMonster.IsDead)
         {
-            _monsterList.RemoveAt(0);
+            _monsterList.Remove(_targetMonster);
+            _targetMonster = null;
+
+            if (_monsterList.Count == 0) return false;
+
+            _targetMonster = _monsterList[0];
         }
 
-        if (_monsterList.Count == 0)
-        {
-            return;
-        }
-        
+        if (_head == null) return true;
+
         Vector3 target = _monsterList[0].transform.position - _head.position;
         float angle = -Mathf.Atan2(target.z, target.x);
         _head.rotation = Quaternion.Euler(0f, 90f + angle * Mathf.Rad2Deg, 0f);
+
+        return true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,6 +99,7 @@ public class TowerController : MonoBehaviour
             if (other.TryGetComponent<Monster>(out Monster monster))
             {
                 _monsterList.Add(monster);
+                _targetMonster = _monsterList[0];
             }
         }
     }
@@ -105,8 +110,20 @@ public class TowerController : MonoBehaviour
         {
             if (other.TryGetComponent<Monster>(out Monster monster))
             {
-                if(_monsterList.Contains(monster))
+                if (_monsterList.Contains(monster))
+                {
                     _monsterList.Remove(monster);
+
+                    if (_monsterList.Count != 0)
+                    {
+                        _targetMonster = _monsterList[0];
+                    }
+                    else
+                    {
+                        _targetMonster = null;
+                    }
+
+                }
             }
         }
     }
