@@ -597,16 +597,8 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     // HP UI 만들기 (몬스터마다 처음 한 번만)
     private void CreateHpUI()
     {
-        // 이미 만들었으면 다시 안 만듦
-        if (_hp != null)
-        {
-            return;
-        }
-
-        if (_hpPrefab == null)
-        {
-            return;
-        }
+        if (_hp != null) return;
+        _hp = GetComponentInChildren<HP>(true);
 
     }
 
