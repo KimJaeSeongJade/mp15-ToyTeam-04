@@ -26,14 +26,6 @@ public class PlayerManager : MonoBehaviour
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // 쿨타임 UI
 
-    // 스킬 알림.
-    public event Action<EPlayerSkillType, float> OnSkillUsed;
-    private Monster _monster;
-
-    private float TimeFreezeDuration = 3f;
-    private float NaturalDisasterDamagePer = 20f;
-
-
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
         { ETowerType.ArrowTower, new ArrowTower() },
@@ -61,6 +53,8 @@ public class PlayerManager : MonoBehaviour
     // 설치할 타워 종류
     private ETowerType _selectedTowerType;
     public ETowerType SelectedTowerType => _selectedTowerType;
+
+
 
     private void Awake()
     {
@@ -164,7 +158,7 @@ public class PlayerManager : MonoBehaviour
         _equippedSkillType = skill;
     }
 
-    private EPlayerSkillType _equippedSkillType;
+    private EPlayerSkillType _equippedSkillType = EPlayerSkillType.None;
     public EPlayerSkillType EquiipedSkillType => _equippedSkillType;
     
     public void UseSkill(EPlayerSkillType ePlayerSkill)
@@ -173,15 +167,18 @@ public class PlayerManager : MonoBehaviour
         if (_equippedSkillType == EPlayerSkillType.None) return;
         if (_skillCoolTimer > 0f) return;
 
+        if (!_SkillAblity.TryGetValue(_equippedSkillType, out PlayerSkill skill)) return;
+        SkillAblity data = skill.DicSkillAblity[_equippedSkillType];
+
         float value = 0f;
 
         switch (_equippedSkillType)
         {
             case EPlayerSkillType.TimeFreeze:
-                value = TimeFreezeDuration;
+                value = data.SkillDuration;
                 break;
             case EPlayerSkillType.NaturalDisaster:
-                value = NaturalDisasterDamagePer;
+                value = data.SkillDamage;
                 break;
 
         }
@@ -283,9 +280,12 @@ public class PlayerManager : MonoBehaviour
     // UI 팝업 열고 닫을 때
     // true : 커서보임 카메라 회전 x  , false : 다시 캐릭터 시점
 
+    // 시점 카메라 위치 manager에 추가.
+    public Vector3 ViewPosition => _playerCamera.ViewPosition;
     public void SetUIMode(bool isOpen)
     {
         _playerCamera.SetUIMode(isOpen);
     }
 
 }
+

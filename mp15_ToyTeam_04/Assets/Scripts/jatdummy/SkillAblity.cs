@@ -9,7 +9,6 @@ public class SkillAblity
     protected float _skillDuration;
     protected float _skillDamage;
     protected string _skillexplanation;
-    private EPlayerSkillType timeFreeze;
 
     public string Name => _skillname;
     public EPlayerSkillType EPlayerSkillType => _ePlayerSkillType;
