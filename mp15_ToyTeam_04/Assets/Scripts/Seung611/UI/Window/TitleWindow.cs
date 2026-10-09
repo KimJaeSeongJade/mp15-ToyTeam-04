@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TitleWindow : MonoBehaviour
 {
     [SerializeField] private Button _gameStartButton;
-    [SerializeField] private Button _settingButton;
+    // [SerializeField] private Button _settingButton;
     // [SerializeField] private TextMeshPro _titleText;
     
     private void OnEnable() => BindButtonEvents();
@@ -17,13 +17,13 @@ public class TitleWindow : MonoBehaviour
     private void BindButtonEvents()
     {
         _gameStartButton.onClick.AddListener(LobbyWindow);
-        _settingButton.onClick.AddListener(SettingPopUp);
+        // _settingButton.onClick.AddListener(SettingPopUp);
     }
 
     private void UnbindButtonEvents()
     {
         _gameStartButton.onClick.RemoveListener(LobbyWindow);
-        _settingButton.onClick.RemoveListener(SettingPopUp);
+        // _settingButton.onClick.RemoveListener(SettingPopUp);
     }
 
     private void LobbyWindow()

@@ -20,6 +20,7 @@ public class LobbyWindow : MonoBehaviour
 
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
+    private void Update() => Escape();
     
     private void BindButtonEvents()
     {
@@ -39,6 +40,14 @@ public class LobbyWindow : MonoBehaviour
         _towerInventory[0].onClick.RemoveListener(Tower0SpecPopUp);
         _towerInventory[1].onClick.RemoveListener(Tower1SpecPopUp);
         _towerInventory[2].onClick.RemoveListener(Tower2SpecPopUp);
+    }
+    
+    private void Escape()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.PopUp.SettingPopUpOpen();
+        }
     }
 
     public void SetData(Sprite sprite)
