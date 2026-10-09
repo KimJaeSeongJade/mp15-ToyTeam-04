@@ -56,8 +56,10 @@ public class BattleWindow : MonoBehaviour
         {
             _playerSkillCoolDown.fillAmount = PlayerManager.Instance.SkillCoolTimer / 60f;
             _playerSkillCoolDownCount.text = Mathf.Round(PlayerManager.Instance.SkillCoolTimer).ToString();
-            yield return new WaitForFixedUpdate();
+            yield return null;
         }
+        _playerSkillCoolDown.gameObject.SetActive(false);
+        _playerSkillCoolDownCount.gameObject.SetActive(false);
     }
 
     private void SettingPopUp()
