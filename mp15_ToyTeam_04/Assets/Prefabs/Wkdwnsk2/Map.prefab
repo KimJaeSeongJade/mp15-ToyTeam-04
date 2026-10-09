@@ -10348,7 +10348,7 @@ ParticleSystem:
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
     m_Planes:
-    - {fileID: 0}
+    - {fileID: 8838473033686017761}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
