@@ -5,9 +5,8 @@ public class EffectManager : Singleton<EffectManager>
 {
     [Header("이펙트 프리팹")]
     [SerializeField] private Effect[] _effectPrefabs;     
-
-    [Header("이펙트 유지 시간")]
-    [SerializeField] private float _effectLifeTime = 2f;
+    
+    
     private int _poolSize = 5;
 
     // 이펙트 종류별 풀
@@ -42,7 +41,7 @@ public class EffectManager : Singleton<EffectManager>
         }
     }
 
-    // 이펙트 사용시 EffectManager.Instance.PlayEffect(타입, 위치) 
+    // 이펙트 사용시 EffectManager.Instance.PlayEffect(타입, 위치) 사용하면 됨
     // 이펙트 생성 위치
     public void PlayEffect(EEffectType effectType, Vector3 position)
     {
@@ -53,7 +52,6 @@ public class EffectManager : Singleton<EffectManager>
         }
 
         Effect effect = pool.GetObject();                  
-        effect.SetObjectPool(pool, _effectLifeTime);       
         effect.transform.SetPositionAndRotation(position, Quaternion.identity); 
         pool.ActivateObject(effect);                      
     }

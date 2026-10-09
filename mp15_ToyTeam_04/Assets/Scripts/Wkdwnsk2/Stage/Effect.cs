@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour, IPoolable
 {
-    private ObjectPool<Effect> _objectPool;
-    private float _lifeTime;
+    [Header("이펙트 지속 시간")]
+    [SerializeField] private float _lifeTime = 2f;   
 
-    // 몇 초 뒤에 돌아가는지
-    public void SetObjectPool(ObjectPool<Effect> objectPool, float lifeTime)
+    private ObjectPool<Effect> _objectPool;
+
+    // 돌아갈 풀만 받기
+    public void SetObjectPool(ObjectPool<Effect> objectPool)
     {
         _objectPool = objectPool;
-        _lifeTime = lifeTime;
     }
 
     public void OnSpawn()
