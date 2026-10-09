@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ public class BattleWindow : MonoBehaviour
     private void Awake() => Init();
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
+    private void Update() => CurrnetMonster();
     
     // Start 버튼 눌렀을 때 Battle 화면으로
     private void BindButtonEvents()
@@ -94,11 +96,13 @@ public class BattleWindow : MonoBehaviour
 
     public void CurrnetMonster()
     {
-        _monsterCount.text = _monsterCount.ToString() + " / " + _monsterCount.ToString();
+        int _currentMonster = StageManager.Instance.monsterNumber;
+        int _maxMonster = StageManager.Instance.totalMonsterNumber;
+        _monsterCount.text = _currentMonster.ToString() + " / " + _maxMonster.ToString();
     }
 
     public void HaveGold(int gold)
     {
-        _haveGlod.text = "Gold: " + gold.ToString();
+        _haveGlod.text = "Gold : " + gold.ToString();
     }
 }

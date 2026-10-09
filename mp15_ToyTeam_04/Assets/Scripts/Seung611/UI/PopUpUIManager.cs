@@ -47,6 +47,7 @@ public class PopUpUIManager : MonoBehaviour
 
     private void OnStageResultPopUp()
     {
+        PlayerManager.Instance.SetUIMode(true);
         UIManager.Instance.PopUp.StageResultPopUp.gameObject.SetActive(true);
     }
 
