@@ -56,7 +56,7 @@ public class StageManager : MonoBehaviour
 
     private int _stageStartGold; //스테이지 시작 골드
     private int _stageEndGold; // 스테이지 끝 골드 
-    [HideInInspector] public int _stageEarnedGold; // 스테이지 얻은 골드 
+    public int _stageEarnedGold; // 스테이지 얻은 골드 
     
     
     private List<Monster> _spawnedMonsters = new List<Monster>();
