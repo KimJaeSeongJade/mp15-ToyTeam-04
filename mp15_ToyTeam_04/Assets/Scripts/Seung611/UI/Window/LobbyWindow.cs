@@ -57,24 +57,24 @@ public class LobbyWindow : MonoBehaviour
     {
         UIManager.Instance.PopUp.SettingPopUpOpen();
     }
-
+    
     private void Tower0SpecPopUp()
     {
-        _towerState[0] = new ArrowTower();
+        _towerState[0] = PlayerManager.Instance.GetTowerState(ETowerType.ArrowTower);
         UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 0);
-        UIManager.Instance.PopUp.TowerSpecPopUpOpen(); // 팝업 오픈 용도
+        UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void Tower1SpecPopUp()
     {
-        _towerState[1] = new FireTower();
+        _towerState[1] = PlayerManager.Instance.GetTowerState(ETowerType.FireTower);
         UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 1);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void Tower2SpecPopUp()
     {
-        _towerState[2] = new IceTower();
+        _towerState[2] = PlayerManager.Instance.GetTowerState(ETowerType.IceTower);
         UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 2);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
