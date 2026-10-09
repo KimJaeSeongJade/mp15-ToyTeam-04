@@ -15,13 +15,10 @@ public class BattleWindow : MonoBehaviour
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
     [SerializeField] private TextMeshProUGUI _monsterCount;
-    
-    private Image _skillButtonImage => UIManager.Instance.Window.LobbyWindow._playerSkillButton.image;
-    private void Awake() => Init();
+
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
 
-    // Start 버튼 눌렀을 때 Battle 화면으로
     private void BindButtonEvents()
     {
         _settingButton.onClick.AddListener(SettingPopUp);
@@ -36,6 +33,11 @@ public class BattleWindow : MonoBehaviour
         _towerInventory[0].onClick.RemoveListener(Tower0Select);
         _towerInventory[1].onClick.RemoveListener(Tower1Select);
         _towerInventory[2].onClick.RemoveListener(Tower2Select);
+    }
+
+    public void SetData(Sprite sprite)
+    {
+        _playerSkill.sprite = sprite;
     }
  
     public void SkillPopUp()
@@ -90,15 +92,15 @@ public class BattleWindow : MonoBehaviour
         PlayerManager.Instance.InstallTower(ETowerType.IceTower);
         InstallComplete();
     }
+    
     private void InstallComplete()
     {
         UIManager.Instance.PopUp.TowerSelectTilePopUp.CancelButton();
         UIManager.Instance.Window.BattleWindow.HideInstallButton();
     }
 
-    private void Init()
+    public void Init()
     {
-        _playerSkill.sprite = _skillButtonImage.sprite;
         _playerSkillCoolDown.gameObject.SetActive(false);
         _playerSkillCoolDownCount.gameObject.SetActive(false);
         HideInstallButton();
