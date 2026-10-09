@@ -58,6 +58,6 @@ public class HP : MonoBehaviour
     private void LookAtCamera()
     {
         // Hp바가 카메라를 쳐다보게 함
-        // transform.LookAt(Camera.main);
+        transform.LookAt(PlayerManager.Instance.ViewPosition);
     }
 }
