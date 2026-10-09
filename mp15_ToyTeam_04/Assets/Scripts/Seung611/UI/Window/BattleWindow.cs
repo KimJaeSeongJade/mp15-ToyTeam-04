@@ -14,6 +14,7 @@ public class BattleWindow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _haveGlod;
     [SerializeField] private TextMeshProUGUI _monsterCount;
 
+    private Image _skillButtonImage => UIManager.Instance.Window.LobbyWindow._playerSkillButton.image;
     private void Awake() => Init();
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
@@ -37,11 +38,21 @@ public class BattleWindow : MonoBehaviour
         _towerInventory[1].onClick.RemoveListener(Tower1Select);
         _towerInventory[2].onClick.RemoveListener(Tower2Select);
     }
-
-    private void SkillPopUp()
+ 
+    public void SkillPopUp()
     {
-        // 스킬을 사용 쿨타임 돌기
+        // 스킬 상호작용 키 눌렀을 시 스킬 쿨타임 돌기
+        if (UIManager.Instance.PopUp.PlayerSkillPopUp._skill1)
+        {
+            PlayerManager.Instance.EquipSkill(EPlayerSkillType.TimeFreeze);
+        }
+        else if (UIManager.Instance.PopUp.PlayerSkillPopUp._skill2)
+        {
+            PlayerManager.Instance.EquipSkill(EPlayerSkillType.NaturalDisaster);
+        }
     }
+    
+    // private void 
 
     private void SettingPopUp()
     {
@@ -84,6 +95,7 @@ public class BattleWindow : MonoBehaviour
 
     private void Init()
     {
+        _playerSkillButton.image.sprite = _skillButtonImage.sprite;
         HideInstallButton();
     }
 

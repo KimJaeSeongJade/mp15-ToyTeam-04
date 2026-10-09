@@ -803,8 +803,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: e573c13bbfe9d4b459cf9810e6dd4d6a, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1744627666228542073
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_text: Skill1Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2925,7 +2925,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68.35
+  m_fontSize: 58.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2285396541133309730
@@ -5150,7 +5150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6149,7 +6149,7 @@ MonoBehaviour:
   m_text: Skill1 Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6212,7 +6212,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4035192089489891619
@@ -6272,6 +6272,7 @@ MonoBehaviour:
   MessagePopUp: {fileID: 2927046194937516324}
   SettingPopUp: {fileID: 501725146777873530}
   TowerSelectTilePopUp: {fileID: 7894106701637085584}
+  TopViewTowerSelectTilePopUp: {fileID: 0}
 --- !u!114 &5147403891595571293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7386,7 +7387,7 @@ MonoBehaviour:
   m_text: Skill2Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7410,7 +7411,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68.35
+  m_fontSize: 58.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7449,7 +7450,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4737061972905526456
@@ -9200,7 +9201,7 @@ MonoBehaviour:
   m_text: Skill2 Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9263,7 +9264,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5711333938192391194
@@ -11673,7 +11674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2990610982238380447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11713,6 +11714,9 @@ MonoBehaviour:
   _skill2SelectButton: {fileID: 4455814876296140916}
   _skill1Name: {fileID: 6921191857793528388}
   _skill2Name: {fileID: 4264883093307465270}
+  _skillImage:
+  - {fileID: 453536542216827220}
+  - {fileID: 6399905441666550557}
   _escButton: {fileID: 7194958013421014523}
 --- !u!1 &7730328200336453621
 GameObject:
@@ -12415,7 +12419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13245,13 +13249,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameStartButton: {fileID: 2954448464647749209}
-  _playerSkillButton: {fileID: 7111976268775428129}
   _settingButton: {fileID: 5459192032307335614}
   _towerInventory:
   - {fileID: 6640357169646717991}
   - {fileID: 3065408061628563070}
   - {fileID: 5875243687006193073}
   _haveGlod: {fileID: 19331485726054737}
+  _playerSkillButton: {fileID: 7111976268775428129}
+  _skillImage:
+  - {fileID: 21300000, guid: e573c13bbfe9d4b459cf9810e6dd4d6a, type: 3}
+  - {fileID: 21300000, guid: 3aa73863c8fcca34aa0c947fe868630f, type: 3}
 --- !u!1 &8959140535825003843
 GameObject:
   m_ObjectHideFlags: 0
