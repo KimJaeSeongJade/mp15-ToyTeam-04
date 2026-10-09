@@ -42,6 +42,7 @@ public class EffectManager : Singleton<EffectManager>
         }
     }
 
+    // 이펙트 사용시 EffectManager.Instance.PlayEffect(타입, 위치) 
     // 이펙트 생성 위치
     public void PlayEffect(EEffectType effectType, Vector3 position)
     {
