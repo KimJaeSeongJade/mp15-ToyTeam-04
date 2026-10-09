@@ -11796,6 +11796,9 @@ MonoBehaviour:
   _skillImage:
   - {fileID: 453536542216827220}
   - {fileID: 6399905441666550557}
+  _skillImageSprites:
+  - {fileID: 21300000, guid: e573c13bbfe9d4b459cf9810e6dd4d6a, type: 3}
+  - {fileID: 21300000, guid: 3aa73863c8fcca34aa0c947fe868630f, type: 3}
   _escButton: {fileID: 7194958013421014523}
 --- !u!1 &7730328200336453621
 GameObject:
@@ -13291,9 +13294,6 @@ MonoBehaviour:
   - {fileID: 5875243687006193073}
   _haveGlod: {fileID: 19331485726054737}
   _playerSkillButton: {fileID: 7111976268775428129}
-  _skillImage:
-  - {fileID: 21300000, guid: e573c13bbfe9d4b459cf9810e6dd4d6a, type: 3}
-  - {fileID: 21300000, guid: 3aa73863c8fcca34aa0c947fe868630f, type: 3}
 --- !u!1 &8959140535825003843
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,11 +21,6 @@ public class BattleWindow : MonoBehaviour
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
 
-    private void Update()
-    {
-        CurrnetMonster();
-    }
-
     // Start 버튼 눌렀을 때 Battle 화면으로
     private void BindButtonEvents()
     {

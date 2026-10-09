@@ -11,9 +11,9 @@ public class PlayerSkillPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _skill1Name;
     [SerializeField] private TextMeshProUGUI _skill2Name;
     [SerializeField] private Image[] _skillImage;
+    [SerializeField] private Sprite[] _skillImageSprites;
     [SerializeField] private Button _escButton;
-
-    private Sprite[] _skillImageSprites => UIManager.Instance.Window.LobbyWindow._skillImage;
+    
     private Image _sillButtonimage => UIManager.Instance.Window.LobbyWindow._playerSkillButton.image;
     
     private void Start() => SkillNameImage();

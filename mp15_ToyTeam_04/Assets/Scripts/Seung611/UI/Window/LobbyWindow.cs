@@ -15,7 +15,6 @@ public class LobbyWindow : MonoBehaviour
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
     public Button _playerSkillButton;
-    public Sprite[] _skillImage;
     private TowerState[] _towerState = new TowerState[3];
 
     private void OnEnable() => BindButtonEvents();
