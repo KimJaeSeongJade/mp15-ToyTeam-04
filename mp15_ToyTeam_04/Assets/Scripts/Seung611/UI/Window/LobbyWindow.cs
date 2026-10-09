@@ -11,11 +11,12 @@ using Button = UnityEngine.UI.Button;
 public class LobbyWindow : MonoBehaviour
 {
     [SerializeField] private Button _gameStartButton;
-    [SerializeField] private Button _playerSkillButton;
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
-    TowerState[] _towerState = new TowerState[3];
+    public Button _playerSkillButton;
+    public Sprite[] _skillImage;
+    private TowerState[] _towerState = new TowerState[3];
 
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
@@ -50,7 +51,6 @@ public class LobbyWindow : MonoBehaviour
     private void SkillPopUp()
     {
         UIManager.Instance.PopUp.PLayerSkillPopUpOpen();
-        
     }
 
     private void SettingPopUp()

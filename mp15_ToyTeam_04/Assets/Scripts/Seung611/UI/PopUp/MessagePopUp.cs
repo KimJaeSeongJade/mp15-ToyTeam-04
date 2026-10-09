@@ -12,10 +12,10 @@ public class MessagePopUp : MonoBehaviour
         _messagePool = new ObjectPool<Message>(_message, 5, this.transform);
     }
     
-    private KeyCode _messageKey = KeyCode.Space;
-    private bool _messagePopup => Input.GetKeyDown(_messageKey);
+    private string _notEnoughGold = "타워를 사기에 보유한 골드가 부족합니다.";
+    private string _notSkillCoolTime = "스킬 쿨타임이 끝나지 않았습니다.";
+    private string _notUpgradeTower = "타워가 이미 최대 레벨입니다.";
     
-    private string _notEnoughGold = "You don't have enough gold to buy the tower.";
 
     private void Update()
     {
@@ -24,10 +24,10 @@ public class MessagePopUp : MonoBehaviour
 
     private void WarningMessage()
     {
-        if (_messagePopup)
+        /*if (GoldManager.Instance.UseGold(PlayerManager.Instance.GetInstallCost(PlayerManager.Instance.SelectedTowerType)))
         {
             UIManager.Instance.PopUp.MessagePopUp.Message(_notEnoughGold);
-        }
+        }*/
     }
 
     public void Message(string text)
