@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -20,9 +21,11 @@ public class PlayerManager : MonoBehaviour
     public event Action<Tile> OnTileSelected;
 
     // 일단 60초로 고정.
-    private const float SKILL_COOL_TIME = 60f; 
+    private const float SKILL_COOL_TIME = 60f;
+    // ui 열기
+    public float SkillCoolTime => SKILL_COOL_TIME;
     // 남은 시간
-    
+
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // 쿨타임 UI
 
@@ -187,9 +190,11 @@ public class PlayerManager : MonoBehaviour
         {
             case EPlayerSkillType.TimeFreeze:
                 value = data.SkillDuration;
+                // Monster monster = Monster.ApplyTimeFreeze(value);
                 break;
             case EPlayerSkillType.NaturalDisaster:
                 value = data.SkillDamage;
+                // Monster monster = Monster.ApplyTimeFreeze(value);
                 break;
 
         }
