@@ -22,8 +22,7 @@ public class StageResultPopUp : MonoBehaviour
     private int _maxMonsterCount => StageManager.Instance.totalMonsterNumber;
     private int _getGoldCount => StageManager.Instance._stageEarnedGold;
     private int _stageRewardCount => StageManager.Instance.StageClearReward;
-    
-    private void Start() => Result();
+
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
 
@@ -52,7 +51,7 @@ public class StageResultPopUp : MonoBehaviour
         UIManager.Instance.Window.LobbyWindowOpen();
     }
 
-    private void Result()
+    public void Result()
     {
         _stageNumber.text = $"Stage # " + _stageCount.ToString();
         _waveNumber.text = $"Wave # " + _waveCount.ToString();
