@@ -67,7 +67,6 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
-            Debug.Log("유중혁이 스킬을 사용합니다.");
         }
        
 
