@@ -349,22 +349,21 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     
     private IEnumerator TimeStopRoutine(float duration)
     {
-
-        if (_navmesh.enabled &&
-            _navmesh.isOnNavMesh)
+        if (_navmesh.enabled && _navmesh.isOnNavMesh)
         {
             _navmesh.isStopped = true;
         }
 
+        anim.speed = 0f;   // 움직임 멈춤
+
         yield return new WaitForSeconds(duration);
 
-
-        if (_navmesh.enabled &&
-            _navmesh.isOnNavMesh &&
-            !_isDead)
+        if (_navmesh.enabled && _navmesh.isOnNavMesh && !_isDead)
         {
             _navmesh.isStopped = false;
         }
+
+        anim.speed = 1f;   // 움직임 다시 재생
 
         _timeStopCoroutine = null;
     }
