@@ -285,6 +285,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         anim.SetBool("IsDead", true);
         StartCoroutine(DeadWait());
+        StageManager.Instance.monsterNumber -= 1; 
         
         // 플레이어 골드 증가
         if (GoldManager.Instance != null)
@@ -310,6 +311,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         
         _objectPool.ReturnObject(this);
+        StageManager.Instance.monsterNumber -= 1; 
         
     }
     

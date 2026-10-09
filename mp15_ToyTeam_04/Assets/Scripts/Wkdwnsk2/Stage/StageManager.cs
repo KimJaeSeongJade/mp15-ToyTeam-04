@@ -223,13 +223,14 @@ public class StageManager : MonoBehaviour
         // 이전 웨이브 몬스터 목록 초기화
         _spawnedMonsters.Clear();
         totalMonsterNumber = 0;
-        monsterNumber = 0;
 
         int normalCount = GetNormalCount();
         int eliteCount = GetEliteCount();
         int bossCount = GetBossCount();
         
         totalMonsterNumber = normalCount + eliteCount + bossCount;
+        monsterNumber = totalMonsterNumber;
+
         
         EMonsterType normalType;
         EMonsterType eliteType;
