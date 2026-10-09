@@ -47,11 +47,11 @@ public class EffectManager : Singleton<EffectManager>
     {
         if (_effectPools.TryGetValue(effectType, out ObjectPool<Effect> pool) == false)
         {
-            Debug.Log("이펙트 없음");
             return;
         }
 
         Effect effect = pool.GetObject();                  
+        effect.SetObjectPool(pool);
         effect.transform.SetPositionAndRotation(position, Quaternion.identity); 
         pool.ActivateObject(effect);                      
     }
