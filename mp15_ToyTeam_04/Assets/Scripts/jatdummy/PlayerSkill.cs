@@ -13,10 +13,10 @@ public class PlayerSkill
             case EPlayerSkillType.None:
                 break;
             case EPlayerSkillType.TimeFreeze:
-                _dicSkillAblity.Add(EPlayerSkillType.TimeFreeze, new SkillAblity("시간을 멈춘다", "시간을 멈춘다고", 0f, 10f));
+                _dicSkillAblity.Add(EPlayerSkillType.TimeFreeze, new SkillAblity("타임스탑", "시간을 멈춘다고", 0f, 10f));
                 break;
             case EPlayerSkillType.NaturalDisaster:
-                _dicSkillAblity.Add(EPlayerSkillType.NaturalDisaster, new SkillAblity("세상에 비호감 딱 두명있데 뚜비두밥", "어떻게 두명이나 뚜비두밥", 20f, 0f));
+                _dicSkillAblity.Add(EPlayerSkillType.NaturalDisaster, new SkillAblity("천재지변", "재앙의 헌헌.", 20f, 0f));
                 break;
         }
     }

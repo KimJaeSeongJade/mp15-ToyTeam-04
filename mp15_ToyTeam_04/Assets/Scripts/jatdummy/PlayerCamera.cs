@@ -26,11 +26,8 @@ public class PlayerCamera : MonoBehaviour
     private bool _isUIMode;
     public bool IsUIMode => _isUIMode;
 
-    private Vector3 _playerCamPosition;
-    public Vector3 PlayerCamPosition => _playerCamPosition;
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
     private Vector3 _topViewStartPosition; // 탑뷰 카메라 위치 기억
-    public Vector3 TopViewStartPosition => _topViewStartPosition;
     // 지금 탑뷰인지
     public bool IsTopView => _isTopView;
 
@@ -186,5 +183,23 @@ public class PlayerCamera : MonoBehaviour
         Bounds groundBounds = _ground.bounds;
         _topViewTarget.x = Mathf.Clamp(_topViewTarget.x, groundBounds.min.x, groundBounds.max.x);
         _topViewTarget.z = Mathf.Clamp(_topViewTarget.z, groundBounds.min.z, groundBounds.max.z);
+    
     }
+
+    // hp 바 바라보고 싶다구요?
+
+    public Vector3 ViewPosition
+    {
+        get
+        {
+            // 탑뷰면 탑뷰 카메라 위치
+
+            if (_isTopView) return _topViewCam.transform.position;
+            // 3인칭이면 실제 화면 카메라 위치
+
+            if (Camera.main != null) return Camera.main.transform.position;
+            return Vector3.zero;
+        }
+    }
+
 }
