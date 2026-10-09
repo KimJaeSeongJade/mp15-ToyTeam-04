@@ -12,6 +12,7 @@ public class PopUpManager : MonoBehaviour
     public SettingPopUp SettingPopUp;
     public TowerSelectTilePopUp TowerSelectTilePopUp;
     public TowerSelectTilePopUp TopViewTowerSelectTilePopUp;
+    public GameOverPopUp GameOverPopUp;
     
     public event Action OnGameSettingsPopUp;
     public event Action OnGameStageResultPopUp;
@@ -19,6 +20,7 @@ public class PopUpManager : MonoBehaviour
     public event Action OnGameTowerSpecPopUp;
     public event Action<bool> OnGameTowerSelectTilePopup;
     public event Action OnGameMessagePopUp;
+    public event Action OnGameOverPopUp;
 
     public void SettingPopUpOpen()
     {
@@ -48,5 +50,10 @@ public class PopUpManager : MonoBehaviour
     public void MessagePopUpOpen()
     {
         OnGameMessagePopUp?.Invoke();
+    }
+
+    public void GameOverOpen()
+    {
+        OnGameOverPopUp?.Invoke();
     }
 }

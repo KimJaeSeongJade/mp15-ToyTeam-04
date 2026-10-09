@@ -9,7 +9,6 @@ public class TowerSelectTilePopUp : MonoBehaviour
     [SerializeField] private Button _uninstallButton;
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Button _cancelButton;
-    RectTransform rt;
     
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();

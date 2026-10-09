@@ -18,6 +18,7 @@ public class PopUpUIManager : MonoBehaviour
         UIManager.Instance.PopUp.OnGameStageResultPopUp += OnStageResultPopUp;
         UIManager.Instance.PopUp.OnGameTowerSpecPopUp += OnTowerSpecPopUp;
         UIManager.Instance.PopUp.OnGameTowerSelectTilePopup += OnTowerSelectTilePopUp;
+        UIManager.Instance.PopUp.OnGameOverPopUp += OnGameOverPopUp;
     }
 
     private void UnbindEventButtons()
@@ -28,6 +29,7 @@ public class PopUpUIManager : MonoBehaviour
         UIManager.Instance.PopUp.OnGameStageResultPopUp -= OnStageResultPopUp;
         UIManager.Instance.PopUp.OnGameTowerSpecPopUp -= OnTowerSpecPopUp;
         UIManager.Instance.PopUp.OnGameTowerSelectTilePopup -= OnTowerSelectTilePopUp;
+        UIManager.Instance.PopUp.OnGameOverPopUp -= OnGameOverPopUp;
     }
     
     private void OnSetting()
@@ -72,6 +74,11 @@ public class PopUpUIManager : MonoBehaviour
         {
             UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(true);
         }
+    }
+
+    private void OnGameOverPopUp()
+    {
+        UIManager.Instance.PopUp.GameOverPopUp.gameObject.SetActive(true);
     }
     
     
