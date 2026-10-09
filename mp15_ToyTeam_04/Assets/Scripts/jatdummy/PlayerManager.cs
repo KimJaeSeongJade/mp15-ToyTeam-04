@@ -277,6 +277,8 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }
+
+
     public void SelectTile(Tile tile)
     {
         _selectedTile = tile;
@@ -288,11 +290,14 @@ public class PlayerManager : MonoBehaviour
             OnTileSelected(tile);
         }
     }
-    // UI 팝업 열고 닫을 때
-    // true : 커서보임 카메라 회전 x  , false : 다시 캐릭터 시점
 
     // 시점 카메라 위치 manager에 추가.
     public Vector3 ViewPosition => _playerCamera.ViewPosition;
+
+    public bool IsTopView => _playerCamera.IsTopView;
+    
+    // UI 팝업 열고 닫을 때
+    // true : 커서보임 카메라 회전 x  , false : 다시 캐릭터 시점
     public void SetUIMode(bool isOpen)
     {
         _playerCamera.SetUIMode(isOpen);
