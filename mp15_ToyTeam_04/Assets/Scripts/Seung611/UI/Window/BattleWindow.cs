@@ -52,7 +52,7 @@ public class BattleWindow : MonoBehaviour
 
     private IEnumerator SkillUsingRoutin()
     {
-        while (PlayerManager.Instance.SkillCoolTimer <= 0)
+        while (PlayerManager.Instance.SkillCoolTimer > 0)
         {
             _playerSkillCoolDown.fillAmount = PlayerManager.Instance.SkillCoolTimer / 60f;
             _playerSkillCoolDownCount.text = Mathf.Round(PlayerManager.Instance.SkillCoolTimer).ToString();
