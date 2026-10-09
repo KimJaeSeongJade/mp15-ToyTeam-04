@@ -20,8 +20,8 @@ public class StageResultPopUp : MonoBehaviour
     private int _waveCount => StageManager.Instance.WaveNumber; 
     private int _currentMonsterCount => StageManager.Instance.monsterNumber; // 클리어한 몬스터 수 받기
     private int _maxMonsterCount => StageManager.Instance.totalMonsterNumber;
-    // private int _getGoldCount => StageManager.Instance.PlusWaveGold;
-    // private int _stageRewardCount => StageManager.Instance.PlusStageGold;
+    private int _getGoldCount => StageManager.Instance._stageEarnedGold;
+    private int _stageRewardCount => StageManager.Instance.StageClearReward;
     
     private void Start() => Result();
     private void OnEnable() => BindButtonEvents();
@@ -43,10 +43,12 @@ public class StageResultPopUp : MonoBehaviour
     {
         gameObject.SetActive(false);
         MapManager.Instance.ShowBattleMap();
+        PlayerManager.Instance.SetUIMode(false);
     }
 
     private void Lobby()
     {
+        gameObject.SetActive(false);
         UIManager.Instance.Window.LobbyWindowOpen();
     }
 
@@ -55,7 +57,7 @@ public class StageResultPopUp : MonoBehaviour
         _stageNumber.text = $"Stage # " + _stageCount.ToString();
         _waveNumber.text = $"Wave # " + _waveCount.ToString();
         _monsterCount.text = _currentMonsterCount.ToString() + " / " + _maxMonsterCount.ToString();
-        // _getGold.text = $"Gold : " + _getGoldCount.ToString();
-        // _stageReward.text = $"Reward : " + _stageRewardCount.ToString();
+        _getGold.text = $"Gold : " + _getGoldCount.ToString();
+        _stageReward.text = $"Reward : " + _stageRewardCount.ToString();
     }
 }
