@@ -62,8 +62,16 @@ public class PopUpUIManager : MonoBehaviour
             UIManager.Instance.PopUp.TowerSelectTilePopUp.YesTower();
         else if (!isTower)
             UIManager.Instance.PopUp.TowerSelectTilePopUp.NoTower();
-
-        UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(true);
+        
+        if (PlayerManager.Instance.IsTopView)
+        {
+            UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.TopView();
+            UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.gameObject.SetActive(true);
+        }
+        else
+        {
+            UIManager.Instance.PopUp.TowerSelectTilePopUp.gameObject.SetActive(true);
+        }
     }
     
     

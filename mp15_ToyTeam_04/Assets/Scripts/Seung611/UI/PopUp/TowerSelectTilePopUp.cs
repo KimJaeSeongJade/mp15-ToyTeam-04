@@ -9,6 +9,8 @@ public class TowerSelectTilePopUp : MonoBehaviour
     [SerializeField] private Button _uninstallButton;
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Button _cancelButton;
+    RectTransform rt;
+    
     private void OnEnable() => BindEventButtons();
     private void OnDisable() => UnbindEventButtons();
 
@@ -39,19 +41,19 @@ public class TowerSelectTilePopUp : MonoBehaviour
         _installButton.gameObject.SetActive(false);
     }
 
-    public void InstallButton()
+    private void InstallButton()
     {
         // 설치 버튼을 눌렀을 때 오른쪽 타워 버튼을 누르면 버튼에 맞는 타워가 설치 됨
         UIManager.Instance.Window.BattleWindow.PushInstallButton();
     }
 
-    public void UninstallButton()
+    private void UninstallButton()
     {
         // 타워 파괴 되면서 돈이 들어옴
         PlayerManager.Instance.DemolishTower();
     }
 
-    public void UpgradeButton()
+    private void UpgradeButton()
     {
         // 타워 이미지 바뀌고 능력도 바뀜
         PlayerManager.Instance.UpgradeTower();
@@ -66,12 +68,18 @@ public class TowerSelectTilePopUp : MonoBehaviour
         Init();
     }
 
-    private void TopView()
+    public void TopView()
     {
-        
+        Vector3 selectTile = new Vector3(
+            PlayerManager.Instance.SelectedTile.gameObject.transform.position.x, 
+            PlayerManager.Instance.SelectedTile.gameObject.transform.position.y + 0.5f,
+            PlayerManager.Instance.SelectedTile.gameObject.transform.position.z
+            );
+        UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.transform.position = selectTile;
+        Debug.Log(UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.transform.position);
     }
 
-    public void Init()
+    private void Init()
     {
         _uninstallButton.gameObject.SetActive(true);
         _upgradeButton.gameObject.SetActive(true);

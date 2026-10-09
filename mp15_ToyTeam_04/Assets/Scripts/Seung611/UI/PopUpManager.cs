@@ -42,7 +42,6 @@ public class PopUpManager : MonoBehaviour
 
     public void TowerSelectTilePopUpOpen(bool isTower)
     {
-        // if (PlayerCamera.IsTopView)
         OnGameTowerSelectTilePopup?.Invoke(isTower);
     }
 
