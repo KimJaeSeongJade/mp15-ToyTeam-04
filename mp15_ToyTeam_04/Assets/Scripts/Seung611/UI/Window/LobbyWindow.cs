@@ -14,14 +14,13 @@ public class LobbyWindow : MonoBehaviour
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
-    public Button _playerSkillButton;
-    public Sprite[] _skillImage;
+    [SerializeField] private Button _playerSkillButton;
+    [SerializeField] private List<Sprite> _skillImageSprites;
     private TowerState[] _towerState = new TowerState[3];
 
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
     
-    // Start 버튼 눌렀을 때 Battle 화면으로
     private void BindButtonEvents()
     {
         _gameStartButton.onClick.AddListener(StartGame);
@@ -42,14 +41,23 @@ public class LobbyWindow : MonoBehaviour
         _towerInventory[2].onClick.RemoveListener(Tower2SpecPopUp);
     }
 
+    public void SetData(Sprite sprite)
+    {
+        _playerSkillButton.image.sprite = sprite;
+    }
+
     private void StartGame()
     {
+        UIManager.Instance.Window.BattleWindow.Init();
+        UIManager.Instance.Window.BattleWindow.SetData(_playerSkillButton.image.sprite);
         UIManager.Instance.Window.BattleWindowOpen();
         MapManager.Instance.ShowBattleMap();
     }
 
     private void SkillPopUp()
     {
+        UIManager.Instance.PopUp.PlayerSkillPopUp.SetData((EPlayerSkillType)0, _skillImageSprites[0], 0);
+        UIManager.Instance.PopUp.PlayerSkillPopUp.SetData((EPlayerSkillType)1, _skillImageSprites[1], 1);
         UIManager.Instance.PopUp.PLayerSkillPopUpOpen();
     }
 

@@ -67,6 +67,7 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
+            UIManager.Instance.Window.BattleWindow.SkillPopUp();
         }
        
 
