@@ -16865,7 +16865,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 217763003118757986, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 592460637726024004, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16925,7 +16925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4778348501718345476, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5208450327012367932, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16937,7 +16937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6237982193864626508, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6404229751471245785, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18741,7 +18741,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 75
+  field of view: 30
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -18767,8 +18767,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006925722}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24157971, y: -0.000000028919612, z: 0.0000000071996373, w: 0.970381}
-  m_LocalPosition: {x: 0, y: 4, z: -3}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 35, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19478,7 +19478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1871726748
 ParticleSystemRenderer:
   serializedVersion: 6
