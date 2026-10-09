@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -59,7 +60,7 @@ public class StageManager : MonoBehaviour
     [HideInInspector] public int _stageEarnedGold; // 스테이지 얻은 골드 
     
     
-    private List<Monster> _spawnedMonsters = new List<Monster>();
+    public List<Monster> _spawnedMonsters = new List<Monster>();
 
 
     public void Start()
@@ -248,6 +249,8 @@ public class StageManager : MonoBehaviour
         // 노말 몬스터 생성
         for (int i = 0; i < normalCount; i++)
         {
+            yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
+
             if (_isStageFailed)
             {
                 yield break;
@@ -260,6 +263,8 @@ public class StageManager : MonoBehaviour
         // 엘몬 생성
         for (int i = 0; i < eliteCount; i++)
         {
+            yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
+
             if (_isStageFailed)
             {
                 yield break;
@@ -273,6 +278,8 @@ public class StageManager : MonoBehaviour
         // 보스몬스터 생성
         for (int i = 0; i < bossCount; i++)
         {
+            yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
+
             if (_isStageFailed)
             {
                 yield break;
