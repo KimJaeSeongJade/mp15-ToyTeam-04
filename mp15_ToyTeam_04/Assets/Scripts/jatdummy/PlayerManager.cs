@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -20,9 +21,11 @@ public class PlayerManager : MonoBehaviour
     public event Action<Tile> OnTileSelected;
 
     // 일단 60초로 고정.
-    private const float SKILL_COOL_TIME = 60f; 
+    private const float SKILL_COOL_TIME = 60f;
+    // ui 열기
+    public float SkillCoolTime => SKILL_COOL_TIME;
     // 남은 시간
-    
+
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // 쿨타임 UI
 
@@ -72,6 +75,18 @@ public class PlayerManager : MonoBehaviour
         {
             _skillCoolTimer -= Time.deltaTime;
         }
+        
+        if (_freezeDuration > 0f)
+        {
+            _freezeDuration -= Time.deltaTime;
+        }
+        else if (_freezeDuration <= 0f)
+        {
+            _isFreeze = false;
+        }
+    
+        
+
     }
     [SerializeField] private PlayerCamera _playerCamera;
 
@@ -171,9 +186,17 @@ public class PlayerManager : MonoBehaviour
 
     private EPlayerSkillType _equippedSkillType = EPlayerSkillType.None;
     public EPlayerSkillType EquiipedSkillType => _equippedSkillType;
-    
+
+    private bool _isFreeze = false;
+    public bool IsFreeze => _isFreeze;
+
+    private float _freezeDuration = 0f;
+
     public void UseSkill(EPlayerSkillType ePlayerSkill)
     {
+        List<Monster> _monsters = StageManager.Instance._spawnedMonsters;
+
+        
         _equippedSkillType = ePlayerSkill;
         if (_equippedSkillType == EPlayerSkillType.None) return;
         if (_skillCoolTimer > 0f) return;
@@ -181,15 +204,21 @@ public class PlayerManager : MonoBehaviour
         if (!_SkillAblity.TryGetValue(_equippedSkillType, out PlayerSkill skill)) return;
         SkillAblity data = skill.DicSkillAblity[_equippedSkillType];
 
-        float value = 0f;
-
         switch (_equippedSkillType)
         {
             case EPlayerSkillType.TimeFreeze:
-                value = data.SkillDuration;
+                foreach (Monster monster in _monsters)
+                {
+                    _isFreeze = true;
+                    _freezeDuration = data.SkillDuration;
+                    monster.ApplyTimeFreeze(data.SkillDuration);
+                }
                 break;
             case EPlayerSkillType.NaturalDisaster:
-                value = data.SkillDamage;
+                foreach (Monster monster in _monsters)
+                {
+                    monster.SkillDamage(data.SkillDamage);
+                }
                 break;
 
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -56,10 +57,10 @@ public class StageManager : MonoBehaviour
 
     private int _stageStartGold; //스테이지 시작 골드
     private int _stageEndGold; // 스테이지 끝 골드 
-    public int _stageEarnedGold; // 스테이지 얻은 골드 
+    [HideInInspector] public int _stageEarnedGold; // 스테이지 얻은 골드 
     
     
-    private List<Monster> _spawnedMonsters = new List<Monster>();
+    public List<Monster> _spawnedMonsters = new List<Monster>();
 
 
     public void Start()
@@ -77,7 +78,7 @@ public class StageManager : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log(_waveInterval + "초 후 몬스터 소환 시작");
+        //Debug.Log(_waveInterval + "초 후 몬스터 소환 시작");
 
         yield return new WaitForSeconds(_waveInterval);
 
@@ -93,17 +94,13 @@ public class StageManager : MonoBehaviour
         _isStageFailed = false;
         
         
-        Debug.Log(StageNumber + " 스테이지 시작");
+        //Debug.Log(StageNumber + " 스테이지 시작");
         _stageStartGold = GoldManager.Instance.Gold;
         
         for (int wave = 1; wave <= WAVE_COUNT; wave++)
         {
             WaveNumber = wave;
-            Debug.Log(
-                "===== "
-                + WaveNumber
-                + " 웨이브 시작 ====="
-            );
+            //Debug.Log("===== "+ WaveNumber+ " 웨이브 시작 =====");
             
             // 현재 웨이브 몬스터 생성
             yield return StartCoroutine(
@@ -115,8 +112,7 @@ public class StageManager : MonoBehaviour
                 yield break;
             }
             
-            Debug.Log(WaveNumber + " 웨이브 몬스터 생성 완료"
-            );
+            //Debug.Log(WaveNumber + " 웨이브 몬스터 생성 완료");
             
             // 몬스터 다 잡을때까지 대기
             yield return new WaitUntil(
@@ -128,7 +124,7 @@ public class StageManager : MonoBehaviour
                 yield break;
             }
             
-            Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
+            //Debug.Log("===== " + WaveNumber + " 웨이브 클리어 =====");
             
             if (wave == WAVE_COUNT)
             {
@@ -142,7 +138,7 @@ public class StageManager : MonoBehaviour
                 // 마지막 웨이브가 아니면 _waveInterval초 후 다음 웨이브 자동 시작
                 if (wave < WAVE_COUNT)
                 {
-                    Debug.Log("다음 웨이브까지 " + _waveInterval + "초");
+                    //Debug.Log("다음 웨이브까지 " + _waveInterval + "초");
 
                     yield return new WaitForSeconds(_waveInterval);
                 }
@@ -172,7 +168,7 @@ public class StageManager : MonoBehaviour
             MapManager.Instance._curMap.SpawnPoint == null ||
             MapManager.Instance._curMap.ArrivalPoint == null)
         {
-            Debug.LogError("Map과 출발점, 도착점을 확인해주세요.");
+            //Debug.LogError("Map과 출발점, 도착점을 확인해주세요.");
             return;
         }
         
@@ -207,7 +203,7 @@ public class StageManager : MonoBehaviour
             // 다음 스테이지로
             StageNumber = StageNumber + 1;
 
-            Debug.Log("다음 스테이지까지 " + _waveInterval + "초");
+            //Debug.Log("다음 스테이지까지 " + _waveInterval + "초");
 
             yield return new WaitForSeconds(_waveInterval);
         }
@@ -253,6 +249,8 @@ public class StageManager : MonoBehaviour
         // 노말 몬스터 생성
         for (int i = 0; i < normalCount; i++)
         {
+            yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
+
             if (_isStageFailed)
             {
                 yield break;
@@ -265,6 +263,8 @@ public class StageManager : MonoBehaviour
         // 엘몬 생성
         for (int i = 0; i < eliteCount; i++)
         {
+            yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
+
             if (_isStageFailed)
             {
                 yield break;
@@ -278,6 +278,8 @@ public class StageManager : MonoBehaviour
         // 보스몬스터 생성
         for (int i = 0; i < bossCount; i++)
         {
+            yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
+
             if (_isStageFailed)
             {
                 yield break;
@@ -414,10 +416,7 @@ public class StageManager : MonoBehaviour
             0
         );
 
-        Debug.Log(
-            "스테이지 라이프 : "
-            + _currentStageLife
-        );
+        //Debug.Log("스테이지 라이프 : " + _currentStageLife);
 
         // 라이프가 모두 떨어졌으면 패배
         if (_currentStageLife <= 0)
@@ -441,7 +440,7 @@ public class StageManager : MonoBehaviour
         StopAllCoroutines();
         
 
-        Debug.Log("스테이지 패배");
+        //Debug.Log("스테이지 패배");
         // 스테이지 패배 시 UI 추가 필요
         
     }
@@ -452,8 +451,8 @@ public class StageManager : MonoBehaviour
     {
         StageClearReward = (_stageClearGold * StageNumber);
             
-        Debug.Log(StageNumber + " 스테이지 클리어");
-        Debug.Log("클리어 보상 : " + StageClearReward);
+        //Debug.Log(StageNumber + " 스테이지 클리어");
+        //Debug.Log("클리어 보상 : " + StageClearReward);
 
         // 플레이어 골드 증가
         if (GoldManager.Instance != null)

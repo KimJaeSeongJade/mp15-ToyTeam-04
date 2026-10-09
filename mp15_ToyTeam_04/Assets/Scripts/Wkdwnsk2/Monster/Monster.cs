@@ -117,13 +117,11 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         if (endPoint == null)
         {
-            Debug.LogWarning("몬스터의 목적지가 없음.");
             return;
         }
 
         if (_navmesh.isOnNavMesh == false)
         {
-            Debug.LogWarning("몬스터가 NavMesh 위에 없음.");
             return;
         }
 
@@ -165,7 +163,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         {
             TakeDamage(false,100);
 
-            Debug.Log(_monsterName + " 현재 체력 : " + currentHealth);
         }
         
         // 테스트 : 화상 (최대 체력 50%, 2초)
@@ -174,7 +171,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
             BulletAffect burnAffect = new BulletAffect(EBulletAffectType.Burn, true, 50, 2);
             BulletAffect(burnAffect);
 
-            Debug.Log(_monsterName + " 화상 적용");
         }
         
         // 테스트 : 감속 (이동 속도 70% 감소, 1초)
@@ -183,7 +179,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
             BulletAffect slowAffect = new BulletAffect(EBulletAffectType.DecreaseSpeed, true, 70, 1);
             BulletAffect(slowAffect);
 
-            Debug.Log(_monsterName + " 이동속도 : " + _navmesh.speed);
         }
         
     }
@@ -233,7 +228,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         isSurvivalActive = true;
         currentHealth = 1;
 
-        Debug.Log(_monsterName + "보스 스킬 발동");
         yield return new WaitForSeconds(5f);
 
         currentHealth += 1;
@@ -281,7 +275,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
 
         _isDead = true;
-        Debug.Log(_monsterName + " 사망");
 
         anim.SetBool("IsDead", true);
         StartCoroutine(DeadWait());
@@ -349,22 +342,21 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     
     private IEnumerator TimeStopRoutine(float duration)
     {
-
-        if (_navmesh.enabled &&
-            _navmesh.isOnNavMesh)
+        if (_navmesh.enabled && _navmesh.isOnNavMesh)
         {
             _navmesh.isStopped = true;
         }
 
+        anim.speed = 0f;   // 움직임 멈춤
+
         yield return new WaitForSeconds(duration);
 
-
-        if (_navmesh.enabled &&
-            _navmesh.isOnNavMesh &&
-            !_isDead)
+        if (_navmesh.enabled && _navmesh.isOnNavMesh && !_isDead)
         {
             _navmesh.isStopped = false;
         }
+
+        anim.speed = 1f;   // 움직임 다시 재생
 
         _timeStopCoroutine = null;
     }
