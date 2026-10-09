@@ -66,6 +66,11 @@ public class TowerSelectTilePopUp : MonoBehaviour
         Init();
     }
 
+    private void TopView()
+    {
+        
+    }
+
     public void Init()
     {
         _uninstallButton.gameObject.SetActive(true);

@@ -11,6 +11,7 @@ public class PopUpManager : MonoBehaviour
     public MessagePopUp MessagePopUp;
     public SettingPopUp SettingPopUp;
     public TowerSelectTilePopUp TowerSelectTilePopUp;
+    public TowerSelectTilePopUp TopViewTowerSelectTilePopUp;
     
     public event Action OnGameSettingsPopUp;
     public event Action OnGameStageResultPopUp;
@@ -41,6 +42,7 @@ public class PopUpManager : MonoBehaviour
 
     public void TowerSelectTilePopUpOpen(bool isTower)
     {
+        // if (PlayerCamera.IsTopView)
         OnGameTowerSelectTilePopup?.Invoke(isTower);
     }
 
