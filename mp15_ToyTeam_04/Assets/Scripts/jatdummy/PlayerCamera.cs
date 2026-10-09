@@ -26,11 +26,8 @@ public class PlayerCamera : MonoBehaviour
     private bool _isUIMode;
     public bool IsUIMode => _isUIMode;
 
-    private Vector3 _playerCamPosition;
-    public Vector3 PlayerCamPosition => _playerCamPosition;
     private Vector3 _topViewTarget;     // 탑뷰 카메라가 가려는 위치
     private Vector3 _topViewStartPosition; // 탑뷰 카메라 위치 기억
-    public Vector3 TopViewStartPosition => _topViewStartPosition;
     // 지금 탑뷰인지
     public bool IsTopView => _isTopView;
 

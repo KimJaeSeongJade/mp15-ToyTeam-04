@@ -90,6 +90,8 @@ public class PlayerManager : MonoBehaviour
         _character.transform.position = START_POSITION;
         _character.gameObject.SetActive(true);
         _playerCamera.LobbyStartCamera();
+        
+        _skillCoolTimer = 0f;
     }
 
     // 로비 갈 때 캐릭터 끄기
@@ -136,7 +138,16 @@ public class PlayerManager : MonoBehaviour
     // 이 타워 얼만데?
     public int GetInstallCost(ETowerType type)
     {
-        return _towerStates[type].InstallCost;
+        int baseCost = _towerStates[type].InstallCost;
+
+        // 설치비 감소 특성 배웠으면 할인
+        TowerAbility towerAbility = GetTowerAbility(type);
+        if ( towerAbility.DicAbility.TryGetValue(EAbilityType.DecreaseInstallCost, out Ability ability) && ability.IsLearn)
+        {
+            return (int)(baseCost * (100 - ability.Value) / 100f);
+        }
+
+        return baseCost;
     }
 
     // 설치할 때마다 새로 생성
