@@ -14,8 +14,6 @@ public class PlayerSkillPopUp : MonoBehaviour
     [SerializeField] private Button _escButton;
 
     private Sprite[] _skillImageSprites => UIManager.Instance.Window.LobbyWindow._skillImage;
-    public Sprite _skill1 => _skillImageSprites[0];
-    public Sprite _skill2 => _skillImageSprites[1];
     private Image _sillButtonimage => UIManager.Instance.Window.LobbyWindow._playerSkillButton.image;
     
     private void Start() => SkillNameImage();
@@ -42,7 +40,7 @@ public class PlayerSkillPopUp : MonoBehaviour
         // Skill1을 눌렀을 때 어떤 동작을 할 지 구현
         gameObject.SetActive(false);
         _sillButtonimage.sprite = _skillImageSprites[0];
-        PlayerManager.Instance.EquipSkill(EPlayerSkillType.NaturalDisaster);
+        PlayerManager.Instance.EquipSkill(EPlayerSkillType.TimeFreeze);
     }
     
     public void Skill2Selected()
@@ -50,7 +48,7 @@ public class PlayerSkillPopUp : MonoBehaviour
         // Skill2를 눌렀을 때 어떤 동작을 할 지 구현
         gameObject.SetActive(false);
         _sillButtonimage.sprite = _skillImageSprites[1];
-        PlayerManager.Instance.EquipSkill(EPlayerSkillType.TimeFreeze);
+        PlayerManager.Instance.EquipSkill(EPlayerSkillType.NaturalDisaster);
     }
 
     private void SkillNameImage()

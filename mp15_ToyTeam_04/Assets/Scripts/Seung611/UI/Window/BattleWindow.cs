@@ -8,22 +8,27 @@ using UnityEngine.UI;
 
 public class BattleWindow : MonoBehaviour
 {
-    [SerializeField] private Button _playerSkillButton;
+    [SerializeField] private Image _playerSkill;
+    [SerializeField] private Image _playerSkillCoolDown;
+    [SerializeField] private TextMeshProUGUI _playerSkillCoolDownCount;
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
     [SerializeField] private TextMeshProUGUI _monsterCount;
-
+    
     private Image _skillButtonImage => UIManager.Instance.Window.LobbyWindow._playerSkillButton.image;
     private void Awake() => Init();
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
-    private void Update() => CurrnetMonster();
-    
+
+    private void Update()
+    {
+        CurrnetMonster();
+    }
+
     // Start 버튼 눌렀을 때 Battle 화면으로
     private void BindButtonEvents()
     {
-        _playerSkillButton.onClick.AddListener(SkillPopUp);
         _settingButton.onClick.AddListener(SettingPopUp);
         _towerInventory[0].onClick.AddListener(Tower0Select);
         _towerInventory[1].onClick.AddListener(Tower1Select);
@@ -32,7 +37,6 @@ public class BattleWindow : MonoBehaviour
     
     private void UnbindButtonEvents()
     {
-        _playerSkillButton.onClick.RemoveListener(SkillPopUp);
         _settingButton.onClick.RemoveListener(SettingPopUp);
         _towerInventory[0].onClick.RemoveListener(Tower0Select);
         _towerInventory[1].onClick.RemoveListener(Tower1Select);
@@ -41,18 +45,20 @@ public class BattleWindow : MonoBehaviour
  
     public void SkillPopUp()
     {
-        // 스킬 상호작용 키 눌렀을 시 스킬 쿨타임 돌기
-        if (UIManager.Instance.PopUp.PlayerSkillPopUp._skill1)
+        _playerSkillCoolDown.gameObject.SetActive(true);
+        _playerSkillCoolDownCount.gameObject.SetActive(true);
+        StartCoroutine(SkillUsingRoutin());
+    }
+
+    private IEnumerator SkillUsingRoutin()
+    {
+        while (PlayerManager.Instance.SkillCoolTimer <= 0)
         {
-            PlayerManager.Instance.EquipSkill(EPlayerSkillType.TimeFreeze);
-        }
-        else if (UIManager.Instance.PopUp.PlayerSkillPopUp._skill2)
-        {
-            PlayerManager.Instance.EquipSkill(EPlayerSkillType.NaturalDisaster);
+            _playerSkillCoolDown.fillAmount = PlayerManager.Instance.SkillCoolTimer / 60f;
+            _playerSkillCoolDownCount.text = Mathf.Round(PlayerManager.Instance.SkillCoolTimer).ToString();
+            yield return new WaitForFixedUpdate();
         }
     }
-    
-    // private void 
 
     private void SettingPopUp()
     {
@@ -95,7 +101,9 @@ public class BattleWindow : MonoBehaviour
 
     private void Init()
     {
-        _playerSkillButton.image.sprite = _skillButtonImage.sprite;
+        _playerSkill.sprite = _skillButtonImage.sprite;
+        _playerSkillCoolDown.gameObject.SetActive(false);
+        _playerSkillCoolDownCount.gameObject.SetActive(false);
         HideInstallButton();
     }
 
