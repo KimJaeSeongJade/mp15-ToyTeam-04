@@ -5,6 +5,7 @@
     "com.unity.cinemachine": "2.10.7",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.localization": "1.5.13",
     "com.unity.probuilder": "5.2.4",
     "com.unity.springbone": "file:com.unity.springbone",
     "com.unity.textmeshpro": "3.0.9",
