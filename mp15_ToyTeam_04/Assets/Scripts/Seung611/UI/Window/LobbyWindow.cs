@@ -60,6 +60,11 @@ public class LobbyWindow : MonoBehaviour
 
     private void StartGame()
     {
+        if (PoolManager.Instance == null || !PoolManager.Instance.IsReady)
+        {
+            return;
+        }
+
         UIManager.Instance.Window.BattleWindow.Init();
         UIManager.Instance.Window.BattleWindow.SetData(_playerSkillImage.sprite, _charecterImage.sprite);
         UIManager.Instance.Window.BattleWindowOpen();

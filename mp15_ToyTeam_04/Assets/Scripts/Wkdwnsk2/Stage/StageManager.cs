@@ -73,7 +73,8 @@ public class StageManager : MonoBehaviour
     private IEnumerator AutoStart()
     {
         // 로비에서 게임 시작을 눌러 맵이 나올 때까지 대기
-        while (MapManager.Instance._curMap == null)
+        while (MapManager.Instance._curMap == null ||
+               PoolManager.Instance == null || !PoolManager.Instance.IsReady)
         {
             yield return null;
         }
@@ -158,6 +159,11 @@ public class StageManager : MonoBehaviour
 
     public void MonsterGenerate()
     {
+        if (PoolManager.Instance == null || !PoolManager.Instance.IsReady)
+        {
+            return;
+        }
+
         // 웨이브 시작했는지 확인
         if (_isStageRunning)
         {

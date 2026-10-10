@@ -30,6 +30,8 @@ public class MapManager : MonoBehaviour
             _instance = this;
         }
     }
+    [Header("맵 프리팹"), SerializeField] private Map[] _mapPrefabs;
+    private Vector3[] _mapInitPos;
     [Header("전체 맵"), SerializeField] private Map[] _maps;
     [Header("맵에 따른 배경"), SerializeField] private Material[] _materials;
     [HideInInspector] public Map _curMap;
@@ -43,6 +45,11 @@ public class MapManager : MonoBehaviour
         // 시작 시 맵 정보X
         _curMapNumber = -1;
         _curMap = null;
+        _mapInitPos = new Vector3[_mapPrefabs.Length];
+        _mapInitPos[0] = new Vector3(-7, 0, 6.5f);
+        _mapInitPos[1] = new Vector3(0, 0, 0);
+        _mapInitPos[2] = new Vector3(-7.84f, 0, -7.47f);
+        _mapInitPos[3] = new Vector3(0, 0, 0);
     }
 
     /// <summary> 배틀 맵 보여주기 </summary>
@@ -56,7 +63,16 @@ public class MapManager : MonoBehaviour
         int rand = Random.Range(0, _maps.Length);
 
         // 같은 값이면 비활성 안하기 위해 나가기
-        if (rand == _curMapNumber) return;
+        if (rand == _curMapNumber)
+        {
+            PlayerManager.Instance.OnPlayer();
+            return;
+        }
+
+        if (_maps[rand] == null)
+        {
+            
+        }
 
         // 초기 맵이 아니라면
         if (_curMapNumber != -1)
@@ -73,6 +89,5 @@ public class MapManager : MonoBehaviour
         // 현재 맵 정보
         _curMap = _maps[_curMapNumber];
 
-        PlayerManager.Instance.OnPlayer();
     }
 }

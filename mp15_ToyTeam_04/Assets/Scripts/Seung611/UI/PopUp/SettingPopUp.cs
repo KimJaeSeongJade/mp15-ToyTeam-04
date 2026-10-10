@@ -44,6 +44,7 @@ public class SettingPopUp : MonoBehaviour
     private void Continue()
     {
         UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
+        PlayerManager.Instance.SetUIMode(false);
     }
 
     private void LobbyWindow()

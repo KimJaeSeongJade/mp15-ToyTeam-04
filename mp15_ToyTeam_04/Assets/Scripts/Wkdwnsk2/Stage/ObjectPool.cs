@@ -12,14 +12,9 @@ public class ObjectPool<T> where T : Component, IPoolable
     {
         _Prefab = Prefab;
         _parent = parent;
-
-        for (int i = 0; i < poolSize; i++)
-        {
-            CreateObject();
-        }
     }
 
-    private void CreateObject()
+    public void CreateObject()
     {
         T item = Object.Instantiate(_Prefab, _parent);
 

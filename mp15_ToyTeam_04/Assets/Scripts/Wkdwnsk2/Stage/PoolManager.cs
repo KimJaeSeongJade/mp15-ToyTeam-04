@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,61 +55,62 @@ public class PoolManager : MonoBehaviour
 
         
     }
+    public bool IsReady { get; private set; }
 
     private void Start()
     {
-        _arrowTowerPool = new ObjectPool<Tower>(
-            _arrowTowerPrefab, 5, transform);
-
-        _fireTowerPool = new ObjectPool<Tower>(
-            _fireTowerPrefab, 5, transform);
-
-        _iceTowerPool = new ObjectPool<Tower>(
-            _iceTowerPrefab, 5, transform);
-
-        _arrowBulletPool = new ObjectPool<Bullet>(
-            _arrowBulletPrefab, 10, transform);
-
-        _fireBulletPool = new ObjectPool<Bullet>(
-            _fireBulletPrefab, 10, transform);
-
-        _iceBulletPool = new ObjectPool<Bullet>(
-            _iceBulletPrefab, 10, transform);
-
-        // 기존 오브젝트 풀 생성
-        _monsterPool = new ObjectPool<Monster>(
-            _normalmonsterPrefab1,
-             5,
-            transform
-        );
-        
-        _monsterPool2 = new ObjectPool<Monster>(
-            _normalmonsterPrefab2,
-            5,
-            transform
-        );
-        _monsterPool3 = new ObjectPool<Monster>(
-            _elitemonsterPrefab1,
-            5,
-            transform
-        );
-        _monsterPool4 = new ObjectPool<Monster>(
-            _elitemonsterPrefab2,
-            5,
-            transform
-        );
-        _monsterPool5 = new ObjectPool<Monster>(
-            _bossmonsterPrefab1,
-            5,
-            transform
-        );
-        _monsterPool6 = new ObjectPool<Monster>(
-            _bossmonsterPrefab2,
-            5,
-            transform
-        );
+        if (Instance != this) return;
+        StartCoroutine(MonsterPoolCreat());
     }
-    
+
+    private IEnumerator MonsterPoolCreat()
+    {
+        IsReady = false;
+        _arrowTowerPool = new ObjectPool<Tower>(_arrowTowerPrefab, 0, transform);
+        _fireTowerPool = new ObjectPool<Tower>(_fireTowerPrefab, 0, transform);
+        _iceTowerPool = new ObjectPool<Tower>(_iceTowerPrefab, 0, transform);
+        _arrowBulletPool = new ObjectPool<Bullet>(_arrowBulletPrefab, 0, transform);
+        _fireBulletPool = new ObjectPool<Bullet>(_fireBulletPrefab, 0, transform);
+        _iceBulletPool = new ObjectPool<Bullet>(_iceBulletPrefab, 0, transform);
+        _monsterPool = new ObjectPool<Monster>(_normalmonsterPrefab1, 0, transform);
+        _monsterPool2 = new ObjectPool<Monster>(_normalmonsterPrefab2, 0, transform);
+        _monsterPool3 = new ObjectPool<Monster>(_elitemonsterPrefab1, 0, transform);
+        _monsterPool4 = new ObjectPool<Monster>(_elitemonsterPrefab2, 0, transform);
+        _monsterPool5 = new ObjectPool<Monster>(_bossmonsterPrefab1, 0, transform);
+        _monsterPool6 = new ObjectPool<Monster>(_bossmonsterPrefab2, 0, transform);
+
+        yield return null;
+
+        yield return PrewarmPool(_arrowTowerPool, 5);
+        yield return PrewarmPool(_fireTowerPool, 5);
+        yield return PrewarmPool(_iceTowerPool, 5);
+        yield return PrewarmPool(_arrowBulletPool, 5);
+        yield return PrewarmPool(_fireBulletPool, 5);
+        yield return PrewarmPool(_iceBulletPool, 5);
+        yield return PrewarmPool(_monsterPool, 5);
+        yield return PrewarmPool(_monsterPool2, 5);
+        yield return PrewarmPool(_monsterPool3, 5);
+        yield return PrewarmPool(_monsterPool4, 5);
+        yield return PrewarmPool(_monsterPool5, 5);
+        yield return PrewarmPool(_monsterPool6, 5);
+
+        IsReady = true;
+    }
+
+    private IEnumerator PrewarmPool<T>(ObjectPool<T> pool, int count)
+        where T : Component, IPoolable
+    {
+        for (int i = 0; i < count; i++)
+        {
+            pool.CreateObject();
+            yield return null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+    }
 
     public Gold GetGold(
         Gold prefab,
