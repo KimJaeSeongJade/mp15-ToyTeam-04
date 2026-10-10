@@ -957,8 +957,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31a57aad5781b3041a98dccc3da260c9, type: 3}
   _bgmSource: {fileID: 1298577976}
   _sfxSource: {fileID: 640726468}
-  _bgmAni: {fileID: 0}
-  _sfxAni: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

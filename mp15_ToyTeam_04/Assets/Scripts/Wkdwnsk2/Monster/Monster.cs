@@ -69,7 +69,10 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     [SerializeField] private HP _hpPrefab;      // HP UI 프리팹
     [SerializeField] private float _hpHeight = 2f;  // HP바 위치
     private HP _hp;                             // 몬스터 HP UI                             
-    
+
+    [SerializeField] private GameObject _iceAffect;
+    [SerializeField] private GameObject _burnAffect;
+
 
     private void Awake()
     {
@@ -535,6 +538,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     // 화상 : 타워의 Duration초 동안 1초마다 데미지
     private IEnumerator BurnRoutine(BulletAffect affect)
     {
+        _burnAffect.SetActive(true);
         int damage;
 
         if (affect.IsPer)
@@ -564,11 +568,13 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         }
 
         _burnCoroutine = null;
+        _burnAffect.SetActive(false);
     }
 
     // 몬스터 이속 감소
     private IEnumerator SlowRoutine(BulletAffect affect)
     {
+        _iceAffect.SetActive(true);
         float slowSpeed;
 
 
@@ -591,8 +597,9 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         }
 
         _slowCoroutine = null;
+        _iceAffect.SetActive(false);
     }
-    
+
     // HP UI 만들기 (몬스터마다 처음 한 번만)
     private void CreateHpUI()
     {
