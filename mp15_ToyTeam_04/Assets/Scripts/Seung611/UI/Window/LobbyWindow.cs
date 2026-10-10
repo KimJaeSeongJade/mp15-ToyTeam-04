@@ -11,6 +11,7 @@ using Image = UnityEngine.UI.Image;
 
 public class LobbyWindow : MonoBehaviour
 {
+    [SerializeField] private Image _charecterImage;
     [SerializeField] private Button _gameStartButton;
     [SerializeField] private Button _settingButton;
     [SerializeField] private List<Button> _towerInventory;
@@ -60,7 +61,7 @@ public class LobbyWindow : MonoBehaviour
     private void StartGame()
     {
         UIManager.Instance.Window.BattleWindow.Init();
-        UIManager.Instance.Window.BattleWindow.SetData(_playerSkillImage.sprite);
+        UIManager.Instance.Window.BattleWindow.SetData(_playerSkillImage.sprite, _charecterImage.sprite);
         UIManager.Instance.Window.BattleWindowOpen();
         MapManager.Instance.ShowBattleMap();
     }

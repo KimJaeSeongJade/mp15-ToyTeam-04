@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class BattleWindow : MonoBehaviour
 {
+    [SerializeField] private Image _charecterImage;
     [SerializeField] private Image _playerSkill;
     [SerializeField] private Image _playerSkillCoolDown;
     [SerializeField] private TextMeshProUGUI _playerSkillCoolDownCount;
@@ -46,9 +47,10 @@ public class BattleWindow : MonoBehaviour
         }
     }
 
-    public void SetData(Sprite sprite)
+    public void SetData(Sprite sprite, Sprite character)
     {
         _playerSkill.sprite = sprite;
+        _charecterImage.sprite = character;
     }
  
     public void SkillPopUp()
