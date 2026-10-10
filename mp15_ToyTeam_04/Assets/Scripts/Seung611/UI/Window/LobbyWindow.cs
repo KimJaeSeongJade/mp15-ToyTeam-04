@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UI.Image;
 
 public class LobbyWindow : MonoBehaviour
 {
@@ -15,11 +16,13 @@ public class LobbyWindow : MonoBehaviour
     [SerializeField] private List<Button> _towerInventory;
     [SerializeField] private TextMeshProUGUI _haveGlod;
     [SerializeField] private Button _playerSkillButton;
+    [SerializeField] private Image _playerSkillImage;
     [SerializeField] private List<Sprite> _skillImageSprites;
     private TowerState[] _towerState = new TowerState[3];
 
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
+    private void Update() => Escape();
     
     private void BindButtonEvents()
     {
@@ -40,16 +43,24 @@ public class LobbyWindow : MonoBehaviour
         _towerInventory[1].onClick.RemoveListener(Tower1SpecPopUp);
         _towerInventory[2].onClick.RemoveListener(Tower2SpecPopUp);
     }
+    
+    private void Escape()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.PopUp.SettingPopUpOpen();
+        }
+    }
 
     public void SetData(Sprite sprite)
     {
-        _playerSkillButton.image.sprite = sprite;
+        _playerSkillImage.sprite = sprite;
     }
 
     private void StartGame()
     {
         UIManager.Instance.Window.BattleWindow.Init();
-        UIManager.Instance.Window.BattleWindow.SetData(_playerSkillButton.image.sprite);
+        UIManager.Instance.Window.BattleWindow.SetData(_playerSkillImage.sprite);
         UIManager.Instance.Window.BattleWindowOpen();
         MapManager.Instance.ShowBattleMap();
     }
@@ -89,6 +100,6 @@ public class LobbyWindow : MonoBehaviour
 
     public void HaveGold(int gold)
     {
-        _haveGlod.text = "Gold : " + gold.ToString();
+        _haveGlod.text = gold.ToString();
     }
 }

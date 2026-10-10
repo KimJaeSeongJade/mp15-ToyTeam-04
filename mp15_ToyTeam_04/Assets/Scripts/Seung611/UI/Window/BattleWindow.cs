@@ -19,6 +19,8 @@ public class BattleWindow : MonoBehaviour
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
 
+    private void Update() => Escape();
+
     private void BindButtonEvents()
     {
         _settingButton.onClick.AddListener(SettingPopUp);
@@ -34,6 +36,15 @@ public class BattleWindow : MonoBehaviour
         _towerInventory[1].onClick.RemoveListener(Tower1Select);
         _towerInventory[2].onClick.RemoveListener(Tower2Select);
     }
+    
+    private void Escape()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.PopUp.SettingPopUpOpen();
+            PlayerManager.Instance.SetUIMode(true);
+        }
+    }
 
     public void SetData(Sprite sprite)
     {
@@ -44,10 +55,10 @@ public class BattleWindow : MonoBehaviour
     {
         _playerSkillCoolDown.gameObject.SetActive(true);
         _playerSkillCoolDownCount.gameObject.SetActive(true);
-        StartCoroutine(SkillUsingRoutin());
+        StartCoroutine(SkillUsingRoutine());
     }
 
-    private IEnumerator SkillUsingRoutin()
+    private IEnumerator SkillUsingRoutine()
     {
         while (PlayerManager.Instance.SkillCoolTimer > 0)
         {
@@ -122,6 +133,6 @@ public class BattleWindow : MonoBehaviour
 
     public void HaveGold(int gold)
     {
-        _haveGlod.text = "Gold : " + gold.ToString();
+        _haveGlod.text = gold.ToString();
     }
 }
