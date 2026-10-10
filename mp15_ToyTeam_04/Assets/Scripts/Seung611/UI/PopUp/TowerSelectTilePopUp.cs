@@ -51,9 +51,9 @@ public class TowerSelectTilePopUp : MonoBehaviour
     private void UninstallButton()
     {
         // 타워 파괴 되면서 돈이 들어옴
-        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         PlayerManager.Instance.DemolishTower();
         PlayerManager.Instance.TopViewSelect.SetActive(false);
+        CancelButton();
     }
 
     private void UpgradeButton()

@@ -307,7 +307,6 @@ public class PlayerManager : MonoBehaviour
         // 타일 비우기 전에 잡아두기
         Tower tower = _selectedTile._tower;
 
-        _selectedTile.TileRemovalTower();
 
         // 꺼낸 타워 종류의 풀로 반납.
         switch (tower.State.ETowerType)
@@ -322,6 +321,9 @@ public class PlayerManager : MonoBehaviour
                 PoolManager.Instance._iceTowerPool.ReturnObject(tower);
                 break;
         }
+
+        _selectedTile.TileRemovalTower();
+
         SoundManager.Instance.PlaySfx(ESfx.TOWER_REMOVE);
     }
 
