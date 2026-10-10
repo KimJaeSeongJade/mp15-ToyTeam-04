@@ -15,10 +15,18 @@ public class SoundManager : Singleton<SoundManager>
     private Dictionary<EBgm, AudioClip> _bgmDict;
     private Dictionary<ESfx, AudioClip> _sfxDict;
 
+    private bool _isBgm;
+    private bool _isSfx;
+
+    public bool IsBgm => _isBgm;
+    public bool IsSfx => _isSfx;
+
     private void Awake()
     {
         SetSingleton();
         Init();
+        _isBgm = true;
+        _isSfx = true;
     }
 
     private void Init()
@@ -44,11 +52,27 @@ public class SoundManager : Singleton<SoundManager>
         {
             _bgmSource.clip = clip;
             _bgmSource.loop = true;
-            _bgmSource.Play();
+            if (_isBgm)
+            {
+                _bgmSource.Play();
+            }
         }
         else
         {
             Debug.Log("NOT FOUND BGM");
+        }
+    }
+
+    public void PlayStopBgm(bool playStop)
+    {
+        _isBgm = playStop;
+        if (!_isBgm)
+        {
+            _bgmSource.Stop();
+        }
+        else
+        {
+            _bgmSource.Play();
         }
     }
 
@@ -57,14 +81,20 @@ public class SoundManager : Singleton<SoundManager>
         if (_sfxDict.TryGetValue(esfxType, out var clip))
         {
             _sfxSource.clip = clip;
-            //_sfxSource.loop = true;
-            _sfxSource.Play();
-            //_sfxSource.PlayOneShot(clip); // 여러번 호출해도 독립적으로 재생됨
+            if (_isSfx)
+            {
+                _sfxSource.Play();
+                //_sfxSource.PlayOneShot(clip); // 여러번 호출해도 독립적으로 재생됨
+            }
         }
         else
         {
             Debug.Log("NOT FOUND SFX");
         }
+    }
+    public void PlayStopSfx(bool playStop)
+    {
+        _isSfx = playStop;
     }
 }
 
