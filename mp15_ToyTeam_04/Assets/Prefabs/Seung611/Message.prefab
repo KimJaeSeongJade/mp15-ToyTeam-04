@@ -143,8 +143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u314E\u3147"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
-  m_sharedMaterial: {fileID: -1354208741816493806, guid: b83c7a500d8835e4390c75d7db60e4e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 03f393f185abfa145a06018334bf6212, type: 2}
+  m_sharedMaterial: {fileID: 1946683165921271913, guid: 03f393f185abfa145a06018334bf6212, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

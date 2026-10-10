@@ -5,7 +5,6 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [SerializeField] private LayerMask _monsterLayer;
-    [SerializeField] private StageManager _stage;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +22,7 @@ public class Portal : MonoBehaviour
         }
 
         // 포탈에 도착 알림
-        _stage.MonsterReachedGoal(monster);
+        StageManager.Instance.MonsterReachedGoal(monster);
 
         // 몬스터 삭제
         monster.MonsterDelete();

@@ -48,6 +48,7 @@ public class Tile : MonoBehaviour
     public void ResetTile()
     {
         _isTower = false;
+        _tower?.TowerClear();
         _tower = null;
     }
 }

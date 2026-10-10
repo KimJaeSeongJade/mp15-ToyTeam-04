@@ -64,15 +64,18 @@ public class LobbyWindow : MonoBehaviour
         {
             return;
         }
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
 
         UIManager.Instance.Window.BattleWindow.Init();
         UIManager.Instance.Window.BattleWindow.SetData(_playerSkillImage.sprite, _charecterImage.sprite);
         UIManager.Instance.Window.BattleWindowOpen();
+        StageManager.Instance.StageGo();
         MapManager.Instance.ShowBattleMap();
     }
 
     private void SkillPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.PopUp.PlayerSkillPopUp.SetData((EPlayerSkillType)0, _skillImageSprites[0], 0);
         UIManager.Instance.PopUp.PlayerSkillPopUp.SetData((EPlayerSkillType)1, _skillImageSprites[1], 1);
         UIManager.Instance.PopUp.PLayerSkillPopUpOpen();
@@ -80,27 +83,31 @@ public class LobbyWindow : MonoBehaviour
 
     private void SettingPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.PopUp.SettingPopUpOpen();
     }
     
     private void Tower0SpecPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         _towerState[0] = PlayerManager.Instance.GetTowerState(ETowerType.ArrowTower);
-        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 0);
+        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, PlayerManager.Instance.GetTowerAbility(ETowerType.ArrowTower), 0);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void Tower1SpecPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         _towerState[1] = PlayerManager.Instance.GetTowerState(ETowerType.FireTower);
-        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 1);
+        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, PlayerManager.Instance.GetTowerAbility(ETowerType.FireTower), 1);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
     private void Tower2SpecPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         _towerState[2] = PlayerManager.Instance.GetTowerState(ETowerType.IceTower);
-        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, 2);
+        UIManager.Instance.PopUp.TowerSpecPopUp.SetData(_towerState, PlayerManager.Instance.GetTowerAbility(ETowerType.IceTower), 2);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 

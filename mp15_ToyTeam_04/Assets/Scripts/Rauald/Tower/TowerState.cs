@@ -24,6 +24,7 @@ public abstract class TowerState
     public string Name => _name;
     public ETowerType ETowerType => _eTowerType;
     public int Atk => _atk;
+    public int UpgradeAtk => _upgradeAtk;
     public float AtkSpeed => _atkSpeed;
     public float DetectionRange => _detectionRange;
     public string Explanation => _explanation;

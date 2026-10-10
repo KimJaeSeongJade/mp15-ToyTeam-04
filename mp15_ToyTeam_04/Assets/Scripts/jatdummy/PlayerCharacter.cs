@@ -17,6 +17,7 @@ public class PlayerCharacter : MonoBehaviour
     private CharacterController _controller;
     private Transform _cam;
     private int _towerTileLayer;
+    [SerializeField] private GameObject _noneTowerEffect;
 
     public void Start()
     {
@@ -54,6 +55,7 @@ public class PlayerCharacter : MonoBehaviour
         else
         {
             Move();
+            NoneTowerRayCast();
             // 캐릭터 상호작용
             if (Input.GetKeyDown(KeyCode.E))
                 PlayerInteract();
@@ -66,8 +68,15 @@ public class PlayerCharacter : MonoBehaviour
         // 플레이서 스킬 사용. 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
-            UIManager.Instance.Window.BattleWindow.SkillPopUp();
+            if (StageManager.Instance._spawnedMonsters.Count == 0)
+            {
+                UIManager.Instance.PopUp.MessagePopUp.Message("몬스터가 존재하지 않습니다!");
+            }
+            else
+            {
+                PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
+                UIManager.Instance.Window.BattleWindow.SkillPopUp();
+            }
         }
        
 
@@ -93,6 +102,7 @@ public class PlayerCharacter : MonoBehaviour
 
         // 이동 / 중력 / 충돌
         _controller.SimpleMove(move * _moveSpeed);
+        SoundManager.Instance.PlaySfx(ESfx.MOVE);
     }
 
     // 카메라 전환에 따른 이동
@@ -103,12 +113,13 @@ public class PlayerCharacter : MonoBehaviour
 
         Vector3 input = new Vector3(horizontal, 0f, vertical).normalized;
 
+        SoundManager.Instance.PlaySfx(ESfx.CAMERA_MOVE);
         // 카메라 좌우 각도만큼 돌리기
         if (_cam == null) return input;
         return Quaternion.Euler(0f, _cam.eulerAngles.y, 0f) * input;
     }
 
-    
+
 
     // 캐릭터 상호작용
     public void PlayerInteract()
@@ -129,6 +140,32 @@ public class PlayerCharacter : MonoBehaviour
                 PlayerManager.Instance.SetUIMode(true);
 
             }
+        }
+    }
+
+    private void NoneTowerRayCast()
+    {
+        Vector3 frontPoint = transform.position + Vector3.up;
+        Vector3 rayStart = frontPoint;
+        RaycastHit hit;
+
+        if (Physics.Raycast(rayStart, (transform.forward + Vector3.down).normalized, out hit, 3f, _towerTileLayer))
+        {
+            Tile tile = GetTowerTile(hit.collider);
+
+            if (!tile.IsTower)
+            {
+                _noneTowerEffect.SetActive(true);
+                _noneTowerEffect.transform.position = tile.transform.position;
+            }
+            else
+            {
+                _noneTowerEffect.SetActive(false);
+            }
+        }
+        else
+        {
+            _noneTowerEffect.SetActive(false);
         }
     }
 

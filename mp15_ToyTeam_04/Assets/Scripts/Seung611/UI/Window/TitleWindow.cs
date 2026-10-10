@@ -28,8 +28,8 @@ public class TitleWindow : MonoBehaviour
 
     private void LobbyWindow()
     {
-        UIManager.Instance.Window.LobbyWindowOpen();
-        SceneManager.LoadScene(1);
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
+        UIManager.Instance.Window.LoadWindowOpen();
     }
 
     private void SettingPopUp()

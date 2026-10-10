@@ -55,6 +55,7 @@ public class BattleWindow : MonoBehaviour
  
     public void SkillPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         _playerSkillCoolDown.gameObject.SetActive(true);
         _playerSkillCoolDownCount.gameObject.SetActive(true);
         StartCoroutine(SkillUsingRoutine());
@@ -74,6 +75,7 @@ public class BattleWindow : MonoBehaviour
 
     private void SettingPopUp()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.PopUp.SettingPopUpOpen();
     }
 
@@ -87,6 +89,7 @@ public class BattleWindow : MonoBehaviour
     private void Tower0Select()
     {
         // ArrowTower 설치
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         PlayerManager.Instance.InstallTower(ETowerType.ArrowTower);
         InstallComplete();
     }
@@ -95,6 +98,7 @@ public class BattleWindow : MonoBehaviour
     private void Tower1Select()
     {
         // FireTower 설치
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         PlayerManager.Instance.InstallTower(ETowerType.FireTower);
         InstallComplete();
     }
@@ -102,12 +106,14 @@ public class BattleWindow : MonoBehaviour
     private void Tower2Select()
     {
         // IceTower 설치
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         PlayerManager.Instance.InstallTower(ETowerType.IceTower);
         InstallComplete();
     }
     
     private void InstallComplete()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.PopUp.TowerSelectTilePopUp.CancelButton();
         UIManager.Instance.Window.BattleWindow.HideInstallButton();
     }
@@ -121,6 +127,7 @@ public class BattleWindow : MonoBehaviour
 
     public void HideInstallButton()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         _towerInventory[0].gameObject.SetActive(false);
         _towerInventory[1].gameObject.SetActive(false);
         _towerInventory[2].gameObject.SetActive(false);

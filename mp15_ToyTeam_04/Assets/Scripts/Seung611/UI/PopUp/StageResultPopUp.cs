@@ -40,6 +40,7 @@ public class StageResultPopUp : MonoBehaviour
 
     private void NextStage()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         gameObject.SetActive(false);
         MapManager.Instance.ShowBattleMap();
         PlayerManager.Instance.SetUIMode(false);
@@ -47,6 +48,7 @@ public class StageResultPopUp : MonoBehaviour
 
     private void Lobby()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         gameObject.SetActive(false);
         UIManager.Instance.Window.LobbyWindowOpen();
     }

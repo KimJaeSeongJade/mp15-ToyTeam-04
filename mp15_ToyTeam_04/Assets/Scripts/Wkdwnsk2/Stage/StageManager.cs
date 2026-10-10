@@ -66,12 +66,28 @@ public class StageManager : MonoBehaviour
     public void Start()
     {
         SetSingleton();
+        StageNumber = 1;
+        WaveNumber = 1;
+    }
+
+    public void StageGo()
+    {
         StartCoroutine(AutoStart());
     }
     
     // 맵이 나오면 n초 기다렸다가 자동으로 시작
     private IEnumerator AutoStart()
     {
+        totalMonsterNumber = 0;
+
+        int normalCount = GetNormalCount();
+        int eliteCount = GetEliteCount();
+        int bossCount = GetBossCount();
+
+        totalMonsterNumber = normalCount + eliteCount + bossCount;
+        monsterNumber = totalMonsterNumber;
+        UIManager.Instance.Window.BattleWindow.CurrnetMonster();
+
         // 로비에서 게임 시작을 눌러 맵이 나올 때까지 대기
         while (MapManager.Instance._curMap == null ||
                PoolManager.Instance == null || !PoolManager.Instance.IsReady)
@@ -101,8 +117,17 @@ public class StageManager : MonoBehaviour
         for (int wave = 1; wave <= WAVE_COUNT; wave++)
         {
             WaveNumber = wave;
+            totalMonsterNumber = 0;
+
+            int normalCount = GetNormalCount();
+            int eliteCount = GetEliteCount();
+            int bossCount = GetBossCount();
+
+            totalMonsterNumber = normalCount + eliteCount + bossCount;
+            monsterNumber = totalMonsterNumber;
+            UIManager.Instance.Window.BattleWindow.CurrnetMonster();
             //Debug.Log("===== "+ WaveNumber+ " 웨이브 시작 =====");
-            
+
             // 현재 웨이브 몬스터 생성
             yield return StartCoroutine(
                 SpawnWave()
@@ -186,10 +211,10 @@ public class StageManager : MonoBehaviour
     {
         _isStageRunning = true;
         _isStageFailed = false;
-        StageNumber = 1;
 
         while (_isStageFailed == false)
         {
+
             // 스테이지 하나(5웨이브) 진행
             yield return StartCoroutine(StageStart());
 
@@ -199,15 +224,26 @@ public class StageManager : MonoBehaviour
             }
             
             // 클리어 팝업이 꺼질 때까지 대기 (Next를 누르면 팝업이 꺼짐)
-            GameObject resultPopUp = UIManager.Instance.PopUp.StageResultPopUp.gameObject;
-
-            while (resultPopUp.activeSelf)
+            UIManager.Instance.PopUp.StageResultPopUp.Result();
+            
+            while (UIManager.Instance.PopUp.StageResultPopUp.gameObject.activeSelf)
             {
                 yield return null;
             }
             
             // 다음 스테이지로
             StageNumber = StageNumber + 1;
+            WaveNumber = 1;
+
+            totalMonsterNumber = 0;
+
+            int normalCount = GetNormalCount();
+            int eliteCount = GetEliteCount();
+            int bossCount = GetBossCount();
+
+            totalMonsterNumber = normalCount + eliteCount + bossCount;
+            monsterNumber = totalMonsterNumber;
+            UIManager.Instance.Window.BattleWindow.CurrnetMonster();
 
             //Debug.Log("다음 스테이지까지 " + _waveInterval + "초");
 
@@ -224,16 +260,8 @@ public class StageManager : MonoBehaviour
     {
         // 이전 웨이브 몬스터 목록 초기화
         _spawnedMonsters.Clear();
-        totalMonsterNumber = 0;
 
-        int normalCount = GetNormalCount();
-        int eliteCount = GetEliteCount();
-        int bossCount = GetBossCount();
-        
-        totalMonsterNumber = normalCount + eliteCount + bossCount;
-        monsterNumber = totalMonsterNumber;
 
-        
         EMonsterType normalType;
         EMonsterType eliteType;
         EMonsterType bossType;
@@ -253,7 +281,7 @@ public class StageManager : MonoBehaviour
         }
 
         // 노말 몬스터 생성
-        for (int i = 0; i < normalCount; i++)
+        for (int i = 0; i < GetNormalCount(); i++)
         {
             yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
 
@@ -267,7 +295,7 @@ public class StageManager : MonoBehaviour
         }
         
         // 엘몬 생성
-        for (int i = 0; i < eliteCount; i++)
+        for (int i = 0; i < GetEliteCount(); i++)
         {
             yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
 
@@ -282,7 +310,7 @@ public class StageManager : MonoBehaviour
         }
         
         // 보스몬스터 생성
-        for (int i = 0; i < bossCount; i++)
+        for (int i = 0; i < GetBossCount(); i++)
         {
             yield return new WaitUntil(() => !PlayerManager.Instance.IsFreeze);
 
@@ -356,6 +384,7 @@ public class StageManager : MonoBehaviour
         if (_spawnedMonsters.Contains(monster) == false)
         {
             _spawnedMonsters.Add(monster);
+            SoundManager.Instance.PlaySfx(ESfx.MONSTER_POTAL_START);
         }
     }
 
@@ -432,7 +461,7 @@ public class StageManager : MonoBehaviour
     }
     
     // 스테이지 패배
-    private void StageFail()
+    public void StageFail()
     {
         if (_isStageFailed)
         {
@@ -448,7 +477,15 @@ public class StageManager : MonoBehaviour
 
         //Debug.Log("스테이지 패배");
         // 스테이지 패배 시 UI 추가 필요
-        
+
+        if(_spawnedMonsters.Count != 0)
+        {
+            foreach (Monster monster in _spawnedMonsters)
+            {
+                monster.ReturnMonster(monster);
+            }
+            _spawnedMonsters.Clear();
+        }
     }
     
     

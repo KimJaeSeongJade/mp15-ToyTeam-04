@@ -8,6 +8,11 @@ public class WindowManager : MonoBehaviour
     public TitleWindow TitleWindow;
     public LobbyWindow LobbyWindow;
     public BattleWindow BattleWindow;
+
+    public Loading LoadingWindow;
+
+    public GameObject TimeEffect;
+
     // public BattleSub _battleSub;
 
     public event Action OnGameTitle;
@@ -22,6 +27,8 @@ public class WindowManager : MonoBehaviour
     
     public void LobbyWindowOpen()
     {
+        TimeEffect.SetActive(false);
+        PlayerManager.Instance?.TimeStopEffect.SetActive(false);
         OnGameLobby?.Invoke();
         SoundManager.Instance.PlayBgm(EBgm.LOBBY);
     }
@@ -30,5 +37,23 @@ public class WindowManager : MonoBehaviour
     {
         OnGameBattle?.Invoke();
         SoundManager.Instance.PlayBgm(EBgm.GAME);
+    }
+
+    public void LoadWindowOpen()
+    {
+        LoadingWindow.gameObject.SetActive(true);
+        LoadingWindow.LoadingStart();
+    }
+
+    public void TimeEffectOpen()
+    {
+        TimeEffect.gameObject.SetActive(true);
+        StartCoroutine(TimeStop());
+    }
+
+    private IEnumerator TimeStop()
+    {
+        yield return new WaitForSeconds(10f);
+        TimeEffect.gameObject.SetActive(false);
     }
 }

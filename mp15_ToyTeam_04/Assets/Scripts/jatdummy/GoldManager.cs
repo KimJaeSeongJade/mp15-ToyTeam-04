@@ -49,8 +49,8 @@ public class GoldManager : MonoBehaviour
             OnGoldChanged(_gold);
         }
         // 테스트 로그
-        Debug.Log($"골드 {amount} 추가  현재 {_gold}");
         GoldView();
+        SoundManager.Instance.PlaySfx(ESfx.GET_GOLD);
     }
 
     // 골드 사용 (골드 충분할때만)
@@ -60,7 +60,6 @@ public class GoldManager : MonoBehaviour
         if (_gold < amount)
         {
             // 테스트 로그
-            Debug.Log($" 필요한 골드 {amount}, 보유 골드{_gold}, 부족 골드{amount - _gold} 입니다 ");
             return false;
         }
 
@@ -72,8 +71,8 @@ public class GoldManager : MonoBehaviour
             OnGoldChanged(_gold);
         }
         // 테스트 로그
-        Debug.Log($"{amount}골드 사용  남은 골드 {_gold} 입니다");
         GoldView();
+        SoundManager.Instance.PlaySfx(ESfx.USE_GOLD);
         return true;
     }
 }

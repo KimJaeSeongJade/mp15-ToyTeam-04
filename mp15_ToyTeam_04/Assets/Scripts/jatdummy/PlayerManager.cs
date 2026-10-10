@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
     private float _skillCoolTimer;
     public float SkillCoolTimer => _skillCoolTimer; // 쿨타임 UI
 
+    public GameObject TopViewSelect;
     private Dictionary<ETowerType, TowerState> _towerStates = new Dictionary<ETowerType, TowerState>
     {
         { ETowerType.ArrowTower, new ArrowTower() },
@@ -57,6 +58,7 @@ public class PlayerManager : MonoBehaviour
     private ETowerType _selectedTowerType;
     public ETowerType SelectedTowerType => _selectedTowerType;
 
+    public GameObject TimeStopEffect;
 
 
     private void Awake()
@@ -97,6 +99,7 @@ public class PlayerManager : MonoBehaviour
         // UIManager.Instance.Window.BattleWindowOpen();
 
         // 이걸로 부르니까 맵 바닥을 인식을 못하던데... 그래서 추가
+
         Collider ground = CurrentGround();
         _character.SetGround(ground);
         _playerCamera.SetGround(ground);
@@ -115,10 +118,10 @@ public class PlayerManager : MonoBehaviour
         // UI 로비 화면 부르기
 
         _playerCamera.LobbyStopCamera();
-        
+
         // 로비 화면 열기
         // UIManager.Instance.Window.LobbyWindowOpen();
-        
+
         _character.gameObject.SetActive(false);
 
         // 이 때(플레이어 끌 때) 맵에서 처리할거 있으면 추가하겠습니다.
@@ -148,6 +151,14 @@ public class PlayerManager : MonoBehaviour
     {
         _towerAbilities.TryGetValue(type, out TowerAbility ability);
         return ability;
+    }
+
+    public void SetTowerAbility(ETowerType type, EAbilityType abilityType)
+    {
+        if(_towerAbilities.TryGetValue(type, out TowerAbility ability))
+        {
+            ability.DicAbility[abilityType].AbilityLearn();
+        }
     }
 
     // 이 타워 얼만데?
@@ -210,8 +221,11 @@ public class PlayerManager : MonoBehaviour
                 foreach (Monster monster in _monsters)
                 {
                     _isFreeze = true;
+                    UIManager.Instance.Window.TimeEffectOpen();
+                    TimeStopEffect.SetActive(true);
                     _freezeDuration = data.SkillDuration;
                     monster.ApplyTimeFreeze(data.SkillDuration);
+                    SoundManager.Instance.PlaySfx(ESfx.SKILL_TIME_FREZZ);
                 }
                 break;
             case EPlayerSkillType.NaturalDisaster:
@@ -219,6 +233,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     monster.SkillDamage(data.SkillDamage);
                 }
+                SoundManager.Instance.PlaySfx(ESfx.SKILL_ALL_ATK);
                 break;
 
         }
@@ -268,6 +283,7 @@ public class PlayerManager : MonoBehaviour
         _selectedTile.TileInstallTower(CreateTowerState(_selectedTowerType), GetTowerAbility(_selectedTowerType));
         PoolManager.Instance._arrowTowerPool.ActivateObject(tower);
         SetUIMode(false);
+        SoundManager.Instance.PlaySfx(ESfx.TOWER_INSTALL);
     }
 
     // 타워 강화
@@ -280,6 +296,7 @@ public class PlayerManager : MonoBehaviour
         if (!GoldManager.Instance.UseGold(tower.TowerUpgradeCost())) return;
 
         tower.TowerUpgrade();
+        SoundManager.Instance.PlaySfx(ESfx.TOWER_UPGRADE);
     }
 
     // 타워 철거
@@ -305,6 +322,7 @@ public class PlayerManager : MonoBehaviour
                 PoolManager.Instance._iceTowerPool.ReturnObject(tower);
                 break;
         }
+        SoundManager.Instance.PlaySfx(ESfx.TOWER_REMOVE);
     }
 
 

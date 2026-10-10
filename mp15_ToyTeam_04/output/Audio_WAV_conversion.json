@@ -1,0 +1,123 @@
+[
+  {
+    "source": "ArrowAtk.ogg",
+    "output": "ArrowAtk.wav",
+    "unchanged": false,
+    "channels": 1,
+    "sample_rate": 22050,
+    "seconds": 0.438
+  },
+  {
+    "source": "CameraMove.wav",
+    "output": "CameraMove.wav",
+    "unchanged": true
+  },
+  {
+    "source": "FireAtk.wav",
+    "output": "FireAtk.wav",
+    "unchanged": true
+  },
+  {
+    "source": "GoldGet.flac",
+    "output": "GoldGet.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 44100,
+    "seconds": 0.979
+  },
+  {
+    "source": "GoldUseSound.mp3",
+    "output": "GoldUseSound.wav",
+    "unchanged": false,
+    "channels": 1,
+    "sample_rate": 48000,
+    "seconds": 0.672
+  },
+  {
+    "source": "IceAtk.flac",
+    "output": "IceAtk.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 48000,
+    "seconds": 0.509
+  },
+  {
+    "source": "MonsterDie.wav",
+    "output": "MonsterDie.wav",
+    "unchanged": true
+  },
+  {
+    "source": "MonsterHit.mp3",
+    "output": "MonsterHit.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 48000,
+    "seconds": 2.016
+  },
+  {
+    "source": "MonsterPotalEnd.mp3",
+    "output": "MonsterPotalEnd.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 48000,
+    "seconds": 3.504
+  },
+  {
+    "source": "MonsterPotalStart.mp3",
+    "output": "MonsterPotalStart.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 48000,
+    "seconds": 3.504
+  },
+  {
+    "source": "Move.ogg",
+    "output": "Move.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 48000,
+    "seconds": 0.242
+  },
+  {
+    "source": "Select.ogg",
+    "output": "Select.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 44100,
+    "seconds": 0.04
+  },
+  {
+    "source": "SkillAllAtk.wav",
+    "output": "SkillAllAtk.wav",
+    "unchanged": true
+  },
+  {
+    "source": "SkillTimeFrezz.wav",
+    "output": "SkillTimeFrezz.wav",
+    "unchanged": true
+  },
+  {
+    "source": "TowerInstall.ogg",
+    "output": "TowerInstall.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 44100,
+    "seconds": 0.488
+  },
+  {
+    "source": "TowerRemove.ogg",
+    "output": "TowerRemove.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 44100,
+    "seconds": 0.546
+  },
+  {
+    "source": "TowerUpgrade.ogg",
+    "output": "TowerUpgrade.wav",
+    "unchanged": false,
+    "channels": 2,
+    "sample_rate": 44100,
+    "seconds": 0.546
+  }
+]

@@ -39,6 +39,7 @@ public class PlayerSkillPopUp : MonoBehaviour
     private void Skill1Selected()
     {
         // Skill1을 눌렀을 때 어떤 동작을 할 지 구현
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         gameObject.SetActive(false);
         UIManager.Instance.Window.LobbyWindow.SetData(_skillImage[0].sprite);
         PlayerManager.Instance.EquipSkill(EPlayerSkillType.TimeFreeze);
@@ -47,6 +48,7 @@ public class PlayerSkillPopUp : MonoBehaviour
     private void Skill2Selected()
     {
         // Skill2를 눌렀을 때 어떤 동작을 할 지 구현
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         gameObject.SetActive(false);
         UIManager.Instance.Window.LobbyWindow.SetData(_skillImage[1].sprite);
         PlayerManager.Instance.EquipSkill(EPlayerSkillType.NaturalDisaster);
@@ -54,6 +56,7 @@ public class PlayerSkillPopUp : MonoBehaviour
 
     private void Esc()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         gameObject.SetActive(false);
     }
 }

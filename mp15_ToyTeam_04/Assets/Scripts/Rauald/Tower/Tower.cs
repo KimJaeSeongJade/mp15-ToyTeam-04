@@ -104,6 +104,16 @@ public class Tower : MonoBehaviour, IPoolable
         _towerObj[_state.CurLevel - 1].SetActive(true);
     }
 
+    public void TowerClear()
+    {
+        _state = null;
+        _dicAbility = null;
+        foreach(GameObject obj in _towerObj)
+        {
+            obj.SetActive(false);
+        }
+    }
+
     public void OnSpawn()
     {
         _towerObj[_state.BasicLevel - 1].SetActive(true);

@@ -77,6 +77,20 @@ public enum EBgm
 public enum ESfx
 {
     BUTTON_CLICK,
-    TOWER_INSTALL,
+    CAMERA_MOVE,
+    ARROW_ATK,
+    FIRE_ATK,
+    ICE_ATK,
     GET_GOLD,
+    USE_GOLD,
+    MONSTER_HIT,
+    MONSTER_DIE,
+    MONSTER_POTAL_END,
+    MONSTER_POTAL_START,
+    MOVE,
+    SKILL_ALL_ATK,
+    SKILL_TIME_FREZZ,
+    TOWER_INSTALL,
+    TOWER_REMOVE,
+    TOWER_UPGRADE
 }

@@ -29,6 +29,19 @@ public class Bullet : MonoBehaviour, IPoolable
     /// <summary> 표적을 향해 날라가기 </summary>
     private IEnumerator Shooting()
     {
+        switch (_tower.State.ETowerType)
+        {
+            case ETowerType.ArrowTower:
+                SoundManager.Instance.PlaySfx(ESfx.ARROW_ATK);
+                break;
+            case ETowerType.FireTower:
+                SoundManager.Instance.PlaySfx(ESfx.FIRE_ATK);
+                break;
+            case ETowerType.IceTower:
+                SoundManager.Instance.PlaySfx(ESfx.ICE_ATK);
+                break;
+        }
+
         float curTime = 0f;
         Vector3 startPos = transform.position;
 

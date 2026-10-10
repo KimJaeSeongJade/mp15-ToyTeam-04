@@ -33,7 +33,6 @@ public class SettingPopUp : MonoBehaviour
 
     private void SFXSound()
     {
-        
     }
 
     private void BGMSound()
@@ -43,6 +42,7 @@ public class SettingPopUp : MonoBehaviour
 
     private void Continue()
     {
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
         PlayerManager.Instance.SetUIMode(false);
     }
@@ -50,9 +50,11 @@ public class SettingPopUp : MonoBehaviour
     private void LobbyWindow()
     {
         // LobbyWindow 띄우기
-        // WindowManager.Instance.LobbyWindow();
-        SceneManager.LoadScene(1);
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.PopUp.SettingPopUp.gameObject.SetActive(false);
         UIManager.Instance.Window.LobbyWindowOpen();
+        MapManager.Instance.ResetMap();
+        StageManager.Instance.StageFail();
+        PlayerManager.Instance.OffPlayer();
     }
 }

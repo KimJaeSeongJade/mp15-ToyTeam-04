@@ -52,6 +52,13 @@ public class MapManager : MonoBehaviour
         _mapInitPos[3] = new Vector3(0, 0, 0);
     }
 
+    public void ResetMap()
+    {
+        // 처음 시작 시 맵이 없기 때문에 Null 조건부 연산자로 체크
+        // 맵 초기화
+        _curMap?.ResetMap();
+    }
+
     /// <summary> 배틀 맵 보여주기 </summary>
     public void ShowBattleMap()
     {
@@ -71,14 +78,14 @@ public class MapManager : MonoBehaviour
 
         if (_maps[rand] == null)
         {
-            
+            _maps[rand] = Instantiate(_mapPrefabs[rand], _mapInitPos[rand], Quaternion.identity, transform);
         }
 
         // 초기 맵이 아니라면
         if (_curMapNumber != -1)
         {
             // 전 맵 비활성화
-            _maps[_curMapNumber].gameObject.SetActive(false);
+            _maps[_curMapNumber]?.gameObject.SetActive(false);
         }
 
         // 현재 맵 번호 갱신
@@ -88,6 +95,6 @@ public class MapManager : MonoBehaviour
         RenderSettings.skybox = _materials[_curMapNumber];
         // 현재 맵 정보
         _curMap = _maps[_curMapNumber];
-
+        PlayerManager.Instance.OnPlayer();
     }
 }

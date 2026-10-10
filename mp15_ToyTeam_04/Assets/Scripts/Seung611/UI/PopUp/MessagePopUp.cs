@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MessagePopUp : MonoBehaviour   
 {
     private ObjectPool<Message> _messagePool;
+    [SerializeField] private GridLayoutGroup _gridLayout;
     public Message _message;
     private void Start()
     {
@@ -21,6 +23,7 @@ public class MessagePopUp : MonoBehaviour
 
     public void Message(string text)
     {
+        _gridLayout.enabled = true;
         Message message = _messagePool.GetObject();
         if (message == null)
         {
@@ -28,5 +31,6 @@ public class MessagePopUp : MonoBehaviour
         }
         message.SetData(text, _messagePool);
         _messagePool.ActivateObject(message);
+        _gridLayout.enabled = false;
     }
 }

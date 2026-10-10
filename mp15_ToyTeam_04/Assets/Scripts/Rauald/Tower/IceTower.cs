@@ -20,6 +20,6 @@ public class IceTower : TowerState
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
 
-        _affect = new BulletAffect(EBulletAffectType.DecreaseSpeed, true, 20, 1);
+        _affect = new BulletAffect(EBulletAffectType.DecreaseSpeed, true, 90, 1);
     }
 }

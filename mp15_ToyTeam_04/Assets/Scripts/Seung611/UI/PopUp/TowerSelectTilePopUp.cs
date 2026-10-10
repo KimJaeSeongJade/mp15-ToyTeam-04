@@ -43,39 +43,62 @@ public class TowerSelectTilePopUp : MonoBehaviour
     private void InstallButton()
     {
         // 설치 버튼을 눌렀을 때 오른쪽 타워 버튼을 누르면 버튼에 맞는 타워가 설치 됨
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         UIManager.Instance.Window.BattleWindow.PushInstallButton();
+        PlayerManager.Instance.TopViewSelect.SetActive(false);
     }
 
     private void UninstallButton()
     {
         // 타워 파괴 되면서 돈이 들어옴
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         PlayerManager.Instance.DemolishTower();
+        PlayerManager.Instance.TopViewSelect.SetActive(false);
     }
 
     private void UpgradeButton()
     {
         // 타워 이미지 바뀌고 능력도 바뀜
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         PlayerManager.Instance.UpgradeTower();
+        PlayerManager.Instance.TopViewSelect.SetActive(false);
     }
 
     public void CancelButton()
     {
         // 타워 설치 취소 인게임 화면으로 다시 돌아감
+        SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         gameObject.SetActive(false);
         UIManager.Instance.Window.BattleWindow.HideInstallButton();
         PlayerManager.Instance.SetUIMode(false);
         Init();
+        PlayerManager.Instance.TopViewSelect.SetActive(false);
     }
 
     public void TopView()
     {
+        Tile tile = PlayerManager.Instance.SelectedTile;
+
         Vector3 selectTile = new Vector3(
-            PlayerManager.Instance.SelectedTile.gameObject.transform.position.x, 
-            PlayerManager.Instance.SelectedTile.gameObject.transform.position.y + 0.5f,
-            PlayerManager.Instance.SelectedTile.gameObject.transform.position.z
+            tile.gameObject.transform.position.x,
+            tile.gameObject.transform.position.y + 1.5f,
+            tile.gameObject.transform.position.z
             );
-        UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.transform.position = selectTile;
-        Debug.Log(UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.transform.position);
+
+        PlayerManager.Instance.TopViewSelect.SetActive(true);
+        PlayerManager.Instance.TopViewSelect.transform.position = selectTile;
+
+        if(tile.IsTower)
+        {
+            YesTower();
+        }
+        else
+        {
+            NoTower();
+        }
+
+        //UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.transform.position = selectTile;
+        //Debug.Log(UIManager.Instance.PopUp.TopViewTowerSelectTilePopUp.transform.position);
     }
 
     private void Init()

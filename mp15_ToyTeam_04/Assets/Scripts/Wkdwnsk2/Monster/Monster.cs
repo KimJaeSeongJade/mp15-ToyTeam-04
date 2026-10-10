@@ -199,11 +199,14 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
         }
 
         currentHealth -= damage;
+        SoundManager.Instance.PlaySfx(ESfx.MONSTER_HIT);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            SoundManager.Instance.PlaySfx(ESfx.MONSTER_DIE);
         }
-        
+
 
         // HP UI 갱신
         UpdateHpUI(damage);
@@ -278,8 +281,9 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         anim.SetBool("IsDead", true);
         StartCoroutine(DeadWait());
-        StageManager.Instance.monsterNumber -= 1; 
-        
+        StageManager.Instance.monsterNumber -= 1;
+        UIManager.Instance.Window.BattleWindow.CurrnetMonster();
+
         // 플레이어 골드 증가
         if (GoldManager.Instance != null)
         {
@@ -304,10 +308,11 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
 
         
         _objectPool.ReturnObject(this);
-        StageManager.Instance.monsterNumber -= 1; 
-        
+        StageManager.Instance.monsterNumber -= 1;
+        UIManager.Instance.Window.BattleWindow.CurrnetMonster();
+        SoundManager.Instance.PlaySfx(ESfx.MONSTER_POTAL_END);
     }
-    
+
     public void SetObjectPool(ObjectPool<Monster> objectPool)
     {
         _objectPool = objectPool;
