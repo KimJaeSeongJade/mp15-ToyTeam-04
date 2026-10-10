@@ -102,7 +102,6 @@ public class PlayerCharacter : MonoBehaviour
 
         // 이동 / 중력 / 충돌
         _controller.SimpleMove(move * _moveSpeed);
-        SoundManager.Instance.PlaySfx(ESfx.MOVE);
     }
 
     // 카메라 전환에 따른 이동

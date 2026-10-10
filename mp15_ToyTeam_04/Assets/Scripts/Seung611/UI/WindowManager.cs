@@ -19,6 +19,11 @@ public class WindowManager : MonoBehaviour
     public event Action OnGameLobby;
     public event Action OnGameBattle;
 
+    public void Start()
+    {
+        SoundManager.Instance.PlayBgm(EBgm.TITLE);
+    }
+
     public void TitleWindowOpen()
     {
         OnGameTitle?.Invoke();
@@ -36,7 +41,7 @@ public class WindowManager : MonoBehaviour
     public void BattleWindowOpen()
     {
         OnGameBattle?.Invoke();
-        SoundManager.Instance.PlayBgm(EBgm.GAME);
+        SoundManager.Instance.PlayBgm(EBgm.BATTLE);
     }
 
     public void LoadWindowOpen()

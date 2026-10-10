@@ -871,7 +871,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af9eba57d183fa43a8d18354cc09c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bgmClips: []
+  _bgmClips:
+  - {fileID: 8300000, guid: 3eeda79eb907c894d970e0ed317a1e81, type: 3}
+  - {fileID: 8300000, guid: 94c0c5fa89184c14fac0bc7570b3f336, type: 3}
+  - {fileID: 8300000, guid: 7b13a0cf8758d394b947462ed7c89366, type: 3}
+  - {fileID: 8300000, guid: aef4322791fca0d47ad8d69e050a03a8, type: 3}
+  - {fileID: 8300000, guid: e97c1a6f2e9b5aa499d51e575fbbbf80, type: 3}
   _sfxClips:
   - {fileID: 8300000, guid: e76c046defca10d48b66a200edf18d25, type: 3}
   - {fileID: 8300000, guid: 6feb21feaf8b409499030cfeba5a1323, type: 3}

@@ -42,9 +42,9 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (_bgmDict.TryGetValue(ebgmType, out var clip))
         {
-            /*_bgmSource.clip = clip;
+            _bgmSource.clip = clip;
             _bgmSource.loop = true;
-            _bgmSource.Play();*/
+            _bgmSource.Play();
         }
         else
         {
@@ -56,7 +56,10 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (_sfxDict.TryGetValue(esfxType, out var clip))
         {
-            _sfxSource.PlayOneShot(clip); // 여러번 호출해도 독립적으로 재생됨
+            _sfxSource.clip = clip;
+            //_sfxSource.loop = true;
+            _sfxSource.Play();
+            //_sfxSource.PlayOneShot(clip); // 여러번 호출해도 독립적으로 재생됨
         }
         else
         {
@@ -70,8 +73,9 @@ public enum EBgm
 {
     TITLE,
     LOBBY,
-    GAME,
+    BATTLE,
     CLEAR,
+    FALE
 }
 
 public enum ESfx

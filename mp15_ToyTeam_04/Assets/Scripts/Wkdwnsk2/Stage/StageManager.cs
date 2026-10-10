@@ -350,7 +350,6 @@ public class StageManager : MonoBehaviour
         return (StageNumber / 10) + (WaveNumber / 5);
     }
 
-
     private void CreateMonster(EMonsterType monsterType)
     {
         Monster monster = Monster.GetMonster(
@@ -378,7 +377,6 @@ public class StageManager : MonoBehaviour
             PlusStageSpeed(monsterType),
             PlusStageRange(monsterType),
             PlusStageGold(monsterType)
-            
         );
 
         if (_spawnedMonsters.Contains(monster) == false)
@@ -468,6 +466,9 @@ public class StageManager : MonoBehaviour
             return;
         }
 
+        UIManager.Instance.PopUp.GameOverOpen();
+        PlayerManager.Instance.OffPlayer();
+        SoundManager.Instance.PlayBgm(EBgm.FALE);
         _isStageFailed = true;
         _isStageRunning = false;
         
@@ -492,8 +493,9 @@ public class StageManager : MonoBehaviour
     // 스테이지 클리어 보상 : 500 x 스테이지 번호
     private void StageClear()
     {
+        SoundManager.Instance.PlayBgm(EBgm.CLEAR);
         StageClearReward = (_stageClearGold * StageNumber);
-            
+
         //Debug.Log(StageNumber + " 스테이지 클리어");
         //Debug.Log("클리어 보상 : " + StageClearReward);
 

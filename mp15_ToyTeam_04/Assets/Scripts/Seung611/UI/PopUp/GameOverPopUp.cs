@@ -33,6 +33,7 @@ public class GameOverPopUp : MonoBehaviour
     private void Again()
     {
         gameObject.SetActive(false);
+        PlayerManager.Instance.OnPlayer();
         UIManager.Instance.Window.BattleWindow.Init();
         UIManager.Instance.Window.BattleWindowOpen();
         MapManager.Instance.ShowBattleMap();
