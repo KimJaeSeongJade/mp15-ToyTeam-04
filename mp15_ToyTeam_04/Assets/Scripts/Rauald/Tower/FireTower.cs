@@ -20,6 +20,6 @@ public class FireTower : TowerState
         _firstUpgradeCost = 500;
         _secondUpgradeCost = 1000;
 
-        _affect = new BulletAffect(EBulletAffectType.Burn, true, 1, 2);
+        _affect = new BulletAffect(EBulletAffectType.Burn, true, 10, 2);
     }
 }
