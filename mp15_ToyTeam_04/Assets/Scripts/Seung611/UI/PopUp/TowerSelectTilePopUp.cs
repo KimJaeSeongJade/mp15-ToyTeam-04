@@ -60,7 +60,14 @@ public class TowerSelectTilePopUp : MonoBehaviour
     {
         // 타워 이미지 바뀌고 능력도 바뀜
         SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
-        PlayerManager.Instance.UpgradeTower();
+        if (PlayerManager.Instance.SelectedTile._tower.State.CurLevel == 3)
+        {
+            UIManager.Instance.PopUp.MessagePopUp.Message("타워를 더 이상 강화 할 수 없습니다.");
+        }
+        else
+        {
+            PlayerManager.Instance.UpgradeTower();
+        }
         PlayerManager.Instance.TopViewSelect.SetActive(false);
     }
 

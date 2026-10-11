@@ -194,9 +194,16 @@ public class TowerSpecPopUp : MonoBehaviour
         SoundManager.Instance.PlaySfx(ESfx.BUTTON_CLICK);
         if (!PlayerManager.Instance.GetTowerAbility((ETowerType)_index).DicAbility[(EAbilityType)_abilityIndex].IsLearn)
         {
-            PlayerManager.Instance.SetTowerAbility((ETowerType)_index, (EAbilityType)_abilityIndex);
-            AbilitySelectButton(_abilityIndex);
-            UIManager.Instance.PopUp.MessagePopUp.Message($"{_towerAbility.DicAbility[(EAbilityType)_abilityIndex].Name} 특성 습득!");
+            if (GoldManager.Instance.UseGold(PlayerManager.Instance.GetTowerAbility((ETowerType)_index).DicAbility[(EAbilityType)_abilityIndex].Cost))
+            {
+                PlayerManager.Instance.SetTowerAbility((ETowerType)_index, (EAbilityType)_abilityIndex);
+                AbilitySelectButton(_abilityIndex);
+                UIManager.Instance.PopUp.MessagePopUp.Message($"{_towerAbility.DicAbility[(EAbilityType)_abilityIndex].Name} 특성 습득!");
+            }
+            else
+            {
+                UIManager.Instance.PopUp.MessagePopUp.Message("골드가 부족합니다.");
+            }
         }
         else
         {

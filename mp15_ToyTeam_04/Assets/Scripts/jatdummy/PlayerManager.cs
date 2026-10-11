@@ -253,7 +253,12 @@ public class PlayerManager : MonoBehaviour
         _selectedTowerType = eTowerType;
 
         if (_selectedTile.IsTower) return;
-        if (!GoldManager.Instance.UseGold(GetInstallCost(_selectedTowerType))) return;
+        if (!GoldManager.Instance.UseGold(GetInstallCost(_selectedTowerType)))
+        {
+            UIManager.Instance.PopUp.MessagePopUp.Message("골드가 부족합니다!");
+
+            return;
+        }
 
         Tower tower = null;
 

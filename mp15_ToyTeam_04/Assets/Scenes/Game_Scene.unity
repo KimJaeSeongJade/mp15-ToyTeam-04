@@ -517,6 +517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChaPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8731570544929833437, guid: b48ad0b9ee9770f4d95794e059d5e500, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1006925724}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
