@@ -23,14 +23,18 @@ public class MessagePopUp : MonoBehaviour
 
     public void Message(string text)
     {
-        _gridLayout.enabled = true;
         Message message = _messagePool.GetObject();
         if (message == null)
         {
             return;
         }
+        MessageGridView(true);
         message.SetData(text, _messagePool);
         _messagePool.ActivateObject(message);
-        _gridLayout.enabled = false;
+    }
+
+    public void MessageGridView(bool view)
+    {
+        _gridLayout.enabled = view;
     }
 }

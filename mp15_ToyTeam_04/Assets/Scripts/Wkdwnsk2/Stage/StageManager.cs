@@ -466,6 +466,7 @@ public class StageManager : MonoBehaviour
             return;
         }
 
+        UIManager.Instance.PopUp.GameOverPopUp.Result();
         UIManager.Instance.PopUp.GameOverOpen();
         PlayerManager.Instance.OffPlayer();
         SoundManager.Instance.PlayBgm(EBgm.FALE);

@@ -47,6 +47,7 @@ public class PlayerCharacter : MonoBehaviour
         {
             // 탑뷰: 이동 멈춤, 마우스로만 조작
             UpdateAnimation(false);
+            _noneTowerEffect.SetActive(false);
 
             // 마우스 상호작용
             if (Input.GetMouseButtonDown(0))
@@ -68,14 +69,21 @@ public class PlayerCharacter : MonoBehaviour
         // 플레이서 스킬 사용. 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (StageManager.Instance._spawnedMonsters.Count == 0)
+            if (PlayerManager.Instance.EquiipedSkillType == EPlayerSkillType.None)
             {
-                UIManager.Instance.PopUp.MessagePopUp.Message("몬스터가 존재하지 않습니다!");
+                UIManager.Instance.PopUp.MessagePopUp.Message("스킬을 장착하지 않았습니다.");
             }
             else
             {
-                PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
-                UIManager.Instance.Window.BattleWindow.SkillPopUp();
+                if (StageManager.Instance._spawnedMonsters.Count == 0)
+                {
+                    UIManager.Instance.PopUp.MessagePopUp.Message("몬스터가 존재하지 않습니다!");
+                }
+                else
+                {
+                    PlayerManager.Instance.UseSkill(PlayerManager.Instance.EquiipedSkillType);
+                    UIManager.Instance.Window.BattleWindow.SkillPopUp();
+                }
             }
         }
        

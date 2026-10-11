@@ -12,7 +12,6 @@ public class SettingPopUp : MonoBehaviour
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _lobbyButton;
 
-
     [SerializeField] private Animator _bgmAni;
     [SerializeField] private Animator _sfxAni;
 

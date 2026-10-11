@@ -210,7 +210,12 @@ public class PlayerManager : MonoBehaviour
         
         _equippedSkillType = ePlayerSkill;
         if (_equippedSkillType == EPlayerSkillType.None) return;
-        if (_skillCoolTimer > 0f) return;
+        if (_skillCoolTimer > 0f)
+        {
+            UIManager.Instance.PopUp.MessagePopUp.Message("쿨타임 입니다.!");
+
+            return;
+        }
 
         if (!_SkillAblity.TryGetValue(_equippedSkillType, out PlayerSkill skill)) return;
         SkillAblity data = skill.DicSkillAblity[_equippedSkillType];
@@ -229,6 +234,7 @@ public class PlayerManager : MonoBehaviour
                 }
                 break;
             case EPlayerSkillType.NaturalDisaster:
+                EffectManager.Instance.PlayEffect(EffectManager.EEffectType.SKILL_ALL_HIT, new Vector3(0, 20, 0));
                 foreach (Monster monster in _monsters)
                 {
                     monster.SkillDamage(data.SkillDamage);

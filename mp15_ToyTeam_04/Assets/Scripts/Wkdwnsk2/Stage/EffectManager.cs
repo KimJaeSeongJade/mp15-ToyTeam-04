@@ -7,16 +7,14 @@ public class EffectManager : Singleton<EffectManager>
     [SerializeField] private Effect[] _effectPrefabs;     
     
     
-    private int _poolSize = 5;
+    private int _poolSize = 1;
 
     // 이펙트 종류별 풀
     private Dictionary<EEffectType, ObjectPool<Effect>> _effectPools;
 
     public enum EEffectType
     {
-        MONSTER_HIT,
-        TOWER_INSTALL,
-        SKILL_USE
+        SKILL_ALL_HIT,
     }
 
     private void Awake()

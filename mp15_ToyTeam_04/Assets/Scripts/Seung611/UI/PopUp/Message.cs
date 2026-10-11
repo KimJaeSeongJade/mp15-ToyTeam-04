@@ -28,6 +28,7 @@ public class Message : MonoBehaviour, IPoolable
     private IEnumerator MessagePopUpRoutine()
     {
         yield return new WaitForSeconds(0.5f);
+        UIManager.Instance.PopUp.MessagePopUp.MessageGridView(false);
         Debug.Log("0.5초 기다려");
         _pool.ReturnObject(this);
     }
