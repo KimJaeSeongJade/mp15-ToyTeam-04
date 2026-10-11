@@ -318,7 +318,6 @@ public class PlayerManager : MonoBehaviour
         // 타일 비우기 전에 잡아두기
         Tower tower = _selectedTile._tower;
 
-
         // 꺼낸 타워 종류의 풀로 반납.
         switch (tower.State.ETowerType)
         {

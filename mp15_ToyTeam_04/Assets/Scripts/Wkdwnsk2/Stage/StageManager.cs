@@ -532,7 +532,6 @@ public class StageManager : MonoBehaviour
 
             // 타일 비우기 전에 잡아두기
             Tower tower = tile._tower;
-            tile.TileRemovalTower();
 
             // 종류에 맞는 풀로 반납 → Tower.OnDespawn()에서 철거 비용 지급
             switch (tower.State.ETowerType)
@@ -547,6 +546,8 @@ public class StageManager : MonoBehaviour
                     PoolManager.Instance._iceTowerPool.ReturnObject(tower);
                     break;
             }
+
+            tile.TileRemovalTower();
         }
     }
     
