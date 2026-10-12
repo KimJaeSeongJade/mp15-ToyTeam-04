@@ -10,8 +10,7 @@ public class FireTower : TowerState
         _name = "파이어 타워";
         _eTowerType = ETowerType.FireTower;
         _atk = 20;
-        _upgradeAtk = 5;
-        _atkSpeed = 2f;
+        _atkSpeed = 3f;
         _detectionRange = 5f;
         _explanation = "느린 공격 속도와 강한 공격력, 넓은 공격 범위를 가진 타워.";
         _installCost = 200;
@@ -20,6 +19,7 @@ public class FireTower : TowerState
         _firstUpgradeCost = 500;
         _secondUpgradeCost = 1000;
 
+        _upgradeData = new TowerUpgradeData(5, 0.1f, 0.5f, 5);
         _affect = new BulletAffect(EBulletAffectType.Burn, true, 10, 2);
     }
 }

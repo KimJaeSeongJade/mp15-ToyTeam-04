@@ -20,6 +20,7 @@ public class TowerSpecPopUp : MonoBehaviour
     [SerializeField] private GameObject _towerSpecObj;
     [SerializeField] private List<TextMeshProUGUI> _towerSpec;
     [SerializeField] private List<Image> _towerButtonImg;
+    [SerializeField] private List<Image> _towerLevelButtonImg;
     [SerializeField] private Sprite _deselectButton;
     [SerializeField] private Sprite _selectButton;
 
@@ -41,12 +42,13 @@ public class TowerSpecPopUp : MonoBehaviour
 
 
     [SerializeField] private List<Button> _towerButton;
-    [SerializeField] private Image[] _towerImage;
+    [SerializeField] private Image _towerImage;
     [SerializeField] private Button _escButton;
 
     private TowerState[] _towerStates;
     private TowerState _tower;
     private int _index;
+    private int _levelIndex;
     private int _abilityIndex;
 
     [SerializeField] private Sprite[] _arrowTowerSprites;
@@ -79,10 +81,11 @@ public class TowerSpecPopUp : MonoBehaviour
         _towerStates = stat;
         _index = index;
         SelectButtonImg(_index);
+        SelectButtonTowerLevelImg(0);
         _abilityIndex = -1;
         _towerAbility = ability;
         TowerSelectButton(_towerStates[index]);
-        SpriteChange(index);
+        SpriteChange(index, 0);
     }
 
     private void Tower0Select()
@@ -92,8 +95,9 @@ public class TowerSpecPopUp : MonoBehaviour
         _towerStates[0] = PlayerManager.Instance.GetTowerState(ETowerType.ArrowTower);
         _towerAbility = PlayerManager.Instance.GetTowerAbility(ETowerType.ArrowTower);
         TowerSelectButton(_towerStates[0]);
-        SpriteChange(0);
+        SpriteChange(0, 0);
         SelectButtonImg(0);
+        SelectButtonTowerLevelImg(0);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
@@ -104,8 +108,9 @@ public class TowerSpecPopUp : MonoBehaviour
         _towerStates[1] = PlayerManager.Instance.GetTowerState(ETowerType.FireTower);
         _towerAbility = PlayerManager.Instance.GetTowerAbility(ETowerType.FireTower);
         TowerSelectButton(_towerStates[1]);
-        SpriteChange(1);
+        SpriteChange(1, 0);
         SelectButtonImg(1);
+        SelectButtonTowerLevelImg(0);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
@@ -116,8 +121,9 @@ public class TowerSpecPopUp : MonoBehaviour
         _towerStates[2] = PlayerManager.Instance.GetTowerState(ETowerType.IceTower);
         _towerAbility = PlayerManager.Instance.GetTowerAbility(ETowerType.IceTower);
         TowerSelectButton(_towerStates[2]);
-        SpriteChange(2);
+        SpriteChange(2, 0);
         SelectButtonImg(2);
+        SelectButtonTowerLevelImg(0);
         UIManager.Instance.PopUp.TowerSpecPopUpOpen();
     }
 
@@ -132,6 +138,21 @@ public class TowerSpecPopUp : MonoBehaviour
             else
             {
                 _towerButtonImg[i].sprite = _deselectButton;
+            }
+        }
+    }
+
+    private void SelectButtonTowerLevelImg(int index)
+    {
+        for (int i = 0; i < _towerLevelButtonImg.Count; i++)
+        {
+            if (i == index)
+            {
+                _towerLevelButtonImg[i].sprite = _selectButton;
+            }
+            else
+            {
+                _towerLevelButtonImg[i].sprite = _deselectButton;
             }
         }
     }
@@ -211,23 +232,31 @@ public class TowerSpecPopUp : MonoBehaviour
         }
     }
 
-    private void SpriteChange(int index)
+    private void SpriteChange(int index, int level)
     {
         switch (index)
         {
             case 0:
-                for (int i = 0; i < _towerImage.Length; i++)
-                {
-                    _towerImage[i].sprite = _arrowTowerSprites[i];
-                }
-                _towerSpec[0].text = $"공격력 : {_towerStates[0].Atk} \n " +
-                                     $"설치 비용 : {_towerStates[0].InstallCost}";
-                _towerSpec[1].text = $"공격력 : {_towerStates[0].Atk + _towerStates[0].UpgradeAtk} \n " +
-                                     $"업그레이드 비용 : {_towerStates[0].FirstUpgradeCost}";
-                _towerSpec[2].text = $"공격력 : {_towerStates[0].Atk + _towerStates[0].UpgradeAtk * 2} \n " +
-                                     $"업그레이드 비용 : {_towerStates[0].SecondUpgradeCost}";
+                _towerImage.sprite = _arrowTowerSprites[level];
+                _towerSpec[0].text = $"공 격 력  : {_towerStates[0].Atk}";
+                _towerSpec[1].text = $"공격 속도 : {_towerStates[0].AtkSpeed}";
+                _towerSpec[2].text = $"공격 범위 : {_towerStates[0].DetectionRange}";
+                _towerSpec[3].text = $"공격 효과 : {_towerStates[0].Affect.AffectName(_towerStates[0].Affect.EBulletAffectType)}";
 
-                break;
+                if (level == 0)
+                {
+                    _towerSpec[4].text = $"설치 비용 : {_towerStates[0].InstallCost}";
+                }
+                else if (level == 1)
+                {
+                    _towerSpec[4].text = $"강화 비용 : {_towerStates[0].FirstUpgradeCost}";
+                }
+                else if (level == 2)
+                {
+                    _towerSpec[4].text = $"강화 비용 : {_towerStates[0].SecondUpgradeCost}";
+                }
+
+                break;/*
             case 1:
                 for (int i = 0; i < _towerImage.Length; i++)
                 {
@@ -235,9 +264,9 @@ public class TowerSpecPopUp : MonoBehaviour
                 }
                 _towerSpec[0].text = $"공격력 : {_towerStates[1].Atk} \n " +
                                      $"설치 비용 : {_towerStates[1].InstallCost}";
-                _towerSpec[1].text = $"공격력 : {_towerStates[1].Atk + _towerStates[1].UpgradeAtk} \n " +
+                _towerSpec[1].text = $"공격력 : {_towerStates[1].Atk + _towerStates[1].UpgradeData.AddAtk} \n " +
                                      $"업그레이드 비용 : {_towerStates[1].FirstUpgradeCost}";
-                _towerSpec[2].text = $"공격력 : {_towerStates[1].Atk + _towerStates[1].UpgradeAtk * 2} \n " +
+                _towerSpec[2].text = $"공격력 : {_towerStates[1].Atk + _towerStates[1].UpgradeData.AddAtk * 2} \n " +
                                      $"업그레이드 비용 : {_towerStates[1].SecondUpgradeCost}";
                 break;
             case 2:
@@ -247,11 +276,11 @@ public class TowerSpecPopUp : MonoBehaviour
                 }
                 _towerSpec[0].text = $"공격력 : {_towerStates[2].Atk} \n " +
                                      $"설치 비용 : {_towerStates[2].InstallCost}";
-                _towerSpec[1].text = $"공격력 : {_towerStates[2].Atk + _towerStates[2].UpgradeAtk} \n " +
+                _towerSpec[1].text = $"공격력 : {_towerStates[2].Atk + _towerStates[2].UpgradeData.AddAtk} \n " +
                                      $"업그레이드 비용 : {_towerStates[2].FirstUpgradeCost}";
-                _towerSpec[2].text = $"공격력 : {_towerStates[2].Atk + _towerStates[2].UpgradeAtk * 2} \n " +
+                _towerSpec[2].text = $"공격력 : {_towerStates[2].Atk + _towerStates[2].UpgradeData.AddAtk * 2} \n " +
                                      $"업그레이드 비용 : {_towerStates[2].SecondUpgradeCost}";
-                break;
+                break;*/
             default:
                 break;
         }

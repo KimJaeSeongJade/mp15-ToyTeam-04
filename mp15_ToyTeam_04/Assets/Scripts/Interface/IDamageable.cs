@@ -3,5 +3,5 @@ using UnityEngine;
 public interface IDamageable
 {
     public void TakeDamage(bool per, int damage);
-    public void BulletAffect(BulletAffect affect); 
+    public void BulletAffect(BulletAffect affect, int addAffect); 
 }

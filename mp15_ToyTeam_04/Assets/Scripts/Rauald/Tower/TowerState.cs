@@ -7,7 +7,6 @@ public abstract class TowerState
     protected string _name;
     protected ETowerType _eTowerType;
     protected int _atk;
-    protected int _upgradeAtk;
     protected float _atkSpeed;
     protected float _detectionRange;
     protected string _explanation;
@@ -16,15 +15,13 @@ public abstract class TowerState
     protected int _curLevel;
     protected int _firstUpgradeCost;
     protected int _secondUpgradeCost;
+    protected TowerUpgradeData _upgradeData;
     protected BulletAffect _affect;
-
-
 
 
     public string Name => _name;
     public ETowerType ETowerType => _eTowerType;
     public int Atk => _atk;
-    public int UpgradeAtk => _upgradeAtk;
     public float AtkSpeed => _atkSpeed;
     public float DetectionRange => _detectionRange;
     public string Explanation => _explanation;
@@ -33,6 +30,7 @@ public abstract class TowerState
     public int CurLevel => _curLevel;
     public int FirstUpgradeCost => _firstUpgradeCost;
     public int SecondUpgradeCost => _secondUpgradeCost;
+    public TowerUpgradeData UpgradeData => _upgradeData;
     public BulletAffect Affect => _affect;
 
     public void TowerUpgrade()
@@ -44,6 +42,21 @@ public abstract class TowerState
 
     public int CurAtk()
     {
-        return (_atk + (_upgradeAtk * (_curLevel - 1)));
+        return (_atk + (_upgradeData.AddAtk * (_curLevel - 1)));
+    }
+
+    public float CurAtkSpeed()
+    {
+        return (_atkSpeed - (_upgradeData.AddAtkSpeed * (_curLevel - 1)));
+    }
+
+    public float CurRange()
+    {
+        return (_detectionRange + (_upgradeData.AddRange * (_curLevel - 1)));
+    }
+
+    public int CurBulletAffect()
+    {
+        return _upgradeData.AddBulletAffect * (_curLevel - 1);
     }
 }

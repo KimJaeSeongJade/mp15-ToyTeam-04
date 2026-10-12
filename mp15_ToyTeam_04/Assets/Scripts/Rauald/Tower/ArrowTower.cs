@@ -10,8 +10,7 @@ public class ArrowTower : TowerState
         _name = "애로우 타워";
         _eTowerType = ETowerType.ArrowTower;
         _atk = 10;
-        _upgradeAtk = 3;
-        _atkSpeed = 1f;
+        _atkSpeed = 2f;
         _detectionRange = 3f;
         _explanation = "평범한 공격 속도와 공격력, 평범한 공격 범위를 가진 타워.";
         _installCost = 100;
@@ -20,6 +19,7 @@ public class ArrowTower : TowerState
         _firstUpgradeCost = 300;
         _secondUpgradeCost = 700;
 
+        _upgradeData = new TowerUpgradeData(3, 0.2f, 0.3f, 0);
         _affect = new BulletAffect(EBulletAffectType.None, false, 0, 0);
     }
 }

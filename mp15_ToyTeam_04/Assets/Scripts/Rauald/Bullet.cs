@@ -89,7 +89,7 @@ public class Bullet : MonoBehaviour, IPoolable
     private void Hit()
     {
         _monster.TakeDamage(false, _atk);
-        _monster.BulletAffect(_bulletAffect);
+        _monster.BulletAffect(_bulletAffect, _tower.State.CurBulletAffect());
         ReturnBullet();
     }
 

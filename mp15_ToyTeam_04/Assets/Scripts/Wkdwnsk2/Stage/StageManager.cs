@@ -104,6 +104,8 @@ public class StageManager : MonoBehaviour
     
     private IEnumerator StageStart()
     {
+        UIManager.Instance.PopUp.MessagePopUp.Message($"Stage : {StageNumber}");
+
         _isStageRunning = true;
         
         // 스테이지 상태 초기화
@@ -117,6 +119,7 @@ public class StageManager : MonoBehaviour
         for (int wave = 1; wave <= WAVE_COUNT; wave++)
         {
             WaveNumber = wave;
+            UIManager.Instance.PopUp.MessagePopUp.Message($"WAVE : {WaveNumber}");
             totalMonsterNumber = 0;
 
             int normalCount = GetNormalCount();

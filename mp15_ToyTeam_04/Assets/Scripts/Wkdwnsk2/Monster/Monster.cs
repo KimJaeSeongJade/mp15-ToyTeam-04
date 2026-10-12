@@ -167,23 +167,6 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
             TakeDamage(false,100);
 
         }
-        
-        // 테스트 : 화상 (최대 체력 50%, 2초)
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            BulletAffect burnAffect = new BulletAffect(EBulletAffectType.Burn, true, 50, 2);
-            BulletAffect(burnAffect);
-
-        }
-        
-        // 테스트 : 감속 (이동 속도 70% 감소, 1초)
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            BulletAffect slowAffect = new BulletAffect(EBulletAffectType.DecreaseSpeed, true, 70, 1);
-            BulletAffect(slowAffect);
-
-        }
-        
     }
     
 
@@ -499,7 +482,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     }
     
        // 타워 공격 효과 적용 (IDamageable)
-    public void BulletAffect(BulletAffect affect)
+    public void BulletAffect(BulletAffect affect, int addAffect)
     {
         if (affect == null || _isDead)
         {
@@ -521,7 +504,7 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
                 StopCoroutine(_burnCoroutine);
             }
 
-            _burnCoroutine = StartCoroutine(BurnRoutine(affect));
+            _burnCoroutine = StartCoroutine(BurnRoutine(affect, addAffect));
         }
         else if (affect.EBulletAffectType == EBulletAffectType.DecreaseSpeed)
         {
@@ -531,24 +514,24 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
                 StopCoroutine(_slowCoroutine);
             }
 
-            _slowCoroutine = StartCoroutine(SlowRoutine(affect));
+            _slowCoroutine = StartCoroutine(SlowRoutine(affect, addAffect));
         }
     }
     
     // 화상 : 타워의 Duration초 동안 1초마다 데미지
-    private IEnumerator BurnRoutine(BulletAffect affect)
+    private IEnumerator BurnRoutine(BulletAffect affect, int addAffect)
     {
         _burnAffect.SetActive(true);
         int damage;
 
         if (affect.IsPer)
         {
-            damage = _maxHealth * affect.AffectValue / 100;
+            damage = _maxHealth * (affect.AffectValue + addAffect) / 100;
         }
         else
         {
             
-            damage = affect.AffectValue;
+            damage = (affect.AffectValue + addAffect);
         }
 
         
@@ -572,14 +555,14 @@ public class Monster : MonoBehaviour, IPoolable, IDamageable
     }
 
     // 몬스터 이속 감소
-    private IEnumerator SlowRoutine(BulletAffect affect)
+    private IEnumerator SlowRoutine(BulletAffect affect, int addAffect)
     {
         _iceAffect.SetActive(true);
         float slowSpeed;
 
 
         // AffectValue 만큼 감소
-        slowSpeed = _currentSpeed * (100 - affect.AffectValue) / 100f;    
+        slowSpeed = _currentSpeed * (100 - (affect.AffectValue + addAffect)) / 100f;    
 
         if (slowSpeed < 0f)
         {

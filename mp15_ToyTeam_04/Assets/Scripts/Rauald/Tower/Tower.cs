@@ -75,7 +75,7 @@ public class Tower : MonoBehaviour, IPoolable
     public float TowerAtkSpeed()
     {
         _ability = _dicAbility[EAbilityType.IncreaseAtkSpeed];
-        return _state.AtkSpeed - (_ability.IsLearn ? _ability.Value : 0);
+        return _state.CurAtkSpeed() - (_ability.IsLearn ? _ability.Value : 0);
     }
 
     /// <summary> 타워 탐색 범위 </summary>
@@ -83,7 +83,7 @@ public class Tower : MonoBehaviour, IPoolable
     public float TowerDetectionRange()
     {
         _ability = _dicAbility[EAbilityType.IncreaseDetectionRange];
-        return _state.DetectionRange + (_ability.IsLearn ? _ability.Value : 0);
+        return _state.CurRange() + (_ability.IsLearn ? _ability.Value : 0);
     }
 
     /// <summary> 타워 강화 비용 </summary>
