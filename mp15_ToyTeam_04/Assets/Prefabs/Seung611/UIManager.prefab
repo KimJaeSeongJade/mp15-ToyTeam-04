@@ -1990,7 +1990,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3857639607966354609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5855978387728307232}
+        m_TargetAssemblyTypeName: TowerSpecPopUp, Assembly-CSharp
+        m_MethodName: SelectButtonTowerLevelImg
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &982440518702556856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,7 +2802,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1534446189323308149
@@ -3374,7 +3386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5782512733207012272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3392,9 +3404,7 @@ RectTransform:
   - {fileID: 3416309184538702531}
   - {fileID: 8960692662654364955}
   - {fileID: 301487059685710633}
-  - {fileID: 6362303590906929648}
-  - {fileID: 7960611380983612055}
-  - {fileID: 3711624324072706169}
+  - {fileID: 3926835680756018925}
   - {fileID: 2924930341780317439}
   - {fileID: 2133072904149835227}
   m_Father: {fileID: 8856728702856466025}
@@ -3418,7 +3428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerName: {fileID: 7929821247840616191}
   _towerDescription: {fileID: 6000619634014374733}
-  _towerSpecObj: {fileID: 4544779937572965851}
+  _towerSpecObj: {fileID: 5477514588922170113}
   _towerSpec:
   - {fileID: 509062235467878906}
   - {fileID: 1982581435892178527}
@@ -3429,6 +3439,10 @@ MonoBehaviour:
   - {fileID: 2933263828835117384}
   - {fileID: 7554766928118216819}
   - {fileID: 2958367873765875409}
+  _towerLevelButtonImg:
+  - {fileID: 3857639607966354609}
+  - {fileID: 7462281933203292906}
+  - {fileID: 5533127817282884394}
   _deselectButton: {fileID: 21300000, guid: 59ce5253899962480e9af6dd0238b833, type: 3}
   _selectButton: {fileID: 21300000, guid: fecb96036db2fcfbed42d1615a2e9cde, type: 3}
   _towerAbilityObj: {fileID: 1840819242617499089}
@@ -3467,10 +3481,7 @@ MonoBehaviour:
   - {fileID: 7729543208325256093}
   - {fileID: 8884325546681044062}
   - {fileID: 4822256646133033298}
-  _towerImage:
-  - {fileID: 8657547957717596113}
-  - {fileID: 0}
-  - {fileID: 0}
+  _towerImage: {fileID: 8657547957717596113}
   _escButton: {fileID: 4053435729616250242}
   _arrowTowerSprites:
   - {fileID: 21300000, guid: 163aeafe8c7110b4389e16860837cf84, type: 3}
@@ -3883,7 +3894,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2107944666455229220
@@ -4045,9 +4056,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5209184149233965263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -215}
   m_SizeDelta: {x: 980, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8815497240803366090
@@ -6134,7 +6145,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2961890943840590798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6142,11 +6153,11 @@ RectTransform:
   - {fileID: 1372646243666254963}
   - {fileID: 946626659924904956}
   - {fileID: 8823438750518556567}
-  m_Father: {fileID: 5782512733207012272}
+  m_Father: {fileID: 3926835680756018925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 135}
+  m_AnchoredPosition: {x: 0, y: 225}
   m_SizeDelta: {x: 1410, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2986489609796034831
@@ -6256,9 +6267,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5209184149233965263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -20}
   m_SizeDelta: {x: 980, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4535925593082521523
@@ -6466,9 +6477,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5209184149233965263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -280}
   m_SizeDelta: {x: 980, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1422605719935821332
@@ -7837,9 +7848,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5209184149233965263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -85}
   m_SizeDelta: {x: 980, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1606166419525736360
@@ -8738,7 +8749,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4073757283941137769
@@ -9570,7 +9581,7 @@ GameObject:
   - component: {fileID: 4651354421480893478}
   - component: {fileID: 7635555794939215267}
   m_Layer: 5
-  m_Name: TowerExplanation
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9583,19 +9594,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4544779937572965851}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6159102856640987673}
   - {fileID: 5209184149233965263}
-  m_Father: {fileID: 5782512733207012272}
+  m_Father: {fileID: 3926835680756018925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -161.22}
-  m_SizeDelta: {x: 1410, y: 382.4399}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: 1410, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4651354421480893478
 CanvasRenderer:
@@ -9766,7 +9777,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4547695443569754451
@@ -11479,7 +11490,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5533127817282884394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5855978387728307232}
+        m_TargetAssemblyTypeName: TowerSpecPopUp, Assembly-CSharp
+        m_MethodName: SelectButtonTowerLevelImg
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5172574820303126151
 GameObject:
   m_ObjectHideFlags: 0
@@ -12122,9 +12145,47 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5477514588922170113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3926835680756018925}
+  m_Layer: 5
+  m_Name: TowerExplanation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3926835680756018925
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477514588922170113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6362303590906929648}
+  - {fileID: 7960611380983612055}
+  - {fileID: 3711624324072706169}
+  m_Father: {fileID: 5782512733207012272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -90}
+  m_SizeDelta: {x: 1410, y: 520}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5485774345800678335
 GameObject:
   m_ObjectHideFlags: 0
@@ -12709,7 +12770,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7462281933203292906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5855978387728307232}
+        m_TargetAssemblyTypeName: TowerSpecPopUp, Assembly-CSharp
+        m_MethodName: SelectButtonTowerLevelImg
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5606715188169065090
 GameObject:
   m_ObjectHideFlags: 0
@@ -13963,7 +14036,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5973880710130494016
@@ -14000,7 +14073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.0128174, y: -6.128296}
+  m_AnchoredPosition: {x: -3.0126953, y: -6.128296}
   m_SizeDelta: {x: 27.5015, y: 28.9344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4765302883402879831
@@ -14064,7 +14137,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6006983228073153140}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14072,11 +14145,11 @@ RectTransform:
   - {fileID: 8691590357783654303}
   - {fileID: 39925997334538306}
   - {fileID: 3464672434288309946}
-  m_Father: {fileID: 5782512733207012272}
+  m_Father: {fileID: 3926835680756018925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 65}
+  m_AnchoredPosition: {x: 0, y: 155}
   m_SizeDelta: {x: 1410, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6196014359186898832
@@ -14637,7 +14710,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6469666739755962802
@@ -17910,7 +17983,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8563931142059457011
@@ -18530,9 +18603,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5209184149233965263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -150}
   m_SizeDelta: {x: 980, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8082385070152463995

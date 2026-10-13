@@ -142,11 +142,13 @@ public class TowerSpecPopUp : MonoBehaviour
         }
     }
 
-    private void SelectButtonTowerLevelImg(int index)
+    public void SelectButtonTowerLevelImg(int index)
     {
+        _levelIndex = index;
+
         for (int i = 0; i < _towerLevelButtonImg.Count; i++)
         {
-            if (i == index)
+            if (i == _levelIndex)
             {
                 _towerLevelButtonImg[i].sprite = _selectButton;
             }
@@ -155,6 +157,8 @@ public class TowerSpecPopUp : MonoBehaviour
                 _towerLevelButtonImg[i].sprite = _deselectButton;
             }
         }
+
+        SpriteChange(_index, _levelIndex);
     }
 
     public void TowerExAbility(int index)
@@ -234,55 +238,29 @@ public class TowerSpecPopUp : MonoBehaviour
 
     private void SpriteChange(int index, int level)
     {
-        switch (index)
+        if (index == 0)
+            _towerImage.sprite = _arrowTowerSprites[level];
+        else if (index == 1)
+            _towerImage.sprite = _fireTowerSprites[level];
+        else if (index == 2)
+            _towerImage.sprite = _iceTowerSprites[level];
+
+        _towerSpec[0].text = $"공 격 력  : {_towerStates[index].Atk}" + (level == 0 ? "" : $" (<color=#00FF00>+ {_towerStates[index].UpgradeData.AddAtk * level}</color>)");
+        _towerSpec[1].text = $"공격 속도 : {_towerStates[index].AtkSpeed}" + (level == 0 ? "" : $" (<color=#00FF00>+ {_towerStates[index].UpgradeData.AddAtkSpeed * level}</color>)");
+        _towerSpec[2].text = $"공격 범위 : {_towerStates[index].DetectionRange}M" + (level == 0 ? "" : $" (<color=#00FF00>+ {_towerStates[index].UpgradeData.AddRange * level}</color>M)");
+        _towerSpec[3].text = $"공격 효과 : {_towerStates[index].Affect.AffectName(_towerStates[index].Affect.EBulletAffectType)}";
+
+        if (level == 0)
         {
-            case 0:
-                _towerImage.sprite = _arrowTowerSprites[level];
-                _towerSpec[0].text = $"공 격 력  : {_towerStates[0].Atk}";
-                _towerSpec[1].text = $"공격 속도 : {_towerStates[0].AtkSpeed}";
-                _towerSpec[2].text = $"공격 범위 : {_towerStates[0].DetectionRange}";
-                _towerSpec[3].text = $"공격 효과 : {_towerStates[0].Affect.AffectName(_towerStates[0].Affect.EBulletAffectType)}";
-
-                if (level == 0)
-                {
-                    _towerSpec[4].text = $"설치 비용 : {_towerStates[0].InstallCost}";
-                }
-                else if (level == 1)
-                {
-                    _towerSpec[4].text = $"강화 비용 : {_towerStates[0].FirstUpgradeCost}";
-                }
-                else if (level == 2)
-                {
-                    _towerSpec[4].text = $"강화 비용 : {_towerStates[0].SecondUpgradeCost}";
-                }
-
-                break;/*
-            case 1:
-                for (int i = 0; i < _towerImage.Length; i++)
-                {
-                    _towerImage[i].sprite = _fireTowerSprites[i];
-                }
-                _towerSpec[0].text = $"공격력 : {_towerStates[1].Atk} \n " +
-                                     $"설치 비용 : {_towerStates[1].InstallCost}";
-                _towerSpec[1].text = $"공격력 : {_towerStates[1].Atk + _towerStates[1].UpgradeData.AddAtk} \n " +
-                                     $"업그레이드 비용 : {_towerStates[1].FirstUpgradeCost}";
-                _towerSpec[2].text = $"공격력 : {_towerStates[1].Atk + _towerStates[1].UpgradeData.AddAtk * 2} \n " +
-                                     $"업그레이드 비용 : {_towerStates[1].SecondUpgradeCost}";
-                break;
-            case 2:
-                for (int i = 0; i < _towerImage.Length; i++)
-                {
-                    _towerImage[i].sprite = _iceTowerSprites[i];
-                }
-                _towerSpec[0].text = $"공격력 : {_towerStates[2].Atk} \n " +
-                                     $"설치 비용 : {_towerStates[2].InstallCost}";
-                _towerSpec[1].text = $"공격력 : {_towerStates[2].Atk + _towerStates[2].UpgradeData.AddAtk} \n " +
-                                     $"업그레이드 비용 : {_towerStates[2].FirstUpgradeCost}";
-                _towerSpec[2].text = $"공격력 : {_towerStates[2].Atk + _towerStates[2].UpgradeData.AddAtk * 2} \n " +
-                                     $"업그레이드 비용 : {_towerStates[2].SecondUpgradeCost}";
-                break;*/
-            default:
-                break;
+            _towerSpec[4].text = $"설치 비용 : {_towerStates[index].InstallCost} 골드";
+        }
+        else if (level == 1)
+        {
+            _towerSpec[4].text = $"강화 비용 : {_towerStates[index].FirstUpgradeCost} 골드";
+        }
+        else if (level == 2)
+        {
+            _towerSpec[4].text = $"강화 비용 : {_towerStates[index].SecondUpgradeCost} 골드";
         }
     }
 

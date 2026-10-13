@@ -24,9 +24,12 @@ public class LobbyWindow : MonoBehaviour
     private void OnEnable() => BindButtonEvents();
     private void OnDisable() => UnbindButtonEvents();
     private void Update() => Escape();
+
+    private bool _isPopupOpen;
     
     private void BindButtonEvents()
     {
+        _isPopupOpen = false;
         _gameStartButton.onClick.AddListener(StartGame);
         _playerSkillButton.onClick.AddListener(SkillPopUp);
         _settingButton.onClick.AddListener(SettingPopUp);
@@ -37,6 +40,8 @@ public class LobbyWindow : MonoBehaviour
     
     private void UnbindButtonEvents()
     {
+        _isPopupOpen = false;
+
         _gameStartButton.onClick.RemoveListener(StartGame);
         _playerSkillButton.onClick.RemoveListener(SkillPopUp);
         _settingButton.onClick.RemoveListener(SettingPopUp);
@@ -49,7 +54,14 @@ public class LobbyWindow : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UIManager.Instance.PopUp.SettingPopUpOpen();
+            if (_isPopupOpen)
+            {
+
+            }
+            else
+            {
+                UIManager.Instance.PopUp.SettingPopUpOpen();
+            }
         }
     }
 
